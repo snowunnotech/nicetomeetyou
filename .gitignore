@@ -56,3 +56,6 @@ __pycache__/
 
 *.pyc
 *.pyo
+
+# virtual enviroment
+venv/

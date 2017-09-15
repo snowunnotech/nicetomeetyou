@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA News</title>
+</head>
+<body>
+    <h1>NBA焦點新聞</h1>
+    <ul>
+      {% for one_news in news %}
+          <li>
+              <a href="/news/{{ one_news.id }}">
+                {{ one_news.title }}
+              </a>
+          </li>
+      {% endfor %}
+    </ul>
+
+</body>
+</html>

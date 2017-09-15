@@ -11,3 +11,6 @@ class News(models.Model):
 
     class Meta:
         db_table = "news"
+
+    def __str__(self):
+        return self.title
