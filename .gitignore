@@ -59,3 +59,4 @@ __pycache__/
 
 # virtual enviroment
 venv/
+venv35/
