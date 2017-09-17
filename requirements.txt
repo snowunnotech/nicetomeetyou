@@ -1,6 +1,10 @@
+amqp==1.4.9
+anyjson==0.3.3
 asn1crypto==0.22.0
 attrs==17.2.0
 Automat==0.6.0
+billiard==3.3.0.23
+celery==3.1.25
 cffi==1.10.0
 constantly==15.1.0
 cryptography==2.0.3
@@ -10,6 +14,7 @@ djangorestframework==3.6.4
 hyperlink==17.3.1
 idna==2.6
 incremental==17.5.0
+kombu==3.0.37
 lxml==3.8.0
 parsel==1.2.0
 pyasn1==0.3.4
@@ -20,10 +25,12 @@ pyOpenSSL==17.3.0
 pypiwin32==220
 pytz==2017.2
 queuelib==1.4.2
+redis==2.10.6
 Scrapy==1.4.0
 scrapy-djangoitem==1.1.1
 service-identity==17.0.0
 six==1.10.0
 Twisted==17.5.0
+vine==1.1.4
 w3lib==1.18.0
 zope.interface==4.4.2

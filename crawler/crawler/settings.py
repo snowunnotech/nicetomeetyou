@@ -14,17 +14,24 @@ import sys
 
 BOT_NAME = 'crawler'
 
-SPIDER_MODULES = ['crawler.spiders']
-NEWSPIDER_MODULE = 'crawler.spiders'
+SPIDER_MODULES = ['crawler.crawler.spiders']
+NEWSPIDER_MODULE = 'crawler.crawler.spiders'
 
 #DJANGO_PROJECT_PATH = 'E:/practice_project/nicetomeetyou/'
-DJANGO_PROJECT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..")
+#DJANGO_PROJECT_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..")
+#DJANGO_SETTINGS_MODULE = 'nicetomeetyou.settings'
+
+#sys.path.insert(0, DJANGO_PROJECT_PATH)
+#os.environ['DJANGO_SETTINGS_MODULE'] = DJANGO_SETTINGS_MODULE
+#django.setup()
+
+DJANGO_PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DJANGO_SETTINGS_MODULE = 'nicetomeetyou.settings'
 
 sys.path.insert(0, DJANGO_PROJECT_PATH)
 os.environ['DJANGO_SETTINGS_MODULE'] = DJANGO_SETTINGS_MODULE
-
 django.setup()
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawler (+http://www.yourdomain.com)'
@@ -76,7 +83,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'crawler.pipelines.CrawlerPipeline': 1000,
+    'crawler.crawler.pipelines.CrawlerPipeline': 1000,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

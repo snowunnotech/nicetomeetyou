@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'news',
+    'demoapp',
+    'crawler',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CELERY_TIMEZONE = 'Asia/Taipei'
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ('crawler.crawler.tasks.tasks', )
