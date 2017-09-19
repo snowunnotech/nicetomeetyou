@@ -17,11 +17,6 @@ class NewsSpider(scrapy.Spider):
     allowed_domains = ["nba.udn.com"]
     start_urls = ['https://nba.udn.com/nba/index?gr=www']
 
-    custom_settings = {
-        'crawler.pipelines.CrawlerPipeline': 1000,
-        'download_delay': 30,
-    }
-
     def parse(self, response):
         # only need the links in <div id="news_body">
         news_body = response.xpath('//div[@id="news_body"]').extract()

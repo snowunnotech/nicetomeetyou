@@ -4,9 +4,10 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
+from news.models import News
 
 class CrawlerPipeline(object):
     def process_item(self, item, spider):
-        item.save()
+        if not News.objects.filter(title=item['title']).exists():
+            item.save()
         return item

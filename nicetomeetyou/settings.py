@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -126,3 +128,15 @@ STATIC_URL = '/static/'
 CELERY_TIMEZONE = 'Asia/Taipei'
 # List of modules to import when celery starts.
 CELERY_IMPORTS = ('crawler.crawler.tasks.tasks', )
+CELERYD_MAX_TASKS_PER_CHILD = 1
+
+CELERYBEAT_SCHEDULE = {
+    'crawl-every-10-minutes': {
+        'task': 'crawler.crawler.tasks.tasks.crawler_job',
+        'schedule': crontab(minute='*/10'),
+    },
+    #'testing': {
+    #    'task': 'crawler.crawler.tasks.tasks.justsaysomething',
+    #    'schedule': crontab(minute='*/1'),
+    #},
+}

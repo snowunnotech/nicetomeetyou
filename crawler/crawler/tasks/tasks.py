@@ -23,8 +23,8 @@ def crawl():
     reactor.run()  # the script will block here until the crawling is finished
 
 @shared_task
-def mul(x, y):
-    return x - y
+def justsaysomething():
+    print('************I want a job...******************')
 
 @shared_task
 def crawler_job():
