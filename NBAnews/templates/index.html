@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+			</div>
+		</div>
+	</body>
+
+	<script>
+
+		function format_data(data){
+			var result = '';
+			for (var i = 0; i < data.length; i++ )
+			{
+				result += '<div class="panel panel-success">' + 
+						'		<div class="panel-heading">' + 
+						'			<h4 class="panel-title">' + 
+						'				<a data-toggle="collapse" data-parent="#accordion" href="#' + data[i].news_id + '">' + 
+						data[i].title + 
+						'				</a>' + 
+						'			<h4>' + 
+						'		</div>' + 
+						'		<div class="panel-collapse collapse" id="' + data[i].news_id + '">' +
+						'			<div class="panel-body">' + 
+						data[i].content + 
+						'			</div>' + 
+						'		</div>' + 
+						'	</div>';
+						
+			}
+			return result
+		}
+
+		var page = 1;
+		var news_num = 0;
+
+		
+
+		function get_news(){
+			$.ajax({
+				url: '/api/news/get_news',
+				type: 'GET',
+				data: {'page': page},
+				success: function (data) {
+					page += 1;
+					var result = format_data(data);
+					$('.row').append(result);
+					$(window).data('ajaxready', true);
+				}
+			});
+		}
+
+		function get_news_num(){
+			$.ajax({
+				url: '/api/news/total_news',
+				type: 'GET',
+				success: function (data) {
+					console.log(data);
+					if (news_num != data)
+					{
+						news_num = data
+						$(".panel").remove();
+						page = 1;
+						get_news();
+					}
+				}
+			});
+
+		}
+
+		get_news();
+
+		setInterval("get_news_num()", 10000);
+
+		$(window).data('ajaxready', true).scroll(function (e) {
+			var postHeight = $('.row').height();
+
+			if ($(window).data('ajaxready') === false) {
+				return;
+			}
+			if ($(window).scrollTop() >= postHeight - 1000 ) {
+				$(window).data('ajaxready', false);
+				get_news();
+			}
+		});
+		
+	</script>
+
+</html>
