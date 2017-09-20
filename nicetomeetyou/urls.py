@@ -15,17 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from rest_framework.routers import DefaultRouter
-
-from news import views
-
-router = DefaultRouter()
-router.register(r'news', views.NewsViewSet)
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', views.index, name='index'),
+    url(r'^', include('news.urls')),
 ]

@@ -40,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'news',
-    'demoapp',
     'crawler',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'nicetomeetyou.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/')],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    'static'
+]
 
 CELERY_TIMEZONE = 'Asia/Taipei'
 # List of modules to import when celery starts.
@@ -132,7 +134,7 @@ CELERYD_MAX_TASKS_PER_CHILD = 1
 
 CELERYBEAT_SCHEDULE = {
     'crawl-every-10-minutes': {
-        'task': 'crawler.crawler.tasks.tasks.crawler_job',
+        'task': 'crawler.crawler.tasks.tasks.crawl',
         'schedule': crontab(minute='*/10'),
     },
     #'testing': {
