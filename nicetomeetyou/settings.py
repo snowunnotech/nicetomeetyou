@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'crawler',
     'news',
+    'channels',
+    'channeler',
 ]
 
 MIDDLEWARE = [
@@ -141,4 +143,12 @@ CELERYBEAT_SCHEDULE = {
     #    'task': 'crawler.crawler.tasks.tasks.justsaysomething',
     #    'schedule': crontab(minute='*/1'),
     #},
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        # “in memory” channel layer can only be used with runserver
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "nicetomeetyou.routing.channel_routing",
+    },
 }

@@ -28,5 +28,16 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
         <script src="{% static 'js/app.js' %}"></script>
+        <script>
+            // Note that the path doesn't matter for routing; any WebSocket
+            // connection gets bumped over to WebSocket consumers
+            socket = new WebSocket("ws://" + window.location.host + "/users/");
+            socket.onmessage = function(e) {
+                alert(e.data);
+            };
+
+            // Call onopen directly if socket is already open
+            if (socket.readyState == WebSocket.OPEN) socket.onopen();
+        </script>
     </body>
 </html>
