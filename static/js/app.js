@@ -14,7 +14,9 @@ app.controller('newsController', function($scope, $http) {
     });
 });
 
-app.controller('newsDetailController', function($scope, $http, $location) {
+var appDetail = angular.module('newsDetailApp', ['ngSanitize']);
+
+appDetail.controller('newsDetailController', function($scope, $http, $location, $sce) {
     apitype = $location.absUrl().split("/")[3];
     tid = $location.absUrl().split("/")[4];
     url = '/api/' + apitype + '/' + tid + '/';
@@ -25,6 +27,8 @@ app.controller('newsDetailController', function($scope, $http, $location) {
             $scope.newsAuthor = response.data.author;
             $scope.newsContent = response.data.content;
             $scope.newsDatetime = response.data.issued_date;
+            $scope.trustedNewsContent = $sce.trustAsHtml($scope.newsContent)
         }
     });
 });
+

@@ -7,6 +7,7 @@ import pytz
 import scrapy
 
 from scrapy import Selector, Request
+from w3lib.html import remove_tags_with_content, remove_tags
 
 #from crawler.items import CrawlerItem
 from ..items import CrawlerItem
@@ -32,15 +33,19 @@ class NewsSpider(scrapy.Spider):
             item['title'] = response.css('.story_art_title::text').extract()[0]
             item['author'] = response.css('.shareBar__info--author::text').extract()[0]
 
-            content_str =''
-            contents = response.xpath('//div[@id="story_body_content"]//p/text()').extract()
-            for content in contents:
-                content_str += content
-            item['content'] = content_str
-
             # Transform issued time to UTC+0
             taipei = pytz.timezone('Asia/Taipei')
             dt_str = response.xpath('//div[@class = "shareBar__info--author"]/span/text()').extract()
             item['issued_date'] = datetime.datetime.strptime(dt_str[0], '%Y-%m-%d %H:%M').replace(tzinfo=taipei)
+
+            content_body = response.xpath('//div[@id="story_body_content"]/span').extract()[0]
+            content_body = remove_tags_with_content(content_body, which_ones=('figure', 'div'))
+            content_body = remove_tags(content_body, which_ones=('a', 'strong'))
+            content_body = content_body.replace('</div>', '')
+            content_body = content_body.replace('<span>', '')
+            content_body = content_body.replace('</span>', '')
+
+            item['content'] = content_body
+
             yield item
 

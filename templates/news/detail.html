@@ -7,7 +7,7 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/newsDetail.css' %}">
     </head>
-    <body ng-app="newsApp" ng-controller="newsDetailController">
+    <body ng-app="newsDetailApp" ng-controller="newsDetailController">
         <div id="body_content">
             <h1 id="title" ng-bind="newsTitle"></h1>
             <div id="author_info">
@@ -15,11 +15,12 @@
                 <span ng-bind="newsAuthor"></span>
             </div>
             <br>
-            <div>
-                <p ng-bind="newsContent"></p>
-            </div>
+
+            <div ng-bind-html="trustedNewsContent"></div>
+
 
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-sanitize.js"></script>
             <script src="{% static 'js/app.js' %}"></script>
         </div>
     </body>
