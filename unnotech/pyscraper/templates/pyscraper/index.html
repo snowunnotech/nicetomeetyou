@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pyscraper/style.css' %}" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'pyscraper/ajax.js' %}"></script>
+<div class="results" style="padding: 20px">
+<table id="result_list">
+<thead>
+<tr>
+<th scope="col" class="column-__str__">
+   <div class="text"><span>NBA News Headlines</span></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+{% if latest_headline_list %}
+    {% for headline in latest_headline_list %}
+        <tr class="{% cycle 'row1' 'row2' %}"><th class="field-__str__"><a href="{% url 'detail' headline.id %}">{{ headline.headline_text }}</a></th></tr>
+        <tr class="{% cycle 'row1' 'row2' %}"><td class="field-__str__"><p>{{ headline.article.article_text }}</p></td></tr>
+    {% endfor %}
+{% else %}
+    <p>No headlines are available.</p>
+{% endif %}
+</tbody>
+</table>
+</div>
