@@ -1,0 +1,41 @@
+<!-- templates/news.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ news.title }} | NBA Quick News</title>
+    <link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        figure.photo-story {
+            display:none
+        }
+        .only_web  {
+            display:none
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="site-title text-center">
+            <a href="/">NBA Quick News</a>
+        </h1>
+    </div>
+    <div class="container news news-detail">
+        <div class="news-heading">
+            <h1 class="title">{{ news.title }}</h1>
+            <div class="date">{{ news.created_at|date:'Y / m / d' }}</div>
+        </div>
+        <div id="map-canvas" class="map"></div>
+        <div class="news-content">
+            <!-- {% autoescape on %} {{ news.detail }} {% endautoescape %} -->
+            {{ news.detail |safe}}
+        </div>
+        <hr class="fancy-line">
+    </div>
+    <!-- // <script src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script> -->
+    <!-- // <script src="//djangogirlstaipei.github.io/assets/js/map.js"></script> -->
+</body>
+</html>
