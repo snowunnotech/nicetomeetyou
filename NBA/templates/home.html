@@ -1,0 +1,48 @@
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NBA Quick News</title>
+    <link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="site-title text-center">
+            <a href="/">NBA Quick News</a>
+        </h1>
+    </div>
+    <div class="container">
+        {% for news in news_list %}
+        <div class="news-wrapper">
+            <div class="news">
+                <div class="news-heading">
+                    <h2 class="title">
+                        <a href="{% url 'news_detail' pk=news.pk %}">{{ news.title }}</a>
+                    </h2>
+                    <div class="date">{{ news.created_at|date:"Y / m / d" }}</div>
+                </div>
+                {% if news.pic_url %}
+                <div class="thumbnail">
+                    <img src="{{ news.pic_url }}" alt="">
+                </div>
+                {% else %}
+                <div class="thumbnail thumbnail-default"></div>
+                {% endif %}
+                <div class="news-content read-more-block">
+                    {{ news.content }}
+                </div>
+                <div class="news-footer">
+                    <a class="read-more" href="{% url 'news_detail' pk=news.pk %}">
+                        Read More <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
