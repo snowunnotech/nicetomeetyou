@@ -26,7 +26,7 @@ def getNews():
         news = {
             'title' : title,
             'content' : content,
-            'url' : url,
+            'url' : content_url,
         }
 
         ret.append(news)

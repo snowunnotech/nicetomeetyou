@@ -135,8 +135,8 @@ CELERY_TIMEZONE = 'Asia/Taipei'
 
 from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
-    'add-every-30-seconds': {
+    'add-every-10-seconds': {
         'task': 'nba.tasks.getNews',
-        'schedule': timedelta(seconds=30),
+        'schedule': timedelta(seconds=10),
     },
 }
