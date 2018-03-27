@@ -1,0 +1,28 @@
+version: '2'
+services:
+
+    celery_worker:
+      build: .
+      command: bash -c "python manage.py migrate && export C_FORCE_ROOT="true" && python manage.py celery worker --loglevel=info"
+      restart: always
+      volumes:
+        - .:/nbaCrawler
+
+    celery_beat:
+      build: .
+      command: bash -c "python manage.py celery beat"
+      restart: always
+      volumes:
+        - .:/nbaCrawler
+
+    app:
+      build: .
+      command: bash -c "python manage.py runserver 0.0.0.0:8000"
+      restart: always
+      ports:
+        - "8000:8000"
+      volumes:
+        - .:/nbaCrawler
+      depends_on:
+        - celery_beat
+        - celery_worker
