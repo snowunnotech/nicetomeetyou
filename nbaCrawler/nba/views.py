@@ -14,6 +14,7 @@ class NbaViewSet(viewsets.ModelViewSet):
 
 
 def index(request):
-    return render(request, 'index.html', {
-        'current_time': str(datetime.now()),
-    })
+    return render(request, 'index.html')
+
+def detail(request, pk):
+    return render(request, 'detail.html', {'news': News.objects.get(pk=pk)})
