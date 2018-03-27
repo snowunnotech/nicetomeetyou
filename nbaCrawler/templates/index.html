@@ -43,8 +43,7 @@
                                 $(this).html(item.title);
                                 break;
                             case(2):
-                                var day = Date.parse(item.time);
-                                $(this).html(day.toString('yyyy-M-d HH:mm:ss'));
+                                $(this).html(item.time);
                                 break;
                         }
                     });

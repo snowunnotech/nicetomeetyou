@@ -14,11 +14,13 @@
 
 ## 進階要求
 1. 實現爬蟲自動定時抓取。
+    - done
 2. 每當抓取到新的新聞時立即通知頁面。
     - done
 3. 将本 demo 部署至服务器并可正确运行。
 
 ## 運行
-1. pip install -r requirements.txt
-2. python manage.py migrate
-3. python manage.py runserver
+1. environment : python 3.6.4, docker
+2. pip install -r requirements.txt
+3. python manage.py migrate
+4. python manage.py runserver
