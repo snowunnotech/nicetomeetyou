@@ -18,9 +18,8 @@
 2. 每當抓取到新的新聞時立即通知頁面。
     - done
 3. 将本 demo 部署至服务器并可正确运行。
+    - no platform for deploy
 
 ## 運行
-1. environment : python 3.6.4, docker
-2. pip install -r requirements.txt
-3. python manage.py migrate
-4. python manage.py runserver
+1. environment : Ubuntu16.04, python 3.6.4, docker, docker-compose
+2. docker-compose up
