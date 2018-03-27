@@ -1,108 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
-    <script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+{% extends "base.html" %}
+{% block title %}NBA Crawler{% endblock %}
 
-<body>
+{% block body %}
+    <div class="alert alert-warning" role="alert" style="display: none">
+        <a href="#" class="close" data-dismiss="alert">
+            &times;
+        </a>
+        <strong>資料有更動，請重新整理</strong>
+    </div>
 
-{#<table id="generatedTable">#}
-{#    <thead>#}
-{#    <tr>#}
-{#        <th style='width:10%;'>第一列</th>#}
-{#        <th style='width:15%;'>第二列</th>#}
-{#        <th style='width:10%;'>第三列</th>#}
-{#        <th style='width:10%;'>第四列</th>#}
-{#        <th style='width:3%;'>第五列</th>#}
-{#    </tr>#}
-{#    </thead>#}
-{#    <tbody>#}
-{#    <tr id="cloneTr">#}
-{#        <td></td>#}
-{#        <td></td>#}
-{#        <td></td>#}
-{#        <td></td>#}
-{#        <td></td>#}
-{#    </tr>#}
-{#    </tbody>#}
-{#</table>#}
-<div class="alert alert-warning" role="alert" style="display: none">
-    <a href="#" class="close" data-dismiss="alert">
-        &times;
-    </a>
-    <strong>資料有更動，請重新整理</strong>
-</div>
-
-<div class="col-large align-items-center text-center">
-    <h1> NBA CRAWLER </h1>
-</div>
-<div class="container" id="generatedTable">
-    <div class="row" id="cloneDiv">
-        <div class="col-sm text-center">
-        </div>
-        <div class="col-sm text-center">
+    <div class="col-large align-items-center text-center">
+        <h1> NBA CRAWLER </h1>
+    </div>
+    <div class="container" id="generatedTable">
+        <div class="row" id="cloneDiv">
+            <div class="col-sm text-center">
+            </div>
+            <div class="col-sm text-center">
+            </div>
+            <div class="col-sm text-center">
+            </div>
         </div>
     </div>
-</div>
-<script>
-    var json_data;
+    <script>
+        var json_data;
 
-    $.ajax({
-        url: '/api/news/',
-        dataType: 'json',
-        type: 'GET',
-        success: function (data) {
-            json_data = data;
-            var tr = $("#cloneDiv");
-            $.each(data, function (index, item) {
-                var clonedTr = tr.clone();
-                clonedTr.children("div").each(function (inner_index) {
-                    switch (inner_index) {
-                        case(0):
-                            $(this).html(item.title);
-                            $(this).href = item.url;
-                            break;
-                        case(1):
-                            var dout = Date.parse(item.time);
-                            $(this).html(dout.toString('yyyy-M-d HH:mm:ss'));
-                            break;
+        $.ajax({
+            url: '/api/news/',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                json_data = data;
+                var tr = $("#cloneDiv");
+                $.each(data, function (index, item) {
+                    var clonedTr = tr.clone();
+                    clonedTr.children("div").each(function (inner_index) {
+                        switch (inner_index) {
+                            case(0):
+                                $(this).html("<a href=\"" + item.id + "\">Detail</a>");
+                                break;
+                            case(1):
+                                $(this).html(item.title);
+                                break;
+                            case(2):
+                                var day = Date.parse(item.time);
+                                $(this).html(day.toString('yyyy-M-d HH:mm:ss'));
+                                break;
+                        }
+                    });
+                    clonedTr.insertAfter(tr);
+                });
+                tr.hide();
+                $("#generatedTable").show();
+            }
+        });
+
+        $(document).ready(function () {
+            function count() {
+                $.ajax({
+                    url: '/api/news/',
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (data) {
+                        if (_.isEqual(data, json_data)) {
+                        } else {
+                            $(".alert").show();
+                            json_data = data
+                        }
                     }
                 });
-                clonedTr.insertAfter(tr);
-                console.log(item.title)
-            });
-            tr.hide();
-            $("#generatedTable").show();
-        }
-    });
+            }
 
-    $(document).ready(function () {
-        function count() {
-            $.ajax({
-                url: '/api/news/',
-                dataType: 'json',
-                type: 'GET',
-                success: function (data) {
-                    if (_.isEqual(data, json_data)) {
-                        console.log("equal");
-                    } else {
-                        console.log("not equal");
-                        $(".alert").show();
-                        json_data = data
-                    }
-                }
-            });
-        }
-        var auto_refresh = setInterval(function () {
-            count()
-        }, 3000);
-        count();
-    });
-</script>
-</body>
-</html>
+            var auto_refresh = setInterval(function () {
+                count()
+            }, 3000);
+            count();
+        });
+    </script>
+{% endblock %}
