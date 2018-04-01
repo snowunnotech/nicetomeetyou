@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Article(models.Model):
-    title = models.CharField('Title', max_length=50)
+    title = models.CharField('Title', max_length=50, unique=True)
     author = models.CharField('Author', max_length=50)
     date = models.DateField('date')
     content = models.TextField('Content')

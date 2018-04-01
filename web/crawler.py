@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Text, Date, create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from datetime import datetime
+from sqlalchemy.exc import IntegrityError
 
 Base = declarative_base()
 DBSession = scoped_session(sessionmaker())
@@ -54,29 +55,11 @@ for url in news_url:
     content = "".join(para)
   
     date = datetime.strptime(date, '%Y-%m-%d %H:%M')
-    # print(title)
-    print(date)
-    # print(author)
-    # print(content)
 
     article = Article(title, author, date, content)
     DBSession.add(article)
-    DBSession.commit()
-
-
-# print(base_url + news_url[0])
-# r = requests.get(base_url + news_url[0])
-# soup = BeautifulSoup(r.text, 'html.parser')
-# title = soup.find('h1', {"class":'story_art_title'})
-# title = title.text
-# date_author = soup.find('div', {"class":'shareBar__info--author'})
-# date = date_author.find('span').text
-# author = date_author.contents[1]
-# content = soup.find('div', id="story_body_content")
-# para = []
-# for p in content.find_all('p'):
-#     if p.find('figure'):
-#         continue
-#     para.append(p.get_text())
-
-# print("".join(para))
+    try:
+        DBSession.commit()
+    # handle the duplicate article problem
+    except IntegrityError as e:
+        DBSession.rollback()
