@@ -9,6 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+import sys, os
+
+# Add absolute path of your Django application root directory
+sys.path.append('/Users/cjhwong/Workspace/nicetomeetyou/Unnotech/web')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'web.settings'
+import django
+django.setup()
+
 BOT_NAME = 'udn'
 
 SPIDER_MODULES = ['udn.spiders']
@@ -64,9 +72,9 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'udn.pipelines.UdnPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'udn.pipelines.UdnPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

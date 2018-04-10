@@ -1,6 +1,6 @@
 import scrapy
 
-from udn.items import NewsItem
+from udn.items import NewsItem, NewsDjangoItem
 
 
 class NewsSpider(scrapy.Spider):
@@ -21,7 +21,8 @@ class NewsSpider(scrapy.Spider):
             yield scrapy.Request('https://nba.udn.com' + url, callback=self.parse_post)
 
     def parse_post(self, response):
-        item = NewsItem()
+        item = NewsDjangoItem()
+        item['article_id'] = response.url.split('/')[-1]
         item['datetime'] = response.xpath(
             '//div[@id="shareBar"]//div[contains(@class, shareBar__info--author)]//span/text()').extract_first()
         item['author'] = response.xpath(
@@ -33,6 +34,5 @@ class NewsSpider(scrapy.Spider):
         item['content'] = ''.join(response.xpath(
             '//div[@id="story_body_content"]//p/text()').extract())
         item['url'] = response.url
-
 
         yield item

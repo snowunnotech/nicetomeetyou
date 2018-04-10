@@ -9,3 +9,6 @@ class News(models.Model):
     image_url = models.CharField(max_length=200, blank=True, default='')
     content = models.TextField()
     url = models.CharField(max_length=200, blank=True, default='')
+
+    def __str__(self):
+        return '{} {}'.format(self.article_id, self.title)

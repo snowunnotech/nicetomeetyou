@@ -6,7 +6,8 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-
+from news.models import News
+from scrapy_djangoitem import DjangoItem
 
 class NewsItem(scrapy.Item):
     # define the fields for your item here like:
@@ -17,3 +18,6 @@ class NewsItem(scrapy.Item):
     image_url = scrapy.Field()
     content = scrapy.Field()
     url = scrapy.Field()
+
+class NewsDjangoItem(DjangoItem):
+    django_model = News
