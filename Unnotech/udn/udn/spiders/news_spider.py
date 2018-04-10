@@ -22,6 +22,10 @@ class NewsSpider(scrapy.Spider):
 
     def parse_post(self, response):
         item = NewsItem()
+        item['datetime'] = response.xpath(
+            '//div[@id="shareBar"]//div[contains(@class, shareBar__info--author)]//span/text()').extract_first()
+        item['author'] = response.xpath(
+            '//div[@id="shareBar"]//div[contains(@class, shareBar__info--author)]/text()').extract_first()
         item['title'] = response.xpath(
             '//div[@id="story_body_content"]/h1/text()').extract_first()
         item['image_url'] = response.xpath(
@@ -29,5 +33,6 @@ class NewsSpider(scrapy.Spider):
         item['content'] = ''.join(response.xpath(
             '//div[@id="story_body_content"]//p/text()').extract())
         item['url'] = response.url
+
 
         yield item
