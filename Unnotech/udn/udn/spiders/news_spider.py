@@ -32,7 +32,7 @@ class NewsSpider(scrapy.Spider):
         item['image_url'] = response.xpath(
             '//div[@id="story_body_content"]//span//figure//a/img/@data-src').extract_first()
         item['content'] = ''.join(response.xpath(
-            '//div[@id="story_body_content"]//p/text()').extract())
+            '//div[@id="story_body_content"]//span//p/descendant-or-self::*/text()').extract())
         item['url'] = response.url
 
         yield item
