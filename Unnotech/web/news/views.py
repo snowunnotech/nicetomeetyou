@@ -14,7 +14,7 @@ def news_list(request):
     List all news
     """
     if request.method == 'GET':
-        news = News.objects.all()
+        news = News.objects.all().order_by('-datetime')
         serializer = NewsSerializer(news, many=True)
         return JsonResponse(serializer.data, safe=False)
 

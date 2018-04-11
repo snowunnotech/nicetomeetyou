@@ -12,3 +12,6 @@ class News(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.article_id, self.title)
+
+    class Meta():
+        ordering = ('datetime',)
