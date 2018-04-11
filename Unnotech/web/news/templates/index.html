@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  <title>NBA 焦點新聞</title>
+</head>
+
+<body style="background-color: #f8f9fa; padding-top: 8px">
+  <div class="container">
+    <div class="row" id="news-list">
+      <div class="col-md-4" v-for="n in news">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" v-bind:src="n.image_url">
+          <div class="card-body">
+            <h5 class="card-title">[[ n.title ]]</h5>
+            <p class="card-text" style="text-align: justify">[[ n.content.substring(0, 120) + '...' ]]</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" v-bind:data-id="n.article_id" v-on:click="showNewsDetail">Watch more</button>
+              </div>
+              <small class="text-muted">[[ n.datetime | formatDate ]]</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-container" id="news-detail">
+      <div class="modal" tabindex="-1" role="dialog" style="display: block; overflow: auto;" v-if="seen" v-on:click="hideNewsDetail">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">[[ news.title ]]</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="hideNewsDetail">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body" style="text-align: justify; line-height: 1.8; color: rgb(34, 34, 34); font-size: 18px; letter-spacing: 1px;">
+              <span>[[ news.author ]]</span>
+              <span style="float: right;">[[ news.datetime | formatDate ]]</span>
+              <img style="width: 100%; display: block; margin: 8px 0px 8px 0px;" v-bind:src="news.image_url">
+              <p>[[ news.content ]]</p>
+            </div>
+            <div class="modal-footer">
+              <span><a v-bind:href="news.url" target="_blank">Original Post</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0/dist/vue-resource.min.js"></script>
+  <script>
+    Vue.options.delimiters = ['[[', ']]'];
+
+    Vue.filter('formatDate', function(value) {
+      var date = new Date(value);
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
+    });
+
+    var newsList = new Vue({
+      el: '#news-list',
+      data: {
+        news: []
+      },
+      methods: {
+        showNewsDetail: function(e) {
+          this.$http.get('/news/' + e.target.getAttribute('data-id')).then(function(res) {
+            newsDetail.news = JSON.parse(res.bodyText);
+            newsDetail.seen = true;
+          });
+        }
+      },
+      created: function() {
+        this.$http.get('/news').then(function(res) {
+          this.news = JSON.parse(res.bodyText);
+        });
+      }
+    });
+
+    var newsDetail = new Vue({
+      el: '#news-detail',
+      data: {
+        seen: false,
+      },
+      methods: {
+        hideNewsDetail: function() {
+          this.seen = false;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
