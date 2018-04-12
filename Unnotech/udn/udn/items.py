@@ -11,7 +11,7 @@ from scrapy_djangoitem import DjangoItem
 
 class NewsItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    article_id = scrapy.Field()
     datetime = scrapy.Field()
     author = scrapy.Field()
     title = scrapy.Field()

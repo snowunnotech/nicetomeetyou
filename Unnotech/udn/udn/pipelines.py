@@ -8,5 +8,6 @@
 
 class UdnPipeline(object):
     def process_item(self, item, spider):
-        item.save()
+        if 'NewsDjangoItem' == item.__class__.__name__:
+            item.save()
         return item

@@ -25,7 +25,7 @@ SECRET_KEY = 'f3zxr^25h3&)84+un3fpq65qghd2+!lqxscovnwdytv9dmbto2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['206.189.39.141']
+ALLOWED_HOSTS = ['127.0.0.1', '206.189.39.141']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'news.apps.NewsConfig',
-    'channels',
 ]
 
 MIDDLEWARE = [
