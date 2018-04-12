@@ -14,6 +14,9 @@
 
 <body style="background-color: #f8f9fa; padding-top: 8px">
   <div class="container">
+    <div style="margin: 8px; text-align: center;" id="notification" v-if="seen">
+      <button type="button" class="btn btn-lg btn-primary" v-on:click="refreshNewsList">New article received! Click here to refresh the list.</button>
+    </div>
     <div class="row" id="news-list">
       <div class="col-md-4" v-for="n in news">
         <div class="card mb-4 box-shadow">
@@ -72,6 +75,28 @@
       minutes = minutes < 10 ? '0' + minutes : minutes;
       var strTime = hours + ':' + minutes + ' ' + ampm;
       return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
+    });
+
+    var notification = new Vue({
+      el: '#notification',
+      data: {
+        seen: false
+      },
+      methods: {
+        refreshNewsList: function(e) {
+          this.$http.get('/news').then(function(res) {
+            newsList.news = JSON.parse(res.bodyText);
+          });
+          notification.seen = false;
+        }
+      },
+      created: function() {
+        var mySocket = new WebSocket("ws://" + window.location.host + "/ws/notify");
+        mySocket.onmessage = function(e) {
+          notification.seen = true;
+          // console.log(e.data);
+        }
+      }
     });
 
     var newsList = new Vue({

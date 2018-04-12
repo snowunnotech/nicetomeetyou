@@ -13,6 +13,7 @@ import sys, os
 
 # Add absolute path of your Django application root directory
 sys.path.append('/Users/cjhwong/Workspace/nicetomeetyou/Unnotech/web')
+sys.path.append('/home/deploy/nicetomeetyou/Unnotech/web')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'web.settings'
 import django
 django.setup()
