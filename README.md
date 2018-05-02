@@ -10,3 +10,14 @@
 1. 實現爬蟲自動定時抓取。
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
+
+
+## 執行順序
+1. 啟動 celery
+2. python manage.py celery worker --loglevel=info #在背景監聽輸出
+3. python manage.py celery beat
+4. python manage.py runserver 0.0.0.0:8000
+5. 到NBA FrontEnd run: npm run dev
+
+ ## 結束時
+ 1. python manage.py celery purge 

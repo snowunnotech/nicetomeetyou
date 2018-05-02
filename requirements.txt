@@ -1,0 +1,8 @@
+Django==2.0.4
+djangorestframework==3.8.2
+django-scheduler==0.8.8
+celery==4.1.0
+django-celery==3.2.2
+django-cors-headers==2.2.0
+channels==1.1.8
+asgi-redis==1.4.3
