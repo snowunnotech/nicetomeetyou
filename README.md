@@ -21,3 +21,6 @@
 
  ## 結束時
  1. python manage.py celery purge 
+
+## 部屬點
+http://13.78.10.4/
