@@ -3,3 +3,6 @@
 
 # virtual env
 nice_to_meet_you_Env
+
+# whl file
+*.whl
