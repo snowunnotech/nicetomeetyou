@@ -22,15 +22,16 @@ class NBACrawler:
         for news_html in soup.find(id="mainbar").find(id="news_body").find_all("dt"):
             story_path = news_html.find("a")["href"]
             story_url = f"{self._base_url}{story_path}"
-            picture_url = news_html.find("img")["src"]
+            image_url = news_html.find("img")["src"]
             title = news_html.find("h3").text
-            story_datetime, story_author, story_content = self.story_parser(story_url)
+            story_datetime, story_author, story_content, video_url = self.story_parser(story_url)
             print(f"story_url: {story_url}\n"
-                f"picture_url: {picture_url}\n"
+                f"image_url: {image_url}\n"
                 f"title: {title}\n"
                 f"story_datetime: {story_datetime}\n"
                 f"story_author: {story_author}\n"
-                f"story_content: {story_content}\n")
+                f"story_content: {story_content}\n"
+                f"video_url: {video_url}\n")
 
     def story_parser(self, story_url):
         soup = self.get_soup(story_url)
@@ -40,7 +41,8 @@ class NBACrawler:
         story_author = share_bar.text.replace(story_datetime, "")
         story_p_contents = soup.find(id="story_body_content").find_all("p")[1:]
         story_content = "\n".join([p_content.text for p_content in story_p_contents])
-        return story_datetime, story_author, story_content
+        video_url = soup.find(class_="video-container").find("iframe")["src"]
+        return story_datetime, story_author, story_content, video_url
 
 if __name__ == "__main__":
     NBACrawler()
