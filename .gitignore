@@ -4,9 +4,12 @@
 # virtual env
 nice_to_meet_you_Env
 
+# whl file
+*.whl
+
 # python
-*.pyc
 __pycache__
+*.pyc
 
 # Django
 db.sqlite3
