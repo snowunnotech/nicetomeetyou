@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id=NewsList>
-    </div>
-    <div id=NewsDetail>
+    <div id=News>
     </div>
 {% endblock %}
 
@@ -13,9 +11,9 @@
     $.ajax({
         url: '/NewsList/',
         type: 'get',
-        news_list : [],
         success: function(data) {
             news_list = data;
+            $("#News").html("<div id=NewsList></div>")
             $.each(news_list, function(i, item) {
                 $("#NewsList").append(
                     "<p>" + 
@@ -36,7 +34,18 @@
         $("button").click(function(){
             url = '/NewsDetail/' + this.id + '/';
             $.get(url, function(data, status){
+                $("#News").html("<div id=NewsDetail></div>")
                 console.log(data);
+                $("#NewsDetail").append(
+                    "<article>" +
+                        "<h1>" + data.title + "</h1>" +
+                        '<img width="582" height="376" src="' + data.image_url + '">' +
+                        "<p>" + data.datetime + data.author + "</p>" +
+                        "<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
+                        '<iframe width="600" height="450" src="' + data.video_url + '" controls="controls">' +
+                            "your browser does not support the video tag" +
+                        "</iframe>" +
+                    "</article>");
             });
         });
     });
