@@ -25,7 +25,7 @@ SECRET_KEY = 'o$*m1ei^lrg)y#_y0k4z#lj+7n&l^%di48p8wxm&#&%61dqfji'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'news',
+    'django_q',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+Q_CLUSTER = {
+    'name': 'DjangORM', 
+    'workers': 1, 
+    'timeout': 1800, 
+    'retry': 120, 
+    'queue_limit': 50, 
+    'bulk': 10, 
+    'orm': 'default' 
+}

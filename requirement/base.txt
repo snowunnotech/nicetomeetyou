@@ -6,6 +6,9 @@ djangorestframework == 3.8.2
 markdown == 2.6.11
 django-filter == 2.0.0
 
+# django-q
+django-q == 0.9.4 
+
 # beautifulsoup4
 beautifulsoup4 == 4.6.0
 

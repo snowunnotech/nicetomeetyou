@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 class SqliteDB: 
  
     def __init__(self): 
-        self.connect_db("nba_crawler_web/db.sqlite3") 
+        self.connect_db("db.sqlite3") 
  
     def connect_db(self, db_path): 
         self.conn = sqlite3.connect(db_path) 
@@ -17,13 +17,13 @@ class SqliteDB:
         self.conn.close()
  
     def is_news_exists(self, datetime, title):
-        sql_cmd = f'SELECT datetime, title FROM news_news WHERE datetime="{datetime}" AND title="{title}"'
+        sql_cmd = 'SELECT datetime, title FROM news_news WHERE datetime="{datetime}" AND title="{title}"'.format(datetime=datetime, title=title)
         return self.cursor.execute(sql_cmd).fetchall()
  
     def create(self, news_info): 
         keys_str = ", ".join(news_info.keys()) 
         values_str = '", "'.join(news_info.values()) 
-        sql_cmd = f'INSERT INTO news_news ({keys_str}) VALUES ("{values_str}")' 
+        sql_cmd = 'INSERT INTO news_news ({keys_str}) VALUES ("{values_str}")'.format(keys_str=keys_str, values_str=values_str)
         self.cursor.execute(sql_cmd)
         self.conn.commit()
 
@@ -31,9 +31,10 @@ class NBACrawler:
 
     def __init__(self):
         self._base_url = "https://nba.udn.com"
-        index_url = f"{self._base_url}/nba/index?gr=www"
+        index_url = "{base_url}/nba/index?gr=www".format(base_url=self._base_url)
         self.db = SqliteDB()
         self.main_parser(index_url)
+        self.db.close_db()
 
     @staticmethod
     def get_soup(url):
@@ -42,11 +43,12 @@ class NBACrawler:
         return soup
 
     def main_parser(self, index_url):
+        print("NBA Crawler start")
         soup = self.get_soup(index_url)
 
         for news_html in soup.find(id="mainbar").find(id="news_body").find_all("dt"):
             story_path = news_html.find("a")["href"]
-            story_url = f"{self._base_url}{story_path}"
+            story_url = "{base_url}{story_path}".format(base_url=self._base_url, story_path=story_path)
             image_url = news_html.find("img")["src"]
             title = news_html.find("h3").text
             story_datetime, story_author, story_content, video_url = self.story_parser(story_url)
@@ -70,7 +72,10 @@ class NBACrawler:
         story_author = share_bar.text.replace(story_datetime, "")
         story_p_contents = soup.find(id="story_body_content").find_all("p")[1:]
         story_content = "\n".join([p_content.text for p_content in story_p_contents])
-        video_url = soup.find(class_="video-container").find("iframe")["src"]
+        try:
+            video_url = soup.find(class_="video-container").find("iframe")["src"]
+        except:
+            video_url = ""
         return story_datetime, story_author, story_content, video_url
 
 if __name__ == "__main__":
