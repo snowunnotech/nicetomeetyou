@@ -24,10 +24,10 @@
                 $("#NewsList").append(
                     "<p>" + 
                         "<button class='btn btn-info' id=" + news_list[i].id + "> " + "Go </button>" + 
-                        "<span>" +
-                            news_list[i].title + " " +
+                        "<span> " +
+                            news_list[i].title + " (" +
                             get_datetime_str(news_list[i].datetime) +
-                        "</span>" + 
+                        ")</span>" + 
                     "<p>");
             });
         },

@@ -18,7 +18,7 @@ class NewsList(APIView):
         news_list = News.objects \
             .all() \
             .values("id", "title", "datetime") \
-            .order_by('id')
+            .order_by('-id')
         return Response(news_list)
 
 class NewsDetail(APIView):
