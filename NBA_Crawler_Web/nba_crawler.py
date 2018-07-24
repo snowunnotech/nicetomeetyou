@@ -27,7 +27,7 @@ class SqliteDB:
         self.cursor.execute(sql_cmd)
         self.conn.commit()
 
-class NBACrawler(SqliteDB):
+class NBACrawler:
 
     def __init__(self):
         self._base_url = "https://nba.udn.com"

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id=NewsList>
+    </div>
+    <div id=NewsDetail>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    var news_list = [];
+    $.ajax({
+        url: '/NewsList/',
+        type: 'get',
+        news_list : [],
+        success: function(data) {
+            news_list = data;
+            $.each(news_list, function(i, item) {
+                $("#NewsList").append(
+                    "<p>" + 
+                        "<button id=" + news_list[i].id + "> " + "Go </button>" + 
+                        "<tr>" +
+                            "<td>" + news_list[i].title + "</td>" +
+                            "<td>" + news_list[i].datetime + "</td>" +
+                        "</tr>" + 
+                    "<p>");
+            });
+        },
+        failure: function(data) { 
+            console.log('Got an error dude');
+        }
+    });
+
+    $(document).ready(function(){
+        $("button").click(function(){
+            url = '/NewsDetail/' + this.id + '/';
+            $.get(url, function(data, status){
+                console.log(data);
+            });
+        });
+    });
+</script>
+{% endblock %}

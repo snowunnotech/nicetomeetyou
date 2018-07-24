@@ -56,7 +56,7 @@ ROOT_URLCONF = 'nba_crawler_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["news/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
