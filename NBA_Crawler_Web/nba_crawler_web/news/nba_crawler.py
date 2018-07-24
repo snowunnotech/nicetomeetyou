@@ -1,40 +1,15 @@
-import sqlite3
-
 import lxml
 import requests
 from bs4 import BeautifulSoup
 
-class SqliteDB: 
- 
-    def __init__(self): 
-        self.connect_db("db.sqlite3") 
- 
-    def connect_db(self, db_path): 
-        self.conn = sqlite3.connect(db_path) 
-        self.cursor = self.conn.cursor() 
- 
-    def close_db(self): 
-        self.conn.close()
- 
-    def is_news_exists(self, datetime, title):
-        sql_cmd = 'SELECT datetime, title FROM news_news WHERE datetime="{datetime}" AND title="{title}"'.format(datetime=datetime, title=title)
-        return self.cursor.execute(sql_cmd).fetchall()
- 
-    def create(self, news_info): 
-        keys_str = ", ".join(news_info.keys()) 
-        values_str = '", "'.join(news_info.values()) 
-        sql_cmd = 'INSERT INTO news_news ({keys_str}) VALUES ("{values_str}")'.format(keys_str=keys_str, values_str=values_str)
-        self.cursor.execute(sql_cmd)
-        self.conn.commit()
+from news.models import News
 
 class NBACrawler:
 
     def __init__(self):
         self._base_url = "https://nba.udn.com"
         index_url = "{base_url}/nba/index?gr=www".format(base_url=self._base_url)
-        self.db = SqliteDB()
         self.main_parser(index_url)
-        self.db.close_db()
 
     @staticmethod
     def get_soup(url):
@@ -60,9 +35,9 @@ class NBACrawler:
                 "story_url": story_url, 
                 "content": story_content, 
                 "video_url": video_url
-            }
-            if not self.db.is_news_exists(news_info["datetime"], news_info["title"]):
-                self.db.create(news_info)
+                }
+            if not News.objects.filter(datetime=news_info["datetime"], title=news_info["title"]).exists():
+                News.objects.create(**news_info)
 
     def story_parser(self, story_url):
         soup = self.get_soup(story_url)
