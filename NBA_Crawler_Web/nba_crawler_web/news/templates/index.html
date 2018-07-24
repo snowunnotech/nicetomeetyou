@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div id=News class="jumbotron" style="max-width: 800px; margin: 0 auto; padding-left: 10px; padding-right: 10px">
+    <div id=News class="jumbotron" style="overflow:scroll; max-height: 600px; max-width: 800px; margin: 0 auto; padding-left: 10px; padding-right: 10px">
     </div>
     <div id="dialog" title="News" style="display:none">
         <div id="dialog_content"></div>
@@ -17,7 +17,7 @@
 <script>
     function get_datetime_str(datetime) {
         datetime = new Date(datetime);
-        return datetime.getFullYear() + "-" + datetime.getDate() + "-" + datetime.getDate() + " " + 
+        return datetime.getFullYear() + "-" + datetime.getMonth() + "-" + datetime.getDate() + " " + 
                datetime.getHours() + ":" + datetime.getMinutes();
     }
 
@@ -49,16 +49,17 @@
         news_button.click(function(){
             url = '/NewsDetail/' + this.id + '/';
             $.get(url, function(data, status){
+                console.log(status);
                 $("#dialog_content").html(
                     "<article>" +
                         "<h1>" + data.title + "</h1>" +
-                        '<img width="582" height="376" src="' + data.image_url + '">' +
+                        '<img max-width="582" max-height="376" src="' + data.image_url + '">' +
                         "<p>" + 
                             get_datetime_str(data.datetime) + " " + data.author + " " + 
-                            '<a href="' + data.story_url + '">Source news</a>' + 
+                            '<a href="' + data.story_url + '">(News link)</a>' + 
                         "</p>" +
                         "<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
-                        '<iframe width="600" height="450" src="' + data.video_url + '" controls="controls">' +
+                        '<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
                             "your browser does not support the video tag" +
                         "</iframe>" +
                     "</article>");
@@ -68,12 +69,6 @@
                     height: $(window).height() * 0.9,
                     width: $(window).width() * 0.9,
                     modal: true
-                });
-                $(window).resize(function () {
-                    var wWidth = $(window).width();
-                    var dWidth = wWidth * 0.9;
-                    var wHeight = $(window).height();
-                    var dHeight = wHeight * 0.9;
                 });
 
             });
