@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
 {% block content %}
     <div id=News class="jumbotron" style="max-width: 800px; margin: 0 auto; padding-left: 10px; padding-right: 10px">
+    </div>
+    <div id="dialog" title="News" style="display:none">
+        <div id="dialog_content"></div>
     </div>
 {% endblock %}
 
@@ -20,13 +28,13 @@
         success: function(data) {
             news_list = data;
             $("#News").html("<div id=NewsList></div>")
-            $.each(news_list, function(i, item) {
+            $.each(data, function(i, item) {
                 $("#NewsList").append(
                     "<p>" + 
-                        "<button class='btn btn-info' id=" + news_list[i].id + "> " + "Go </button>" + 
+                        "<button class='btn btn-info' id=" + data[i].id + "> " + "Go </button>" + 
                         "<span> " +
-                            news_list[i].title + " (" +
-                            get_datetime_str(news_list[i].datetime) +
+                                data[i].title + " (" +
+                            get_datetime_str(data[i].datetime) +
                         ")</span>" + 
                     "<p>");
             });
@@ -37,12 +45,11 @@
     });
 
     $(document).ready(function(){
-        $("button").click(function(){
+        var news_button = $("button").addClass("News");
+        news_button.click(function(){
             url = '/NewsDetail/' + this.id + '/';
             $.get(url, function(data, status){
-                $("#News").html("<div id=NewsDetail></div>")
-                console.log(data);
-                $("#NewsDetail").append(
+                $("#dialog_content").html(
                     "<article>" +
                         "<h1>" + data.title + "</h1>" +
                         '<img width="582" height="376" src="' + data.image_url + '">' +
@@ -55,6 +62,20 @@
                             "your browser does not support the video tag" +
                         "</iframe>" +
                     "</article>");
+                
+                $("#dialog").dialog({
+                    resizable: true,
+                    height: $(window).height() * 0.9,
+                    width: $(window).width() * 0.9,
+                    modal: true
+                });
+                $(window).resize(function () {
+                    var wWidth = $(window).width();
+                    var dWidth = wWidth * 0.9;
+                    var wHeight = $(window).height();
+                    var dHeight = wHeight * 0.9;
+                });
+
             });
         });
     });
