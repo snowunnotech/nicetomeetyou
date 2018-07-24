@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id=News>
+    <div id=News class="jumbotron" style="max-width: 800px; margin: 0 auto; padding-left: 10px; padding-right: 10px">
     </div>
 {% endblock %}
 
 {% block javascript %}
 <script>
+    function get_datetime_str(datetime) {
+        datetime = new Date(datetime);
+        return datetime.getFullYear() + "-" + datetime.getDate() + "-" + datetime.getDate() + " " + 
+               datetime.getHours() + ":" + datetime.getMinutes();
+    }
+
     var news_list = [];
     $.ajax({
         url: '/NewsList/',
@@ -17,11 +23,11 @@
             $.each(news_list, function(i, item) {
                 $("#NewsList").append(
                     "<p>" + 
-                        "<button id=" + news_list[i].id + "> " + "Go </button>" + 
-                        "<tr>" +
-                            "<td>" + news_list[i].title + "</td>" +
-                            "<td>" + news_list[i].datetime + "</td>" +
-                        "</tr>" + 
+                        "<button class='btn btn-info' id=" + news_list[i].id + "> " + "Go </button>" + 
+                        "<span>" +
+                            news_list[i].title + " " +
+                            get_datetime_str(news_list[i].datetime) +
+                        "</span>" + 
                     "<p>");
             });
         },
@@ -40,7 +46,10 @@
                     "<article>" +
                         "<h1>" + data.title + "</h1>" +
                         '<img width="582" height="376" src="' + data.image_url + '">' +
-                        "<p>" + data.datetime + data.author + "</p>" +
+                        "<p>" + 
+                            get_datetime_str(data.datetime) + " " + data.author + " " + 
+                            '<a href="' + data.story_url + '">Source news</a>' + 
+                        "</p>" +
                         "<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
                         '<iframe width="600" height="450" src="' + data.video_url + '" controls="controls">' +
                             "your browser does not support the video tag" +
