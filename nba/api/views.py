@@ -10,4 +10,6 @@ from api.serializers import NewsSerializer
 class NewsViewSet(viewsets.ModelViewSet):
 	queryset = News.objects.all()
 	serializer_class = NewsSerializer
+	http_method_names = ['get']
+
 

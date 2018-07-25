@@ -2,6 +2,7 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="600">
 	<title>{% block title %} {%endblock%}</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<script
@@ -13,7 +14,14 @@
 
 </head>
 <body>
-{% block body %}		
-{% endblock body %}	
+	<nav class="navbar navbar-light bg-light">
+	  <a class="navbar-brand" href="/">NBA crawer</a>
+	</nav>
+	<div class="container">
+		
+		{% block body %}		
+		{% endblock body %}	
+	</div>
+	
 </body>
 </html>

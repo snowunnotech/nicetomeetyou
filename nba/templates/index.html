@@ -5,30 +5,33 @@
 
 {% block body %}
 	<script>
+	
 	$.get("api/show",function(data){
 		for (i in data){
-			str = "<tr><td>"+data[i]["title"]+"</td><td>"+data[i]["content"]+"</td><td>"+data[i]["link"]+"</td></tr>"
+			nbalink = "<a href='" + data[i]["link"] +"'> 原文</a>"
+			detail = "<a href='/newspage&id=" +data[i]["id"]+"'>更多</a>" 
+			str = "<tr><td>"+data[i]["title"]+"</td><td>"+data[i]["content"]+"</td><td>"+detail+"</td><td>"+nbalink+"</td></tr>"
 			$("tbody").append(str)
 		}
 	});
 
-	
+
 	</script>
 	
-	<div class="container">
 		<table class="table">
 		<thead>
 			<tr>
 				<th>標題</th>
 				<th>內容</th>
-				<th>詳細頁面</th>
+				<th>詳細</th>
+				<th>原文</th>
 			</tr>
 		</thead>
 		<tbody>
 
 		</tbody>
 	</table>
-	</div>
+	
 	
 
 {% endblock body %}

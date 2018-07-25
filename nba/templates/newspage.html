@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+
+	{% if added %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		  <strong>有新文章</strong>
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	{% endif %}
+	<script>
+
+		$.urlParam = function(name){
+		    var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
+		    if (results==null){
+		       return null;
+		    }
+		    else{
+		       return results[1] || 0;
+		    }
+		}
+
+		$.get("/api/show/"+$.urlParam("id"),function(data){
+			$("h3").html(data["title"])
+			$("#fulltext").html(data["fulltext"])
+		})
+	</script>
+
+		<div class="row justify-content-md-center">
+			<h3 id="title"></h3>
+		</div>
+		<br>
+		<div class="row justify-content-md-center">
+			<div class="col-7" id="fulltext"></div>
+		</div>
+{% endblock body %}

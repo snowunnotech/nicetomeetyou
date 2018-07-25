@@ -26,5 +26,6 @@ router.register(r'show', apiView.NewsViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url( r'^api/', include( router.urls ) ),
+    url(r'^newspage',newsView.newspage),
     url(r'^$',newsView.index),
 ]
