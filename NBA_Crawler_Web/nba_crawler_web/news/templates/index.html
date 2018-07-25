@@ -36,42 +36,49 @@
                                 data[i].title + " (" +
                             get_datetime_str(data[i].datetime) +
                         ")</span>" + 
-                    "<p>");
+                    "<p>"
+				);
             });
         },
         failure: function(data) { 
-            console.log('Got an error dude');
+            console.log('NewsList Failed');
         }
     });
 
     $(document).ready(function(){
         var news_button = $("button").addClass("News");
         news_button.click(function(){
-            url = '/NewsDetail/' + this.id + '/';
-            $.get(url, function(data, status){
-                console.log(status);
-                $("#dialog_content").html(
-                    "<article>" +
-                        "<h1>" + data.title + "</h1>" +
-                        '<img max-width="582" max-height="376" src="' + data.image_url + '">' +
-                        "<p>" + 
-                            get_datetime_str(data.datetime) + " " + data.author + " " + 
-                            '<a href="' + data.story_url + '">(News link)</a>' + 
-                        "</p>" +
-                        "<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
-                        '<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
-                            "your browser does not support the video tag" +
-                        "</iframe>" +
-                    "</article>");
-                
-                $("#dialog").dialog({
-                    resizable: true,
-                    height: $(window).height() * 0.9,
-                    width: $(window).width() * 0.9,
-                    modal: true
-                });
+			$.ajax({
+				url: 'NewsDetail/' + this.id + '/',
+				type: 'get',
+				success: function(data) {
+					console.log("haha");
+					$("#dialog_content").html(
+						"<article>" +
+							"<h1>" + data.title + "</h1>" +
+							'<img max-width="582" max-height="376" src="' + data.image_url + '">' +
+							"<p>" + 
+								get_datetime_str(data.datetime) + " " + data.author + " " + 
+								'<a href="' + data.story_url + '">(News link)</a>' + 
+							"</p>" +
+							"<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
+							'<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
+								"your browser does not support the video tag" +
+							"</iframe>" +
+						"</article>"
+					);
 
-            });
+					$("#dialog").dialog({
+						resizable: true,
+						height: $(window).height() * 0.9,
+						width: $(window).width() * 0.9,
+						modal: true
+					});
+				},
+				failure: function(data) {
+					console.log('NewsDetail Failed');
+				}
+			});
         });
     });
 </script>

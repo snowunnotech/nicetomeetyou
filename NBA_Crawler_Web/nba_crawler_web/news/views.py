@@ -25,4 +25,7 @@ class NewsDetail(APIView):
 
     def get(self, request, id):
         news_detail = News.objects.filter(id=id)
-        return Response(model_to_dict(news_detail[0]))
+        if news_detail.exists():
+            return Response(model_to_dict(news_detail[0]), status=200)
+        else:
+            return Response(status=400)
