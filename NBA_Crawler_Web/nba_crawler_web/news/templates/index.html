@@ -72,7 +72,10 @@
 						resizable: true,
 						height: $(window).height() * 0.9,
 						width: $(window).width() * 0.9,
-						modal: true
+						modal: true,
+						close: function() {
+							$("#dialog_content").html("");
+						}
 					});
 				},
 				failure: function(data) {
