@@ -1,6 +1,7 @@
 import lxml
 import requests
 from bs4 import BeautifulSoup
+import cgi
 
 from news.models import News
 
@@ -36,6 +37,10 @@ class NBACrawler:
                 "content": story_content, 
                 "video_url": video_url
                 }
+            for key in news_info.keys():
+                if key == "datetime":
+                    continue
+                news_info[key] = cgi.escape(news_info[key], quote=True)
             if not News.objects.filter(datetime=news_info["datetime"], title=news_info["title"]).exists():
                 News.objects.create(**news_info)
 

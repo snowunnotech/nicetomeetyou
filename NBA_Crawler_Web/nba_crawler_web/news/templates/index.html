@@ -60,13 +60,18 @@
 								get_datetime_str(data.datetime) + " " + data.author + " " + 
 								'<a href="' + data.story_url + '">(News link)</a>' + 
 							"</p>" +
-							"<p>" + data.content.replace(/\n/g, "</br>") + "</p>" +
-							'<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
-								"your browser does not support the video tag" +
-							"</iframe>" +
-						"</article>"
+							"<p>" + data.content.replace(/\n/g, "</br>") + "</p>"
 					);
 
+					if (data.video_url){
+						$("#dialog_content").append(	
+							'<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
+								"your browser does not support the video tag" +
+							"</iframe>"
+						);
+					};
+
+					$("#dislog_content").append("</article>");
 					$("#dialog").dialog({
 						resizable: true,
 						height: $(window).height() * 0.9,
