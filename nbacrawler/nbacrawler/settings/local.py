@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'nbanews',
     'nbaspider',
+    'django_q',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,16 @@ CSRF_COOKIE_SECURE = False
 SECURE_HSTS_SECONDS = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_FRAME_DENY = False
+
+# Django-Q
+# Ref: https://django-q.readthedocs.org/en/latest/configure.html
+
+Q_CLUSTER = {
+    'name': 'DjangORM',
+    'workers': 1,
+    'timeout': 1800,
+    'retry': 120,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default'
+}

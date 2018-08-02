@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'nbanews',
     'nbaspider',
+    'django_q',
 ]
 
 MIDDLEWARE = [
