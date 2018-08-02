@@ -28,16 +28,23 @@ class NbaSpider(scrapy.Spider):
         item['image_url'] = body_content.xpath('//figure/a/img/@data-src').extract_first()
         item['image_caption'] = body_content.xpath('.//figure/figcaption/text()').extract_first()
         item['video_url'] = body_content.xpath('.//div[@class="video-container"]/iframe/@src').extract_first()
-        contents = body_content.xpath('.//p/text() | .//strong/text()').extract()
+        # item['content'] = ','.join(body_content.xpath('.//p').extract())
 
         content_list = []
-        for content in contents:
-            if '。' in content:
-                content = content + ','
-            content_list.append(content)
+        # skip the first wrong extraction
+        for p in body_content.xpath('.//p')[1:]:
+            s = p.xpath('string(.)').extract_first().strip()
+            if s != '':
+                content_list.append(s)
 
-        item['content'] = ''.join(content_list)
+        # content_list = []
+        # for content in contents:
+        #     if '。' in content:
+        #         content = content + ','
+        #     content_list.append(content)
 
-        print(item['content'])
+        item['content'] = ','.join(content_list)
+
+        # print(item['content'])
 
         yield item
