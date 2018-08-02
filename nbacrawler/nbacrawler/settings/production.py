@@ -143,3 +143,19 @@ CSRF_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 1000000
 SECURE_FRAME_DENY = True
+
+
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config()
+}
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
+
+# Static asset configuration
+STATIC_ROOT = 'staticfiles'
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+TEMPLATE_DEBUG = False
