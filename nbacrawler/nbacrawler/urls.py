@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('nbanews.urls')),
     url(r'^api/', include('nbanews.api.urls')),
+    url(r'^spider/', include('nbaspider.urls')),
 ]

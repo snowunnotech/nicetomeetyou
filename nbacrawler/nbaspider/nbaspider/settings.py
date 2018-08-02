@@ -11,8 +11,8 @@
 
 BOT_NAME = 'nbaspider'
 
-SPIDER_MODULES = ['nbaspider.spiders']
-NEWSPIDER_MODULE = 'nbaspider.spiders'
+SPIDER_MODULES = ['nbaspider.nbaspider.spiders']
+NEWSPIDER_MODULE = 'nbaspider.nbaspider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -66,7 +66,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'nbaspider.pipelines.NbaspiderPipeline': 300,
+   'nbaspider.nbaspider.pipelines.NbaspiderPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

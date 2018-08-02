@@ -29,5 +29,5 @@ class NbaspiderPipeline(object):
 
         return item
 
-
-
+    def spider_closed(self, spider):
+        return True

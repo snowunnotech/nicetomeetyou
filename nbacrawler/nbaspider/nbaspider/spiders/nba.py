@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-from nbaspider.items import NbaspiderItem
+from nbaspider.nbaspider.items import NbaspiderItem
 
 
 class NbaSpider(scrapy.Spider):
