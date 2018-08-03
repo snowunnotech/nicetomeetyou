@@ -1,0 +1,24 @@
+{# Load the static #}
+{% load staticfiles %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {# make the scale of mobile same as normal screen #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <title>{% block title %}{% endblock title %}</title>
+    <!--<link href="{% static 'css/main.css' %}" rel="stylesheet">-->
+    {# Load bootstrap css and javascript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {% block head_content %}{% endblock head_content %}
+</head>
+<body class="bg-dark">
+{% block content %} {% endblock content %}
+</body>
+</html>
