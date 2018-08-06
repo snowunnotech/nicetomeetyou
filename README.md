@@ -20,6 +20,6 @@
 
 [未完成]
 3. 将本 demo 部署至服务器并可正确运行。
-    目前僅將server以development方式運行
+    目前僅將server以<a href="http://163.13.127.195:8000/myNBAfeed">development server</a>方式運行
 
 
