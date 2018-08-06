@@ -9,7 +9,7 @@ class Post(models.Model):
 
 
 class Paragraph(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,related_name='paragraphs', on_delete=models.CASCADE)
     typ  = models.CharField(max_length=10)
     hbody = models.TextField()
  

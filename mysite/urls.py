@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from chat import views
+
+
+router = DefaultRouter()
+router.register(r'post', views.PostViewSet)
 
 urlpatterns = [
     url(r'^myNBAfeed/', include('chat.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls))
 ]
