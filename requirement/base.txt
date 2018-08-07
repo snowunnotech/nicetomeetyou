@@ -17,3 +17,6 @@ lxml == 4.2.3
 
 # requests
 requests == 2.19.1
+
+# aiohttp
+aiohttp == 3.3.2

@@ -16,3 +16,7 @@ db.sqlite3*
 
 # vim
 *.swp
+
+#uwsgi
+*.log
+*.pid

@@ -17,7 +17,7 @@
 <script>
     function get_datetime_str(datetime) {
         datetime = new Date(datetime);
-        return datetime.getFullYear() + "-" + datetime.getMonth() + "-" + datetime.getDate() + " " + 
+        return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + 
                datetime.getHours() + ":" + datetime.getMinutes();
     }
 
