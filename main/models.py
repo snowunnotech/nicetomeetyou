@@ -14,7 +14,7 @@ class NewsManager(models.Manager):
 class News(models.Model):
     url = models.URLField(max_length=200)
     pub_time = models.DateTimeField(null=True, blank=True)
-    crawl_time = models.DateTimeField(null=True, blank=True)
+    crawl_time = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
 

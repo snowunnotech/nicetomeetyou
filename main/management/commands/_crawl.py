@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
+import pytz
 import requests
 
 from main.models import News
@@ -7,6 +8,8 @@ from main.models import News
 
 HOST = 'https://nba.udn.com'
 URL = HOST + '/nba/index?gr=www'
+
+TPE = pytz.timezone('Asia/Taipei')
 
 
 def get_web_page(url):
@@ -35,8 +38,7 @@ def create_and_save(url):
     if News.objects.is_new(url=url):
         title = soup.find("h1", "story_art_title").text
         pub_time = soup.find("div", "shareBar__info--author").span.text
-        pub_time = datetime.strptime(pub_time, '%Y-%m-%d %H:%M')
-        crawl_time = datetime.now()
+        pub_time = TPE.localize(datetime.strptime(pub_time, '%Y-%m-%d %H:%M'))
         paragraphs = soup.find("div", id="story_body_content").find_all("span")[2].find_all("p")
 
         # clean the content data
@@ -50,7 +52,6 @@ def create_and_save(url):
             url=url,
             title=title,
             pub_time=pub_time,
-            crawl_time=crawl_time,
             content=content
         )
 
