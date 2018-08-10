@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 class NewsManager(models.Manager):
     def is_new(self, url=None):
         qs = self.get_queryset().filter(url=url)
-        if qs.exist():
+        if qs.exists():
             return False
         return True
 
