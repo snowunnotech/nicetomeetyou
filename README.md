@@ -15,5 +15,5 @@
 * 使用`requests`抓取資料
 * 使用 Django REST Framework 傳遞資料
 * 前端頁面使用AJAX
-* 使用crontab定期運行爬蟲程式爬取資料並儲存至資料庫
 * 部署至Heroku上: https://crawlnba.herokuapp.com/
+* local使用crontab定期運行爬蟲程式爬取資料並儲存至資料庫，部署版本使用[Heroku Scheduler Add-on](https://devcenter.heroku.com/articles/scheduler#defining-tasks)
