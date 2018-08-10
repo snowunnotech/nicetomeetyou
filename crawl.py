@@ -29,10 +29,10 @@ def connect_db():
     Get the connection to the postgreSQL.
     '''
     conn = psycopg2.connect(
-        database="crawlerdb1",
-        user="crawler",
-        password="crawler",
-        host="127.0.0.1",
+        database="dg62hgin80pv3",
+        user="mblkytpskwbsjl",
+        password="8959ea54deffcbda363077049518915120a33eb2efb5677091a379a1604b6068",
+        host="ec2-54-225-76-201.compute-1.amazonaws.com",
         port="5432"
     )
     return conn
