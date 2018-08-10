@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="col-10 mx-auto">
+  <div class="row mt-5">
+    <div class='mx-auto my-5'>
+      <h1 class="text-center">焦點新聞列表</h1>
+      <p class='text-center mt-3'><a href="https://nba.udn.com/nba/index?gr=www">新聞列表連結</a>
+        ，固定每小時爬取一次</p>
+    </div>
+  </div>
+  <div class="detail row col-10 mx-auto"></div>
+  <div class="cards row">
+    {% for news in newses %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">
+            <a id="{{ news.id }}" class="link-ajax" href="{{ news.get_absolute_url }}">{{ news.title }}</a>
+          </h3>
+          <br>
+          <p>貼文時間：{{ news.pub_time }}</p>
+          <p>爬取時間：{{ news.crawl_time }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src={% static 'main/js/main.js' %}></script>
+{% endblock %}
