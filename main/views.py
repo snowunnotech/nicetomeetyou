@@ -1,9 +1,9 @@
 from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
 from rest_framework.response import Response
+from django.shortcuts import redirect
 from rest_framework import generics
 
 from .models import News
-# import crawl
 
 
 class ListNews(generics.ListAPIView):
@@ -14,7 +14,6 @@ class ListNews(generics.ListAPIView):
     renderer_classes = (TemplateHTMLRenderer, )
 
     def get(self, request, *args, **kwargs):
-        # crawl.main()
         queryset = News.objects.all()
         return Response({'newses': queryset}, template_name='main/home.html')
 
@@ -23,14 +22,16 @@ class RetrieveNews(generics.RetrieveAPIView):
     '''
     Show the detail of news with the JSON on the homepage
     '''
-    queryset = News.objects.all()
     renderer_classes = (JSONRenderer,)
+    queryset = News.objects.all()
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return Response({
-            'id': self.object.id,
-            'content': self.object.content,
-            'title': self.object.title,
-            'url': self.object.url,
-        })
+        if request.is_ajax():
+            return Response({
+                'id': self.object.id,
+                'content': self.object.content,
+                'title': self.object.title,
+                'url': self.object.url,
+            })
+        return redirect('news_list')
