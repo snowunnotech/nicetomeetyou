@@ -17,9 +17,11 @@
 1. 實現爬蟲自動定時抓取    2. 每當抓取到新的新聞時立即通知頁面。
 	(撰寫custom command 供cron tab 執行, 命令包含爬資料以及將新增的資料以websocket方式傳送至client)
 
-
-[未完成]
 3. 将本 demo 部署至服务器并可正确运行。
     目前僅將server以<a href="http://163.13.127.195:8000/myNBAfeed">development server</a>方式運行
-
+	-->2018/08/11 以docker scale compose 包 niginx loadbalance, api server , crawler process, redis, daphne channel server, postgre
+	
+	-->added locust stress test
+	
+	
 
