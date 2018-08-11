@@ -38,14 +38,27 @@ services:
         build: ./api        
         restart: always        
         command:  bash -c "python manage.py collectstatic --noinput && 
-                                        daphne -u /docker_api/daphne.sock mysite.asgi:application"                             
+                                        daphne -b 0.0.0.0 -p 8001 mysite.asgi:application"                             
         ports:
         - "8002"
         volumes:
         - api_data:/docker_api        
         depends_on:
         - db
-        - redis  
+        - redis
+    crawler:        
+        build: ./api        
+        restart: always        
+        command:  bash -c "python manage.py migrate && 
+                                        python manage.py crawlandpush"                             
+        ports:
+        - "8001"
+        volumes:
+        - api_data:/docker_api        
+        depends_on:
+        - db
+        - redis
+        - api
 
 volumes:
     api_data:    
