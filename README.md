@@ -22,6 +22,9 @@
 	-->2018/08/11 以docker scale compose 包 niginx loadbalance, api server , crawler process, redis, daphne channel server, postgre
 	
 	-->added locust stress test
+	=>to run:
+	docker-compose down -v
+	docker-compose build --no-cache && docker-compose up -V --scale api=2
 	
 	
 
