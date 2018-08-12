@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'rest_framework',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crawler.wsgi.application'
 
+ASGI_APPLICATION = "crawler.routing.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -82,6 +84,21 @@ else:   # Running on Heroku
     DATABASES = {'default':dj_database_url.config()}
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        # This example app uses the Redis channel layer implementation channels_redis
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(REDIS_HOST, 6379)],
+        },
+    },
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

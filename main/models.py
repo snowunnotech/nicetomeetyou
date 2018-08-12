@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.db.models.signals import post_save
 
 
 class NewsManager(models.Manager):
@@ -30,10 +29,3 @@ class News(models.Model):
 
     def get_absolute_url(self):
         return reverse('news_detail', kwargs={'pk': self.id})
-
-
-def post_save_trigger(sender, instance, created, *args, **kwargs):
-    pass
-
-
-post_save.connect(post_save_trigger, sender=News)
