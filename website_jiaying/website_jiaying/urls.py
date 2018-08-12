@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^crawler/', include('crawler.urls')),
+    url(r'^index/', include('news_website.urls')),
 ]
