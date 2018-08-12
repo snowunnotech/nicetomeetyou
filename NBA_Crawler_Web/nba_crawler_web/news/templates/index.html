@@ -45,6 +45,16 @@
         }
     });
 
+    function sleep(milliseconds) {
+	var start = new Date().getTime();
+	while (1) {
+	    if ((new Date().getTime() - start) > milliseconds)
+		    break;
+	}
+    }
+
+    sleep(500);
+
     $(document).ready(function(){
         var news_button = $("button").addClass("News");
         news_button.click(function(){
