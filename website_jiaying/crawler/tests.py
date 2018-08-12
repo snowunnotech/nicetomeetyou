@@ -33,3 +33,15 @@ class ContentCrawlerTests(APITestCase):
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['status'], 'error')
+
+
+class NewsListCrawlerTests(APITestCase):
+    def test_news_list_crawler(self):
+        """
+        Ensure we can get the news list of latest four news
+        """
+        url = '/crawler/news_list/'
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['status'], "ok")
+        self.assertEqual(response.data['description'], "get news list successfully")

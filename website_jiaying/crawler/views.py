@@ -99,6 +99,8 @@ class NewsListCrawler(APIView):
                     return True
                 else:
                     return False
+            else:
+                return True
 
     def get_nba_news_list(self):
         NBA_url = "https://nba.udn.com/nba/index?gr=www"
