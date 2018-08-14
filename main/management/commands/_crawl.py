@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import pytz
 import requests
-import urllib.request
 from selenium import webdriver
 
 from main.models import News, Photo
