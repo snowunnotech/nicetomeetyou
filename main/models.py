@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 
 
+def upload_image_path():
+    pass
+
+
 class NewsManager(models.Manager):
     def is_new(self, url=None):
         qs = self.get_queryset().filter(url=url)
@@ -29,3 +33,13 @@ class News(models.Model):
 
     def get_absolute_url(self):
         return reverse('news_detail', kwargs={'pk': self.id})
+
+
+class Photo(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    url = models.URLField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to=upload_image_path, blank=True, null=True)
+
+    def __str__(self):
+        return '{}: {}'.format(str(self.news), str(self.id))

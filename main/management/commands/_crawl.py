@@ -2,8 +2,9 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import pytz
 import requests
+import urllib.request
 
-from main.models import News
+from main.models import News, Photo
 
 
 HOST = 'https://nba.udn.com'
