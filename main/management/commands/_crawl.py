@@ -1,8 +1,10 @@
+import os
 from bs4 import BeautifulSoup
 from datetime import datetime
 import pytz
 import requests
 import urllib.request
+from selenium import webdriver
 
 from main.models import News, Photo
 
@@ -11,6 +13,8 @@ HOST = 'https://nba.udn.com'
 URL = HOST + '/nba/index?gr=www'
 
 TPE = pytz.timezone('Asia/Taipei')
+
+DIR_NAME = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_web_page(url):
@@ -28,6 +32,30 @@ def get_web_page(url):
     except TypeError:
         print('Cannot get web page')
         return None
+
+
+def save_img(url):
+    try:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        driver = webdriver.Chrome(chrome_options=options, executable_path=DIR_NAME+'/chromedriver')
+        driver.get(url)
+        figures = driver.find_element_by_id("story_body_content").find_elements_by_tag_name('figure')
+        news = News.objects.get(url=url)
+        for figure in figures:
+            img = figure.find_element_by_tag_name("img")
+            src = img.get_attribute('data-src')
+            alt = img.get_attribute('alt')
+            description = figure.find_element_by_tag_name("figcaption").text
+
+            Photo.objects.create(
+                news=news,
+                src=src,
+                alt=alt,
+                description=description
+            )
+    finally:
+        driver.quit()
 
 
 def create_and_save(url):
@@ -55,6 +83,7 @@ def create_and_save(url):
             pub_time=pub_time,
             content=content
         )
+        save_img(url)
 
 
 def crawl():

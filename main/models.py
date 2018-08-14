@@ -37,9 +37,9 @@ class News(models.Model):
 
 class Photo(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    url = models.URLField(max_length=200)
+    alt = models.TextField(blank=True, null=True)
+    src = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to=upload_image_path, blank=True, null=True)
 
     def __str__(self):
         return '{}: {}'.format(str(self.news), str(self.id))

@@ -27,11 +27,20 @@ class RetrieveNews(generics.RetrieveAPIView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
+        photos = self.object.photo_set.all()
+        photo_list = []
+        for photo in photos:
+            photo_list.append({
+                'alt': photo.alt,
+                'src': photo.src,
+                'description': photo.description
+            })
         if request.is_ajax():
             return Response({
                 'id': self.object.id,
                 'content': self.object.content,
                 'title': self.object.title,
                 'url': self.object.url,
+                'photo': photo_list
             })
         return redirect('news_list')

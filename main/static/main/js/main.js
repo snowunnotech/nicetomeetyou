@@ -10,12 +10,19 @@ $(document).ready(function() {
             method: 'GET',
             success: function(data) {
                 // Clear the home page and add detail information of news.
-                var text1 = "<h3>" + data.title + "</h3><br><br>"
-                var text2 = "<p>" + data.content + "</p>"
-                var text3 = "<p>原文網址：<a target='_blank' rel='noopener noreferrer' href='"
+                var title = "<h3>" + data.title + "</h3><br><br>"
+                var content = "<p>" + data.content + "</p>"
+                var url = "<p>原文網址：<a target='_blank' rel='noopener noreferrer' href='"
                             + data.url + "'>" + data.url + "</a></p>"
-                var btn = "<a class='mt-10 ml-auto btn btn-primary' href='/'>回到新聞列表</a>"
-                $('.detail').append(text1, text2, text3, btn);
+                var btn = "<div class='col-12 my-3'><a class='btn btn-primary' href='/'>回到新聞列表</a></div>"
+                // Print Photos
+                var i;
+                var images = "<br>";
+                for (i = 0; i < data.photo.length; i++) {
+                    images += "<img class='mt-3' src='" + data.photo[i].src + "' alt='" + data.photo[i].alt
+                    + "'><div class='col-12 mb-3'><p>" + data.photo[i].description + "</p></div>";
+                }
+                $('.detail').append(btn, title, content, url, images);
                 $('.cards').remove();
             },
             error: function(errorData) {
