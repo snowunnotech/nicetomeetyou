@@ -19,7 +19,7 @@
 	(撰寫custom command 供cron tab 執行, 命令包含爬資料以及將新增的資料以websocket方式傳送至client)
 
 3. 将本 demo 部署至服务器并可正确运行。
-    目前僅將server以<a href="http://163.13.127.195:8080/myNBAfeed">development server</a>方式運行
+    將服務包成<a href="http://163.13.127.195:8080/myNBAfeed">docker</a>運行
 	2018/08/11 以docker scale compose 包 niginx loadbalance, api server , crawler process, redis, daphne channel server, postgre
 	
 	docker-compose down -v
