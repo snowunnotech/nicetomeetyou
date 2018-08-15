@@ -1,0 +1,22 @@
+# vscode
+.vscode
+
+# virtual env
+nice_to_meet_you_Env
+
+# whl file
+*.whl
+
+# python
+__pycache__
+*.pyc
+
+# Django
+db.sqlite3*
+
+# vim
+*.swp
+
+#uwsgi
+*.log
+*.pid

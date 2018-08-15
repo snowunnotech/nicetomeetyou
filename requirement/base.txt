@@ -1,0 +1,22 @@
+# Django
+django == 2.0.7
+
+# Django Restful (http://www.django-rest-framework.org/)
+djangorestframework == 3.8.2
+markdown == 2.6.11
+django-filter == 2.0.0
+
+# django-q
+django-q == 0.9.4 
+
+# beautifulsoup4
+beautifulsoup4 == 4.6.0
+
+# lxml
+lxml == 4.2.3
+
+# requests
+requests == 2.19.1
+
+# aiohttp
+aiohttp == 3.3.2

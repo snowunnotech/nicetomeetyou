@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div id=News class="jumbotron" style="overflow:scroll; max-height: 600px; max-width: 800px; margin: 0 auto; padding-left: 10px; padding-right: 10px">
+    </div>
+    <div id="dialog" title="News" style="display:none">
+        <div id="dialog_content"></div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    function get_datetime_str(datetime) {
+        datetime = new Date(datetime);
+        return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + 
+               datetime.getHours() + ":" + datetime.getMinutes();
+    }
+
+    var news_list = [];
+    $.ajax({
+        url: '/NewsList/',
+        type: 'get',
+        success: function(data) {
+            news_list = data;
+            $("#News").html("<div id=NewsList></div>")
+            $.each(data, function(i, item) {
+                $("#NewsList").append(
+                    "<p>" + 
+                        "<button class='btn btn-info' id=" + data[i].id + "> " + "Go </button>" + 
+                        "<span> " +
+                                data[i].title + " (" +
+                            get_datetime_str(data[i].datetime) +
+                        ")</span>" + 
+                    "<p>"
+				);
+            });
+        },
+        failure: function(data) { 
+            console.log('NewsList Failed');
+        }
+    });
+
+    function sleep(milliseconds) {
+	var start = new Date().getTime();
+	while (1) {
+	    if ((new Date().getTime() - start) > milliseconds)
+		    break;
+	}
+    }
+
+    sleep(500);
+
+    $(document).ready(function(){
+        var news_button = $("button").addClass("News");
+        news_button.click(function(){
+			$.ajax({
+				url: 'NewsDetail/' + this.id + '/',
+				type: 'get',
+				success: function(data) {
+					$("#dialog_content").html(
+						"<article>" +
+							"<h1>" + data.title + "</h1>" +
+							'<img max-width="582" max-height="376" src="' + data.image_url + '">' +
+							"<p>" + 
+								get_datetime_str(data.datetime) + " " + data.author + " " + 
+								'<a href="' + data.story_url + '">(News link)</a>' + 
+							"</p>" +
+							"<p>" + data.content.replace(/\n/g, "</br>") + "</p>"
+					);
+
+					if (data.video_url){
+						$("#dialog_content").append(	
+							'<iframe max-width="600" max-height="450" src="' + data.video_url + '" controls="controls">' +
+								"your browser does not support the video tag" +
+							"</iframe>"
+						);
+					};
+
+					$("#dislog_content").append("</article>");
+					$("#dialog").dialog({
+						resizable: true,
+						height: $(window).height() * 0.9,
+						width: $(window).width() * 0.9,
+						modal: true,
+						close: function() {
+							$("#dialog_content").html("");
+						}
+					});
+				},
+				failure: function(data) {
+					console.log('NewsDetail Failed');
+				}
+			});
+        });
+    });
+</script>
+{% endblock %}
