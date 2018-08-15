@@ -1,0 +1,9 @@
+django
+djangorestframework
+psycopg2
+uwsgi
+channels
+channels_redis
+BeautifulSoup4
+requests
+lxml
