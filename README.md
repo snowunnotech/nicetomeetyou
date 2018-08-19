@@ -17,7 +17,7 @@
 
 ## not yet:
 1. 每當抓取到新的新聞時立即通知頁面。
-(思路：已完成webconnect，待抓取db的數據更新後透過websocket推播。看是要用@receiver  或直接count 做db更新通知)
+(已完成webconnect，待抓取db的數據更新後透過websocket推播。看是要用@receiver  或直接count 做db更新通知)
 
 2. 将本 demo 部署至服务器并可正确运行。
-(思路：之前已嘗試過在家自架伺服器。)
+(之前已嘗試過在家自架伺服器。)
