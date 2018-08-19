@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    nba_sql:
+      container_name: nba_sql
+      image: mysql:5.7
+      volumes:
+        - nba_sql:/var/lib/nba_sql
+      ports:
+        - 1234:3306
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: 1234
+        MYSQL_DATABASE: nba_sql
+
+    
+    app:
+      build: .
+      command: bash -c "python manage.py runserver 0.0.0.0:8000"
+      restart: always
+      ports:
+        - "8000:8000"
+      depends_on:
+        - nba_sql
+      volumes:
+        - .:/CW
+    
+
+volumes:
+    nba_sql:

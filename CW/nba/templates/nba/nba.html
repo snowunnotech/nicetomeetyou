@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{#w3#}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    .box button{
+        background-color: cornflowerblue;
+    }
+</style>
+</head>
+<body>
+
+
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:30%">
+  <h3 class="w3-bar-item">焦點新聞列表</h3>
+    {% for i,v in title.items %}
+        <div  class='box'>
+            <button onclick ='myFunc("{{ i }}")'  type="button" id ='kerker{{ i }}'  value ='{{ i }}'  >{{ v }}</button>
+        </div>
+    {% endfor %}
+ <h3 id="show"></h3>
+</div>
+
+
+<!-- Page Content -->
+<div style="margin-left:30%">
+
+<div class="w3-container w3-blue-grey">
+  <h1>新聞詳情頁面</h1>
+</div>
+
+<div class="w3-container">
+    <p id="demo"></p>
+</div>
+
+</div>
+
+
+    <script>
+
+        count = 0;
+
+        function doRefresh(){
+            document.getElementById("show").innerHTML = 'new update. Please reload'
+        }
+
+    $(function() {
+        setInterval(doRefresh, 5000);
+        {#xx= 'xx';#}
+        {#chatSocket = new WebSocket('ws://' + window.location.host +'/fff/'+xx+'/');#}
+        {##}
+        {#strContent =  'new update. Please reload';#}
+        {##}
+        {#chatSocket.send(JSON.stringify({   // 1. from websocket send to backend (next go to consumers.py )#}
+        {#    'messagex': strContent})#}
+        {#);#}
+        {##}
+        {##}
+        {##}
+        {#chatSocket.onclose = function(e) {#}
+        {#    console.error('Chat socket closed unexpectedly');#}
+        {#};#}
+        {##}
+        {##}
+        {##}
+
+
+
+    });
+
+        function myFunc(i) {
+              if(count>0){
+                  $('#kerker'+number).css("background-color", "cornflowerblue");
+                  count = 0;
+              }
+              console.log(i);
+
+              $('#kerker'+i).css("background-color", "#708090");
+              fired_button = $('#kerker'+i).val();
+              $.ajax({
+                 url:'/nba/detail_for_ajax/',
+                 type:'POST',
+                 dataType: "json",
+                 data: { 'fired_button':fired_button
+                 },
+                 success: function(detail) {
+
+
+                     document.getElementById("demo").innerHTML = detail.a[i];
+
+                     console.log('Sent Request');
+
+                 },
+                 fail: function() {
+                 }
+            });
+            count++;
+            number =i;
+          }
+    </script>
+
+
+</body>
+</html>
