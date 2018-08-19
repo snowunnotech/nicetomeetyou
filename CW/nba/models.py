@@ -31,9 +31,8 @@ def get_news(t,l,c):
 
 def for_head_line():
     with connection.cursor() as cursor:
-        cursor.execute("select title from News")
+        cursor.execute("select title from News order by id")
         cc = [c for c in cursor.fetchall()]
-
     cursor.close()
     return cc
 

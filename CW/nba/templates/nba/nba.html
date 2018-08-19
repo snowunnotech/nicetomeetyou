@@ -64,25 +64,20 @@
 
     $(function() {
         setInterval(doRefresh, 5000);
-        {#xx= 'xx';#}
-        {#chatSocket = new WebSocket('ws://' + window.location.host +'/fff/'+xx+'/');#}
-        {##}
-        {#strContent =  'new update. Please reload';#}
-        {##}
-        {#chatSocket.send(JSON.stringify({   // 1. from websocket send to backend (next go to consumers.py )#}
-        {#    'messagex': strContent})#}
-        {#);#}
-        {##}
-        {##}
-        {##}
-        {#chatSocket.onclose = function(e) {#}
-        {#    console.error('Chat socket closed unexpectedly');#}
-        {#};#}
-        {##}
-        {##}
-        {##}
+        xx= 'xx';
+        chatSocket = new WebSocket('ws://' + window.location.host +'/fff/'+xx+'/');
+
+        strContent =  'new update. Please reload';
+
+        chatSocket.send(JSON.stringify({   // 1. from websocket send to backend (next go to consumers.py )
+            'messagex': strContent})
+        );
 
 
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
 
     });
 

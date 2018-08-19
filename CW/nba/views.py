@@ -28,14 +28,16 @@ class api(viewsets.ModelViewSet):
 def log(request):
     if (request):
         headline = for_head_line()
+        headline.reverse()
+        print(headline)
         if(len(headline)>10):
 
             title= {0:headline[0][0],1:headline[1][0],2:headline[2][0],3:headline[3][0],4:headline[4][0],5:headline[5][0],
                     6: headline[6][0], 7: headline[7][0], 8: headline[8][0], 9: headline[9][0],10: headline[10][0]}
         else:
 
-            title= {0:'notyet',1:'notyet',2:'notyet',3:'notyet',4:'notyet',5:'notyet',
-                    6: 'notyet', 7: 'notyet',8: 'notyet', 9: 'notyet',10:'notyet'}
+            title= {0:'notyet0',1:'notyet1',2:'notyet2',3:'notyet3',4:'notyet4',5:'notyet5',
+                    6: 'notyet6', 7: 'notyet7',8: 'notyet8', 9: 'notyet9',10:'notyet10'}
         def task_Fun():
 
         # # 產生虛擬 borwser：
@@ -138,6 +140,7 @@ def log(request):
 def detail_for_ajax(request):
     # print(for_button())
     a= for_button()
+    a.reverse()
     return JsonResponse({'a':a})
 
 
