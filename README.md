@@ -1,7 +1,7 @@
-## Done:
-1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
-2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
-3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
+## Done:（完成兩種環境設計: docker, virtual env）
+1. 完成抓取 nba焦點新聞。
+2. 使用 mysql 將所抓取新聞存儲至 DB。
+3. 使用 [Django REST Framework]配合 AJAX 實現以下頁面：
 	 * 焦點新聞列表
 	 * 新聞詳情頁面
 4. 以 Pull-Request 的方式將代碼提交。
@@ -17,4 +17,7 @@
 
 ## not yet:
 1. 每當抓取到新的新聞時立即通知頁面。
+(思路：已完成webconnect，待抓取db的數據更新後透過websocket推播。看是要用@receiver  或直接count 做db更新通知)
+
 2. 将本 demo 部署至服务器并可正确运行。
+(思路：之前已嘗試過在家自架伺服器。)
