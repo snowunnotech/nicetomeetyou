@@ -8,8 +8,11 @@
 5. 實現爬蟲自動定時抓取。
 
 
+
+![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.14.10.png)
+![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.16.52.png)
+
+</br>
 ## not yet:
 1. 每當抓取到新的新聞時立即通知頁面。
 2. 将本 demo 部署至服务器并可正确运行。
-![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.14.10.png)
-![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.16.52.png)
