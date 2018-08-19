@@ -5,7 +5,7 @@
 	 * 焦點新聞列表
 	 * 新聞詳情頁面
 4. 以 Pull-Request 的方式將代碼提交。
-5. 實現爬蟲自動定時抓取。
+5. 實現爬蟲自動定時抓取。(每20秒 爬一次蟲)
 
 ![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.14.10.png)
 ![GitHub Logo](https://github.com/ekils/nicetomeetyou/blob/master/CW/img/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202018-08-19%20%E4%B8%8B%E5%8D%889.16.52.png)
