@@ -1,0 +1,164 @@
+[INFO  - 2018-08-19T15:49:36.803Z] GhostDriver - Main - running on port 51036
+[INFO  - 2018-08-19T15:49:36.928Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-08-19T15:49:36.928Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.customHeaders:  - {}
+[INFO  - 2018-08-19T15:49:36.928Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-08-19T15:49:36.929Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 79a117a0-a3c7-11e8-84eb-bf46050a5879
+[ERROR - 2018-08-19T15:49:37.109Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TypeError: undefined is not an object (evaluating 'getCookie('_ga').split')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:37.109Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  global code (https://nba.udn.com/nba/cate/6754/:134)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:41.920Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:41.920Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:46.476Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:46.477Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:49.535Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:49.535Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:51.882Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:51.882Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:55.689Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:55.689Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:59.493Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:49:59.493Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:50:04.064Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:50:04.064Z] Session [79a117a0-a3c7-11e8-84eb-bf46050a5879] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:50:04.851Z] Session [778abac0-a3c7-11e8-9bf4-6bde99ab9c86] - page.onError - msg: TagError: adsbygoogle.push() error: Fluid responsive ads must be at least 250px wide: availableWidth=241
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-08-19T15:50:04.851Z] Session [778abac0-a3c7-11e8-9bf4-6bde99ab9c86] - page.onError - stack:
+  parse (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  connector (phantomjs://platform/bootstrap.js:54)
+  z (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  a (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  ud (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  zh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Ah (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  kd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  rd (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  Bh (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+  (anonymous function) (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:1)
+
+  phantomjs://platform/console++.js:263 in error
