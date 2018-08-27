@@ -11,7 +11,7 @@
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
 
-# nicetomeetyoutoo
+# nice to meet you, too
 just say hello to you
 
 NBA Top News site: http://35.221.198.65/topnews/
