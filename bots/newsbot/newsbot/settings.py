@@ -15,13 +15,17 @@ setup_django_env()
 BOT_NAME = 'newsbot'
 
 SPIDER_MODULES = ['newsbot.spiders']
-# NEWSPIDER_MODULE = 'newsbot.spiders'
+NEWSPIDER_MODULE = 'newsbot.spiders'
 
 DOWNLOAD_HANDLERS = {'s3': None}
-# DOWNLOAD_DELAY = 0.5
-# DOWNLOAD_TIMEOUT = 100
+DOWNLOAD_DELAY = 0.5
+DOWNLOAD_TIMEOUT = 100
 
 CONCURRENT_REQUESTS_PER_IP=1
+
+ITEM_PIPELINES = {
+	'newsbot.pipelines.NewsbotPipeline': 1,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'newsbot (+http://www.yourdomain.com)'
