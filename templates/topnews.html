@@ -1,0 +1,97 @@
+<html>
+    <head>
+          <title> NBA Top News </title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+          <style>
+              a {
+                  color: black;
+                  text-decoration: none;
+              }
+          </style>
+    </head>
+
+    <body>
+        <div class='col-10 mx-auto'>
+            <h1 class="d-inline-block mt-3 mb-4">焦點新聞</h1>
+<!--            <a href="https://nba.udn.com/nba/news/"><h3 class="d-inline-block ml-3 mt-3 mb-5">More</h3></a> -->
+            <div id='news_body'></div>
+            <button type="button" class="btn btn- btn-block my-4" id="morebtn" onclick="more()"> More </button>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+
+            var page = 0;
+            var dblength = 0;
+            function newslist(news){
+                var result = '';
+                if (page === 0) {
+                    ntop = 0;
+                    nbut = 3;
+                } else {
+                    ntop = nbut
+                    nbut += 10
+                }
+//                console.log(news.length,ntop,nbut)
+                if (nbut > news.length) {
+                    nbut = news.length;
+                    document.getElementById("morebtn").style.display = 'none';
+                }
+                for(var i = ntop; i < nbut; i++){
+                    result += '<dt class="my-3">' +
+                                  '<a href="' + news[i].link +'">' +
+                                      '<div class="align-top d-inline-block col-3 pl-0">' +
+                                          '<img src=' + news[i].photo +' style="width: 100%;">' +
+                                      '</div>' +
+                                      '<div class="align-top d-inline-block col-8">' +
+                                          '<h3>' + news[i].headline+' </h3>' +
+                                          '<p>'+ news[i].body+'</p>' +
+                                      '</div>'
+                                  '</a>' +
+                              '</dt>';
+                }
+                return result;
+            }
+
+            window.setInterval(function()
+            {
+                $.ajax({
+                    url: '/api/topnews/',
+                    type: 'GET',
+                    data: {},
+                    success: function (data) {
+//			console.log(Date(), data[0].id > dblength)
+			if(data[0].id > dblength) {
+			    location.reload();
+			}
+                    }
+                });
+            }, 60000)
+
+            $.ajax({
+                url: '/api/topnews/',
+                type: 'GET',
+                success: function (data) {
+//                    console.log('init');		          
+                    dblength = data[0].id
+                    var result = newslist(data);
+                    $('#news_body').append(result);
+                }
+            });
+
+            function more() {
+                $.ajax({
+                    url: '/api/topnews/',
+                    type: 'GET',
+                    success: function (data) {
+//                        console.log('page');
+                        page += 1
+                        var result = newslist(data);
+                        $('#news_body').append(result);
+                    }
+                });
+            }
+
+        </script>
+    </body>
+</html>
