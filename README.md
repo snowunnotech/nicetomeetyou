@@ -2,6 +2,7 @@
 
 [完成]
 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
+
 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
 以 Pull-Request 的方式將代碼提交
 
