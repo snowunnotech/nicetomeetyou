@@ -1,0 +1,39 @@
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html>
+<head bgcolor="silver">
+    <meta charset="utf-8">
+    <title>Topnbanew</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="site-title text-center">
+            <a href="/">焦點新聞列表</a>
+        </h1>
+    </div>
+    <dl>
+		<dt>
+        {% for post in nbalist %}
+            <div class="post">
+                <div class="post-heading">
+                    <h2 class="title">
+                        <b>{{ post.title }}</b>
+                    </h2>
+                </div>
+                <div class="thumbnail">
+                    <img src="{{ post.photo }}" alt="">
+					{{post.content}}
+                </div>
+				<div  </div>
+				<a class="read-more" href={{post.location}}>
+					Read More <i class="fa fa-arrow-right"></i>
+				</a>
+            </div>
+        </div>
+        {% endfor %}
+		</dt>
+    </dl>
+</body>
+</html>
