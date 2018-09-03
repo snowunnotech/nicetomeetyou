@@ -1,0 +1,100 @@
+{% extends "news/base.html" %}
+ {% block content %}
+    <div id=NewsList>
+    </div>
+
+{% endblock %}
+ {% block javascript %}
+
+
+
+
+    <script type="text/javascript">
+    	
+    	
+    	$.ajax({
+             url : "http://127.0.0.1:8000/News/newsapi",
+             dataType: "json",
+             success : function (data) {
+             		  var a = 0;
+                      news_list = data;
+                      $.each(news_list, function(i, item) {
+                		$("#NewsList").append(
+                				"<a href=" + news_list[i].detail_url + ">" +
+                				"<img src=" + news_list[i].image_url + ">" + "</img>" +
+                				"</a>" +
+                    			news_list[i].title +
+                    			"  " +
+                    			news_list[i].post_date +
+
+                    			"</p>" + 
+                    			"<p id=NewsDetail_" + news_list[i].id + ">" +
+                    			"</p>" +
+                    			"<button id=" + news_list[i].id + "> " + "Show detail </button>" +
+                    			"<br/>"
+                    		
+ 
+                    		); 
+                
+
+
+
+                		});
+
+
+                		},
+
+
+
+                    
+
+             failure: function(data) { 
+                         console.log('Got an error dude');
+        				}
+                 });
+
+
+    	$(document).ready(function(){
+
+        $("button").click(function(){
+        	 $.ajax({
+        	 url : "http://127.0.0.1:8000/News/newsapi_detail/" + this.id + '/',
+             dataType: "json",
+             success : function (data) {
+                      news_detail = data;
+                      $.each(news_detail, function(i, item) {
+                		
+
+                      	if (!document.getElementById("detail_inserted_" + news_detail[i].id))
+                      		{
+                      		$("#NewsDetail_" + news_detail[i].id).append(
+                    		"<p id=detail_inserted_" + news_detail[i].id + ">" + 
+                    				news_detail[i].detail +
+                    		"<p>");
+
+                    		
+                    		}; 
+
+                    		
+
+            				});
+                        	 },
+
+             failure: function(data) { 
+                         console.log('Got an error dude');
+        				}
+                 });
+
+
+
+
+        });
+        });
+            
+
+
+    </script>
+
+ {% endblock %} 
+</body>
+</html>
