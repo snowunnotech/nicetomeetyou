@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf=8" />
+		<title>hello</title>
+		<script type="text/javascript">
+		function getData(){
+			var req=new XMLHttpRequest();
+			req.open("get", "http://127.0.0.1:8000/focusnewapi/")
+			req.onload=function(){
+				var content=document.getElementById("content");
+				content.innerHTML=this.responseText;
+
+			}
+			req.send()
+		}	
+		</script>
+	</head>
+	<body>
+		<div>
+			<h1 onclick="getData() ;">focusnew</h1>
+		</div>
+		<div id="content"></div>
+	</body>
+</html>
+
