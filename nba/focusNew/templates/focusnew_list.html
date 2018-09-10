@@ -9,7 +9,16 @@
 			req.open("get", "http://127.0.0.1:8000/focusnewapi/")
 			req.onload=function(){
 				var content=document.getElementById("content");
-				content.innerHTML=this.responseText;
+				var focusNew=''
+				var data=JSON.parse(this.responseText);
+				for (i = 0; i < data.length; ++i) {
+					focusNew += "<h3>" +data[i].title + "</h3>" + 
+								data[i].post_time +
+								data[i].writer + "<br>" +
+								"<img src=" +data[i].img_src + "width=500px height=500px><br>" +
+								"<p>" + data[i].content + "</p><br><br><br>"
+				}
+				content.innerHTML=focusNew;
 
 			}
 			req.send()
