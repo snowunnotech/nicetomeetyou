@@ -1,0 +1,4 @@
+db.*
+*.db
+__pycache__/
+migrations/
