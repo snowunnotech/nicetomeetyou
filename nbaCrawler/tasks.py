@@ -7,6 +7,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from .models import Post
 
+import re
 import requests
 from datetime import datetime
 # Create your views here.
@@ -26,18 +27,19 @@ def parse():
             continue
 
         title = post.select('h3')[0].string
-        image = post.select('img')[0]['data-src']
+        image = re.split('&', post.select('img')[0]['data-src'])[0]
         url   = 'https://nba.udn.com' + post['href']
 
         rq = requests.get(url)
         content_soup = BeautifulSoup(rq.text, "html.parser")
         date  = content_soup.select('.shareBar__info--author span')[0].string
-        print(date)
         date  = datetime.strptime(date, '%Y-%m-%d %H:%M')
-        print(date)
         content = ""
-        for c in content_soup.select('#story_body_content p'):
-            content += str(c)
+        for idx, c in enumerate(content_soup.select('#story_body_content span p')):
+            if idx:
+                content += str(c)
+        if 'autoplay=1&' in content:
+            content = content[:content.index('autoplay=1&')] + content[content.index('autoplay=1&') + 11:]
 
         new_posts.append({
             'title': title, 'id': pid, 'image': image, 

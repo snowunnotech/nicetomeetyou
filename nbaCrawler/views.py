@@ -19,10 +19,6 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (IsAuthenticated,)
 
+
 class IndexView(TemplateView):
     template_name = "nbaCrawler/index.html"
-    
-
-def content(request, pid):
-    post = get_object_or_404(Post, pid=pid)
-    return render(request, 'nbaCrawler/content.html', {'post': post})
