@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-post_date')
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
 
 class IndexView(TemplateView):
