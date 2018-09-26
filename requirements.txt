@@ -1,5 +1,6 @@
-django
-psycopg2
-dj_database_url
-scrapy
-scrapy-djangoitem
+django==2.1.2
+djangorestframework==3.8.2
+psycopg2-binary==2.7.5
+dj-database-url==0.5.0
+scrapy==1.5.1
+scrapy-djangoitem==1.1.1

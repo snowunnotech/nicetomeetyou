@@ -1,13 +1,10 @@
 from django.conf.urls import include, url
-from rest_framework.routers import DefaultRouter
 
-from nbanews.views import news_list, newsapi
+from nbanews.views import GetNbaNewsList, GetNbaNewsDetail, news_list
 
-
-router = DefaultRouter()
-router.register(r'nba_api', newsapi)
 
 urlpatterns = [
-    url(r'^nbanews/', news_list),
-    url(r'^newsapi/', include(router.urls))
+    url(r'^$', news_list),
+    url(r'^newsapi/$', GetNbaNewsList.as_view()),
+    url(r'^newsapi/(?P<newsid>[0-9]+)/$', GetNbaNewsDetail.as_view()),
 ]
