@@ -11,7 +11,9 @@
 	<br> `利用 django-q 在 Scheduled tasks 裡增加任務排程。`
 - \[x] 每當抓取到新的新聞時立即通知頁面。
 	<br> `目前能夠每十秒監測資料庫中是否有新的資料，有新資料則即時插入前端顯示。`
+	<br> `try channals 2 / dwebsocket`
 - \[ ] 將本 demo 部署至服務器並可正確運行。
+	<br> `try heroku`
 
 
 ## Requirements
