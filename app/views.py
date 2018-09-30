@@ -15,7 +15,6 @@ from rest_framework import status
 from django.core import serializers
 from datetime import datetime
 
-
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -24,6 +23,22 @@ def home(request):
         {
             'year':datetime.now().year,
         })
+
+@schema(None)
+@api_view(['GET'])
+def getnewslist(request):
+    news = News.objects.only('Title','Image','Content','Url').all().order_by('-Time')
+    news = serializers.serialize('json',  news)
+    return Response(news)
+
+@schema(None)
+@api_view(['GET'])
+def getnewsdetail(request,id=1):
+    new = News.objects.only('Title','Detail').filter(id=id)
+    if len(new) >0:
+        new = new
+        new = serializers.serialize('json',  new)
+    return Response(new)
 
 
 @schema(None)
@@ -47,6 +62,8 @@ def getclecrawler(request):
         return Response({
             'message':'抓取失敗!'
             })
+
+ 
 
 def getweb():
     res = requests.get('https://nba.udn.com/nba/cate/6754')
