@@ -1,0 +1,34 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<style>
+    .media-left, .media>.pull-left {
+    padding-right: 10px;
+}
+</style>
+
+<div class="row">
+    <div class="col-md-5">
+        <h1 class="text-left" style="color: rgb(0, 102, 188);font-size: 24px;line-height: 1.7;font-weight: bold;">焦點新聞列表</h1>
+        <hr  />
+        <div id="list_box" data-example-id="default-media">
+            
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h1 class="text-center" style="color: rgb(0, 102, 188);font-size: 24px;line-height: 1.7;font-weight: bold;">新聞詳細頁面</h1>
+        <hr  />
+        <div id="detail_box">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+
+{% endblock %}
