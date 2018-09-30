@@ -4,7 +4,7 @@
 3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
 	 * 焦點新聞列表
 	 * 新聞詳情頁面   =>完成
-4. 以 Pull-Request 的方式將代碼提交。
+4. 以 Pull-Request 的方式將代碼提交。 =>完成
 	
 ## 進階要求
 1. 實現爬蟲自動定時抓取。 =>完成
