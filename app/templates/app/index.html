@@ -1,0 +1,84 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<style>
+    .media-left, .media > .pull-left {
+        padding-right: 10px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-5">
+        <h1 class="text-left" style="color: rgb(0, 102, 188);font-size: 24px;line-height: 1.7;font-weight: bold;">焦點新聞列表</h1>
+        <hr />
+        <div id="list_box" data-example-id="default-media">
+
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h1 class="text-center" style="color: rgb(0, 102, 188);font-size: 24px;line-height: 1.7;font-weight: bold;">新聞詳細頁面</h1>
+        <hr />
+        <div id="detail_box">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: 'Get',
+            url: 'api/getnewslist',
+            dataType: 'json',
+            success: function (data) {
+                var obj = JSON.parse(data);
+                for (var i = 0; i < obj.length; i++) {
+                    $('#list_box').append(
+                        '<a href="' + obj[i].fields.Url + '" onmouseover="submitdetail('+obj[i].pk+')">' +
+                            '<div class="media">' +
+                                '<div class="media-left">' +
+                                    '<img style="width: 180px; height: 120px;" class="media-object" src="' + obj[i].fields.Image + '">' +
+                                '</div>' +
+                                '<div class="media-body">'+
+                                    '<h3 class="media-heading">' + obj[i].fields.Title + '</h3>' +
+                                    '<p>'+obj[i].fields.Content+'</p>'+
+                                '</div>'+
+                            '</div>'+
+                        '</a>');
+                }
+            },
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
+
+    });
+
+    function submitdetail(id) {
+
+        $.ajax({
+            type: 'Get',
+            url: 'api/getnewsdetail/' + id,
+            dataType: 'json',
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $('#detail_box').empty();
+                $('#detail_box').append(
+                    '<h3><b>'+obj[0].fields.Title+'</b></h3>'+
+                    obj[0].fields.Detail
+                );
+            },
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
+    }
+
+</script>
+
+{% endblock %}
