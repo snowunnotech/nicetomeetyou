@@ -9,4 +9,6 @@
 ## 進階要求
 1. 實現爬蟲自動定時抓取。 =>完成
 2. 每當抓取到新的新聞時立即通知頁面。
-3. 将本 demo 部署至服务器并可正确运行。
+3. 将本 demo 部署至服务器并可正确运行。 =>完成 
+線上使用 herokuapp  網址:https://nicetomeetyoutoo.herokuapp.com/
+本機 IIS
