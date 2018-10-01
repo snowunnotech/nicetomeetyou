@@ -30,3 +30,30 @@ def detail(request, newid=None):
         resp['status'] = 'error'
         resp['message'] = '找不到資料'
     return JsonResponse(resp)
+
+def checkLatest(request,newscount=None):
+    nbanews = models.NBANewsModel.objects.order_by('-id').all()
+
+    resp = {}
+    resp['status'] = 'success'
+    resp['data'] = []
+    resp['message'] = '有新的焦點新聞'
+
+    if nbanews.count() > int(newscount):
+        latestnews = nbanews[:nbanews.count()-int(newscount)]
+        # return HttpResponse(latestnews[0].content)
+        for latestnew in latestnews:
+            tmp = {
+                'id': latestnew.id,
+                'title': latestnew.title,
+                'feature_pic': latestnew.feature_pic,
+                'content': latestnew.content,
+                'created_at': latestnew.created_at,
+            }
+            resp['data'].append(tmp)
+    else:
+        resp['status'] = 'error'
+        resp['data'] = []
+        resp['message'] = '沒有新的焦點新聞'
+
+    return JsonResponse(resp)

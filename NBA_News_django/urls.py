@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^index/$', views.index),
     url(r'^detail/(\d+)$', views.detail),
+    url(r'^checklatest/(\d+)$', views.checkLatest),
 ]

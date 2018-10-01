@@ -59,6 +59,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
     let nbanew = {}; //新聞詳情
+    let nbanewscount = {{ nbanews.count }}
+    setInterval(checkHasLatestNews, 3000);  //定時檢查是否有最新焦點新聞
 
     //顯示新聞內容
     $('#new-detail').on('show.bs.modal', function (event) {
@@ -100,5 +102,48 @@
                 {#alert( "Request failed: " + textStatus );#}
             });
     })
+
+    //檢查是否有新的焦點新聞
+    function checkHasLatestNews(){
+        let request = $.ajax({
+                url: '/checklatest/'+nbanewscount,
+                method: 'GET',
+            });
+            //請求成功
+            request.done(function( result ) {
+                if(result.status === 'success'){
+                    nbanew = result.data[0]             //取得最新的焦點新聞
+                    nbanewscount+=result.data.length    //更新焦點新聞比數
+
+                    swal("有最新消息是否要立即查看?", {
+                      buttons: {
+                        cancel: "不要!",
+                        catch: {
+                          text: "立即查看!",
+                          value: "catch",
+                        }
+                      },
+                    })
+                    .then((value) => {
+                      switch (value) {
+                        case "catch":
+                          $('#new-detail').modal('toggle')
+                          break;
+                        default:
+                          swal("不看拉倒!");
+                      }
+                    });
+                }
+                //else{
+                  //  swal("錯誤", result.message, result.status);
+                //}
+                //console.log(result);
+            });
+
+            //伺服器程式錯誤
+            request.fail(function( jqXHR, textStatus ) {
+                swal("錯誤", "Request failed: " + textStatus, "error");
+            });
+    }
 </script>
 {% endblock %}
