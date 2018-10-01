@@ -19,5 +19,8 @@ from nbanews import views
 from django.conf.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    url(r'^$', views.index),
+    url(r'^index/$', views.index),
+    url(r'^detail/(\d+)$', views.detail),
 ]

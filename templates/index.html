@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-6" style="margin: auto">
+
+      <h1 class="my-4">焦點新聞
+        <small>Hot News</small>
+      </h1>
+        {% for post in nbanews %}
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <img class="card-img-top" src="{{ post.feature_pic }}" alt="{{  post.title  }}">
+            <div class="card-body">
+              <h4 class="card-title">{{  post.title  }}</h4>
+                <p class="card-text">
+{#                        {{ post.content|safe }}#}
+                </p>
+              <a href="#" class="btn btn-primary btn-read-more" data-id="{{ post.id }}" >閱讀更多 &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              發表於 {{ post.created_at|naturaltime }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="new-detail" tabindex="-1" role="dialog" aria-labelledby="new-detailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="new-detailModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block  script%}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script>
+    let nbanew = {}; //新聞詳情
+
+    //顯示新聞內容
+    $('#new-detail').on('show.bs.modal', function (event) {
+        let modal = $(this);
+        modal.find('.modal-title').text(nbanew.title);
+        modal.find('.modal-body').html(
+            '<p><img style="max-width:100%" src="'+nbanew.feature_pic+'"/></p>'+nbanew.content);
+
+    });
+
+    //modal關閉 清空表單
+    $('#new-detail').on('hidden.bs.modal', function () {
+        let modal = $(this);
+        modal.find('.modal-title').text('');
+        modal.find('.modal-body').html('');
+    });
+
+    //取得新聞詳情
+    $('.btn-read-more').on('click',function (event) {
+        let id = $(this).data('id');
+        let request = $.ajax({
+                url: '/detail/'+id,
+                method: 'GET',
+            });
+            //請求成功
+            request.done(function( result ) {
+                if(result.status === 'success'){
+                    nbanew = result.data
+                    $('#new-detail').modal('toggle')
+                }else{
+                    swal("錯誤", result.message, result.status);
+                }
+                //console.log(result);
+            });
+
+            //伺服器程式錯誤
+            request.fail(function( jqXHR, textStatus ) {
+                swal("錯誤", "Request failed: " + textStatus, "error");
+                {#alert( "Request failed: " + textStatus );#}
+            });
+    })
+</script>
+{% endblock %}
