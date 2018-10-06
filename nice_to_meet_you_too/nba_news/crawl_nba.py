@@ -17,8 +17,11 @@ class NbaNewsSpider(scrapy.Spider):
             news_list_url = response.css('a.more')[0].css('a::attr(href)').extract_first()
             yield response.follow(news_list_url, callback = self.parse)
         elif 'cate' in response.url:
-            for news_url in  response.xpath('//div[@id="news_list_body"]//dt').css('a::attr(href)').extract():
-                yield response.follow(news_url, callback = self. parse)
+            for news_url in response.xpath('//div[@id="news_list_body"]//dt//a/@href').extract():
+                yield response.follow(news_url, callback = self.parse)
+            next_url = response.xpath('//gonext//a[@data-id="right"]/@href').extract_first(default = '')
+            if next_url:
+                yield response.follow(next_url, callback = self.parse)
             
         """
         for news in response.xpath('//div[@id="news_body"]//dt'):
