@@ -1,0 +1,7 @@
+*.swp
+__pycache__/
+*.log
+local_settings.py
+db.sqlite3
+.scrapy
+
