@@ -17,6 +17,7 @@ class NbaNewsSpider(scrapy.Spider):
         self.recent_title = title
 
     def parse(self, response):
+        yield {'recent_title': self.recent_title}
         if 'index' in response.url:
             news_list_url = response.css('a.more')[0].css('a::attr(href)').extract_first()
             yield response.follow(news_list_url, callback = self.parse)
@@ -28,8 +29,9 @@ class NbaNewsSpider(scrapy.Spider):
                 yield response.follow(next_url, callback = self.parse)
         elif 'story' in response.url: 
             title = response.css('h1.story_art_title::text').extract_first()
-            if title[:5] == self.recent_title: raise scrapy.exceptions.CloseSpider('Reached the newest title')
             created = response.css('div.shareBar__info--author span::text').extract_first()
+            if NbaNews.objects.filter(title = title, created = created).exists(): 
+                raise scrapy.exceptions.CloseSpider('Reached the newest title') 
             created = datetime.strptime(created, '%Y-%m-%d %H:%M')
             author = response.css('div.shareBar__info--author::text').extract_first()
             photo = response.css('figure img::attr(data-src)').extract_first(default = '').split('&')[0]
@@ -48,13 +50,10 @@ class NbaNewsSpider(scrapy.Spider):
             if self.num_news == 10: raise scrapy.exceptions.CloseSpider('Number_of_news_enough')
 
 class Command(BaseCommand):
-    def add_arguments(self, parser):
-        parser.add_argument('--title', help = 'Get the most recent title')
-
     def handle(self, *args, **options):
+        newest_title = NbaNews.objects.all().order_by("-created")[0].title
         process = CrawlerProcess({
             'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
         })
-        if options['title']: process.crawl(NbaNewsSpider, options['title'])
-        else: process.crawl(NbaNewsSpider)
+        process.crawl(NbaNewsSpider, newest_title)
         process.start() # the script will block here until the crawling is finished
