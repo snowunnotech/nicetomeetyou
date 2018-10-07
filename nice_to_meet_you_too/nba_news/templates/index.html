@@ -10,23 +10,34 @@
 </body>
 </html>
 <script>
-    setInterval(
-        function(){
+    var recent_title = '';
+        (function refresh(){
             $.ajax({
                      url : "/nba_news.json",
                      dataType: "json",
                      success : function(data){
-                                var tbl_news = '<tbody>';
-                                for(i = 0; i < data.length; i++){
-                                    tbl_news += '<tr>';
-                                    tbl_news += '<td><a href = /story/' + data[i].id  + '>' + data[i].title + '</td>';
-                                    tbl_news += '<td>' + data[i].created + '</td>';
-                                    tbl_news += '</tr>';
+                                if(data[0].title != recent_title){
+                                    recent_title = data[0].title;
+                                    var tbl_news = '<tbody>';
+                                    for(i = 0; i < data.length; i++){
+                                        tbl_news += '<tr>';
+                                        tbl_news += '<td><a href = /story/' + data[i].id  + '>' + data[i].title + '</td>';
+                                        tbl_news += '<td>' + data[i].created + '</td>';
+                                        tbl_news += '</tr>';
+                                    }
+                                    tbl_news += '</tbody>';
+                                    $('#tbl_news').html(tbl_news);
+                                    alert("New stories!!");
                                 }
-                                tbl_news += '</tbody>';
-                                $('#tbl_news').html(tbl_news);
                                }
             });
-        }(), 
-    5000); 
+            setTimeout(refresh, 3000)
+        })(); 
+        setInterval(function(){
+            console.log("Crawl");
+            $.ajax({
+                     url : "/crawl",
+                     success : function(data){console.log(data)}
+            });
+        },5000);
 </script>
