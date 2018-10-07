@@ -6,6 +6,7 @@ router = DefaultRouter()
 router.register(r'nba_news', views.NbaNewsViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls))
+    url(r'^', include(router.urls)),
+    url(r'^home$', views.homepage)
 ]
 
