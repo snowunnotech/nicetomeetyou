@@ -5,27 +5,55 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  </head>
 <body>
-<div id="jsonresp" style="margin-top: 100px">
-   <p><label> Title :</label> <span id="title"></span></p>
-   <p><label> Created :</label> <span id="created"></span></p>
-   <p><label> Author :</label> <span id="author"></span></p>
-   <p><label> Image : </label> <span id="image"></span></p> 
-</div>
+    <table id = "tblSomething" class = "table table-hover"></table>
     <script type="text/javascript"></script>
+    <!--{% for o in list_news  %}
+        <div id= "{{ o }}" style="margin-top: 100px">
+           <p><label> Title :</label> <span id="title"></span></p>
+           <p><label> Created :</label> <span id="created"></span></p>
+           <p><label> Author :</label> <span id="author"></span></p>
+           <p><label> Image : </label> <span id="image"></span></p> 
+        </div>
+    {% endfor %}-->
 </body>
 </html>
-
 <script>
-    setInterval(function(){
-        $.ajax({
-                 url : "/nba_news.json",
-                 dataType: "json",
-                 success : function (data) {
-                          $('div#jsonresp span#title').text( data[0].title);
-                          $('#created').text( data[0].created);
-                          $('#author').text( data[0].author);
-                          $('#image').text( data[0].image);
-                 }
-        });
-    }, 5000); 
+    setInterval(
+        function(){
+            $.ajax({
+                     url : "/nba_news.json",
+                     dataType: "json",
+                     success : function(data){
+                                var tblSomething = '<tbody>';
+                                for(i = 0; i < data.length; i++){
+                                //$.each(data, function(idx, obj){
+                                    tblSomething += '<tr>';
+                                    //$.each(obj, function(key, value){
+                                    tblSomething += '<td>' + data[i].title + '</td>';
+                                    tblSomething += '<td>' + data[i].created + '</td>';
+                                    //});
+                                    tblSomething += '</tr>';
+                                }//);
+                                tblSomething += '</tbody>';
+                                $('#tblSomething').html(tblSomething);
+                                /*
+                                for (i = 0; i < data.length; i++){
+                                    
+                                    var $tr = $('<tr>').append(
+                                    $('<td>').text(data[i].title),
+                                    $('<td>').text(data[i].created),
+                                    $('<td>').text(data[i].author)
+                                    ); //.appendTo('#records_table');
+                                    console.log($tr.wrap('<p>').html());
+                                    
+                                }*/
+                               }
+                              /*$('div#' + i + ' span#title').text( data[i].title);
+                              $('div#' + i + ' span#created').text( data[i].created);
+                              $('div#' + i + ' span#author').text( data[i].author);
+                              $('div#' + i + ' span#image').text( data[i].image);
+                              }*/
+            });
+        }, 
+    5000); 
 </script>
