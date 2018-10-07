@@ -7,6 +7,7 @@ router.register(r'nba_news', views.NbaNewsViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^home$', views.homepage)
+    url(r'^home$', views.homepage),
+    url(r'^story/(?P<news_id>[0-9]+)', views.storypage)
 ]
 

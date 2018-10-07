@@ -9,5 +9,8 @@ class NbaNewsViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = NbaNewsSerializer
 
 def homepage(request):
-    return render(request, 'index.html', {'list_news': [0, 1, 2]})
+    return render(request, 'index.html')
+
+def storypage(request, news_id):
+    return render(request, 'story.html', {'news_id': news_id})
 
