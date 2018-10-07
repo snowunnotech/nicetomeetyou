@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'nba_news.apps.NbaNewsConfig'
+    'nba_news.apps.NbaNewsConfig',
 ]
 
 MIDDLEWARE = [
