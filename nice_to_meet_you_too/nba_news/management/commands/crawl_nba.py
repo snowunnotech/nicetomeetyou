@@ -10,10 +10,11 @@ class NbaNewsSpider(scrapy.Spider):
     start_urls = [
         'https://nba.udn.com/nba/index?gr=www'
     ]
+    num_news = 0
+    recent_title = ''
 
-
-    #def __init__(self, fn_to_store = 'info_scrapy_try.txt'):
-    #    self.fn_to_store = fn_to_store
+    def __init__(self, title):
+        self.recent_title = title
 
     def parse(self, response):
         if 'index' in response.url:
@@ -25,8 +26,9 @@ class NbaNewsSpider(scrapy.Spider):
             next_url = response.xpath('//gonext//a[@data-id="right"]/@href').extract_first(default = '')
             if next_url:
                 yield response.follow(next_url, callback = self.parse)
-        elif 'story' in response.url:
+        elif 'story' in response.url: 
             title = response.css('h1.story_art_title::text').extract_first()
+            if title[:5] == self.recent_title: raise scrapy.exceptions.CloseSpider('Reached the newest title')
             created = response.css('div.shareBar__info--author span::text').extract_first()
             created = datetime.strptime(created, '%Y-%m-%d %H:%M')
             author = response.css('div.shareBar__info--author::text').extract_first()
@@ -42,26 +44,17 @@ class NbaNewsSpider(scrapy.Spider):
                 video = video
             )
             nnm.save()
-            
-        """
-        for news in response.xpath('//div[@id="news_body"]//dt'):
-            #dict_info = {
-            yield {
-                'href': news.css('a::attr(href)').extract_first()
-                #'text': quote.css('span.text::text').extract_first(),
-                #'author': quote.css('span small::text').extract_first(),
-                #'tags': quote.css('div.tags a.tag::text').extract(),
-            }
-            #f_to_store.write(json.dumps(dict_info))
-        """
-        #next_page = response.css('li.next a::attr(href)').extract_first()
-        #if next_page is not None:
-        #    yield response.follow(next_page, callback=self.parse)
+            self.num_news += 1
+            if self.num_news == 10: raise scrapy.exceptions.CloseSpider('Number_of_news_enough')
 
 class Command(BaseCommand):
-    process = CrawlerProcess({
-        'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
-    })
-    
-    process.crawl(NbaNewsSpider)
-    process.start() # the script will block here until the crawling is finished
+    def add_arguments(self, parser):
+        parser.add_argument('--title', help = 'Get the most recent title')
+
+    def handle(self, *args, **options):
+        process = CrawlerProcess({
+            'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
+        })
+        if options['title']: process.crawl(NbaNewsSpider, options['title'])
+        else: process.crawl(NbaNewsSpider)
+        process.start() # the script will block here until the crawling is finished
