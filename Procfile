@@ -1,2 +1,2 @@
-web: gunicorn line_echobot.wsgi --log-file -
+web: gunicorn newsfeed.wsgi --log-file -
 beat: python manage.py qcluster
