@@ -28,6 +28,17 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Periodic Task Config
+Q_CLUSTER = { 
+'name': 'DjangORM', 
+'workers': 1, 
+'timeout': 1800, 
+'retry': 20, 
+'queue_limit': 50, 
+'bulk': 10, 
+'orm': 'default' 
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_q',
     'rest_framework',
     'newsfeed.headlines'
 ]

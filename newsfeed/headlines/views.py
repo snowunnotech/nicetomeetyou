@@ -6,3 +6,4 @@ from rest_framework import viewsets
 class HeadlinePostViewSet(viewsets.ModelViewSet):
     queryset = HeadlinePost.objects.all()
     serializer_class = HeadlinePostSerializer
+
