@@ -23,5 +23,6 @@ router.register(r'headlines', views.HeadlinePostViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls))
+    url(r'^api/', include(router.urls)),
+    url(r'^index/', views.IndexHTMLView.as_view())
 ]

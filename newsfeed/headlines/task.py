@@ -22,13 +22,17 @@ def getNewsFeed():
 	for p in soup_post_list.select('#news_list_body dl dt a'):
 		
 		post_id = int(p.get('href')[-7:])
-
 		if HeadlinePost.objects.filter(post_id=post_id).exists():
 			continue
 
 		post_title = p.select('h3')[0].get_text()
 		post_url = urlp.urljoin(url_base, p.get('href'))
 		img_url = p.select('span img')[0].get('data-src')
+
+		try:
+			img_url = re.search('(.*?)&', img_url).group(1)
+		except AttributeError:
+			img_url = img_url
 
 		# info in newsfeed/post
 		soup_post = getSoup(post_url)

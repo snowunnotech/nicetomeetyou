@@ -1,0 +1,124 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Headline News Feed</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'dist/css/album.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row", id="container-row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2018/10/08/99/5368162.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=220&exp=3600" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">談指導新秀楊恩 林書豪：他也能給我很大幫助</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="{% static "assets/js/vendor/jquery.min.js" %}"><\/script>')</script>
+    <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/holder.min.js' %}"></script>
+    
+    <!-- Custom main javascript -->
+    <script type="text/javascript">
+
+        /* Formatted-String */ 
+        String.format = function() {
+            // The string containing the format items (e.g. "{0}")
+            // will and always has to be the first argument.
+            var theString = arguments[0];
+            
+            // start with the second argument (i = 1)
+            for (var i = 1; i < arguments.length; i++) {
+                // "gm" = RegEx options for Global search (more than one instance)
+                // and for Multiline search
+                var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+                theString = theString.replace(regEx, arguments[i]);
+            }
+            return theString;
+        }
+
+        $(document).ready(function(){
+            $firstload = ajaxLoadPost();
+            if($firstload) {
+                setInterval('ajaxLoadPost()', 10000);
+            }
+         })
+
+        function renderPost(data){
+            var container = document.getElementById("container-row")
+            var postTemplate = "<div class=\"col-md-4\"><div class=\"card mb-4 box-shadow\"><img class=\"card-img-top\" src={0}><div class=\"card-body\"><p class=\"card-text\">{1}</p><div class=\"d-flex justify-content-between align-items-center\"><div class=\"btn-group\"><button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button></div><small class=\"text-muted\">{2}</small></div></div></div></div>"
+            
+            for(var i=0; i<data.length; ++i){
+                var img_url = data[i].img_url;
+                var post_title = data[i].post_title
+                var post_date = new Date(data[i].post_date);
+
+                var posts = String.format(postTemplate, img_url, post_title, post_date.toLocaleString())
+                container.insertAdjacentHTML('beforeend', posts);
+            }
+
+            // DEBUG PRINT
+            console.log(data)
+        }
+
+        function ajaxLoadPost(){
+            $.ajax({  
+              url: 'http://localhost:8000/api/headlines/',  
+              type: 'GET',
+              success: renderPost,  
+              dataType: "json"  
+            });  
+
+            //return true;
+        }
+
+    </script>>
+  </body>
+</html>
