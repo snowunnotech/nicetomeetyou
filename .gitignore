@@ -1,5 +1,5 @@
 # Ignore py cache
-__pycache__/
+__pycache__
 
 # Ignore db
 *.sqlite3
