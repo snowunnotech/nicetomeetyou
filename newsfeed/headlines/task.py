@@ -20,7 +20,7 @@ def getNewsFeed():
 	# info in newsfeed
 	soup_post_list = getSoup(urlp.urljoin(url_base, url_newsfeed))
 	for p in soup_post_list.select('#news_list_body dl dt a'):
-		
+		 
 		post_id = int(p.get('href')[-7:])
 		if HeadlinePost.objects.filter(post_id=post_id).exists():
 			continue
@@ -40,8 +40,12 @@ def getNewsFeed():
 		post_date = datetime.strptime(post_date, '%Y-%m-%d %H:%M')
 		
 		post_content = ""
-		for c in soup_post.select('#story_body_content span p'):
-			post_content += str(c)
+		for p in soup_post.select('#story_body_content span p'):
+			post_content += str(p)
+
+		if 'autoplay=1&' in post_content: # removing annoying autoplay 
+			idx = post_content.index('autoplay=1&')
+			post_content = post_content[:idx] + post_content[idx + 11:]
 
 		# add new post to list
 		post_list.append({'post_id': post_id, 
@@ -53,7 +57,6 @@ def getNewsFeed():
 
 
 	# save to db
-	print('#post_list is saved : {}'.format(len(post_list)))
 	for post in post_list:
 		new_post = HeadlinePost(post_id=post['post_id'], 
 				post_title=post['post_title'],
