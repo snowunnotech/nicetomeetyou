@@ -19,3 +19,4 @@ urllib3==1.23
 wcwidth==0.1.7
 dj_database_url
 psycopg2
+redis==2.10.6
