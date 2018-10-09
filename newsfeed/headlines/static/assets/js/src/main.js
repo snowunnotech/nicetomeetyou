@@ -40,7 +40,7 @@ function renderPost(data){
 
 function ajaxLoadPost(){
     $.ajax({  
-      url: 'http://localhost:8000/api/headlines/',  
+      url: 'api/headlines/',  
       type: 'GET',
       success: renderPost,  
       dataType: "json"  
