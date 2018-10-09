@@ -29,14 +29,17 @@ ALLOWED_HOSTS = ['*']
 
 
 # Periodic Task Config
-Q_CLUSTER = { 
-'name': 'DjangORM', 
-'workers': 1, 
-'timeout': 1800, 
-'retry': 20, 
-'queue_limit': 50, 
-'bulk': 10, 
-'orm': 'default' 
+Q_CLUSTER = {
+    'redis': {
+        'host': os.environ['REDIS_URL'],
+        'port': 6379,
+        'db': 0,
+        'password': None,
+        'socket_timeout': None,
+        'charset': 'utf-8',
+        'errors': 'strict',
+        'unix_socket_path': None
+    }
 }
 
 REST_FRAMEWORK = {
