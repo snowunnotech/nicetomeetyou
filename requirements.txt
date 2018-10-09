@@ -17,3 +17,4 @@ six==1.11.0
 static3==0.7.0
 urllib3==1.23
 wcwidth==0.1.7
+dj_database_url
