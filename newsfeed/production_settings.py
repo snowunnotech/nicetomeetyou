@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'newsfeed.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
   
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': dj_database_url.config(default=os.environ['DATABASE_URL'])
 }
 
 
