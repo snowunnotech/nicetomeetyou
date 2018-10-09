@@ -32,7 +32,7 @@ Q_CLUSTER = {
     'name': 'DjangORM', 
     'workers': 1, 
     'timeout': 1800, 
-    'retry': 20, 
+    'retry': 1, 
     'queue_limit': 50, 
     'bulk': 10, 
     'orm': 'default' 
