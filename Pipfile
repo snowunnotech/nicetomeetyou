@@ -9,8 +9,6 @@ djangorestframework = "*"
 django-cors-headers = "*"
 "beautifulsoup4" = "*"
 requests = "*"
-django-background-tasks = "*"
-celery = "*"
 paho-mqtt = "*"
 
 [dev-packages]
