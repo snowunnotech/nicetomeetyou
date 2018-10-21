@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>News</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.js"></script>
+ </head>
+<body>
+    <table id = "table"></table>
+    <script type="text/javascript"></script>
+</body>
+</html>
+<script>
+    var client = new Paho.MQTT.Client('broker.mqttdashboard.com', Number(8000) , 'client1')
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+
+    client.connect({onSuccess:onConnect});
+    function onConnect(){
+        console.log("onConnect");
+        client.subscribe('crawl');
+    }
+
+    function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+            console.log("onConnectionLost:"+responseObject.errorMessage);
+        }
+    }
+
+    // called when a message arrives
+    function onMessageArrived(message) {
+        if(message.payloadString === 'update'){
+            if(confirm("有新的新聞，需要重整嗎？")){
+                window.location.reload();  
+            }
+        }
+        console.log("onMessageArrived:"+message.payloadString);
+    }
+
+    $.ajax({
+        url : "/newsapi?format=json",
+        dataType: "json",
+        success : function(data){
+                var table = '<tbody>';
+                for(i = 0; i < data.length; i++){
+                    table += '<tr>';
+                    table += '<td><a href = /story/' + data[i].uuid  + '>' + data[i].title + '</td>';
+                    table += '<td>' + data[i].published_date + '</td>';
+                    table += '</tr>';
+                }
+                table += '</tbody>';
+                $('#table').html(table);
+            }
+        });
+
+        setInterval(function(){
+            $.ajax({
+                url : "/crawl",
+                success : function(data){
+                    console.log(data)
+                }
+            });
+        },5000);
+</script>
