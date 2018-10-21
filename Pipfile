@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+"beautifulsoup4" = "*"
+requests = "*"
+django-background-tasks = "*"
+celery = "*"
+paho-mqtt = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
