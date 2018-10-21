@@ -1,0 +1,12 @@
+/** 
+ * Some overrides from default jquery.bxslider styles
+ **/
+
+ .bx-wrapper {
+ 	background: transparent!important;
+ }
+
+.bx-wrapper .bx-controls-direction a {
+	top: 100%!important;
+	margin-top: 0!important;
+}

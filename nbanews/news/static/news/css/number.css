@@ -1,0 +1,91 @@
+/*
+ * 數字鍵
+ */
+
+.number {
+  width: 100vw;
+  height: 100vh;
+}
+.wc100 {
+  width: 100%;
+}
+.wc75 {
+  /*width: 75%;*/
+  float: left;
+}
+.wc25 {
+  /*width: 25%;*/
+  float: left;
+}
+.number .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col, .col2 {
+  min-height: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.col2 {
+  width: 140px;
+  float: left;
+}
+.col {
+  width: 70px;
+  float: left;
+}
+
+/* 數字按鈕(含清除) */
+.numbtn {
+  width: 70px;
+  height: 70px;
+}
+
+/* 0 按鈕 */
+.numwidebtn {
+  width: 140px;
+  height: 70px;
+}
+
+/* 更正 、 確認按鈕 */
+.imu, .imk {
+  width: 70px;
+  height: 140px;
+}
+
+.numbtn, .numwidebtn, .imk, .imu {
+  display: block;
+  overflow: hidden;
+  background-size: 100% 100%!important;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.im1 {background: url(../images/number/1.png);}
+.im1:active {background: url(../images/number/01.png);} 
+.im2 {background: url(../images/number/2.png);}
+.im2:active {background: url(../images/number/02.png);}
+.im3 {background: url(../images/number/3.png);}
+.im3:active {background: url(../images/number/03.png);}
+.im4 {background: url(../images/number/4.png);}
+.im4:active {background: url(../images/number/04.png);}
+.im5 {background: url(../images/number/5.png);}
+.im5:active {background: url(../images/number/05.png);}
+.im6 {background: url(../images/number/6.png);}
+.im6:active {background: url(../images/number/06.png);}  
+.im7 {background: url(../images/number/7.png);}
+.im7:active {background: url(../images/number/07.png);}
+.im8 {background: url(../images/number/8.png);}
+.im8:active {background: url(../images/number/08.png);}
+.im9 {background: url(../images/number/9.png);}
+.im9:active {background: url(../images/number/09.png);}
+.im0 {background: url(../images/number/0.png);}
+.im0:active {background: url(../images/number/00.png);}
+.imu {background: url(../images/number/u1.png);}  
+.imu:active {background: url(../images/number/u01.png);}
+.imc {background: url(../images/number/c1.png);}  
+.imc:active {background: url(../images/number/c01.png);}
+.imk {background: url(../images/number/k1.png);}  
+.imk:active {background: url(../images/number/k01.png);} 

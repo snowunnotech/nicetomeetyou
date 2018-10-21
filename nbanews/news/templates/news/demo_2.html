@@ -1,0 +1,23 @@
+{% extends 'news/demo_1.html' %}
+{% block newsTable %}
+	<thead>
+	     <tr>
+	         <th>圖片</th>
+	         <th>標題</th>
+	         <th>內容</th>
+	         <th>時間</th>
+	     </tr>
+	 </thead>
+	 <tbody>
+	     {% for news in newsDB %}
+			 <tr>
+			     <td><img src="{{ news.imgsrc }}" width='292'/></td>
+			     <td>{{ news.title }}</td>
+			     <td>{{ news.content }}</td>
+			     <td>{{ news.time|date:"Y-m-d H:i:s" }}</td>
+			 </tr>
+		{% endfor %}
+	 </tbody>
+	 {% load static %}
+	 <script type="text/javascript" src="{% static 'news/js/demo_2.js' %}"></script>
+{% endblock %}

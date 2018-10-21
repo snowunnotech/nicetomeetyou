@@ -1,0 +1,45 @@
+/** 
+ * Some overrides from default dataTable styles
+ **/
+
+/* message */
+.dataTables_info {
+	display: none !important;
+}
+
+/* paginate */
+.dataTables_paginate {
+    text-align: center;
+}
+
+/* 預設 */
+.paging_full_numbers a.paginate_button, 
+.paging_full_numbers a.paginate_active {
+    border: 1px solid transparent;
+    padding: 3px 10px;
+    cursor: pointer;
+    color: #428bca;
+    border-left: 0px;
+}
+
+/* 第一頁 */
+.paging_full_numbers a.paginate_button.first {
+    border-radius: 4px 0px 0px 4px;
+    border-left: 1px solid transparent;
+}
+
+/* 最後一頁 */
+.paging_full_numbers a.paginate_button.last {
+    border-radius: 0px 4px 4px 0px;
+}
+
+/* 當前頁面 */
+.paging_full_numbers a.paginate_button.current {
+    color: #fff;
+    background-color: #428bca;
+}
+
+/* 上一頁、 下一頁 */
+.paging_full_numbers a.paginate_button {
+    background-color: transparent;
+}

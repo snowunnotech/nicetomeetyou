@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'news/head.html' %}
+        <!-- web socket -->
+        {% load staticfiles %}
+        <!-- <script type="text/javascript" src="{% static 'news/js/webSocket.js' %}"></script>  -->
+    </head>
+
+    <body class="bg" ontouchstart="">
+        <div id="main">
+            {% include 'news/header.html' %}
+            <div class="heading">
+                <div class="wrapper">
+                    <div class="pageName">{{pageName}}</div>
+                </div>
+            </div>
+            <section class="wrapper">
+                <ul class="catalog">
+                    <li onclick="javascript:location.href='/news/demo_one'">1.抓取焦點新聞</li>
+                    <li onclick="javascript:location.href='/news/demo_two'">2.抓取新聞並儲存至DB</li>
+                    <li onclick="javascript:location.href='/news/demo_three'">3.使用 Django REST Framework 配合 AJAX 實現焦點新聞列表、詳情</li>
+                    <li onclick="javascript:location.href='/news/demo_four'">進階:實現爬蟲自動定時抓取、每當抓取到新的新聞時立即通知頁面</li>
+                    <!-- <li onclick="javascript:location.href='/'">進階:部屬至服務器</li>  -->
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    
+   
+</script>

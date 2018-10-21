@@ -1,0 +1,36 @@
+{% extends 'news/demo_1.html' %}
+{% block view %}
+    <div class="form-group">
+         <label class="large">說明：</label>
+         <br>
+         <span id="title">
+            1.實現方式 : celery==3.1.26.post2, RabbitMQ<br>
+            2.定時抓取間隔 : 1分鐘<br>
+            3.通知頁面實現方式 : channels==2.1.2
+         </span>
+     </div>
+     
+{% endblock %}
+{% block newsTable %}
+     <thead>
+         <tr>
+             <th>圖片</th>
+             <th>標題</th>
+             <th>內容</th>
+             <th>時間</th>
+         </tr>
+     </thead>
+     <tbody>
+         {% for news in newsDB %}
+             <tr>
+                 <td><img src="{{ news.imgsrc }}" width='292'</td>
+                 <td>{{ news.title }}</td>
+                 <td>{{ news.content }}</td>
+                 <td>{{ news.time|date:"Y-m-d H:i:s" }}</td>
+             </tr>
+         {% endfor %}
+     </tbody>
+     {% load static %}
+     <script type="text/javascript" src="{% static 'news/js/demo_4.js' %}"></script>
+     <script type="text/javascript" src="{% static 'news/js/indexWebSocket.js' %}"></script>
+{% endblock %}
