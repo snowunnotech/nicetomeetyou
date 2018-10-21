@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- css -->
+    <link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+
+    <!-- javascript -->
+    <script src="/static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <title>test</title>
+</head>
+<body>
+<div id=story style="width:70%; margin: 0 auto">
+    <h1 style="margin: 0.5em 0">聯合新聞網 NBA 焦點新聞</h1>
+    <!--<br><a href="update"><span class="glyphicon glyphicon-refresh">refresh</span></a>-->
+    <!-- List group -->
+    <div class="list-group" id="myList" role="tablist">
+        {% for row in table %}
+            {% if forloop.first %}
+        <a class="list-group-item list-group-item-action active" data-toggle=collapse data-target=#{{ forloop.counter }} href=#{{ forloop.counter }}>
+            {% else %}
+        <a class="list-group-item list-group-item-action" data-toggle=collapse data-target=#{{ forloop.counter }} href=#{{ forloop.counter }}>
+            {% endif %}
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ row.title }}</h5>
+                <small>{{ row.info }}</small>
+            </div>
+            <br>
+            <p id={{ forloop.counter }} class="collapse" data-parent="#story">
+                <!--{{ row.story|truncatechars:60 }}-->
+                {{ row.story }}
+            </p>
+                    <br>
+            <small>{{ row.author }}</small>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    $('#myList a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+
+</body>
+</html>
