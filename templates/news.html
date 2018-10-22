@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <table id="article_table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="article_tbody">
+        {% for article in article_list %}
+                <tr>
+                    <td><a href="/article/{{article.pid}}">{{ article.title }}</a></td>
+                    <td>{{ article.author }}</td>
+                    <td>{{ article.time }}</td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        <button id="refresh_button" type="button">Refresh!</button>
+         <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+                document.getElementById("refresh_button").onclick = function() {refreshTable()};
+
+                function refreshTable() {
+                    var node = document.getElementById("article_tbody");
+                    while (node.hasChildNodes()) {
+                        node.removeChild(node.lastChild);
+                    }
+                    $.get("/articles/",{}, function(ret){
+                        var i = 0
+                        var table = document.getElementById("article_tbody");
+                        for(i=0;i<ret.length;i++) {
+                            var row = table.insertRow(0);
+                            row.insertCell(0).innerHTML = "<a href=\"/article/" + ret[i]['id'] + "\">" + ret[i]['title'] + "</a>";
+                            row.insertCell(1).innerHTML = ret[i]['author'];
+                            row.insertCell(2).innerHTML = ret[i]['date'];
+                        }
+                    })
+                }
+        </script>
+    </body>
+</html>

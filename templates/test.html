@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>NBA NEWS</title>
+  </head>
+  <body>
+    <div id="news_list" class="box">
+        <h1 class="box_title">NBA 新聞</h1>
+        <div id="news_list_body" class="boxbody"></div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+                url: '/news',
+                type: 'GET',
+                dataType: 'json'
+                success: function(news){
+                    console.log("check news");
+                    get_story(news);
+                }
+                error: function(){
+                    console.log("failure check news")
+                }
+            });
+        });
+
+        function get_story(news){
+            news_list = document.getElementById('news_list_body');
+            for (var i=0; i<news.length; i++){
+                data = news[i];
+                html +=
+                    '<dt>' +
+                        '<a href="/story/' + data.id + '">' +
+                            '<span class="img-boxs">' +
+                                '<img data-sizes="auto" class="lazyautosizes lazyloaded" src="' + data.img + '" sizes="180px">' +
+                            '<h3>' + data.title + '</h3>' +
+                            '<b class="h24">' + data.time + '</b>' +
+                            '<p>' + data.context[0] + '</p>'
+                            '</span>' +
+                        '</a>' +
+                    '</dt>';
+
+            }
+            news_list.innerHTML = '<dl>' + html + '</dl>'
+        }
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
