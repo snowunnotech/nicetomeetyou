@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>{{data.title}}</title>
+    </head>
     <body>
-            <h3> {{ article.title }} </h3>
-            <h4> {{ article.author }} </h4>
-            <h4> {{ article.time }} </h4>
-            <p> {{ article.context }} </p>
+        <div>
+            <h1>{{data.title}}</h1>
+            <div>
+                <span>{{data.time}}</span>
+                "{{data.author}}"
+            </div>
+            <br>
+            <img width="620" height="350" src="{{data.img}}">
+            <div style="width:620px;">
+                <p style="font-size:20px">{{data.context}}</p>
+            </div>
+        </div>
+
     </body>
 </html>

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from nbanews import views
-from nbanews.views import get_post, get_story
+from nbanews.views import get_story
 
 router = DefaultRouter()
 router.register('news', views.NewsViewSet)
@@ -25,6 +25,7 @@ router.register('news', views.NewsViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('news/', get_post),
-    path('article/<int:pk>/', get_story),
+    path('story/<pk>/', get_story),
+    path('', include('nbanews.urls')),
+
 ]

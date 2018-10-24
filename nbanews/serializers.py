@@ -4,4 +4,4 @@ from nbanews.models import News
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        field = ('pid', 'title', 'time', 'author', 'img', 'context')
+        fields = ('pid', 'title', 'time', 'author', 'img', 'context')

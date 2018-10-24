@@ -3,25 +3,11 @@ import urllib3
 import certifi
 from bs4 import BeautifulSoup
 from nbanews.models import News
+from rest_framework import viewsets
 from django.shortcuts import render
 from nbanews.serializers import NewsSerializer
-from rest_framework import viewsets
-
-def get_post(request):
-    post = News.objects.all()
-    return render(request, 'news.html', {
-        'article_list': post,
-    })
-
-def get_story(request, pk):
-    story = News.objects.get(pid=pk)
-    return render(request, 'story.html',{
-        'article': story,
-    })
-
-class NewsViewSet(viewsets.ModelViewSet):
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 class Crawler():
     def request(self):
@@ -38,17 +24,17 @@ class Crawler():
                 news_author = story['author']
                 news_img = story['img']
                 news_context = story['context']
-                News.objects.get_or_create(
-                    pid=news_id,
-                    title=news_title,
-                    time=news_time,
-                    author=news_author,
-                    img=news_img,
-                    context=news_context,
-                )
-
-
-
+                try:
+                    News.objects.get_or_create(
+                        pid=news_id,
+                        title=news_title,
+                        time=news_time,
+                        author=news_author,
+                        img=news_img,
+                        context=news_context,
+                    )
+                except False:
+                    pass
 
             except TypeError:
                 pass
@@ -66,8 +52,9 @@ class Crawler():
         story['img'] = parser.find_all('span')[2].find('img').get('data-src')
         article = []
         context = parser.find_all('p')
-        for paragraph in context[2:]:
+        for paragraph in context[1:]:
             article.append(paragraph.text)
+        article = '\n'.join(article)
         story['context'] = article
 
         return story
@@ -75,7 +62,27 @@ class Crawler():
 get = Crawler()
 get.request()
 
-def hello_view(request):
-    return render(request, 'test.html', {
-        'data': "Hello Django ",
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+
+class get_news(APIView):
+    def get(self, request):
+        news = News.objects.all().order_by('-pid')
+        serializer = NewsSerializer(news, many=True)
+        return Response(serializer.data)
+class get_details(APIView):
+    def get(self, request, pk):
+        detail = News.objects.get(pid=pk)
+        serializer = NewsSerializer(detail)
+        return Response(serializer.data)
+
+def target_html(request):
+    return render(request, 'news.html')
+
+def get_story(request, pk):
+    story = News.objects.get(pid=pk)
+    return render(request, 'story.html',{
+        'data': story,
     })
+

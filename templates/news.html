@@ -1,45 +1,79 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <table id="article_table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody id="article_tbody">
-        {% for article in article_list %}
-                <tr>
-                    <td><a href="/article/{{article.pid}}">{{ article.title }}</a></td>
-                    <td>{{ article.author }}</td>
-                    <td>{{ article.time }}</td>
-                </tr>
-        {% endfor %}
-            </tbody>
-        </table>
-        <button id="refresh_button" type="button">Refresh!</button>
-         <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>
-                document.getElementById("refresh_button").onclick = function() {refreshTable()};
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-                function refreshTable() {
-                    var node = document.getElementById("article_tbody");
-                    while (node.hasChildNodes()) {
-                        node.removeChild(node.lastChild);
-                    }
-                    $.get("/articles/",{}, function(ret){
-                        var i = 0
-                        var table = document.getElementById("article_tbody");
-                        for(i=0;i<ret.length;i++) {
-                            var row = table.insertRow(0);
-                            row.insertCell(0).innerHTML = "<a href=\"/article/" + ret[i]['id'] + "\">" + ret[i]['title'] + "</a>";
-                            row.insertCell(1).innerHTML = ret[i]['author'];
-                            row.insertCell(2).innerHTML = ret[i]['date'];
+    <title>NBA NEWS</title>
+</head>
+<body>
+    <div id="news_list" class="box">
+      <h1 class="box_title">NBA 新聞</h1>
+        <div id="news_list_body" class="boxbody"></div>
+    </div>
+
+    <script type="text/javascript">
+        var capacity = 0
+
+        $(document).ready(function(){
+            $returntrue=check();
+            if($returntrue){
+              setInterval(function(){ check(); }, 60000);  //預設1分鐘自動重複執行check()函數
+            }
+            function check(){
+                $.ajax({
+                    url: window.location.origin + '/test',
+                    dataType: 'json',
+                    method: 'GET',
+                    success: function(data){
+                        if (data.length > capacity){
+                            get_news(data);
                         }
-                    })
+                    },
+                    error: function(error){
+                        console.log("Error!!")
+                    }
+                })
+                return true;
+            }
+        });
+
+        function get_news(data){
+            var id = document.getElementById("news_list_body")
+            var html = ""
+            if (data.length>capacity){
+                for (let i=0; i<data.length-capacity; i++){
+                        html += "<div class='media'>" +
+                                    "<img class='mr-3' width='270' height='180' src=" + data[i].img + "alt='Generic placeholder image'>" +
+                                    "<div class='media-body'>" +
+                                        "<h3 class='mt-0'>" + data[i].title + "</h3><br>" +
+                                        "<b class='h24'>" + data[i].time + "</b>" +
+                                        "<div style='width:560px;'>" +
+                                          "<br><h5 class='limited'>" + data[i].context + "</h5>" +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                                "<a href=story/" + data[i].pid + ">" + "看更多... </a>" +
+                                "<br><br>"
                 }
-        </script>
-    </body>
+                id.insertAdjacentHTML('afterbegin', html);
+            }
+            capacity = data.length
+
+            $(function(){
+                var len = 50; // 超過50個字以"..."取代
+                $(".limited").each(function(i){
+                  if($(this).text().length>len){
+                      $(this).attr("title",$(this).text());
+                      var text=$(this).text().substring(0,len-1)+"...";
+                      $(this).text(text);
+                  }
+                });
+            });
+        }
+    </script>
+</body>
 </html>
