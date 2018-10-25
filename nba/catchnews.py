@@ -71,7 +71,7 @@ if __name__=="__main__":
 
     get_news_data(home_url,nba_url)
 
-        ç
+        
             
 
         

@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    font-family: 微軟正黑體;
+    /* position: relative; */
+}
+
+.head_bar{
+    width: 100%;
+    height: 25%;
+    background-color: crimson;
+    /* position: absolute; */
+}
+
+#nba_title{
+    padding: 10px;
+    width: 12%;
+    color: blue;
+    font-size: 150%;
+    font-weight: bold;
+    /* position: absolute; */
+    top:11%
+}

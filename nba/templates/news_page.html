@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load staticfiles %}
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <link href="{% static 'css/NBA_css.css' %}" rel="stylesheet">
+    <title>NBA 焦點新聞</title>
+   
+</head>
+<body>
+   
+    <header class = "head_bar">
+        <div id = "nba_title">NBA重點新聞</div>
+    </header>
+    <section class = "content-box">
+        <div id = title>2</div>
+        <div id = content></div>
+        <div id = time>3</div>
+        <div id = img>4</div>
+    </section>    
+    
+    <script>
+        
+    $.ajax({
+ 
+        // type:"HEAD",
+        async:false,
+        datatype:"json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRFToken', Cookies.get('csrftoken'))
+    },
+        url:"http://127.0.0.1:8000/api/",
+        success:function(data){
+            var re_content = content
+            // console.log(data[0]['cotent'])
+            for (var i = 0; i<data.length; i++){
+                console.log(data[i]['title'])
+                console.log(data[i]['ID'])
+                $('#content').text(data[i]['cotent']);
+            }
+            // $('#content').text(data[0]['cotent']);
+        }
+    })
+    </script>
+</body>
+</html>

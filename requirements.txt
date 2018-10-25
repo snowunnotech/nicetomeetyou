@@ -1,0 +1,4 @@
+Django==2.1.2
+requests==2.20.0
+beautifulsoup4==4.6.3
+djangorestframework==3.9.0
