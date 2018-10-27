@@ -22,5 +22,6 @@ from news import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', views.Get_nbanew.as_view()),
-    path('news/',views.newspage)
+    path('news/',views.newspage),
+    path('fullnews/<int:num>',views.newspage_full)
 ]

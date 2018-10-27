@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load staticfiles %}
+    
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type = "text/javascript" src="{% static "js/catch_data.js"%}"></script>
     <link href="{% static 'css/NBA_css.css' %}" rel="stylesheet">
     <title>NBA 焦點新聞</title>
    
@@ -22,71 +24,6 @@
     <div class = "content_all">
       
     </div>
-        
-    <script>
 
-    $(function(){    
-   
-    getdata();
-
-
-    
-    setInterval(function(){getdata()},60000);
-    
-    
-    
-    function getdata(){    
-        $.ajax({
- 
-        // type:"HEAD",
-            async:false,
-            datatype:"json",
-            beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-CSRFToken', Cookies.get('csrftoken'))
-        },
-            url:"http://127.0.0.1:8000/api/",
-            success:function (data){
-            
-            ID_N = data.length
-            // console.log(ID_N)
-            // console.log(data[0]['cotent'])
-            $('section').remove();
-            for (var i = data.length-1; i>-1; i--){
-
-                if((data[i]['cotent'].length)>=50){
-                   var fusion_cotent = data[i]['cotent'].slice(0,250)
-                    } 
-                
-                
-                $('.content_all').append($('<section></section>')
-                .append($('<div></div>')
-                .attr("class",'title_box')
-                .append($('<div></div>')
-                .attr("class",'title').text(data[i]['title']))
-                .append($('<div></div>')
-                .attr("class","time").text(data[i]['time'])))
-                .append($("</br>"))
-                .append($('<div></div>')
-                .attr("class","content_box")
-                .append($('<img></img>')
-                .attr("class","content_img").attr("src",data[i]['img']))
-                .append($('<div></div>')
-                .attr("class","content").text(fusion_cotent)
-                .append($('<nobr></nobr>')
-                .attr("class","read_link").text("....(繼續閱讀)")))))
-                
-            }
-         
-          
-        },
-            error:function(){
-                console.log("error!!");
-            }
-        });
-    }
-    
-});
-    
-    </script>
 </body>
 </html>

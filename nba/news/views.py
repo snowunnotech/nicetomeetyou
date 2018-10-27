@@ -24,3 +24,11 @@ def newspage(request):
     request_context.push(locals())
     html = template.render(context = locals(),request=request)
     return HttpResponse(html)
+
+def newspage_full(request,num = ''):
+
+    template = get_template('newsfull.html')
+    request_context = RequestContext(request)
+    request_context.push(locals())
+    html = template.render(context = locals(),request=request)
+    return HttpResponse(html)    
