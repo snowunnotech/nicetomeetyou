@@ -16,7 +16,7 @@ $(function(){
         // a = ID_A;
         a = total();
         getdata();
-        console.log(a)},10000);
+        },10000);
  
     
     function getdata(){    
@@ -69,7 +69,6 @@ $(function(){
                 
             }
          
-          
         },
             error:function(){
                 console.log("error!!");
