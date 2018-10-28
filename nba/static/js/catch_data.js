@@ -1,12 +1,23 @@
-$(function(){    
-   
+$(function(){
+       
+    
+
     getdata();
-
-
+    var a = '';
     
-    setInterval(function(){getdata()},60000);
+    function total(){
+        return ID_A;
+    }
+   
     
     
+   
+    setInterval(function(){
+        // a = ID_A;
+        a = total();
+        getdata();
+        console.log(a)},10000);
+ 
     
     function getdata(){    
         $.ajax({
@@ -19,9 +30,14 @@ $(function(){
         },
             url:"http://127.0.0.1:8000/api/",
             success:function (data){
+           
+            ID_A = data.slice(-1)[0]["ID"];
+            ID_N = (data.length)
+
+            if (ID_N>a){
+                alert("新資料來囉！！")
+            }
             
-            ID_N = data.length
-            // console.log(ID_N)
             // console.log(ID_N)
             $('section').remove();
             for (var i = data.length-1; i>-1; i--){

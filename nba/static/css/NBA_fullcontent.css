@@ -51,3 +51,11 @@ body{
     background-color: lavenderblush;
     line-height: 35px;
 }
+.back_link{
+    text-align: center;
+}
+
+#back_home{
+    font-size: 19px;
+    padding: 10px;
+}
