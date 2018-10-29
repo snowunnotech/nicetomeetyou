@@ -29,4 +29,4 @@ django-filter
 ```
 
 ## Screenshot
-![image](https://i.imgur.com/qvAEttl.jpg)
+![image](https://i.imgur.com/EuVgm6e.jpg)
