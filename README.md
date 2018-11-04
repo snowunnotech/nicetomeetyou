@@ -85,7 +85,7 @@ python <本項目地址>/crawler/crawler_starter.py
 38. pandas=0.23.4
 39. pbr=3.1.1
 40. pip=10.0.1
-41 py2neo=3.1.2
+41. py2neo=3.1.2
 42. pypinyin=0.22.0
 43. python-dateutil=2.7.5
 44. pytz=2018.7
@@ -153,7 +153,7 @@ POST
 
 ### 實時加載最新引入的新聞
 http://127.0.0.1:8000/get_newsfeed/
-####方法
+#### 方法
 GET
 #### 變量
 無
