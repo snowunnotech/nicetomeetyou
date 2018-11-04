@@ -1,8 +1,22 @@
 # 徐子函Django
+# 項目需求
+1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
+2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
+3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
+	 * 焦點新聞列表
+	 * 新聞詳情頁面
+4. 以 Pull-Request 的方式將代碼提交。
+
+## 進階要求
+1. 實現爬蟲自動定時抓取。
+2. 每當抓取到新的新聞時立即通知頁面。
+3. 将本 demo 部署至服务器并可正确运行。
+
+# 系統說明
 
 ## 環境要求
 1. Python 3.6.3
-2. Redis
+2. Redis (用於最新新聞通知)
 
 ## 運行說明
 ### 運行於配置好的虛擬環境
@@ -11,20 +25,24 @@
 將"C:\Users\Lenovo\Anaconda3"改為您正式安裝的Python解釋器所在的地址
 1. 運行Redis，保證端口號為6379
 2. 運行本項目，預留8000端口
-3. 運行命令 <本項目地址>/venv/Scripts/python <您項目地址>/manage.py runserver
+3. 運行命令 <本項目地址>/venv/Scripts/python <本項目地址>/manage.py runserver
 ### 直接運行
 請先確定您是否安裝本項目所使用的第三方庫，若您已經安裝，則可直接於您的
 Python環境下運行本項目，而下面是運行步驟:
 1. 運行Redis，保證端口號為6379
 2. 運行本項目，預留8000端口
-3. 運行命令 python <您項目地址>manage.py runserver
+3. 運行命令 python <本項目地址>manage.py runserver
 
 ## 爬蟲說明
 ### 運行於配置好的虛擬環境
 若您要直接使用爬蟲，請運行
-<您項目地址>/venv/Scripts/python <您項目地址>/crawler/crawler_starter.py
+<本項目地址>/venv/Scripts/python <本項目地址>/crawler/crawler_starter.py
 ### 直接運行
-python <您項目地址>/crawler/crawler_starter.py
+python <本項目地址>/crawler/crawler_starter.py
+
+## 數據庫說明
+本項目是使用django內置的SQL Lite，數據庫存儲於<本項目地址>/db.sqlite3
+，可以使用DB Browser for SQLite來打開瀏覽。
 
 ## 使用的Python第三方庫
 1. Automat=0.7.0
@@ -95,7 +113,7 @@ GET
 
 ### 查看特定ID新聞
 #### API樣例
-http://127.0.0.1:8000/get_news/id=<newsId>
+http://127.0.0.1:8000/get_news/id={newsId}
 #### 方法
 GET
 #### 變量
@@ -106,7 +124,7 @@ GET
 ## 接口說明
 ### 以給定的新聞ID查看新聞
 #### API樣例
-http://127.0.0.1:8000/get_news_by_id/id=<newsId>
+http://127.0.0.1:8000/get_news_by_id/id={newsId}
 #### 方法
 GET
 #### 變量
@@ -199,21 +217,8 @@ POST
 
 ## 自動排程功能
 ### 運行於配置好的虛擬環境
-運行命令 <本項目地址>/venv/Scripts/python <您項目地址>/manage.py crontab add 
+運行命令 <本項目地址>/venv/Scripts/python <本項目地址>/manage.py crontab add 
 ### 直接運行
-運行命令 python <您項目地址>/manage.py crontab add 
+運行命令 python <本項目地址>/manage.py crontab add 
 ### 其他說明
 只有Linux操作系統才支持排程功能，若您成功運行了排程，會於每10分鐘運行1次爬蟲
-
-# nice to meet you
-1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
-2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
-3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
-	 * 焦點新聞列表
-	 * 新聞詳情頁面
-4. 以 Pull-Request 的方式將代碼提交。
-	
-## 進階要求
-1. 實現爬蟲自動定時抓取。
-2. 每當抓取到新的新聞時立即通知頁面。
-3. 将本 demo 部署至服务器并可正确运行。
