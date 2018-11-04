@@ -24,8 +24,6 @@ def post_save_func(sender, **kwargs):
 
     # 放入有序集合
     con.zadd('news_feeds', timeStamp, news_json)
-
-    # cache.set(news.news_url, news_json, 10)
     print("快取:'" + news.title + "'新聞")
 
 pre_save.connect(pre_save_func)             # models對象保存前觸發callback函數

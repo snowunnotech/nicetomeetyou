@@ -24,11 +24,10 @@ from notification.controller import get_newsfeed
 from notification.view import news_feeds_index
 
 urlpatterns = [
-    # 新聞及時滾動
-    # http://127.0.0.1:8000/get_newsfeed/ 引入新聞
-    url(r'^get_newsfeed/', get_newsfeed),
+    #
 
-    # http://127.0.0.1:8000/news_feeds_index/ 引入新聞
+
+    # http://127.0.0.1:8000/news_feeds_index/ 實時加載最新引入的新聞
     url(r'^news_feeds_index/', news_feeds_index),
 
     # http://127.0.0.1:8000 首頁
@@ -48,14 +47,17 @@ urlpatterns = [
     # http://127.0.0.1:8000/import_news/ 引入新聞
     url(r'^import_news/', import_news),
 
-    # http://127.0.0.1:8000/get_news_for_table_data/
+    # http://127.0.0.1:8000/get_news_for_table_data/ 為前端datatable取得資料而設計的API
     url(r'^get_news_for_table_data/', get_news_for_table_data),
 
-    # http://127.0.0.1:8000/get_newses_dict/offset=1&limit=1000&desc=1
+    # http://127.0.0.1:8000/get_newses_dict/offset=1&limit=1000&desc=1 取得一段新聞數據
     url(r'^get_newses_dict/offset=(?P<offset>\d+)&limit=(?P<limit>\d+)&desc=(?P<desc>\d+)', get_newses_dict),
 
-    # http://127.0.0.1:8000/get_newes_count/
+    # http://127.0.0.1:8000/get_newes_count/ 取得新聞總條數
     url(r'^get_newes_count/', get_newes_count),
+
+# http://127.0.0.1:8000/get_newsfeed/ 取得新聞及時滾動
+    url(r'^get_newsfeed/', get_newsfeed),
 
     # http://127.0.0.1:8000/get_news_by_id/id=1 取得新聞
     url(r'^get_news_by_id/id=(?P<id>\d+)', get_news_by_id),
