@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA Top News</title>
+
+</head>
+<body>
+<div>
+    <div class='list'>
+    </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function format(data) {
+    var result = '';
+    for (n in data) {
+        result += '<div>' +
+            data[n].title +
+            '<p>' +
+            '<img src=\'' +
+            data[n].imgUrl +
+            '\'>'
+            '</div>';
+    }
+    return result;
+}
+
+var page = 1
+
+$.ajax({
+    url : "/parseNbaUdn/topNews/test",
+    type: 'GET',
+    data: {'page': page},
+    dataType: "json",
+    success : function (data) {
+        console.log(data);
+        $('.list').append(format(data));
+    }
+});
+
+
+
+</script>
+</body>
+</html>

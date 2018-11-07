@@ -6,7 +6,7 @@ from .parser import TopNewsParser
 
 # Create your views here.
 
-
+# parse top news title and link then save to database
 def task(request):
     url = 'https://nba.udn.com/nba/index?gr=www'
     page = requests.get(url)
@@ -20,22 +20,27 @@ def task(request):
         finally:
             pass
 
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from .serializers import UserSerializer, GroupSerializer
+def index(request):
+    return render(request, 'index.html')
 
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from .serializers import TopNewsSerializer
+from rest_framework.response import Response
+from django.http import JsonResponse
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+class TopNewsViewSet(viewsets.ModelViewSet):
+    queryset = TopNews.objects.all()
+    serializer_class = TopNewsSerializer
 
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    @action(detail='', methods=['get'], url_path='test')
+    def get_news_list(self, request):
+        page = int(request.query_params.get('page'))
+        # page = 1
+        itemPerPage = 2
+        start = (page - 1) * itemPerPage
+        end = page * itemPerPage
+        image = TopNews.objects.all().order_by('-id')[start:end]
+        result = TopNewsSerializer(image, many=True)
+        # return Response(result.data, status=status.HTTP_200_OK)
+        return JsonResponse(result.data, safe=False)
