@@ -11,7 +11,7 @@ services:
                         - "15672:15672"
         celery:
                 build: ./celery
-                command: celery -A crawler work -l info
+                command: bash -c "celery -A celery_app worker -l info"
                 restart: always
                 depends_on:
                         - rabbitmq
@@ -22,7 +22,9 @@ services:
                 ports:
                         - "80:8000"
                 volumes:
-                        - .:/nicetomeetyou
+                        - api_data:/docker_api
                 depends_on:
                         - rabbitmq
+volumes:
+        api_data:
 

@@ -10,3 +10,8 @@
 1. 實現爬蟲自動定時抓取。
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
+
+### Answer
+1. 使用docker-compose啟動 django/rabbitmq/celery container
+2. 
+
