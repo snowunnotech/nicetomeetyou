@@ -2,37 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7740d442-b39b-42de-92ef-33141781ae82" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build.sh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/celery_crawler/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/celery_crawler/celery_config.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/celery_crawler/tasks.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/crawler.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
-      <change beforePath="$PROJECT_DIR$/manage.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/admin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/apps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/serializers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/urls.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nicetomeetyou/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nicetomeetyou/settings.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nicetomeetyou/urls.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nicetomeetyou/wsgi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/js/news/detail.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/js/news/list.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/news/detail.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/news/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/celery/requirements.txt" afterPath="$PROJECT_DIR$/celery/requirements.txt" />
+      <change beforePath="$PROJECT_DIR$/django/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/django/requirements.txt" afterPath="$PROJECT_DIR$/django/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +17,18 @@
     <SUITE FILE_PATH="coverage/nicetomeetyou$crawler.coverage" NAME="crawler Coverage Results" MODIFIED="1541663876036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/django/nicetomeetyou/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-252">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -98,7 +81,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-7" />
     <option name="width" value="1352" />
     <option name="height" value="1047" />
@@ -132,6 +115,12 @@
               <item name="nicetomeetyou" type="b2602c69:ProjectViewProjectNode" />
               <item name="nicetomeetyou" type="462c0819:PsiDirectoryNode" />
               <item name="django" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nicetomeetyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nicetomeetyou" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+              <item name="nicetomeetyou" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -236,7 +225,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1352" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1352" height="1047" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -244,7 +234,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16043957" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19272445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19272445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -606,7 +596,7 @@
         <state relative-caret-position="420">
           <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
-            <element signature="e#0#56#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -616,7 +606,7 @@
         <state relative-caret-position="252">
           <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -625,6 +615,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django/nicetomeetyou/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
