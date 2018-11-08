@@ -9,8 +9,14 @@ services:
                 ports:
                         - "5672:5672"
                         - "15672:15672"
+        celery:
+                build: ./celery
+                command: celery -A crawler work -l info
+                restart: always
+                depends_on:
+                        - rabbitmq
         app:
-                build: .
+                build: ./django
                 command: sh build.sh
                 restart: always
                 ports:
