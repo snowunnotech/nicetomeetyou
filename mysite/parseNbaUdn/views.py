@@ -6,31 +6,27 @@ from .parser import TopNewsParser, TopNewsDetailParser
 
 # Create your views here.
 
-# parse top news title and link then save to database
+
+# parse and save top newses' title, link, thumb img link
 def task(request):
     index_url = 'https://nba.udn.com/nba/index?gr=www'
     base_url = 'https://nba.udn.com'
-    #
-    # need to handle exception here
-    #
     page = requests.get(index_url)
-    top_news_parser = TopNewsParser()
-    top_news_parser.feed(page.text)
-    news_detail_parser = TopNewsDetailParser
-    for url in top_news_parser.newsUrlList:
-        page = requests.get(base_url + url)
-        top_news_parser.feed(page.text)
-        news_detail_parser()
+    p = TopNewsParser()
+    p.feed(page.text)
+    # reversed saving (newest has newest id)
+    for n in reversed(p.news_list):
+        try:
+            TopNews.objects.get(postId=n.postId)
+        except TopNews.DoesNotExist:
+            TopNews(postId=n.postId,
+                    title=n.title,
+                    imgUrl=n.imgUrl,
+                    pageUrl=base_url + n.pageUrl
+                    ).save()
+        finally:
+            pass
 
-
-    # print('task')
-    # for n in p.newsList:
-    #     try:
-    #         TopNews.objects.get(postId=n.postId)
-    #     except TopNews.DoesNotExist:
-    #         TopNews(postId=n.postId, title=n.title, imgUrl=n.imgUrl, pageUrl=n.pageUrl).save()
-    #     finally:
-    #         pass
 
 def index(request):
     return render(request, 'index.html')
@@ -39,7 +35,6 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from .serializers import TopNewsSerializer
 from rest_framework.response import Response
-from django.http import JsonResponse, HttpResponse
 
 class TopNewsViewSet(viewsets.ModelViewSet):
     queryset = TopNews.objects.all()
@@ -48,26 +43,25 @@ class TopNewsViewSet(viewsets.ModelViewSet):
     @action(detail='', methods=['get'], url_path='list')
     def get_news_list(self, request):
         page = int(request.query_params.get('page'))
-        itemPerPage = 2
-        start = (page - 1) * itemPerPage
-        end = page * itemPerPage
-        newsList = TopNews.objects.all().order_by('-id')[start:end]
-        result = TopNewsSerializer(newsList, many=True)
-        # return Response(result.data, status=status.HTTP_200_OK)
-        return JsonResponse(result.data, safe=False)
+        item_per_page = 2
+        start = (page - 1) * item_per_page
+        end = page * item_per_page
+        news_list = TopNews.objects.all().order_by('-id')[start:end]
+        result = TopNewsSerializer(news_list, many=True)
+        return Response(result.data, status=status.HTTP_200_OK, content_type='json')
 
     @action(detail='', methods=['get'], url_path='news')
     def get_news_detail(self, request):
-        id = int(request.query_params.get('id'))
-        print(id)
-        news = TopNews.objects.get(id=id)
+        top_news_id = int(request.query_params.get('id'))
+        # print(top_news_id)
+        news = TopNews.objects.get(id=top_news_id)
         url = news.pageUrl
-        print(url)
+        # print(url)
         page = requests.get(url)
         p = TopNewsDetailParser()
         p.feed(page.text)
-        print(p.html)
-        return HttpResponse(p.html, content_type="text/plain")
+        # print(p.html)
+        # return HttpResponse(p.html, content_type="text/plain")
         # result = TopNewsSerializer(newsList, many=False)
-        # # return Response(result.data, status=status.HTTP_200_OK)
+        return Response(p.html, status=status.HTTP_200_OK, content_type='text/plain')
         # return JsonResponse(result.data, safe=False)

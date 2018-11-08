@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>NBA Top News</title>
+    <style>
+    .float_page {
+        right: 0;
+        height: 100%;
+        max-width: 75%;
+        background: #555;
+        color: #f1f1f1;
+        position: fixed;
+        display: inline-block;
+        overflow-y: auto;
+    }
+    .hidden {
+        visibility: hidden;
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.3s linear, visibility 0.3s linear, width 0.3s linear;
 
+    }
+    .shown {
+        visibility: visible;
+        opacity: 1;
+        width: 75%;
+        transition: opacity 0.3s linear, visibility 0.3s linear, width 0.3s linear;
+
+    }
+    .newsColumn {
+        border: 1px solid #ddd;
+    }
+
+
+    </style>
 </head>
 <body>
-<div class='list'>
-<div id="insert">
-    <p>This will be overwritten.</p>
+
+<div id="detail" class="float_page hidden">
 </div>
+
+<div class='list'>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,16 +63,25 @@ var page = 1
 var isDetailOpen = false
 var news_id = 1
 
-$.ajax({
-    url : "/parseNbaUdn/topNews/list",
-    type: 'GET',
-    data: {'page': page},
-    dataType: "json",
-    success : function (data) {
-        console.log(data);
-        $('.list').append(format(data));
-    }
-});
+//request for news list
+function get_news_list(page) {
+    $.ajax({
+        url : "/parseNbaUdn/topNews/list",
+        type: 'GET',
+        data: {'page': page},
+        dataType: "json",
+        success : function (data) {
+            update_list(data)
+        }
+    });
+}
+
+function update_list(data) {
+    console.log(data);
+    $('.list').append(format(data));
+}
+
+get_news_list(page);
 
 //get news detail
 $(".list").on("click", ".newsColumn", function() {
@@ -54,20 +94,47 @@ $(".list").on("click", ".newsColumn", function() {
             url : "/parseNbaUdn/topNews/news",
             type: 'GET',
             data: {'id': news_id},
-            dataType: "html",
+            dataType: "text",
             success : function (data) {
-                // $('.list').append(format(data));
-                console.log(data);
-                var insertDiv = document.getElementById("insert");
-                // alert(insertDiv.innerHTML);
-                insertDiv.innerHTML = data;
-
-                // $('.list').innerHTML(data.text);
+                // console.log("data");
+                document.getElementById("detail").innerHTML = data;
+                document.getElementById("detail").classList.remove("hidden")
+                document.getElementById("detail").classList.add("shown")
             }
         });
     }
 });
 
+//clear news detail page
+$(document).on("click", "#detail", function() {
+    this.innerHTML = ""
+    this.classList.remove("shown")
+    this.classList.add("hidden")
+})
+
+newest_id = 0;
+
+function update_notify(new_post_number) {
+
+}
+
+//check update
+function check_new_post() {
+    $.ajax({
+        url : "/parseNbaUdn/topNews/check_update",
+        type: 'GET',
+        data: {'id': newest_id},
+        dataType: "json",
+        success : function (data) {
+            if (data.new_post_number > 0) {
+                update_notify(data.new_post_number);
+            }
+        }
+    });
+}
+
+//set update checking timer
+window.setInterval(check_new_post, 1000 * 60);
 
 </script>
 </body>

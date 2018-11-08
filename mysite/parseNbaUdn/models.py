@@ -5,8 +5,9 @@ from django.utils import timezone
 
 class TopNews(models.Model):
     postId = models.IntegerField()
-    title = models.CharField(max_length=60)
-    htmlText = models.TextField()
+    title = models.TextField()
+    imgUrl = models.TextField()
+    pageUrl = models.TextField()
     addingTime = models.DateTimeField('addingTime', default=timezone.now)
 
     class Meta:
