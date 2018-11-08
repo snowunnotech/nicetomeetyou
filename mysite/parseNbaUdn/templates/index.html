@@ -6,32 +6,34 @@
 
 </head>
 <body>
-<div>
-    <div class='list'>
-    </div>
-
+<div class='list'>
+<div id="insert">
+    <p>This will be overwritten.</p>
 </div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 function format(data) {
     var result = '';
     for (n in data) {
-        result += '<div>' +
+        result += '<div class=\'newsColumn\' news_id=' +
+            data[n].id +
+            '>' +
             data[n].title +
             '<p>' +
-            '<img src=\'' +
-            data[n].imgUrl +
-            '\'>'
             '</div>';
     }
     return result;
 }
 
 var page = 1
+var isDetailOpen = false
+var news_id = 1
 
 $.ajax({
-    url : "/parseNbaUdn/topNews/test",
+    url : "/parseNbaUdn/topNews/list",
     type: 'GET',
     data: {'page': page},
     dataType: "json",
@@ -41,6 +43,30 @@ $.ajax({
     }
 });
 
+//get news detail
+$(".list").on("click", ".newsColumn", function() {
+    if (isDetailOpen == true) {
+        console.log('need to close')
+    }
+    else {
+        news_id = $(this)[0].attributes.news_id.value
+        $.ajax({
+            url : "/parseNbaUdn/topNews/news",
+            type: 'GET',
+            data: {'id': news_id},
+            dataType: "html",
+            success : function (data) {
+                // $('.list').append(format(data));
+                console.log(data);
+                var insertDiv = document.getElementById("insert");
+                // alert(insertDiv.innerHTML);
+                insertDiv.innerHTML = data;
+
+                // $('.list').innerHTML(data.text);
+            }
+        });
+    }
+});
 
 
 </script>
