@@ -6,7 +6,7 @@ timezone = 'Asia/Taipei'
 
 # import
 imports = (
-    'crawler.tasks',
+    'celery_app.tasks',
 )
 
 # result
@@ -15,7 +15,7 @@ result_backend = 'db+sqlite:///db.sqlite3'
 # schedules
 beat_schedule = {
     'every-5-minutes': {
-        'task': 'news.tasks.add',
+        'task': 'celery_app.tasks.add',
         'schedule': timedelta(minutes=5),
     }
 }

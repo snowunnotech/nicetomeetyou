@@ -1,15 +1,16 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task, chain, uuid
+from celery_app import app
 from bs4 import BeautifulSoup
 import requests
 import json
 
 
 def chain_tasks():
-    chain(get_mainweb(), etl_news_detail(), store_news())()
+    chain(get_mainweb.s(), process.s() )()
 
 
-@shared_task(ignore_result=True)
+@app.task
 def get_mainweb():
     url = "https://nba.udn.com/nba/index?gr=www"
     res = requests.get(url=url)
@@ -20,7 +21,7 @@ def get_mainweb():
     return urls
 
 
-@shared_task
+
 def etl_news_detail(pattern):
     url = "https://nba.udn.com" + pattern
     res = requests.get(url=url)
@@ -50,7 +51,7 @@ def etl_news_detail(pattern):
     return news
 
 
-@shared_task
+
 def store_news(news):
     url_news = "http://127.0.0.1:8000/api/news/"
     res = requests.post(url=url_news, data=news)
@@ -60,6 +61,10 @@ def store_news(news):
         print('Error: status_code={}, id={}'.format(res.status_code, news['story_id']))
 
 
-
+@app.task(ignore_result=True)
+def process(urls):
+    for pattern in urls:
+        news = etl_news_detail(pattern)
+        store_news(news)
 
 

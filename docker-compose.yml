@@ -1,7 +1,7 @@
 version: '3.3'
 services:
         rabbitmq:
-                image: rabbitmq:latest
+                image: rabbitmq:management
                 environment:
                         RABBITMQ_DEFAULT_USER: celery
                         RABBITMQ_DEFAULT_PASS: pw123456
@@ -9,9 +9,11 @@ services:
                 ports:
                         - "5672:5672"
                         - "15672:15672"
+                expose:
+                        - 15672
         celery:
                 build: ./celery
-                command: bash -c "celery -A celery_app worker -l info"
+                command: sh run.sh
                 restart: always
                 depends_on:
                         - rabbitmq
