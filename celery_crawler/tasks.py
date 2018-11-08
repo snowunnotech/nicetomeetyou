@@ -1,26 +1,29 @@
-import requests
+from __future__ import absolute_import, unicode_literals
+from celery import shared_task, chain, uuid
 from bs4 import BeautifulSoup
+import requests
 import json
 
 
+def chain_tasks():
+    chain(get_mainweb(), etl_news_detail(), store_news())()
+
+
+@shared_task(ignore_result=True)
 def get_mainweb():
     url = "https://nba.udn.com/nba/index?gr=www"
     res = requests.get(url=url)
-    if res.status_code == 200:
-        return res.text
-    else:
-        raise res.raise_for_status()
-
-
-def etl_news_link(res):
+    soup = BeautifulSoup(res.text, "lxml")
     urls = list()
-    soup = BeautifulSoup(res, "lxml")
     for s in soup.select("div[id='news_body'] a"):
         urls.append(s['href'])
     return urls
 
 
-def etl_news_detail(res):
+@shared_task
+def etl_news_detail(pattern):
+    url = "https://nba.udn.com" + pattern
+    res = requests.get(url=url)
     news = dict()
     soup = BeautifulSoup(res, "lxml")
     s = soup.find("script", type='application/ld+json')
@@ -47,6 +50,7 @@ def etl_news_detail(res):
     return news
 
 
+@shared_task
 def store_news(news):
     url_news = "http://127.0.0.1:8000/api/news/"
     res = requests.post(url=url_news, data=news)
@@ -56,18 +60,6 @@ def store_news(news):
         print('Error: status_code={}, id={}'.format(res.status_code, news['story_id']))
 
 
-def main():
-    res = get_mainweb()
-    urls = etl_news_link(res)
-    for pattern in urls:
-        url = "https://nba.udn.com" + pattern
-        res = requests.get(url=url)
-        if res.status_code == 200:
-            news = etl_news_detail(res.text)
-            store_news(news)
-        else:
-            raise res.raise_for_status()
 
 
-if __name__ == "__main__":
-    main()
+

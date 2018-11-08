@@ -1,5 +1,14 @@
 version: '3.3'
 services:
+        rabbitmq:
+                image: rabbitmq:latest
+                environment:
+                        RABBITMQ_DEFAULT_USER: celery
+                        RABBITMQ_DEFAULT_PASS: pw123456
+                        RABBITMQ_DEFAULT_VHOST: celery_vhost
+                ports:
+                        - "5672:5672"
+                        - "15672:15672"
         app:
                 build: .
                 command: sh build.sh
@@ -8,4 +17,6 @@ services:
                         - "80:8000"
                 volumes:
                         - .:/nicetomeetyou
+                depends_on:
+                        - rabbitmq
 
