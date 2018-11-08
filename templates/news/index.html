@@ -1,0 +1,46 @@
+{% include 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+   <title>News</title>
+{% endblock %}
+
+{% block content %}
+    <div class="ui basic horizontal segments">
+        <div class="ui middle aligned grid container">
+            <div class="sixteen wide column">
+                <div id="app">
+                    <div class="ui basic segment">
+                        <div class="ui vertical segment">
+                            <div class="ui grey container segment" v-for="line in news">
+                                <div class="ui grid">
+                                    <div class="six wide column">
+                                        <div class="ui image">
+                                            <img v-bind:src="line.image" alt="" style="width:300px;height:240px;">
+                                        </div>
+                                    </div>
+                                    <div class="ten wide column">
+                                        <h1 class="ui header">[[ line.headline ]]</h1>
+                                        <div class="">
+                                            <div>
+                                                <i class="calendar alternate outline icon"></i>[[ line.datePublished ]]
+                                            </div>
+                                        </div>
+                                        <div class="ui divider"></div>
+                                        <a class="image" v-bind:href="'detail/?pk=' + line.id">
+                                            <button type="button" name="button" class="ui inverted blue button">Read more</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/news/list.js' %}"></script>
+{% endblock %}

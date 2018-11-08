@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="ui basic horizontal segments">
+        <div class="ui middle aligned grid container">
+            <div class="sixteen wide column">
+                <div id="app">
+                    <div class="ui basic segment">
+                        <div class="ui basic container segment">
+                            <h1>[[ news.headline ]]</h1>
+                            <div class="ui divider"></div>
+                            <div>[[ news.datePublished ]] [[ news.publisher]] [[ news.author ]]</div>
+                            <div class="ui image" align="middle">
+                                <img v-bind:src="news.image" alt="" style="width:300px;height:240px;">
+                                [[ news.figcaption]]
+                            </div>
+                            <div class="ui divider"></div>
+                            <div>
+                                [[ news.context ]]
+                            </div>
+                            <div class="ui divider"></div>
+                            <div>
+                                在這篇文章裡有關於 <b>[[ news.keywords ]]</b> 的內容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/news/detail.js'%}"></script>
+{% endblock %}

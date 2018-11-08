@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import json
 
 
@@ -28,8 +27,7 @@ def etl_news_detail(res):
     news['headline'] = info['headline']
     news['image'] = info['thumbnailUrl']
     news['keywords'] = info['keywords']
-    news['url'] = info['url']
-    # print(news['url'])
+    news['story_id'] = float('.'.join(info['url'].split('/')[-2:]))
     news['datePublished'] = info['datePublished']
     news['dateModified'] = info['dateModified']
     news['author'] = info['author']['name']
@@ -49,7 +47,12 @@ def etl_news_detail(res):
 
 
 def store_news(news):
-    print(news)
+    url_news = "http://127.0.0.1:8000/api/news/"
+    res = requests.post(url=url_news, data=news)
+    if res.status_code == 201:
+        print('Success: id={}'.format(news['story_id']))
+    else:
+        print('Error: status_code={}, id={}'.format(res.status_code, news['story_id']))
 
 
 def main():
