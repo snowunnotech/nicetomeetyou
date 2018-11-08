@@ -59,7 +59,7 @@ class TopNewsDetailParser(HTMLParser):
         self.html = ''
 
     def handle_starttag(self, tag, attrs):
-        if tag == 'style' or tag == 'ul':
+        if tag in ['style', 'script', 'ul', 'blockquote']:
             self.__state += '1'
         if self.__state == 's0' and tag == 'div' and ('class', 'shareBar__info--author') in attrs:
             self.__state = 'get_author'
@@ -79,7 +79,7 @@ class TopNewsDetailParser(HTMLParser):
             self.html += data
 
     def handle_endtag(self, tag):
-        if tag == 'style' or tag == 'ul':
+        if tag in ['style', 'script', 'ul', 'blockquote']:
             self.__state = self.__state[:-1]
         if self.__state == 'get_author' and tag == 'div':
             self.__state = 'find_detail'
@@ -96,7 +96,7 @@ class TopNewsDetailParser(HTMLParser):
 # parser testing
 if __name__ == '__main__':
     import requests
-    url = 'https://nba.udn.com/nba/story/6780/3464821'
+    url = 'https://nba.udn.com/nba/story/6780/3468395'
     page = requests.get(url)
     p = TopNewsDetailParser()
     # print(page.text)

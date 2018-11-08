@@ -12,7 +12,7 @@ class TopNews(models.Model):
 
     class Meta:
         db_table = 'TopNews'
-        ordering = ['-addingTime']
+        ordering = ['-id']
 
     def __str__(self):
         return self.title

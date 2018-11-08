@@ -40,28 +40,41 @@ class TopNewsViewSet(viewsets.ModelViewSet):
     queryset = TopNews.objects.all()
     serializer_class = TopNewsSerializer
 
+    # get news list
     @action(detail='', methods=['get'], url_path='list')
     def get_news_list(self, request):
-        page = int(request.query_params.get('page'))
+        option = request.query_params.get('option')
         item_per_page = 2
-        start = (page - 1) * item_per_page
-        end = page * item_per_page
-        news_list = TopNews.objects.all().order_by('-id')[start:end]
+        start = 0
+        end = item_per_page + 1
+        news_list = None
+        is_end = False
+        if option == 'get_first_page':
+            news_list = TopNews.objects.all().order_by('-id')[0:item_per_page]
+        # Caution!! update don't check return size currently
+        elif option == 'update':
+            first_id = int(request.query_params.get('first_id'))
+            news_list = TopNews.objects.filter(id__gt=first_id).order_by('-id')
+        elif option == 'get_next_page':
+            last_id = int(request.query_params.get('last_id'))
+            news_list = TopNews.objects.filter(id__lt=last_id).order_by('-id')[0:item_per_page]
         result = TopNewsSerializer(news_list, many=True)
         return Response(result.data, status=status.HTTP_200_OK, content_type='json')
 
+    # get news detail
     @action(detail='', methods=['get'], url_path='news')
     def get_news_detail(self, request):
         top_news_id = int(request.query_params.get('id'))
-        # print(top_news_id)
         news = TopNews.objects.get(id=top_news_id)
+        # parse news page
         url = news.pageUrl
-        # print(url)
         page = requests.get(url)
         p = TopNewsDetailParser()
         p.feed(page.text)
-        # print(p.html)
-        # return HttpResponse(p.html, content_type="text/plain")
-        # result = TopNewsSerializer(newsList, many=False)
-        return Response(p.html, status=status.HTTP_200_OK, content_type='text/plain')
-        # return JsonResponse(result.data, safe=False)
+        return Response(str(p.html), status=status.HTTP_200_OK, content_type='text/plain')
+
+    @action(detail='', methods=['get'], url_path='check_update')
+    def get_news_update(self, request):
+        first_id = int(request.query_params.get('first_id'))
+        news_list = TopNews.objects.filter(id__gt=first_id)
+        return Response(str(len(news_list)), status=status.HTTP_200_OK, content_type='text/plain')
