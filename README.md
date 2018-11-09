@@ -9,6 +9,10 @@
 ## 進階要求
 - [ ] 實現爬蟲自動定時抓取。
 - [x] 每當抓取到新的新聞時立即通知頁面。
-- [ ] 將本 demo 部署至伺服器並可正確運行。
+- [x] 將本 demo 部署至伺服器並可正確運行。    
+Please see the following [link](
+https://cryptic-sea-86941.herokuapp.com/parseNbaUdn/index)
+
+
 
 

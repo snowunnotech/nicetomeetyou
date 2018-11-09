@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'parseNbaUdn.apps.ParsenbaudnConfig',
     'rest_framework',
+    'django_cron',
+    'parseNbaUdn.apps.ParsenbaudnConfig',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +138,12 @@ REST_FRAMEWORK = {
 
     ),
 }
+
+# cron setting
+CRON_CLASSES = [
+    "parseNbaUdn.scheduled_jobs.ParseNewNews",
+]
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
