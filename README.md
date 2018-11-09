@@ -11,7 +11,8 @@
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
 
-### Answer
-1. 使用docker-compose啟動 django/rabbitmq/celery container
-2. 
+## Answer
+1. 使用docker-compose部屬 django/rabbitmq/celery container
+2. RMQ當作Celery broker，每5分鐘執行爬蟲task
+3. 
 

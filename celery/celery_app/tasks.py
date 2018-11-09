@@ -9,7 +9,7 @@ import json
 @app.task
 def chain_crawler():
     server_ip = "35.185.173.110"
-    chain(get_mainweb.s(), process.s(server_ip) )()
+    chain(get_mainweb.s(), process.s(server_ip))()
 
 
 @app.task
