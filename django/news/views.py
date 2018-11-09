@@ -10,7 +10,7 @@ from .serializers import NewsSerializer
 class NewsView(APIView):
 
     def get(self, request):
-        news = News.objects.all().order_by('-id')
+        news = News.objects.all().order_by('-datePublished')
         serializer = NewsSerializer(news, many=True)
         news = serializer.data
         return Response(news, status=status.HTTP_200_OK)

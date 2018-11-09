@@ -28,7 +28,7 @@ def etl_news_detail(pattern):
     url = "https://nba.udn.com" + pattern
     res = requests.get(url=url)
     news = dict()
-    soup = BeautifulSoup(res, "lxml")
+    soup = BeautifulSoup(res.text, "lxml")
     s = soup.find("script", type='application/ld+json')
     info = json.loads(s.text)
     news['headline'] = info['headline']
