@@ -6,8 +6,10 @@ import requests
 import json
 
 
-def chain_tasks():
-    chain(get_mainweb.s(), process.s() )()
+@app.task
+def chain_crawler():
+    server_ip = "35.185.173.110"
+    chain(get_mainweb.s(), process.s(server_ip) )()
 
 
 @app.task
@@ -21,7 +23,7 @@ def get_mainweb():
     return urls
 
 
-
+@app.task
 def etl_news_detail(pattern):
     url = "https://nba.udn.com" + pattern
     res = requests.get(url=url)
@@ -51,9 +53,9 @@ def etl_news_detail(pattern):
     return news
 
 
-
-def store_news(news):
-    url_news = "http://127.0.0.1:8000/api/news/"
+@app.task
+def store_news(news, server_ip):
+    url_news = "http://{}/api/news/".format(server_ip)
     res = requests.post(url=url_news, data=news)
     if res.status_code == 201:
         print('Success: id={}'.format(news['story_id']))
@@ -62,9 +64,9 @@ def store_news(news):
 
 
 @app.task(ignore_result=True)
-def process(urls):
+def process(urls, server_ip):
     for pattern in urls:
         news = etl_news_detail(pattern)
-        store_news(news)
+        store_news(news, server_ip)
 
 
