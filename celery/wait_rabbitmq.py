@@ -14,7 +14,7 @@ args = vars(parser.parse_args())
 credentials = pika.PlainCredentials(args['username'], args['password'])
 parameters = pika.ConnectionParameters(host=args['server'],
                                        port=args['port'],
-                                       virtual_host=args['vhost'],
+                                       virtual_host=args['virtual_host'],
                                        credentials=credentials,
                                        ssl=args['ssl'])
 
