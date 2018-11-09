@@ -11,5 +11,4 @@
 - [x] 每當抓取到新的新聞時立即通知頁面。
 - [ ] 將本 demo 部署至伺服器並可正確運行。
 
-### Known Bug
-- [ ] Unexpected text in parsing result
+
