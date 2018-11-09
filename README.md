@@ -4,12 +4,14 @@
 - [x] 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
 	 - [x] 焦點新聞列表
 	 - [x] 新聞詳情頁面
-- [ ] 以 Pull-Request 的方式將代碼提交。
+- [x] 以 Pull-Request 的方式將代碼提交。
 	
 ## 進階要求
-- [ ] 實現爬蟲自動定時抓取。
+- [x] 實現爬蟲自動定時抓取。    
+Use schelduler from Heroku
 - [x] 每當抓取到新的新聞時立即通知頁面。
-- [x] 將本 demo 部署至伺服器並可正確運行。    
+- [x] 將本 demo 部署至伺服器並可正確運行。   
+Deploy on Heroku     
 Please see the following [link](
 https://cryptic-sea-86941.herokuapp.com/parseNbaUdn/index)
 
