@@ -15,6 +15,9 @@ Deploy on Heroku
 Please see the following [link](
 https://cryptic-sea-86941.herokuapp.com/parseNbaUdn/index)
 
+### Future work
+- [ ] Index beautify
+- [ ] Return data while update need to limit size in some way
+- [ ] Loading more button need to disable while oldest post has been loaded
 
-
-
+Developed by 陳冠綸 Kuan-Lun Chen
