@@ -17,6 +17,7 @@ services:
                 restart: always
                 depends_on:
                         - rabbitmq
+                        - app
         app:
                 build: ./django
                 command: sh build.sh
