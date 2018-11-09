@@ -18,6 +18,8 @@ services:
                 depends_on:
                         - rabbitmq
                         - app
+                volumes:
+                        - ./log:/celery_app/log
         app:
                 build: ./django
                 command: sh build.sh
