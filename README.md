@@ -13,6 +13,8 @@
 
 ## Answer
 1. 使用docker-compose部屬 django/rabbitmq/celery container
-2. RMQ當作Celery broker，每5分鐘執行爬蟲task
-3. 
+2. 啟動RMQ container，作為Celery broker
+3. 啟動API container，部屬Django REST WEB 
+4. 啟動Celery container，每5分鐘執行爬蟲task
+
 
