@@ -12,9 +12,10 @@
 3. 将本 demo 部署至服务器并可正确运行。
 
 ## Answer
-1. 使用docker-compose部屬 django/rabbitmq/celery container
-2. 啟動RMQ container，作為Celery broker
-3. 啟動API container，部屬Django REST WEB 
-4. 啟動Celery container，每5分鐘執行爬蟲task
+1. 使用docker-compose部屬 django/nginx/rabbitmq/celery container
+2. 啟動API container，部屬Django REST WEB
+3. 啟動Nginx container，作為Django web server
+4. 啟動RMQ container，作為Celery broker
+5. 啟動Celery container，每5分鐘執行爬蟲task
 
 
