@@ -10,3 +10,13 @@
 1. 實現爬蟲自動定時抓取。
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
+
+## Answer
+1. 使用docker-compose部屬 django/nginx/rabbitmq/celery container
+2. 啟動API container，部屬Django REST WEB
+3. 啟動Nginx container，作為Django web server
+4. 啟動RMQ container，作為Celery broker
+5. 啟動Celery container，每5分鐘執行爬蟲task
+6. 部屬於GCP上: http://35.185.173.110 
+
+
