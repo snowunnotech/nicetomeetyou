@@ -11,6 +11,8 @@ services:
                         - "15672:15672"
                 expose:
                         - 15672
+                networks:
+                        - backend
         celery:
                 build: ./celery
                 command: sh run.sh
@@ -20,6 +22,8 @@ services:
                         - app
                 volumes:
                         - ./log:/celery_app/log
+                networks:
+                        - backend
         app:
                 build: ./django
                 command: sh build.sh
@@ -30,6 +34,8 @@ services:
                         - api_data:/docker_api
                 depends_on:
                         - rabbitmq
+                networks:
+                        - backend
         nginx:
                 build: ./nginx
                 restart: always
@@ -37,9 +43,14 @@ services:
                         - "80:80"
                 volumes:
                         - api_data:/docker_api
-                        - ./log:var/log/nginx
+                        - ./log:/var/log/nginx
                 depends_on:
                         - app
+                networks:
+                        - backend
+networks:
+        backend:
+                driver: "bridge"
 volumes:
         api_data:
 
