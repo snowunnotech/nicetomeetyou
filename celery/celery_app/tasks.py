@@ -40,16 +40,11 @@ def etl_news_detail(pattern):
     news['author'] = info['author']['name']
     news['publisher'] = info['publisher']['name']
     news['logo'] = info['publisher']['logo']['url']
-    n = 0
     news['context'] = ''
     for s in soup.select("div[id='story_body_content'] span p"):
         line = s.text
-        if n == 0:
-            news['figcaption'] = line.strip(' ')
-            n = 1
-        else:
-            if len(line) > 0:
-                news['context'] += line
+        if len(line) > 0:
+            news['context'] += line
     return news
 
 
