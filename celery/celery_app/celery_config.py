@@ -16,6 +16,6 @@ result_backend = 'db+sqlite:///db.sqlite3'
 beat_schedule = {
     'every-5-minutes': {
         'task': 'celery_app.tasks.chain_crawler',
-        'schedule': timedelta(minutes=5),
+        'schedule': timedelta(minutes=1),
     }
 }
