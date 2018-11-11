@@ -25,11 +25,21 @@ services:
                 command: sh build.sh
                 restart: always
                 ports:
-                        - "80:8000"
+                        - "8000:8000"
                 volumes:
                         - api_data:/docker_api
                 depends_on:
                         - rabbitmq
+        nginx:
+                build: ./nginx
+                restart: always
+                ports: 
+                        - "80:80"
+                volumes:
+                        - api_data:/docker_api
+                        - ./log:var/log/nginx
+                depends_on:
+                        - app
 volumes:
         api_data:
 
