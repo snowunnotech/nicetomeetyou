@@ -1,0 +1,19 @@
+<!-- 此頁面顯示從資料庫抓到的新聞 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home</title>
+</head>
+<body>
+	{% for art in nba_art %}
+	{{ art.img }}
+	{{ art.time }}
+	{{ art.title }}
+	{{ art.detail }}
+	{{ art.text }}
+	<br>
+	{% endfor %}
+
+</body>
+</html>
