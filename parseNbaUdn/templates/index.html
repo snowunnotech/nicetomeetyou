@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA Top News</title>
+    <style>
+    .main_page {
+        margin: 20px 20px 20px 20px;
+    }
+    .load_more {
+        border: 1px solid #ddd;
+    }
+    .middle_cover {
+        top: 0;
+        left: 0;
+        z-index: 4;
+        width: 100%;
+        height: 100%;
+        background: #555;
+        position: fixed;
+        cursor: pointer;
+    }
+    .float_page {
+        top: 0;
+        right: 0;
+        z-index: 5;
+        height: 100%;
+        max-width: 75%;
+        background: #FFFFFF;
+        position: fixed;
+        overflow-y: auto;
+    }
+    .hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s linear, visibility 0.3s linear, width 0.3s linear;
+    }
+    .float_page.hidden {
+        width: 0;
+    }
+    .shown {
+        visibility: visible;
+        transition: opacity 0.3s linear, visibility 0.3s linear, width 0.3s linear;
+    }
+    .float_page.shown {
+        width: 75%;
+        opacity: 1;
+    }
+    .middle_cover.shown {
+        opacity: 0.8;
+    }
+    .detail_page {
+        margin: 30px 50px 16px 50px;
+    }
+    .newsColumn {
+        border: 1px solid #ddd;
+    }
+    img {
+        max-width: 100%;
+        position: static;
+    }
+    </style>
+
+
+</head>
+<body>
+
+<div class="middle_cover hidden">
+</div>
+
+<div class="float_page hidden">
+    <div id="detail" class="detail_page">
+    </div>
+</div>
+
+<div class="main_page">
+    <div id="notify" class="notify">
+    </div>
+    <div class='list'>
+    </div>
+    <p></p>
+    <div class="load_more">
+        Load More
+    </div>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function list_format(data) {
+    var result = '';
+    for (n in data) {
+        result += '<div class=\'newsColumn\' news_id=' +
+            data[n].id +
+            '>' +
+            data[n].title +
+            '<p>' +
+            '</div>';
+        if (data[n].id > first_id) {
+            first_id = data[n].id;
+        }
+        if (data[n].id < last_id) {
+            last_id = data[n].id;
+        }
+    }
+    return result;
+}
+
+//request for news list
+function get_news_list(option) {
+    $.ajax({
+        url : "/parseNbaUdn/list",
+        type: 'GET',
+        data: {'option': option, 'first_id': first_id, 'last_id': last_id},
+        dataType: "json",
+        success : function(data) {
+            if (option == 'update') {
+                $('.list').prepend(list_format(data));
+            }
+            else {
+                if (option == 'get_first_page') {
+                    first_id = data[0].id;
+                    last_id =  data[0].id;
+                }
+                $('.list').append(list_format(data));
+            }
+        }
+    });
+}
+
+function update_detail(data) {
+    document.getElementById("detail").innerHTML = data;
+    var m = document.getElementsByClassName("hidden");
+    for (i = 0; i < m.length; ) {
+        m[i].classList.add("shown");
+        m[i].classList.remove("hidden");
+    }
+}
+
+function update_notify(new_post_number) {
+    var n = document.getElementById("notify")
+    n.innerHTML = "<p>update: " + new_post_number + "</p>"
+}
+
+//check update
+function check_new_post() {
+    $.ajax({
+        url : "/parseNbaUdn/check_update",
+        type: 'GET',
+        data: {'first_id': first_id},
+        dataType: "text",
+        success : function (data) {
+            if (data != '0') {
+                update_notify(data);
+            }
+        }
+    });
+}
+
+var first_id = 0;
+var last_id = 0;
+
+get_news_list("get_first_page");
+
+//get news detail
+$(".list").on("click", ".newsColumn", function() {
+    var news_id = $(this)[0].attributes.news_id.value;
+    $.ajax({
+        url : "/parseNbaUdn/news",
+        type: 'GET',
+        data: {'id': news_id},
+        dataType: "text",
+        success : update_detail
+    });
+
+});
+
+//clear news detail page
+$(document).on("click", ".middle_cover", function() {
+    var m = document.getElementsByClassName("shown");
+    for (i = 0; i < m.length; ) {
+        m[i].classList.add("hidden");
+        m[i].classList.remove("shown");
+    }
+});
+
+//clear news detail page
+$(document).on("click", ".load_more", function() {
+    get_news_list("get_next_page");
+});
+
+$(document).on("click", ".notify", function() {
+    get_news_list("update");
+    this.innerHTML = ""
+});
+
+newest_id = 0;
+
+//set update checking timer
+window.setInterval(check_new_post, 1000 * 60);
+
+</script>
+
+</html>
