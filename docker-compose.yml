@@ -1,0 +1,105 @@
+version: "3"
+services:
+  # nginx web server
+  # TODO: consider using google's loadbalancer service with static buckets
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    image: nginx
+    restart: always
+    volumes:
+      # for django's built-in admin site
+      - static-files:${STATIC_ROOT}
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    command: nginx -g 'daemon off';
+  # backend logic by django
+  backend:
+    container_name: backend
+    build:
+      context: ./nba_news_backend
+      dockerfile: Dockerfile
+    hostname: backend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./nba_news_backend:/srv/project
+      # for django's built-in admin site and drf
+      - static-files:${STATIC_ROOT}
+    depends_on:
+      - postgres
+      - scrapyd
+    env_file: .env
+    command: >
+      bash -c '
+      cd crawler_app &&
+      scrapyd-deploy &&
+      cd .. &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      python initadmin.py &&
+      gunicorn nba_news_backend.wsgi -b 0.0.0.0:8000'
+  # db service by postgres
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    hostname: postgres
+    ports:
+      - 5432:5432
+  # messaging exchanging and session caching by redis
+  redis:
+    container_name: redis
+    image: redis:latest
+    hostname: redis
+    ports:
+      - 6379:6379
+  # async task handling by celery
+  celery-worker:
+    container_name: celery-worker
+    build:
+      context: ./nba_news_backend
+    env_file: .env
+    command: celery -A nba_news_backend worker -l info
+    volumes:
+      - ./nba_news_backend:/srv/project
+    depends_on:
+      - backend
+      - redis
+      - scrapyd
+  # peroidic task handling by celery beat
+  celery-beat:
+    container_name: celery-beat
+    build:
+      context: ./nba_news_backend
+    env_file: .env
+    command: celery -A nba_news_backend beat -l info
+    volumes:
+      - ./nba_news_backend:/srv/project
+    depends_on:
+      - backend
+      - redis
+      - scrapyd
+      - celery-worker
+  # async task handling by celery
+  scrapyd:
+    container_name: scrapyd
+    build:
+      context: ./nba_news_backend
+    env_file: .env
+    command: >
+      bash -c '
+      cd crawler_app &&
+      scrapyd --pidfile='
+    volumes:
+      - ./nba_news_backend:/srv/project
+      - ./scrapyd:/etc/scrapyd
+    hostname: scrapyd
+    ports:
+      - 6800:6800
+volumes:
+  static-files:
