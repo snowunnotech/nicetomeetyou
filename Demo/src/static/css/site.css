@@ -1,0 +1,63 @@
+.content_box {
+    float: left;
+    width: 100%;
+}
+
+.left_bar {
+    float: left;
+    width: 30%;
+    background: #eaf4ff;
+    height: 100vh;
+}
+
+.right_bar {
+    float: left;
+    width: 70%;
+    padding: 15px;
+    /*border-left:1px solid #ccc;*/
+    height: 100%;
+}
+
+.nav-tabs--vertical li {
+    float: left;
+    width: 100%;
+    padding: 0;
+    position: relative;
+}
+
+
+.nav-tabs--vertical li a {
+    float: left;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid #adcff7;
+    color: #1276F0;
+}
+
+.nav-tabs--vertical li a.active::after {
+    content: "";
+    border-color: #1276F0;
+    border-style: solid;
+    position: absolute;
+    right: -8px;
+    /* border-top: transparent; */
+    border-right: transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    /*border-bottom: 16px solid #1276F0;*/
+    border-bottom: 16px solid #fff;
+    border-top: 0;
+    transform: rotate(270deg);
+    z-index: 999;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    list-style: none;
+    height: 100%;
+}
