@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db import transaction
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -22,10 +23,12 @@ def nba_news(request, article_id):
 @api_view(['GET'])
 def all_nba_news(request):
     rtn_news_list = list()
-    news_list = Article.objects.all()
 
-    for news in news_list:
-        rtn_news_list.append(ArticleSerializer(news).data)
+    with transaction.atomic():
+        news_list = Article.objects.all()
+
+        for news in news_list:
+            rtn_news_list.append(ArticleSerializer(news).data)
 
     return Response(rtn_news_list, status=status.HTTP_200_OK)
 
@@ -52,6 +55,8 @@ def update_news_data(request):
                            content=news['content'],
                            image_url=news['image_url'],
                            published_time=news['published_time'])
-        new_news.save()
+
+        with transaction.atomic():
+            new_news.save()
 
     return Response("Success", status=status.HTTP_200_OK)

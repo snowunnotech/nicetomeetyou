@@ -4,7 +4,7 @@
 {% block title %}
    <title>NBA TOP NEWS LIST</title>
 {% endblock %}
-<script>setInterval(check_news_list, 600000);</script>
+<script>setInterval(check_news_list, 60000);</script>
  <div id=news_list>
  {% for news in news_list %}
  <div class=article id={{news.article_id}}>
