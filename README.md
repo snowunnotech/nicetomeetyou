@@ -10,4 +10,5 @@
 1. 實現爬蟲自動定時抓取。
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
+[由於佈署在heroku上，因此定時抓取改用js function達成，而原本則為django-crontab]
 [https://nicetomeetyouwcc.herokuapp.com/nba_news_list]
