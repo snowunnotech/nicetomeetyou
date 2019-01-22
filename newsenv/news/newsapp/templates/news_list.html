@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}NBA焦點新聞{% endblock %}
+
+{% block content %} 
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>焦點新聞列表<h3></div>
+    <div class="panel-body">
+      {% for news_list in news_lists %}        
+        <h2>{{ news_list.news_title }}</h2>
+          <div>
+            <span class="btn btn-primary btn-md" id="apireq__{{ news_list.id }}">展開新聞</span>
+            <span id="apireq2__{{ news_list.id }}""></span></div>
+          <div class="panel panel-heading" id="news_detail__{{ news_list.id }}"></div>
+          <div><h4><span id="news_title__{{ news_list.id }}"></span></h4></div>
+          <div><span id="news_time__{{ news_list.id }}"></span></div>
+          <br>
+          <div><span id="news_content__{{ news_list.id }}"></span></div>
+          <div><span id="news_img__{{ news_list.id }}"></span></div>
+          <div><span id="news_link__{{ news_list.id }}"></span></div>
+          <div><span id="news_nums__{{ news_list.id }}"></span></div>
+          
+      {% endfor %}
+      </div>
+  </div>
+
+                    <div class="paginator" style="text-align: center;">
+                         <ul class="pagination">
+                            <!-- 上一頁 -->
+                            <li>
+                                {% if page_of_news.has_previous %}
+                                  <a href="?page={{ page_of_news.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                  </a>
+                                {% else %}
+                                    <span aria-hidden="true">&laquo;</span>
+                                {% endif %}
+                            </li>
+                            <!-- 全部頁碼 -->
+                            {% for page_num in page_range %}
+                                <!-- 若為當前頁碼，則加入active狀態 -->
+                                {% if page_num == page_of_news.number %}
+                                    <li class="active"><span>{{ page_num }}</span></li>
+                                {% else %}
+                                    <!-- 若為省略號，則沒有超連結 -->
+                                    {% if page_num == '...' %}
+                                        <li ><span>{{ page_num }}</span></li>
+                                    {% else %}
+                                        <li ><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- 下一頁 -->
+                            <li>
+                                {% if page_of_news.has_next %}
+                                  <a href="?page={{ page_of_news.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                  </a>
+                                {% else %}
+                                    <span aria-hidden="true">&raquo;</span>
+                                {% endif %}
+                            </li>
+                          </ul>
+                          <p>
+                              共有 {{ page_of_news.paginator.count }} 篇文章，
+                              當前第 {{ page_of_news.number }} 頁，
+                              共 {{ page_of_news.paginator.num_pages }} 頁
+                          </p>
+                    </div>
+                </div>
+
+</div>
+
+{% endblock %} 
+{% block script_extends %}
+    <script type="text/javascript">
+        //字串連接變數替換
+        String.prototype.format = function(){
+            var str = this;
+            for (var i = 0; i < arguments.length; i++){
+                var str = str.replace(new RegExp('\\{' + i + '\\}', 'g'), arguments[i]) //正則表達式全局替換
+            };
+            return str;
+        }
+        $('[id^="apireq"]').click( function() {
+          var news_id_num = ($(this).attr('id').replace("apireq__",""));
+          var link = "/news_list/" + news_id_num;
+          $.ajax({
+             url : link,
+             dataType: "json",
+             success : function (data) {
+
+                    $("#"+"apireq2__"+news_id_num).html('<p class="btn btn-warning btn-md" id="apireq2__{{ news_list.id }}" id="apireq2__{{ news_list.id }}">收回新聞</p> ').show();
+                    $("#"+"news_detail__"+news_id_num).html('<h3>新聞詳情</h3>').show()
+                    $("#"+"news_title__"+news_id_num).text(data.news_title).show();
+                    $("#"+"news_img__"+news_id_num).html('<img src=" '+ data.news_img+'" class="img-responsive center-block"> ').show();
+                    $("#"+"news_content__"+news_id_num).text(data.news_content).show();
+                    $("#"+"news_link__"+news_id_num).text('原文網址：'+  data.news_link).show();
+                    $("#"+"news_content__"+news_id_num).text( data.news_content);
+                    $("#"+"news_time__"+news_id_num).text('發佈時間:' + data.news_time).show();
+                    $('html').animate({scrollTop: $("#"+"news_detail__"+news_id_num).offset().top }, 300);
+                    }
+                 });
+             });
+        $('[id^="apireq2"]').click( function() {
+          var news_id_num = ($(this).attr('id').replace("apireq__",""));
+          var link = "/news_list/" + news_id_num;
+          $.ajax({
+             url : "{% url 'newsapi' %}",
+             dataType: "json",
+             success : function (data) {
+                    $('[id^="news_"]').hide();
+                    $('[id^="apireq2"]').hide();
+                    }
+                 });
+             });
+    </script>
+{% endblock %}

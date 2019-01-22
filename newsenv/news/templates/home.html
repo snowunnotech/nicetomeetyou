@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}news api{% endblock %}
+
+{% block content %} 
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>焦點新聞列表<h3></div>
+    <div class="panel-body">
+      {% for news_list in news_lists %}
+        
+        <h2>{{ news_list.news_title }}</h2>
+          <p class="btn btn-primary btn-md" id="apireq__{{ news_list.id }}">展開新聞</p>  
+          <div class="panel panel-heading" id="news_detail__{{ news_list.id }}"></div>
+          <div><h4><span id="news_title__{{ news_list.id }}"></span></h4></div>
+          <div><span id="news_content__{{ news_list.id }}"></span></div>
+          <div><span id="news_img__{{ news_list.id }}"></span></div>
+          <div><span id="news_link__{{ news_list.id }}"></span></div>
+          <div><span id="news_nums__{{ news_list.id }}"></span></div>
+          <div style="text-align: center;"><span id="apireq2__{{ news_list.id }}""></span></div>
+      {% endfor %}
+      </div>
+  </div>
+{% endblock %} 
+{% block script_extends %}
+
+    <script type="text/javascript">
+
+        $('[id^="apireq"]').click( function() {
+          var news_id_num = ($(this).attr('id').replace("apireq__",""));
+          var link = "/news/news_list/" + news_id_num;
+          $.ajax({
+             url : link,
+             dataType: "json",
+             success : function (data) {
+                    $("#"+"apireq2__"+news_id_num).html('<p class="btn btn-primary btn-md" id="apireq2__{{ news_list.id }}" id="apireq2__{{ news_list.id }}">收回新聞</p> ').show();
+                    $("#"+"news_detail__"+news_id_num).html('<h3>新聞詳情</h3>').show()
+                    $("#"+"news_title__"+news_id_num).text(data.news_title).show();
+                    $("#"+"news_img__"+news_id_num).html('<img src=" '+ data.news_img+'" class="img-responsive center-block"> ').show();
+                    $("#"+"news_content__"+news_id_num).text(data.news_content).show();
+                    $("#"+"news_link__"+news_id_num).text('原文網址：'+  data.news_link).show();
+                    $("#"+"news_content__"+news_id_num).text( data.news_content);
+                    $("#"+"news_time__"+news_id_num).text( data.news_time).show();
+                    $("#"+"news_nums__"+news_id_num).text(nums).show();
+                    $('html').animate({scrollTop: $("#"+"news_detail__"+news_id_num).offset().top }, 300);
+                    }
+                 });
+             });
+  </script>
+{% endblock %}
