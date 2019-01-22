@@ -17,15 +17,13 @@ function get_news(article_id)
 
 function check_news_list()
 {
+	var article_num_in_web = $(".article").length;
 	$.ajax({
         type: 'GET',
-        url: 'all_nba_news',
+        url: 'all_nba_news/' + article_num_in_web,
         success: function(response) 
 	{
-	  article_num_in_web = $(".article").length;
-	  for(var i = article_num_in_web; i < response.length; i++)
-	  {	
-		news = response[i];
+	    response.forEach(function(news){
 		var added_html = "<div class=article id=" + news.article_id
 			+ "><a href='#' onclick='get_news(" + news.article_id
 			+ ")'; h1>" + news.title + "</a>"
@@ -33,6 +31,7 @@ function check_news_list()
 			+ " width='100' height='50'>" + news.published_time
 		  	+"<br></div><br><br><br>"
 	        $("#news_list").prepend(added_html);
-	   }
+	   });
 	}});
+	
 }

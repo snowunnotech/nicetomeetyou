@@ -23,7 +23,7 @@ router.register(r'articles', views.ArticleViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('all_nba_news', views.all_nba_news),
+    path('all_nba_news/<required_id>', views.all_nba_news),
     path('nba_news_list', views.nba_news_list),
     path('nba_news/<article_id>', views.nba_news),
     path('update_news_data', views.update_news_data),

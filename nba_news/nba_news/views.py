@@ -21,11 +21,12 @@ def nba_news(request, article_id):
     return Response(rtn_news, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
-def all_nba_news(request):
+def all_nba_news(request, required_id):
     rtn_news_list = list()
 
     with transaction.atomic():
-        news_list = Article.objects.all()
+        news_list = Article.objects.extra(where=\
+                                          [f"article_id > {required_id}"])
 
         for news in news_list:
             rtn_news_list.append(ArticleSerializer(news).data)
