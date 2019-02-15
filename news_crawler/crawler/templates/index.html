@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+   
+    <div class="newslist">
+
+    </div>
+    
+    <script>
+        var total_news;
+        var update = function(){};
+        (function update(){
+            $.ajax({
+                url: "api/News/",
+                dataType: "json",
+                error: function () {
+                    console.log('error');
+                },
+                success: function (news) {
+                    if(news.length > total_news){
+                        alert("Updated latest news!");                        
+                    }
+                    total_news = news.length;
+                    var dateAndTime, publishedTime;       
+                    for (i = news.length - 1; i >= 0; i--) {
+                        dateAndTime = news[i].datePublished.split('+',1);
+                        publishedTime = dateAndTime[0].split('T');
+                        $(".newslist").append(
+                            '<a href="/news/' + (i+1) + '">' +
+                            '<div class="card mb-3" style="max-width: 960px;">' +
+                                '<div class="row no-gutters">' +
+                                    '<div class="col-md-4">' +
+                                        '<img src="' + news[i].image + '" class="card-img">' +
+                                    '</div>' +
+                                    '<div class="col-md-8">' +
+                                        '<div class="card-body">' +
+                                            '<h5 class="card-title">' + news[i].title + '</h5>' +
+                                            '<p class="card-text"><small class="text-muted">' + publishedTime[0] + ' ' + publishedTime[1] + '</small></p>' +
+                                            '<p class="card-text"><small class="text-muted">' + news[i].author + '</small></p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '</a>'
+                        );
+                    }
+                }
+            }).then(function () {
+                setTimeout(update, 300000)
+            });
+        })();
+    </script>
+
+    
+{% endblock content %}

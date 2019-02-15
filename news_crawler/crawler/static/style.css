@@ -1,0 +1,23 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-color: #E7E6E1;
+    font-family: 'Noto Sans TC', sans-serif; 
+    color: #6A8074;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.max-w{
+    max-width: 960px;
+}
+
+.newsDetail{
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+}
