@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="newsDetail">
+    
+    </div>
+    
+    <script>
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/News/{{ news_id }}",
+            dataType: "json",
+            error: function () {
+                console.log('error');
+            },
+            success: function (news) {
+                var dateAndTime = news.datePublished.split('+', 1);
+                var publishedTime = dateAndTime[0].split('T');
+                $(".newsDetail").append(
+                    '<h2><b>' + news.title + '</b></h2><hr>' +
+                    '<p>' + publishedTime[0] + ' ' + publishedTime[1] + ' ' + news.author + '</p>' +
+                    '<img src="' + news.image + '" class="card-img">' +
+                    '<p>' + news.context + '</p>'
+                );
+                
+            }
+        });
+    </script>
+{% endblock content %}
