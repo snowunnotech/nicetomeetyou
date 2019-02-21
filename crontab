@@ -1,0 +1,1 @@
+*/1 * * * * date >> ~/nicetomeetyou/nba.log ; python3 ~/nicetomeetyou/crawler.py >> ~/nicetomeetyou/nba.log
