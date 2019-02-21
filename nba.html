@@ -25,6 +25,7 @@
             $.get("http://127.0.0.1:8000/api/news/", function(data, status){
                   if(data.length > news_len){
 
+                     $("#info").html('')
                      data.forEach(function(item, index){
                            $("#info").append("<a href=" + item.link + ">" + item.title + "</a><br>")
                      })
