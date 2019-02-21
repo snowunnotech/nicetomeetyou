@@ -19,4 +19,6 @@ for news in news_raw.find_all('dt'):
     except:
         pass
 
-pprint(data)
+for ele in data:
+    r = requests.post('http://10.0.2.15:8000/api/news/', data={ 'title':ele[0], 'link':ele[1] })
+    print(r.text)
