@@ -17,11 +17,27 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
       <script>
-         $.get("http://127.0.0.1:8000/api/news/", function(data, status){
-               data.forEach(function(item, index){
-                     $("#info").append("<a href=" + item.link + ">" + item.title + "</a><br>")
-               })
-         });
+         var news_len = 0
+         get_data();
+         setInterval(get_data, 30000);
+
+         function get_data(){
+            $.get("http://127.0.0.1:8000/api/news/", function(data, status){
+                  if(data.length > news_len){
+
+                     data.forEach(function(item, index){
+                           $("#info").append("<a href=" + item.link + ">" + item.title + "</a><br>")
+                     })
+
+                     if(news_len != 0){
+                        alert('get new news!')
+                     }
+
+                     news_len = data.length
+                  }
+            });
+         }
+
       </script>
       <div id="info"></div>
 
