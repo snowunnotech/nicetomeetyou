@@ -8,11 +8,15 @@ urlGet = requests.get(url)
 fp = urllib.request.urlopen(urlGet.url)
 soup = BeautifulSoup(fp , 'html.parser')
 news_raw = soup.find_all(id='news')[0]
-news = []
+data = []
 
-for a in news_raw.find_all('a'):
-    story = a['href']
-    if 'story' in story:
-        news.append('https://nba.udn.com' + story)
+for news in news_raw.find_all('dt'):
+    try:
+        title = news.find_all('h3')[0].string
+        news_url = news.find_all('a')[0]['href']
+        if 'story' in news_url:
+            data.append((title, 'https://nba.udn.com' + news_url))
+    except:
+        pass
 
-print(news)
+pprint(data)
