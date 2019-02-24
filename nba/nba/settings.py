@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '10.0.2.15',
     '127.0.0.1',
+    'illinois.cs.nccu.edu.tw',
 ]
 
 
@@ -71,7 +72,7 @@ ROOT_URLCONF = 'nba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

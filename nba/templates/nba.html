@@ -22,7 +22,7 @@
          setInterval(get_data, 30000);
 
          function get_data(){
-            $.get("http://127.0.0.1:8000/api/news/", function(data, status){
+            $.get("http://illinois.cs.nccu.edu.tw:8000/api/news/", function(data, status){
                   if(data.length > news_len){
 
                      $("#info").html('')

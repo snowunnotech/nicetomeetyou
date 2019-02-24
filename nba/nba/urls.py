@@ -23,5 +23,6 @@ router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls))
+    url(r'^api/', include(router.urls)),
+    url(r'^nba/', views.News)
 ]
