@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.js"></script>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+
+<body>
+    <table id="table"></table>
+    <script type="text/javascript"></script>
+</body>
+
+</html>
+
+<script>
+
+    $.ajax({
+        url: "/newsapi?format=json",
+        dataType: "json",
+        success: function (data) {
+            var table = '<tbody>';
+            for (i = 0; i < data.length; i++) {
+                table += '<tr>';
+                table += '<td>' + data[i].published_date + '</td>';
+                table += '<td><a href = /news/' + data[i].uuid + '>' + data[i].title + '</td>';
+                table += '</tr>';
+            }
+            table += '</tbody>';
+            $('#table').html(table);
+        }
+    });
+    setInterval(function () {
+        $.ajax({
+            url: "/crawler",
+            success: function (data) {
+                console.log(data)
+            }
+        });
+    }, 5000);
+
+
+</script>
