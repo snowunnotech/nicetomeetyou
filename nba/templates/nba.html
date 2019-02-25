@@ -16,6 +16,9 @@
             height: 106px;
             overflow: hidden;
          }
+         .news-boxs{
+            border-bottom : 1px solid #eee;
+         }
       </style>
    </head>
    <body>
@@ -37,7 +40,7 @@
 
                      $("#info").html('')
                      data.forEach(function(item, index){
-                        $("#info").append("<div><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600><a href=" + item.link + ">" + item.title + "</a></div>")
+                        $("#info").append("<div class=news-boxs><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600><a href=" + item.link + ">" + item.title + "</a></div>")
                      })
 
                      if(news_len != 0){
