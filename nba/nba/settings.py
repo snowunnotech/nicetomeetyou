@@ -38,6 +38,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAdminUser'
     ),
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M",
 }
 
 # Application definition

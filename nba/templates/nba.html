@@ -18,6 +18,15 @@
          }
          .news-boxs{
             border-bottom : 1px solid #eee;
+            height: 120px;
+         }
+         span{
+            font-size: 13px;
+            color : #888;
+            padding: 2px 5px 3px 0px;
+         }
+         .lefter{
+            float: left;
          }
       </style>
    </head>
@@ -40,7 +49,7 @@
 
                      $("#info").html('')
                      data.forEach(function(item, index){
-                        $("#info").append("<div class=news-boxs><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600><a href=" + item.link + ">" + item.title + "</a></div>")
+                        $("#info").append("<div class=news-boxs><a href="+ item.link +">"+ "<div class=lefter><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600></div>" + "<span>"+ item.created +"</span>" + "<p>"+ item.title +"</p>" +"</a></div>")
                      })
 
                      if(news_len != 0){
@@ -53,8 +62,7 @@
          }
 
       </script>
-      <div class="container-fluid" style="margin:0px auto; max-width: 600px;">
-         <div id="info" class="raw"></div>
+      <div id="info" class="container-fluid" style="margin:0px auto; max-width: 600px;">
       </div>
 
    </body>
