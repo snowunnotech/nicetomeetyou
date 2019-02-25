@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
    <head>
+      <title>NBA焦點新聞</title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +28,7 @@
 
                      $("#info").html('')
                      data.forEach(function(item, index){
-                           $("#info").append("<a href=" + item.link + ">" + item.title + "</a><br>")
+                        $("#info").append("<div><a href=" + item.link + ">" + item.title + "</a></div>")
                      })
 
                      if(news_len != 0){
@@ -40,7 +41,9 @@
          }
 
       </script>
-      <div id="info"></div>
+      <div class="container-fluid" style="margin:0px auto; max-width: 400px;">
+         <div id="info" class="raw"></div>
+      </div>
 
    </body>
 </html>
