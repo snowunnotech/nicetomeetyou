@@ -14,12 +14,13 @@ token = open('./token.txt', 'r').read().strip()
 for news in news_raw.find_all('dt'):
     try:
         title = news.find_all('h3')[0].string
-        news_url = news.find_all('a')[0]['href']
-        if 'story' in news_url:
-            data.append((title, 'https://nba.udn.com' + news_url))
+        link = news.find_all('a')[0]['href']
+        pic_link = news.find_all('img')[0]['src'].split('&')[0]
+        if 'story' in link:
+            data.append( { 'title': title, 'link' : 'https://nba.udn.com' + link, 'pic_link' : pic_link} )
     except:
         pass
 
 for ele in data:
-    r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data={ 'title':ele[0], 'link':ele[1] }, headers={'Authorization': token})
+    r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data=ele, headers={'Authorization': token})
     print(r.text)
