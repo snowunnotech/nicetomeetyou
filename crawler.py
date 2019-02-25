@@ -9,6 +9,7 @@ fp = urllib.request.urlopen(urlGet.url)
 soup = BeautifulSoup(fp , 'html.parser')
 news_raw = soup.find_all(id='news')[0]
 data = []
+token = open('./token.txt', 'r').read().strip()
 
 for news in news_raw.find_all('dt'):
     try:
@@ -20,5 +21,5 @@ for news in news_raw.find_all('dt'):
         pass
 
 for ele in data:
-    r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data={ 'title':ele[0], 'link':ele[1] })
+    r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data={ 'title':ele[0], 'link':ele[1] }, headers={'Authorization': token})
     print(r.text)
