@@ -8,6 +8,15 @@
 
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <style>
+         .img-boxs{
+            position: relative;
+            margin: 5px 10px 5px 5px;
+            width: 106px;
+            height: 106px;
+            overflow: hidden;
+         }
+      </style>
    </head>
    <body>
       <!-- Optional JavaScript -->
@@ -28,7 +37,7 @@
 
                      $("#info").html('')
                      data.forEach(function(item, index){
-                        $("#info").append("<div><a href=" + item.link + ">" + item.title + "</a></div>")
+                        $("#info").append("<div><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600><a href=" + item.link + ">" + item.title + "</a></div>")
                      })
 
                      if(news_len != 0){
@@ -41,7 +50,7 @@
          }
 
       </script>
-      <div class="container-fluid" style="margin:0px auto; max-width: 400px;">
+      <div class="container-fluid" style="margin:0px auto; max-width: 600px;">
          <div id="info" class="raw"></div>
       </div>
 
