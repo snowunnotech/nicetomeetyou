@@ -49,7 +49,7 @@
 
                      $("#info").html('')
                      data.forEach(function(item, index){
-                        $("#info").append("<div class=news-boxs><a href="+ item.link +">"+ "<div class=lefter><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600></div>" + "<span>"+ item.created +"</span>" + "<p>"+ item.title +"</p>" +"</a></div>")
+                        $("#info").prepend("<div class=news-boxs><a href="+ item.link +">"+ "<div class=lefter><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600></div>" + "<span>"+ item.created +"</span>" + "<p>"+ item.title +"</p>" +"</a></div>")
                      })
 
                      if(news_len != 0){
