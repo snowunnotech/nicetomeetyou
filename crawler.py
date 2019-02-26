@@ -9,7 +9,7 @@ fp = urllib.request.urlopen(urlGet.url)
 soup = BeautifulSoup(fp , 'html.parser')
 news_raw = soup.find_all(id='news')[0]
 data = []
-token = open('./token.txt', 'r').read().strip()
+token = open('/home/vodo/nicetomeetyou/token.txt', 'r').read().strip()
 
 for news in news_raw.find_all('dt'):
     try:
@@ -17,10 +17,9 @@ for news in news_raw.find_all('dt'):
         link = news.find_all('a')[0]['href']
         pic_link = news.find_all('img')[0]['src'].split('&')[0]
         if 'story' in link:
-            data.append( { 'title': title, 'link' : 'https://nba.udn.com' + link, 'pic_link' : pic_link} )
+            data = { 'title': title, 'link' : 'https://nba.udn.com' + link, 'pic_link' : pic_link}
+            r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data=data, headers={'Authorization': token})
+            print(r.text)
     except:
         pass
 
-for ele in data:
-    r = requests.post('http://illinois.cs.nccu.edu.tw:8000/api/news/', data=ele, headers={'Authorization': token})
-    print(r.text)
