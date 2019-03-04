@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>NBA news api</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ </head>
+<body>
+<div>
+  <h class="dog">焦點新聞</h>
+  {% if news%}
+  <ul>
+  {% for n in news%}
+  <li class = "newslist" id="{{n.id}}"> <u>{{n.title}}</u><p class="{{ n.id }}"></p></li>
+  
+  {% endfor %}
+  </ul>
+  {% else %}
+  <p>call scarpy crawl spidy</p>
+  {% endif %}
+</div>
+
+  <script>
+$(".newslist").click(function () {
+  var id = $(this).attr('id');
+  $.ajax({
+    url: "http://localhost:8000/newsapi",
+    dataType: "json",
+    success: function (data) {
+        $.each(data, function (index, element) {
+              if(element.id==id){
+                $("."+id).text(element.content);
+              }
+            });
+          }
+      })
+
+});
+  </script>
+
+</body>
+</html>
