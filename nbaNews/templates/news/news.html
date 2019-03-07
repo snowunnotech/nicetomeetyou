@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+
+焦點新聞
+<table id="newsTable">
+
+</table>
+
+<br><br>
+<div id="pagination">
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $(document).on('click', '#prevA', () => {
+            getNews(previousURL)
+            pageNow -= 1
+        })
+
+        $(document).on('click', '#nextA', () => {
+            getNews(nextURL)
+            pageNow += 1
+        })
+
+        var url = '/api/newss'
+
+        var previousURL = ''
+        var nextURL = ''
+        var pageNow = 1
+
+        getNews = (url) => {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: (data) => {
+
+                    var newses = data.results
+
+                    var trs = ""
+                    newses.map((news) => {
+                        var tr = "<tr>"
+
+                        tr += `<td><a href="/news/${news.id}/" >${news.title}</a></td>`
+                        tr += "</tr>"
+
+                        trs += tr
+                    })
+
+                    $('#newsTable').html(trs)
+
+                    var pagination = ""
+
+                    if (data.previous) {
+                        previousURL = data.previous
+                        pagination += '<a id="prevA" href="#">prev</a>'
+
+                    }
+                    pagination += `<span>${pageNow}</span>`
+                    if (data.next) {
+                        nextURL = data.next
+                        pagination += '<a id="nextA" href="#">next</a>'
+                    }
+
+
+                    $('#pagination').html(pagination)
+
+                },
+                error: (e) => {
+                    console.log(e)
+                }
+            })
+
+        }
+
+        getNews(url)
+
+    })
+
+
+</script>
+</body>
+</html>
