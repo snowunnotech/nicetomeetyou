@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<div>
+    <div id="newsTitleDiv"></div>
+    <br>
+    <div id="newsDatetimeDiv"></div>
+    <br>
+    <div id="newsContentDiv"></div>
+    <br>
+    <div id="newsURLDiv"></div>
+</div>
+
+<br>
+<br>
+<a href="{%  url 'news:news' %}">回上頁</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $.ajax({
+            url: '/api/newss/{{ id }}/',
+            type: 'GET',
+            success: (data) => {
+                $('#newsTitleDiv').append(data.title)
+                $('#newsDatetimeDiv').append(data.uploadDatetime)
+                $('#newsContentDiv').append(data.content)
+
+                $('#newsURLDiv').append(`<a href="${data.url}" target=_blank>來源連結</a>`)
+
+            },
+            error: (e) => {
+                console.log(e)
+            }
+        })
+    })
+</script>
+</body>
+</html>
