@@ -2,11 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
+from crawler.pushNotify import PushNotify
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nbaNews.settings')
 import django
 
 django.setup()
-from news.models import News
+from news.models import News, PushToken
 
 
 class CrawlerNewsPage:
@@ -29,24 +31,36 @@ class CrawlerNewsPage:
             c.decompose()
 
         unwant = content.find('h1', {'class': 'story_art_title'})
-        unwant.extract()
-
+        try:
+            unwant.extract()
+        except:
+            pass
         unwant = content.find('div', {'class': 'shareBar'})
-        unwant.extract()
+        try:
+            unwant.extract()
+        except:
+            pass
 
         unwant = content.find('figure', {'class': 'photo_center'})
-        unwant.extract()
+        try:
+            unwant.extract()
+        except:
+            pass
 
 
-        news2, isCreate = News.objects.get_or_create(url=url)
+        news, isCreate = News.objects.get_or_create(url=url)
+        if isCreate:
+            self.push()
+        news.content = content.text
+        news.title = title
+        news.uploadDatetime = uploadDatetime
+        news.save()
 
-        news2.content = content.text
-        news2.title = title
-        news2.uploadDatetime = uploadDatetime
-        news2.save()
+    def push(self):
+        pushTokens = PushToken.objects.all()
+        for pushToken in pushTokens:
+            PushNotify(pushToken.token)
 
-    def run(self):
-        return
 
 
 if __name__ == '__main__':
