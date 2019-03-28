@@ -149,3 +149,21 @@ BOWER_INSTALLED_APPS = (
     'jquery',
     'foundation',
 )
+
+# celery setting
+# Command: celery -A myproject --beat worker -l debug
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+CELERY_ACCEPT_CONTENT = ['application/json', 'pickle']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Taipei'
+
+CELERY_BEAT_SCHEDULE = {
+    'run_crawler': {
+        'task': 'myproject.core.tasks.run_crawler',
+        'schedule': 20.0,
+        'args': ()
+    },
+}
