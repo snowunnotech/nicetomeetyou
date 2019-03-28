@@ -1,10 +1,10 @@
 
 from celery import Celery
-from myproject.core.crawler import simpleCrawler
+from myproject.core.crawler import SimpleCrawler
 
 app = Celery('tasks', broker='django://')
 
 @app.task
 def runCrawler():
-    simpleCrawler.run()
+    SimpleCrawler.run()
     

@@ -1,7 +1,7 @@
 
 import celery
-from myproject.core.crawler import simpleCrawler
+from myproject.core.crawler import SimpleCrawler
 
 @celery.task()
 def run_crawler():
-    simpleCrawler.run()
+    SimpleCrawler.run()

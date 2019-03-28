@@ -49,7 +49,7 @@ class beautifulSoupResolver():
 
         print()
 
-class simpleCrawler():
+class SimpleCrawler():
     PROTOCOL = 'https'
     HOST = 'nba.udn.com'
     HOME = '/nba/index?gr=www'

@@ -1,12 +1,12 @@
 from django.test import TestCase
 
 from myproject.core.models import New
-from myproject.core.crawler import simpleCrawler
+from myproject.core.crawler import SimpleCrawler
 
 class CrawlerTest(TestCase):
     def setUp(self):
         pass
         
     def test_crawler(self):
-        simpleCrawler.run()
+        SimpleCrawler.run()
         
