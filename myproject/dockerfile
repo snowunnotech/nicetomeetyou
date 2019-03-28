@@ -1,0 +1,12 @@
+
+FROM python:3.6.5
+
+# init
+RUN mkdir /www
+WORKDIR /www
+COPY requirements.txt /www/
+
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+
+COPY . /www/

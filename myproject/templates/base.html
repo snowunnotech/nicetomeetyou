@@ -1,0 +1,45 @@
+{% load static %}
+
+{% comment %} 
+
+All necessary css, js file is included here
+But no web style is setting here
+
+{% endcomment %}
+
+{% comment %} load global used jquery lib {% endcomment %}
+<script type="text/javascript" src="{% static 'jquery/dist/jquery.js'  %}"></script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>NiceToMeetYou</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.png' %}"/>
+
+    {% comment %} Foundation style {% endcomment %}
+    <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}">
+    <link rel="stylesheet" href="{% static 'foundation/css/app.css' %}">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'foundation-datepicker/css/foundation-datepicker.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
+
+{% comment %} Foundation scripts {% endcomment %}
+<script src="{% static 'foundation/js/vendor/jquery.js' %}" ></script>
+<script src="{% static 'foundation/js/vendor/what-input.js' %}" ></script>
+<script src="{% static 'foundation/js/vendor/foundation.js' %}" ></script>
+<script src="{% static 'foundation-datepicker/js/foundation-datepicker.js' %}" ></script>
+<script src="{% static 'foundation/js/app.js' %}" ></script>
+
+{% block style %}
+{% endblock %}
