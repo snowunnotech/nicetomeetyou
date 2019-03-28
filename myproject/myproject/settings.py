@@ -163,7 +163,7 @@ CELERY_TIMEZONE = 'Asia/Taipei'
 CELERY_BEAT_SCHEDULE = {
     'run_crawler': {
         'task': 'myproject.core.tasks.run_crawler',
-        'schedule': 20.0,
+        'schedule': 60.0,
         'args': ()
     },
 }

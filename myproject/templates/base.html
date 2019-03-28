@@ -22,10 +22,10 @@ But no web style is setting here
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.png' %}"/>
 
     {% comment %} Foundation style {% endcomment %}
+    <link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}">
     <link rel="stylesheet" href="{% static 'foundation/css/app.css' %}">
     <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'foundation-datepicker/css/foundation-datepicker.css' %}">
 </head>
 
 <body>
@@ -36,10 +36,8 @@ But no web style is setting here
 
 {% comment %} Foundation scripts {% endcomment %}
 <script src="{% static 'foundation/js/vendor/jquery.js' %}" ></script>
-<script src="{% static 'foundation/js/vendor/what-input.js' %}" ></script>
-<script src="{% static 'foundation/js/vendor/foundation.js' %}" ></script>
-<script src="{% static 'foundation-datepicker/js/foundation-datepicker.js' %}" ></script>
-<script src="{% static 'foundation/js/app.js' %}" ></script>
+<script src="{% static 'foundation/js/vendor/modernizr.js' %}" ></script>
+<script src="{% static 'foundation/js/foundation.js' %}" ></script>
 
 {% block style %}
 {% endblock %}
