@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # class NewsManager(models.Manager):
 #
 #     def create(self, number, title, image, contents, published_date):
@@ -15,6 +14,9 @@ class News(models.Model):
     image = models.CharField(max_length=200, null=True)
     contents = models.TextField(null=True)
     published_date = models.DateTimeField(null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    objects = models.Manager()
 
     @classmethod
     def create(cls, number, title, image, contents, published_date):
