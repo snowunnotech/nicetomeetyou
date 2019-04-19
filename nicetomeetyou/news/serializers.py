@@ -9,5 +9,5 @@ class NewsSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=100)
     image = serializers.CharField(max_length=200)
     contents = serializers.CharField()
-    published_date = serializers.DateTimeField()
-    created_date = serializers.DateTimeField(read_only=True)
+    published_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)

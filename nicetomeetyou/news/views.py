@@ -1,9 +1,10 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . crawlers import Crawler
 from . models import News
 from . serializers import NewsSerializer
+
 
 def crawl_news(request):
 
@@ -33,4 +34,13 @@ def news_detail(request, id):
     if request.method == 'GET':
         serializer = NewsSerializer(news)
         return JsonResponse(serializer.data)
+
+
+def news_list_page(request):
+    return render(request, 'news/index.html')
+
+
+def news_detail_page(request, id):
+    context = {"news_id": id}
+    return render(request, 'news/detail.html', context)
 
