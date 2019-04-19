@@ -18,6 +18,9 @@ class News(models.Model):
 
     objects = models.Manager()
 
+    def __str__(self):
+        return "News No." + str(self.number)
+
     @classmethod
     def create(cls, number, title, image, contents, published_date):
         news = cls(number=number, title=title, image=image, contents=contents, published_date=published_date)

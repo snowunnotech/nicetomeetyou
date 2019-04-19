@@ -1,6 +1,7 @@
-from datetime import  datetime
+from datetime import datetime
 import requests as rs
 from bs4 import BeautifulSoup as bs
+import logging
 
 from . models import News
 
@@ -64,9 +65,13 @@ class Crawler:
         image = self.parse_image(soup)
         contents = self.parse_contents(soup)
         published_date = string_to_datetime(self.parse_published_date(soup))
-
-        news = News.create(number, title, image, contents, published_date)
-        news.save()
+        try:
+            existed_news = News.objects.get(number=number)
+        except News.DoesNotExist as e:
+            existed_news = None
+        if existed_news is None:
+            news = News.create(number, title, image, contents, published_date)
+            news.save()
 
     def run(self):
 
@@ -76,3 +81,8 @@ class Crawler:
         news_urls = self.parse_news_urls(soup)
         for url in news_urls:
             self.parse_news_information(url)
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(name)s:%(levelname)s:%(message)s')
+    Crawler.run()

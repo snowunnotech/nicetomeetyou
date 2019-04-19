@@ -18,7 +18,7 @@ def crawl_news(request):
 def news_list(request):
 
     if request.method == 'GET':
-        news = News.objects.all()
+        news = News.objects.all().order_by('-published_date')
         serializer = NewsSerializer(news, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
 

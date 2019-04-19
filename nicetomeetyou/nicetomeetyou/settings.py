@@ -121,3 +121,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Django-Q
+
+Q_CLUSTER = {
+    'name': 'nicetomeetyou',
+    'workers': 1,
+    'recycle': 100,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 250,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': '127.0.0.1',
+        'port': 6379,
+        'db': 0, }
+}
+
