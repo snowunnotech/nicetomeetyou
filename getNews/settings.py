@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm@^ou9l3yo=q%fgc=2p9y99iy(ixehh3q)$s^^0=^d-)2%1s=r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['crawler1-env.mmmevh6ewc.ap-northeast-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS=[]
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'new.apps.NewConfig',
     'rest_framework',
+    'django_q',
 ]
 
 MIDDLEWARE = [
@@ -105,9 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-TW'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
@@ -120,10 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+STATIC_ROOT = os.path.join(BASE_DIR, "..","static")
 
-)
 #REST_FRAMEWORK
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -132,3 +130,13 @@ REST_FRAMEWORK = {
 
 
 }
+Q_CLUSTER = {
+'name': 'DjangORM',
+'workers': 1,
+'timeout': 1800,
+'retry': 120,
+'queue_limit': 50,
+'bulk': 10,
+'orm': 'default'
+}
+# ALLOWED_HOSTS = ['crawler1-env.mmmevh6ewc.ap-northeast-1.elasticbeanstalk.com']

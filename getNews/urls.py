@@ -22,9 +22,10 @@ from new.views import NewViewSet,newList, getNewList, get_news_detail
 router = routers.DefaultRouter()
 router.register(r'news', NewViewSet)
 urlpatterns = [
-    path('', include(router.urls)),
-    path(r"new/list",newList),
+    # path(r'admin/', admin.site.urls),
+    path(r'',newList),
+    path(r"api",include(router.urls)),
     path(r"getNews/",getNewList.as_view(),name='getNews'),
     path(r'detail',get_news_detail.as_view()),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
