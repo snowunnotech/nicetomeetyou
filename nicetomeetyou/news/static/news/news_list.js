@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:8000/news/api/news",
+        url: "https://boiling-citadel-11734.herokuapp.com/news/api/news",
 		success: function (data){
             data.forEach(function(ele){
                 $("#news_list").append("<div id='" + ele.number + "'></div>");

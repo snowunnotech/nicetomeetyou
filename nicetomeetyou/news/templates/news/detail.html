@@ -9,7 +9,7 @@
             var news_id = "{{news_id}}";
             $.ajax({
                 type: "GET",
-                url: "http://127.0.0.1:8000/news/api/news/" + news_id,
+                url: "https://boiling-citadel-11734.herokuapp.com/news/api/news/" + news_id,
                 success: function (data){
                     $("div.image img").attr("src", data.image);
                     $("div.title a").text(data.title);
