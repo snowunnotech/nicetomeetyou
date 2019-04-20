@@ -1,7 +1,25 @@
 var domain = "https://boiling-citadel-11734.herokuapp.com/";
-//var domain = "http://127.0.0.1:8000/"
+// var domain = "http://127.0.0.1:8000/"
 
 $(document).ready(function () {
+
+    $.ajax({
+        type: "GET",
+        url: domain + "news/api/notice",
+        success: function (data){
+            console.log(data.status);
+            if (data.status == true){
+                $("#notice span").text("有最新消息！");
+            } else {
+                $("#notice span").text("尚無最新消息！");
+            }
+        },
+		error: function (e){
+            console.log(e);
+		}
+
+    })
+
     $.ajax({
         type: "GET",
         url: domain + "news/api/news",

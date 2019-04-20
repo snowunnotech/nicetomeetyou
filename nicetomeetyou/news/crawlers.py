@@ -3,7 +3,7 @@ import requests as rs
 from bs4 import BeautifulSoup as bs
 import logging
 
-from . models import News
+from . models import News, Notice
 
 
 def string_to_datetime(string):
@@ -59,6 +59,7 @@ class Crawler:
 
         res = rs.get(url)
         soup = bs(res.text, "html5lib")
+        status = False
 
         number = self.parse_number(url)
         title = self.parse_title(soup)
@@ -70,17 +71,24 @@ class Crawler:
         except News.DoesNotExist as e:
             existed_news = None
         if existed_news is None:
+            status = True
             news = News.create(number, title, image, contents, published_date)
             news.save()
+        return status
 
     def run(self):
 
         res = rs.get(self.first_page)
         soup = bs(res.text, "html5lib")
+        latest_news = 0
 
         news_urls = self.parse_news_urls(soup)
         for url in news_urls:
-            self.parse_news_information(url)
+            status = self.parse_news_information(url)
+            if status:
+                latest_news += 1
+        notice = Notice.create(False) if latest_news == 0 else Notice.create(True)
+        notice.save()
 
 
 if __name__ == "__main__":

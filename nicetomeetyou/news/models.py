@@ -30,7 +30,7 @@ class News(models.Model):
 class Notice(models.Model):
 
     status = models.BooleanField(null=False, default=False)
-    update_time = models.DateTimeField(auto_now=True)
+    create_time = models.DateTimeField(auto_now_add=True)
 
     objects = models.Manager()
 
@@ -39,7 +39,7 @@ class Notice(models.Model):
 
     @classmethod
     def create(cls, status):
-        notice = cls(status)
+        notice = cls(status=status)
         return notice
 
 

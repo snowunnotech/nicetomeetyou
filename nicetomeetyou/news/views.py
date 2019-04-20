@@ -48,6 +48,6 @@ def news_detail_page(request, id):
 @csrf_exempt
 def notice_status(request):
     if request.method == 'GET':
-        notice = Notice.objects.get(id=1)
+        notice = Notice.objects.all().order_by('-create_time').first()
         serializer = NoticeSerializer(notice)
         return JsonResponse(serializer.data, safe=False, status=200)
