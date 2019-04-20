@@ -2,4 +2,5 @@ from . crawlers import Crawler
 
 
 def news_crawler():
-    Crawler.run()
+    crawler = Crawler()
+    crawler.run()
