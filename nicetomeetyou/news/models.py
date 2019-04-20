@@ -27,5 +27,21 @@ class News(models.Model):
         return news
 
 
+class Notice(models.Model):
+
+    status = models.BooleanField(null=False, default=False)
+    update_time = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()
+
+    def __str__(self):
+        return "Status: " + str(self.status)
+
+    @classmethod
+    def create(cls, status):
+        notice = cls(status)
+        return notice
+
+
 
 

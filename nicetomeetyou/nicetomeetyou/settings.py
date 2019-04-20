@@ -126,18 +126,12 @@ STATIC_URL = '/static/'
 # Django-Q
 
 Q_CLUSTER = {
-    'name': 'nicetomeetyou',
+    'name': 'DjangORM',
     'workers': 1,
-    'recycle': 100,
-    'timeout': 60,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 250,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'redis': {
-        'host': '127.0.0.1',
-        'port': 6379,
-        'db': 0, }
+    'timeout': 1800,
+    'retry': 120,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default'
 }
 

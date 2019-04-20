@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from . models import News
 
 
 class NewsSerializer(serializers.Serializer):
@@ -11,3 +10,8 @@ class NewsSerializer(serializers.Serializer):
     contents = serializers.CharField()
     published_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
     created_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
+
+
+class NoticeSerializer(serializers.Serializer):
+
+    status = serializers.BooleanField()

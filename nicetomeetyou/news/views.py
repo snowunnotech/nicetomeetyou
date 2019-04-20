@@ -2,8 +2,8 @@ from django.shortcuts import HttpResponse, render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . crawlers import Crawler
-from . models import News
-from . serializers import NewsSerializer
+from . models import News, Notice
+from . serializers import NewsSerializer, NoticeSerializer
 
 
 def crawl_news(request):
@@ -44,3 +44,10 @@ def news_detail_page(request, id):
     context = {"news_id": id}
     return render(request, 'news/detail.html', context)
 
+
+@csrf_exempt
+def notice_status(request):
+    if request.method == 'GET':
+        notice = Notice.objects.get(id=1)
+        serializer = NoticeSerializer(notice)
+        return JsonResponse(serializer.data, safe=False, status=200)
