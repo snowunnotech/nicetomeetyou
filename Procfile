@@ -1,2 +1,2 @@
 web: gunicorn --pythonpath nicetomeetyou nicetomeetyou.wsgi
-worker: python manage.py qcluster
+worker: python nicetomeetyou/manage.py qcluster
