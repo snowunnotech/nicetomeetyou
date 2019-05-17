@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="http://www.ziqiangxuetang.com/media/django/csrf.js"></script>
+</head>
+{#<script>#}
+{#    function show_context() {#}
+{#        $.ajax({#}
+{#            url: "{% url 'catch:show' %}",#}
+{#            type: "POST", //預設為 GET#}
+{#            data: {#}
+{#                'City_view': 1,#}
+{#            },#}
+{#            success: function (data) {#}
+{#                alert(data)#}
+{#                document.getElementById("p1").value=JSON_data.twz;#}
+{#                document.getElementById("p2").value=JSON_data.zqxt;#}
+{#            },#}
+{#            // 錯誤時執行的函式#}
+{#            error: function (xhr, ajaxOptions, thrownError) {#}
+{#                alert('NoGG')#}
+{#            },#}
+{#        });#}
+{#    }#}
+{#</script>#}
+
+<body>
+
+{#all_title:{{ all_title }}#}
+{% if newDataCheck == 'T' %}
+    <script>
+        alert('有新資料!')
+    </script>
+    {% elif newDataCheck == 'F' %}
+    <script>
+        alert('查無新資料')
+    </script>
+{% endif %}
+<br>
+<a href="{% url 'catch:index' %}">
+    Index
+</a>
+<br>
+<a href="{% url 'catch:content' %}">
+    顯示內容
+</a>
+<br>
+<a href="{% url 'catch:search' %};">
+    抓取資料
+</a>
+{% for i in content_detail  %}
+    <br>
+    <table border="1">
+    <tr>
+        <td>
+            標題:{{ i.title }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ i.potime }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ i.text }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img width="30%"  src="{{ i.picture }}">
+            {{ i.picture }}
+        </td>
+    </tr>
+    </table>
+{% endfor %}
+
+<br>
+{#    <a class="btn btn-success" href="javascript:show_context();">#}
+{#        <i class="glyphicon glyphicon-zoom-in icon-white"></i>#}
+{#        show#}
+{#    </a>#}
+<p>1.抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。</p>
+<p>2.使用 Django 設計恰當的 Model，并將所抓取新聞存儲至 DB。</p>
+<p>3.使用 Django REST Framework 配合 AJAX 實現以下頁面：</p>
+<br>焦點新聞列表
+<br>新聞詳情頁面
+<p>4.以 Pull-Request 的方式將代碼提交。</p>
+
+<p>進階要求</p>
+<p>1.實現爬蟲自動定時抓取。</p>
+<p>2.每當抓取到新的新聞時立即通知頁面。</p>
+<p>3.将本 demo 部署至服务器并可正确运行。</p>
+
+
+</body>
+</html>

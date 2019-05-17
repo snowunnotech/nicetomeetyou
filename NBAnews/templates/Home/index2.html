@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                var csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+    <script>
+        $.ajax({
+            url: "{% url 'catch:show' %}",
+            type: "POST", //預設為 GET
+            data: {
+                'test': 1,
+            },
+            success: function (data) {
+                var JSON_data = JSON.parse(data);
+                document.getElementById("p1").value=JSON_data.twz;
+                document.getElementById("p2").value=JSON_data.zqxt;
+
+{#                JSON_data.Area_id#}
+            },
+            // 錯誤時執行的函式
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('NoGG')
+            },
+        });
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p id="p1">aa
+    <p id="p2">bb
+</body>
+</html>
