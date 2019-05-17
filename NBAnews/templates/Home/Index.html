@@ -6,26 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="http://www.ziqiangxuetang.com/media/django/csrf.js"></script>
 </head>
-{#<script>#}
-{#    function show_context() {#}
-{#        $.ajax({#}
-{#            url: "{% url 'catch:show' %}",#}
-{#            type: "POST", //預設為 GET#}
-{#            data: {#}
-{#                'City_view': 1,#}
-{#            },#}
-{#            success: function (data) {#}
-{#                alert(data)#}
-{#                document.getElementById("p1").value=JSON_data.twz;#}
-{#                document.getElementById("p2").value=JSON_data.zqxt;#}
-{#            },#}
-{#            // 錯誤時執行的函式#}
-{#            error: function (xhr, ajaxOptions, thrownError) {#}
-{#                alert('NoGG')#}
-{#            },#}
-{#        });#}
-{#    }#}
-{#</script>#}
 
 <body>
 
@@ -79,10 +59,6 @@
 {% endfor %}
 
 <br>
-{#    <a class="btn btn-success" href="javascript:show_context();">#}
-{#        <i class="glyphicon glyphicon-zoom-in icon-white"></i>#}
-{#        show#}
-{#    </a>#}
 <p>1.抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。</p>
 <p>2.使用 Django 設計恰當的 Model，并將所抓取新聞存儲至 DB。</p>
 <p>3.使用 Django REST Framework 配合 AJAX 實現以下頁面：</p>
