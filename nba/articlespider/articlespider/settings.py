@@ -92,4 +92,4 @@ ITEM_PIPELINES = {
 MYSQL_HOST = 'kimonbacrawl.mysql.pythonanywhere-services.com'
 MYSQL_DBNAME = 'kimonbacrawl$nba'
 MYSQL_USER = 'kimonbacrawl'
-MYSQL_PASSWORD = 'root1234'
+MYSQL_PASSWORD = ''
