@@ -89,7 +89,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MYSQL_HOST = "192.168.1.106"
-MYSQL_DBNAME = "nba"
-MYSQL_USER = "root"
-MYSQL_PASSWORD = "root"
+MYSQL_HOST = 'kimonbacrawl.mysql.pythonanywhere-services.com'
+MYSQL_DBNAME = 'kimonbacrawl$nba'
+MYSQL_USER = 'kimonbacrawl'
+MYSQL_PASSWORD = 'root1234'

@@ -25,7 +25,7 @@ SECRET_KEY = '1n2_i+av@9y0un+#y2qt$y#9ncgbmpq7z5x2&w19pkxz_+dhg='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ "127.0.0.1",]
+ALLOWED_HOSTS = ["kimonbacrawl.pythonanywhere.com",]
 
 
 # Application definition
@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'nba.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nba',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '192.168.1.106',
+        'NAME': 'kimonbacrawl$nba',
+        'USER': 'kimonbacrawl',
+        'PASSWORD': 'root1234',
+        'HOST': 'kimonbacrawl.mysql.pythonanywhere-services.com',
         'PORT': 3306
     }
 }
@@ -132,7 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
-SERVER_IP = 'http://127.0.0.1:8000/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+# ]
+STATIC_ROOT = '/home/kimonbacrawl/nicetomeetyou/nba/static'
+SERVER_IP = 'http://kimonbacrawl.pythonanywhere.com/'
