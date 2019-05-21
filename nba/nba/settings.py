@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kimonbacrawl$nba',
         'USER': 'kimonbacrawl',
-        'PASSWORD': 'root1234',
+        'PASSWORD': '',
         'HOST': 'kimonbacrawl.mysql.pythonanywhere-services.com',
         'PORT': 3306
     }
