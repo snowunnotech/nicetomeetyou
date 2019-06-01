@@ -36,6 +36,8 @@ def news_crawler(pages: int = 10):
     # 抓取詳細新聞頁面中的各項參數
     post_list = []
     for page_url in page_detail_url:
+
+        # 新聞ID
         post_id = page_url.split('/')[-1]
 
         try:
