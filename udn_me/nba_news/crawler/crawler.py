@@ -40,6 +40,9 @@ def news_crawler(pages: int = 10):
         # 新聞ID
         post_id = page_url.split('/')[-1]
 
+        # 新聞來源URL
+        post_source_url = page_url
+
         try:
             if Post.objects.filter(id=post_id).exists():
                 continue
@@ -62,6 +65,15 @@ def news_crawler(pages: int = 10):
             content = story_body_content.find_all('p')
             for ele in content[1::]:
                 post_content += ele.text
+
+            post_list.append(Post(
+                id = post_id,
+                title = post_title,
+                content = post_content,
+                image_url = post_image_url,
+                publish_date = post_date,
+                source_url = post_source_url
+            ))
 
             print(f'{post_id} {post_title} {post_date}')
 
