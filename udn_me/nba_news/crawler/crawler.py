@@ -83,10 +83,12 @@ def news_crawler(pages: int = 10):
             print(e)
             continue
 
-    # 將資料庫表格加入大量資料
+    print('-----Crawler End-----')
+
+    # 將大量資料存入資料庫表格
     Post.objects.bulk_create(post_list)
 
-    print('-----Crawler End-----')
+    print('-----Data Saved Complete-----')
 
 
 if __name__ == "__main__":
