@@ -15,7 +15,7 @@ class ParserTestCase(unittest.TestCase):
             test_html = file.read()
 
         news_list = Parser.get_head_news_list(test_html)
-        self.assertEqual(4, len(news_list))
+        self.assertEqual(3, len(news_list))
 
 
     def test_get_new_detail(self):
