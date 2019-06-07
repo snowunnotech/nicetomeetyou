@@ -12,6 +12,11 @@ faker = "*"
 [packages]
 requests = "*"
 beautifulsoup4 = "*"
+django = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+django-rest-swagger = "*"
 
 [requires]
 python_version = "3.7"
