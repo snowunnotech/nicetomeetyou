@@ -3,10 +3,11 @@
 import unittest
 
 from crawler.scraper import Scraper
-from crawler.constant import BASE_URL, TEST_URL, PROJECT_ROOT
+from crawler.constant import BASE_URL, TEST_URL
 
 
 class ScraperTestCase(unittest.TestCase):
+    "Test case for Scraper"
 
     def setUp(self):
         pass

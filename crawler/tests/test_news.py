@@ -5,9 +5,7 @@ import unittest
 from crawler.news import News
 
 class NewsTestCase(unittest.TestCase):
+    "Test case for news modules"
 
     def setUp(self):
         self.news = News()
-
-    def test_get_news_detail(self):
-        raise NotImplementedError
