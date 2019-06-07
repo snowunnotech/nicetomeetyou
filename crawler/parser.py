@@ -6,8 +6,8 @@ from crawler.constant import BASE_URL
 
 import pysnooper
 
-class Parser:
 
+class Parser:
     def __init__(self):
         pass
 
@@ -27,5 +27,23 @@ class Parser:
         return news_list
 
     @staticmethod
+    @pysnooper.snoop()
     def get_news_detail(text):
-        raise NotImplementedError
+        soup = bs(text, "html.parser")
+        paragraph_list = list()
+
+        story_body = soup.find("div", {"id": "story_body_content"})
+
+        title = story_body.find("h1").text
+
+        datetime_str = story_body.find("div", {
+            "class": "shareBar__info--author"
+        }).find("span").text
+
+        target_paragraph_list = story_body.findAll("p")
+        for paragraph in target_paragraph_list:
+            if paragraph.text:
+                paragraph_list.append(paragraph.text)
+        content = "".join(paragraph_list)
+
+        return title, datetime_str, content
