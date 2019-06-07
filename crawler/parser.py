@@ -4,16 +4,16 @@ from bs4 import BeautifulSoup as bs
 
 from crawler.constant import BASE_URL
 
-import pysnooper
-
 
 class Parser:
+    "Parser for news list and news detail"
+
     def __init__(self):
         pass
 
     @staticmethod
-    @pysnooper.snoop()
     def get_head_news_list(text):
+        "Get head news list"
         news_list = list()
         soup = bs(text, "html.parser")
 
@@ -27,8 +27,8 @@ class Parser:
         return news_list
 
     @staticmethod
-    @pysnooper.snoop()
     def get_news_detail(text):
+        "Get news detail like title, datetime, and content"
         soup = bs(text, "html.parser")
         paragraph_list = list()
 
