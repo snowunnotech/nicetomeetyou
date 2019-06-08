@@ -7,6 +7,7 @@ class News(models.Model):
 
     title = models.CharField(max_length=100, verbose_name=_('標題'))
     content = models.TextField(verbose_name=_('內文'))
+    url = models.TextField(blank=True, verbose_name=_('連結'))
     created_at = models.DateTimeField(verbose_name=_('時間'))
     scrapped_at = models.DateTimeField(auto_now_add=True, verbose_name=_('抓取時間'))
 
