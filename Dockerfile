@@ -43,3 +43,5 @@ CMD cron && tail -f /var/log/cron.log
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . /code/
+
+RUN sh /etc/init.d/init.sh
