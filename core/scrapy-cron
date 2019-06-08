@@ -1,2 +1,4 @@
-2 * * * * $(which python3) /code/news/helpers/scrapy.py >> /var/log/cron.log 2>&1
-# An empty line is required at the end of this file for a valid cron file.
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/1 * * * * root /bin/sh -c /code/core/scrapy_cron.sh >> /var/log/cron.log 2>&1

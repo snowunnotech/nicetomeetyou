@@ -12,7 +12,8 @@ WORKDIR /code
 RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-dev \
-    cron
+    cron \
+    vim
 
 # set up project python env
 COPY Pipfile /code/Pipfile
@@ -37,11 +38,11 @@ RUN crontab /etc/cron.d/scrapy-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-# Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
-
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . /code/
 
 RUN sh /etc/init.d/init.sh
+
+# Run the command on container startup
+#CMD cron && tail -f /var/log/cron.log
