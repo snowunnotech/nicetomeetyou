@@ -1,22 +1,87 @@
-{% load staticfiles %}
-<!doctype html>
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Full Motion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
-	<head>
-		<title>NBA</title>
-    <!-- Standard Meta -->
-      <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
-    {% block css %}{% endblock %}
 
-	</head>
-	<body>
-    <h1>NBA News</h1>
+<head>
+  <title>NBA</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="{% static 'news/css/main.css' %}">
+</head>
 
-    <script src="{% static 'main/js/main.js' %}"></script>
-    {% block script %}{% endblock %}
-	</body>
+<body id="top">
+
+  <!-- Banner -->
+  <!--
+				To use a video as your background, set data-video to the name of your video without
+				its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+				formats to work correctly.
+			-->
+  <section id="banner" data-video="images/banner">
+    <div class="inner">
+      <header>
+        <h1>NBA NEWS</h1>
+        <p>Hots news collections</p>
+      </header>
+      <a href="#main" class="more">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Boxes -->
+      <div class="thumbnails">
+
+        <!--<div class="box">-->
+          <!--<a href="https://youtu.be/s6zR2T9vn2c" class="image fit"><img src="images/pic04.jpg" alt="" /></a>-->
+          <!--<div class="inner">-->
+            <!--<h3>Nascetur nunc varius commodo</h3>-->
+            <!--[><p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p><]-->
+            <!--<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Read</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <h2>Nice to meet you</h2>
+      <p>A responsive video gallery template with a functional lightbox<br/>designed by <a href="https://templated.co/">Templated</a> and released under the Creative Commons License. </p>
+
+      <ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+      </ul>
+      <p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>. Videos: <a href="http://coverr.co/">Coverr</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!--<script src="assets/js/jquery.min.js"></script>-->
+  <!--<script src="assets/js/jquery.scrolly.min.js"></script>-->
+  <!--<script src="assets/js/jquery.poptrox.min.js"></script>-->
+  <!--<script src="assets/js/skel.min.js"></script>-->
+  <!--<script src="assets/js/util.js"></script>-->
+  <!--<script src="assets/js/main.js"></script>-->
+  <script src="{% static 'news/js/jquery.min.js' %}"></script>
+  <script src="{% static 'news/js/jquery.scrolly.min.js' %}"></script>
+  <script src="{% static 'news/js/jquery.poptrox.min.js' %}"></script>
+  <script src="{% static 'news/js/skel.min.js' %}"></script>
+  <script src="{% static 'news/js/uril.js' %}"></script>
+  <script src="{% static 'news/js/main.js' %}"></script>
+  <script src="{% static 'news/js/test.js' %}"></script>
+</body>
 
 </html>
-

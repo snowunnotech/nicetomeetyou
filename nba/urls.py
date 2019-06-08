@@ -20,15 +20,16 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 
-router = DefaultRouter()
-api_urls = router.urls
+from news.api import view_sets
 
+router = DefaultRouter()
+router.register(r'news', view_sets.NewsViewSet)
+
+api_urls = router.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path(r'news/', include('news.urls', namespace='news')),
-
     re_path(r'^api/', include(api_urls)),
     re_path(r'^api/docs/', include_docs_urls()),
     re_path(r'^api/swagger/', get_swagger_view(title='NBA NEWS')),
