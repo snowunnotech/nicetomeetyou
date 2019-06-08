@@ -2,7 +2,7 @@
 
 from bs4 import BeautifulSoup as bs
 
-from crawler.constant import BASE_URL
+from core.constant import BASE_URL
 
 
 class Parser:

@@ -3,7 +3,8 @@
 import unittest
 
 from crawler.parser import Parser
-from crawler.constant import PROJECT_ROOT
+
+from core.constant import PROJECT_ROOT
 
 class ParserTestCase(unittest.TestCase):
     "Test case for Parser modules"

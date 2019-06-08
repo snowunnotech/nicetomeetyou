@@ -3,7 +3,8 @@
 import unittest
 
 from crawler.scraper import Scraper
-from crawler.constant import BASE_URL, TEST_URL
+
+from core.constant import BASE_URL, TEST_URL
 
 
 class ScraperTestCase(unittest.TestCase):
