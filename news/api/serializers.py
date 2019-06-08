@@ -9,4 +9,12 @@ class NewsSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = News
-        fields = ('title', 'url', 'created_at', 'content', 'scrapped_at')
+        fields = ('id', 'title', 'created_at')
+
+class NewsDetailSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    News NewsSerializer for all fields
+    """
+    class Meta:
+        model = News
+        fields = ('id', 'title', 'created_at', 'content')
