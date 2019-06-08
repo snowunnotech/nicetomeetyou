@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/1 * * * * root /bin/sh -c /code/core/scrapy_cron.sh >> /var/log/cron.log 2>&1
