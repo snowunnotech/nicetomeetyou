@@ -54,6 +54,15 @@ class Scraper:
 
         return text
 
+    def run(self):
+        "Run the whole request process and return text"
+        self.create_request_headers()
+        self.create_request_data()
+        self.request()
+        text = self.get_response_text()
+
+        return text
+
 
 if __name__ == "__main__":
     pass
