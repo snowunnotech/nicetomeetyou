@@ -15,7 +15,7 @@
 - 使用 pipenv 作 virtualenv
 - 採 gitflow 開發
 - ajax code: test.js and test_detail.js
-- 焦點新聞列表：http://127.0.0.1:8000/news/index/
+- 焦點新聞列表：http://localhost:8000/news/index
 - test
   - python3 -m unittest crawler.tests.test_parser
   - python3 -m unittest crawler.tests.test_scraper
