@@ -36,7 +36,10 @@ class CrawlerService():
         news.created_at = datetime_object
         news.content = content
         news.url = url
-        news.save()
+
+        checked_news = News.objects.filter(title=title)
+        if len(checked_news) == 0:
+            news.save()
 
         return news
 
