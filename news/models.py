@@ -13,8 +13,8 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
-    def __init__(self):
-        pass
+    # def __init__(self):
+        # super(News, self).__init__()
 
     class Meta:
         verbose_name = _('新聞')
