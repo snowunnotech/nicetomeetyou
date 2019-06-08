@@ -1,4 +1,6 @@
 """ This modules contains the functions for scrape regulary """
+import pysnooper
+
 from core import base
 from core.constant import INDEX_URL, PROJECT_ROOT
 
@@ -14,6 +16,7 @@ class CrawlerService():
         self.url = url
         self.news_url_list = list()
 
+    @pysnooper.snoop
     def request_head_news_list(self):
         news_list = list()
 
@@ -25,6 +28,7 @@ class CrawlerService():
 
         return news_list
 
+    @pysnooper.snoop
     def request_news(self, url):
         news = News()
         scraper = Scraper(url)
@@ -40,6 +44,7 @@ class CrawlerService():
 
         return news
 
+    @pysnooper.snoop
     def get_news(self, url=None):
         if url is None:
             news_list = list()
