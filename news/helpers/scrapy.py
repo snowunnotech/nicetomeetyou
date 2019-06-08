@@ -1,6 +1,6 @@
 """ This modules contains the functions for scrape regulary """
 from core import base
-from core.constant import BASE_URL, PROJECT_ROOT
+from core.constant import INDEX_URL, PROJECT_ROOT
 
 from crawler.scraper import Scraper
 from crawler.parser import Parser
@@ -60,4 +60,5 @@ class CrawlerService():
 
 
 if __name__ == '__main__':
-    pass
+    crawler_service = CrawlerService(INDEX_URL)
+    crawler_service.run()
