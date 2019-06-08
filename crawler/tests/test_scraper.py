@@ -3,7 +3,8 @@
 import unittest
 
 from crawler.scraper import Scraper
-from crawler.constant import BASE_URL, TEST_URL
+
+from core.constant import INDEX_URL, TEST_URL
 
 
 class ScraperTestCase(unittest.TestCase):
@@ -16,7 +17,7 @@ class ScraperTestCase(unittest.TestCase):
         '''
         test for scrap for website
         '''
-        self.scraper = Scraper(BASE_URL)
+        self.scraper = Scraper(INDEX_URL)
         self.scraper.create_request_headers()
         self.scraper.create_request_data()
         self.scraper.request()
