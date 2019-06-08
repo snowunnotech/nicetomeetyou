@@ -27,6 +27,8 @@ api_urls = router.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path(r'news/', include('news.urls', namespace='news')),
+
     re_path(r'^api/', include(api_urls)),
     re_path(r'^api/docs/', include_docs_urls()),
     re_path(r'^api/swagger/', get_swagger_view(title='NBA NEWS')),
