@@ -35,6 +35,7 @@ class CrawlerService():
         news.title = title
         news.created_at = datetime_object
         news.content = content
+        news.url = url
         news.save()
 
         return news
