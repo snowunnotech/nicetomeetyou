@@ -1,4 +1,5 @@
 """ This modules contains the class for parser the website """
+from datetime import datetime
 
 from bs4 import BeautifulSoup as bs
 
@@ -39,6 +40,7 @@ class Parser:
         datetime_str = story_body.find("div", {
             "class": "shareBar__info--author"
         }).find("span").text
+        datetime_object = datetime.strptime(datetime_str, "%Y-%m-%d %H:%M")
 
         target_paragraph_list = story_body.findAll("p")
         for paragraph in target_paragraph_list:
@@ -46,4 +48,4 @@ class Parser:
                 paragraph_list.append(paragraph.text)
         content = "".join(paragraph_list)
 
-        return title, datetime_str, content
+        return title, datetime_object, content
