@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 import threading
 
@@ -23,3 +23,7 @@ def detail(request, pk, template='news/detail.html'):
     }
 
     return render(request, template, context)
+
+def handler404(request, exception):
+
+    return redirect('news:index')

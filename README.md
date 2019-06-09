@@ -18,6 +18,9 @@
 - 每 30 秒抓取一次新聞
 - 焦點新聞列表：http://localhost:8000/news/index
 - Dockerize 此專案以利日後佈署至 server
+- django + gunicorn + nginx
+- docker-compose 啟動後
+  - 焦點新聞列表：http://localhost/news/index
 
 ## Document
 - 測試：
@@ -27,3 +30,7 @@
 
 - 啟動：
   - docker-compose up -d
+
+## Future work
+- 通知頁面
+- 佈署
