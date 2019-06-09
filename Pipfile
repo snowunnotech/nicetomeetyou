@@ -17,6 +17,7 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 django-rest-swagger = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
