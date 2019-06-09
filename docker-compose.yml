@@ -26,7 +26,7 @@ services:
     environment:
         - PORT=80
     ports:
-      - 8888:80
+      - 80:80
     depends_on:
       - web
     networks:
