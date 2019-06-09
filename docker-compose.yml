@@ -5,8 +5,9 @@ services:
     build: .
     environment:
         - PYTHONPATH=/code
-    command: python manage.py runserver 0.0.0.0:8000 && cron
     volumes:
       - .:/code
     ports:
       - "8000:8000"
+    entrypoint:
+      - /code/docker/entry_point.sh

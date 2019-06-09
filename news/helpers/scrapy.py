@@ -1,6 +1,9 @@
 """ This modules contains the functions for scrape regulary """
+import threading
+import time
+
 from core import base
-from core.constant import INDEX_URL, PROJECT_ROOT
+from core.constant import INDEX_URL, PROJECT_ROOT, INTERVAL_TIME
 
 from crawler.scraper import Scraper
 from crawler.parser import Parser
@@ -62,7 +65,23 @@ class CrawlerService():
 
         return news_list
 
+    def schdeuled_run(self):
+        while True:
+            print("HHHHHHHHHHHHH")
+            self.run()
+            time.sleep(INTERVAL_TIME)
+
+    def threading_run(self):
+        flag = 1
+        for thread in threading.enumerate():
+            if thread.name == "crawler_service_run":
+                flag = 0
+        if flag:
+            t = threading.Thread(target=self.schdeuled_run, name="crawler_service_run")
+            t.setDaemon(True)
+            t.start()
+
 
 if __name__ == '__main__':
     crawler_service = CrawlerService(INDEX_URL)
-    crawler_service.run()
+    crawler_service.schdeuled_run()
