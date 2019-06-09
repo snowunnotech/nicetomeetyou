@@ -11,14 +11,19 @@
 2. 每當抓取到新的新聞時立即通知頁面。
 3. 将本 demo 部署至服务器并可正确运行。
 
-## Document
+# 測驗
 - 使用 pipenv 作 virtualenv
 - 採 gitflow 開發
 - ajax code: test.js and test_detail.js
-- test
+- 每 30 秒抓取一次新聞
+- 焦點新聞列表：http://localhost:8000/news/index
+- Dockerize 此專案以利日後佈署至 server
+
+## Document
+- 測試：
   - python3 -m unittest crawler.tests.test_parser
   - python3 -m unittest crawler.tests.test_scraper
   - python3 manage.py test news.helpers.tests.test_scrapy --keepdb -v2
 
-- 啟動：docker-compose up -d
-- 焦點新聞列表：http://localhost:8000/news/index
+- 啟動：
+  - docker-compose up -d
