@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ <head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <title>Detail</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+ </head>
+<body>
+      <div class="container">
+<div>
+</div>
+<div class="jumbotron">
+<img src="{{ data.img }}" class="img-fluid" width="700">
+<h1 class="display-4">{{ data.title }}</h1>
+<p class="lead">{{ data.article }}</p>
+<iframe class="embed-responsive-item" src="{{ data.video }}" allowfullscreen width="700" height="500"></iframe>
+</div>
+
+
+<div id="detail" style="margin-top: 100px"> 
+</div>
+<!-- <script src="{% static "detail.js" %}"></script> -->
+</div>
+</body>
+</html>
