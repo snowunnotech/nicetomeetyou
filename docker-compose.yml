@@ -22,9 +22,11 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - ./staticfiles:/usr/src/app/staticfiles
+      - ./staticfiles:/static
+    environment:
+        - PORT=80
     ports:
-      - 8000:8000
+      - 8888:80
     depends_on:
       - web
     networks:
