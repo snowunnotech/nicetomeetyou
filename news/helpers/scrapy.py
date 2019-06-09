@@ -67,13 +67,21 @@ class CrawlerService():
 
     def schdeuled_run(self):
         while True:
+            print("HHHHHHHHHHHHH")
             self.run()
             time.sleep(INTERVAL_TIME)
+
+    def threading_run(self):
+        flag = 1
+        for thread in threading.enumerate():
+            if thread.name == "crawler_service_run":
+                flag = 0
+        if flag:
+            t = threading.Thread(target=self.schdeuled_run, name="crawler_service_run")
+            t.setDaemon(True)
+            t.start()
 
 
 if __name__ == '__main__':
     crawler_service = CrawlerService(INDEX_URL)
-
-    t = threading.Thread(target=crawler_service.schdeuled_run, name="crawler_service_run")
-    t.setDaemon(True)
-    t.start()
+    crawler_service.schdeuled_run()

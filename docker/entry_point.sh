@@ -18,5 +18,5 @@
 #      REVISION:  ---
 #===============================================================================
 
-python -m news.helpers.scrapy
+python -m news.helpers.scrapy &
 python manage.py runserver 0.0.0.0:8000
