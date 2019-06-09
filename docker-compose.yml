@@ -7,7 +7,29 @@ services:
         - PYTHONPATH=/code
     volumes:
       - .:/code
+      - ./staticfiles:/usr/src/app/staticfiles
     ports:
       - "8000:8000"
+    expose:
+      - 8000
     entrypoint:
       - /code/docker/entry_point.sh
+    networks:
+        main:
+            aliases:
+                - web
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./staticfiles:/usr/src/app/staticfiles
+    ports:
+      - 8000:8000
+    depends_on:
+      - web
+    networks:
+        main:
+            aliases:
+                - nginx
+networks:
+  main:
