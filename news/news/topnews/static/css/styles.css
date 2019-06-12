@@ -1,0 +1,15 @@
+body {
+    background-color: lightblue;
+}
+
+li {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#Content {
+    border: 2px solid black;
+}
