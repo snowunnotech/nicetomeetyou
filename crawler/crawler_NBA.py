@@ -16,8 +16,7 @@ def crawler_main(pages, newest_update):
     url = main_url
     response = requests.get(url)
     html = BeautifulSoup(response.text)
-    news_page = domain_url + \
-                html.find("div", id="mainbar").find("div", id="news").find("h1", class_="box-title").find("a")["href"]
+    news_page = domain_url + html.find("div", id="mainbar").find("div", id="news").find("h1", class_="box-title").find("a")["href"]
     # https://nba.udn.com/nba/cate/6754
     # result at 0617
     # news_page = "https://nba.udn.com/nba/cate/6754"
@@ -34,7 +33,7 @@ def crawler_main(pages, newest_update):
             update_time = get_article_update_time(url)
             check_update_time = datetime.strptime(update_time, "%Y-%m-%d %H:%M")
             title = box.find("h3").text
-            if check_update_time < newest_update:
+            if check_update_time <= newest_update:
                 b = 1
                 break
             content = get_article_content(url)
@@ -61,6 +60,8 @@ def get_article_content(article_url):
     article_content = html.find("div", id="story_body_content").find_all("p")
     for c in article_content:
         result = result + c.text
+    delete_content = " Getty Imagesfacebooktwitterpinterest"
+    result = result.replace(delete_content, "")
     return result
 
 
