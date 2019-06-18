@@ -7,7 +7,7 @@ from updata_data_to_sqlite import update_data_to_sqlite
 
 def main():
     # do update data here change to cronjob better
-    update_data_to_sqlite()
+    # update_data_to_sqlite()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Web_NBA.settings')
     try:
         from django.core.management import execute_from_command_line

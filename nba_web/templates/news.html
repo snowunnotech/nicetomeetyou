@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>新聞詳情頁面</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "css/templatemo-style.css" %}">
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/news">NBA_news</a></h1>
+        </div>
+        <div class="news-header">
+	        <h1 class="news-post-title">{{ post.title }}</h1>
+	      </div>
+	      <div class="row">
+	        <div class="col-sm-8 news-main">
+	          <div class="news-contest">
+	            <p>
+	            	{{ news.content }}
+	            </p>
+	            <p class="news-meta">{{ news.created_date }} </p>
+	            <a href="/news" >回首頁</a>
+                {% if next_news.id  %}
+                    <a href="/news/{{next_post.id}}" >下一頁</a>
+                {% endif %}
+	          </div>
+	        </div>
+	      </div>
+    </body>
+</html>

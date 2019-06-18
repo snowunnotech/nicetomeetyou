@@ -25,5 +25,6 @@ router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'api/', include(router.urls))
+    path(r'api/', include(router.urls)),
+    path(r'news/', include("nba_web.urls"))
 ]
