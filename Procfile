@@ -1,0 +1,1 @@
+djangonba :gunicorn --pythonpath  Web_NBA Web_NBA.wsgi
