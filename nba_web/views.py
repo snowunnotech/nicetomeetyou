@@ -7,6 +7,6 @@ from rest_framework import viewsets
 
 
 # Create your views here.
-class MusicViewSet(viewsets.ModelViewSet):
+class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer

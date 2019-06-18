@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include
+from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from nba_web import views
+
+router = DefaultRouter()
+router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'api/', include(router.urls))
 ]
