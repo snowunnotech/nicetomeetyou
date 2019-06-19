@@ -59,10 +59,14 @@ def get_article_content(article_url):
     response = requests.get(article_url)
     html = BeautifulSoup(response.text)
     article_content = html.find("div", id="story_body_content").find_all("p")
+    delete_printrest = 1
     for c in article_content:
         result = result + c.text
-    delete_content = " Getty Imagesfacebooktwitterpinterest"
-    result = result.replace(delete_content, "")
+        if "pinterest" in c.text and delete_printrest:
+            result = ""
+            delete_printrest = 0
+    # delete_content = " Getty Imagesfacebooktwitterpinterest"
+    # result = result.replace(delete_content, "")
     return result
 
 

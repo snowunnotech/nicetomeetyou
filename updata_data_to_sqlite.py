@@ -11,7 +11,7 @@ def update_data_to_sqlite():
     c = conn.cursor()
     latest_update=""
     try:
-        sel = c.execute("select update_time from news order by update_time -1 limit 1")
+        sel = c.execute("select update_time from news order by update_time desc limit 1")
         conn.commit()
         for data in sel:
             latest_update = data[0]

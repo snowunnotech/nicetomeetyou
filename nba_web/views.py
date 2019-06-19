@@ -10,7 +10,7 @@ from rest_framework import viewsets
 
 def all_new_list(request):
     # 抓取model資料
-    all_news = News.objects.all().order_by('-update_time')
+    all_news = News.objects.all().order_by('-update_time').distinct()
     return render(request, 'all_news.html', {'news': all_news})
 
 
