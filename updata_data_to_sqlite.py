@@ -9,12 +9,14 @@ def update_data_to_sqlite():
     # 先檢查有最新資料
     conn = sqlite3.connect("./db.sqlite3")
     c = conn.cursor()
-    sel = c.execute("select update_time from news order by update_time -1 limit 1")
-    conn.commit()
-    latest_update = ""
-    for data in sel:
-        latest_update = data[0]
-        # print(latest_update)
+    latest_update=""
+    try:
+        sel = c.execute("select update_time from news order by update_time -1 limit 1")
+        conn.commit()
+        for data in sel:
+            latest_update = data[0]
+    except sqlite3.OperationalError:
+        print("none_data")
     if latest_update == "":
         latest_update = "2019-06-15 00:00"
     conn.close()
@@ -37,3 +39,6 @@ def update_data_to_sqlite():
     conn.commit()
     conn.close()
     # print("data_updated")
+
+if __name__ == '__main__':
+    update_data_to_sqlite()

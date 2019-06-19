@@ -36,8 +36,9 @@ def crawler_main(pages, newest_update):
             if check_update_time <= newest_update:
                 b = 1
                 break
-            content = get_article_content(url)
-            news_articles.append([url, title, update_time, content])
+            else:
+                content = get_article_content(url)
+                news_articles.append([url, title, update_time, content])
         if b:
             break
     return news_articles
