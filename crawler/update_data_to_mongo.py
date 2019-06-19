@@ -14,7 +14,6 @@ def main():
     try:
         lastest_update = NBA_new.find().sort("update_time", -1)[0]["update_time"]
         lastest_update = datetime.strftime(lastest_update, "%Y-%m-%d %H:%M")
-        #     if no data on database
     except IndexError:
         print("no_old_data")
         lastest_update = "2019-06-10 00:00"
