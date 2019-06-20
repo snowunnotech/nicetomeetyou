@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nba news</title>
+    </head>
+
+    <body>
+
+        <div>
+            {% for news in news %}
+            <h2><a href='/news/{{news.id}}'>{{news.title}}</a>></h2>
+            <p>{{news.publish_date}}</p>
+            {% endfor %}
+        </div>
+
+    </body>
+
+</html>
