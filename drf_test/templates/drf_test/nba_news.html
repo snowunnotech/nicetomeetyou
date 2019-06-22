@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <title>NBA_News_web</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<H1 style="font-weight:bold; font-size:x-large;" align="center">NBA焦點新聞列表</H1>
+<hr>
+<div id="main" class="container">
+
+    <div class="table-wrapper">
+        {%csrf_token%}
+        <p align="center"><span style="font-weight:bold;" id="ntfText" >***請點選標題名稱查看新聞詳細頁面***</span></p>
+
+        <table id="tb_NBA">
+            <thead>
+            <tr>
+                <th>標題</th>
+                <th>發布時間</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for i in datalist %}
+            <tr>
+                <td><a href="javascript:createNewDialog({{i.id}})">{{i.title}}</a></td>
+                <td>{{i.rel_date | date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        <div id="dialog" title="新聞詳情頁面" align="center" hidden="True">
+            <table>
+                <tbody id="tbody1"></tbody>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+        var $j = jQuery.noConflict();
+
+        function createNewDialog(id){
+            $("#tbody1").ajaxStart(function(){ $(this).text("資料讀取中..."); });
+            $("#tbody1").ajaxStop(function(){ $(this).text(); });
+            $.ajax({
+                    url: '/api/nba_news/' + id + '/',
+                    type: 'get',
+                    data: {},
+                    dataType: 'json',
+                    timeout: 10000,
+                    success: function(result) {
+                    creat_dialog_Table(result)
+                    }
+                });
+
+
+            $j("#dialog").dialog({
+            height: 600,
+
+            width: '50%',
+
+            modal: true,
+
+            buttons: {
+
+                "關閉": function() { $j(this).dialog("close"); }
+
+            }
+        });
+        };
+
+
+
+        function creat_dialog_Table(data){
+
+          var viewData="";
+          var title = data.title;
+          var rel_date = data.rel_date;
+          var nba_content = data.nba_content;
+          viewData += "<h2 align='center'>" + title + "</h2>";
+          viewData += "<p>"+ nba_content +"</p>"
+
+          $("#tbody1").html(viewData);
+         };
+
+        </script>
+    </div>
+</div>
+</body>
+</html>
