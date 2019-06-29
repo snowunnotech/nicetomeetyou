@@ -4,5 +4,19 @@
   </header>
   <body>
     <h2>Hello World!</h2>
+
+    <hr>
+
+    <ol>
+      {% for new in news %}
+      <li>
+	<ul>
+	  <li>{{ new.time }}</li>
+	  <li>{{ new.title }}</li>
+	  <li>{{ new.statement }}</li>
+	</ul>
+      </li>
+      {% endfor %}
+    </ol>
   </body>  
 </html>
