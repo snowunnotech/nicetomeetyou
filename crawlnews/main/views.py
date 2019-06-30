@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic, View
 
 # import tools
 import requests
@@ -10,6 +11,22 @@ from .models import News
 
 
 # Create your views here.
+class IndexView(View):
+    template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+class NewsListView(IndexView):
+    template_name = 'newslist.html'
+    
+def NewsDetail(request, url_id):
+    template_name = 'newsdetail.html'
+    content = {
+        "News" : News.objects.filter(url_id=url_id).first()
+    } 
+    return render(request, template_name, content)
+
 
 def homepage(request):
 
@@ -17,7 +34,7 @@ def homepage(request):
     host = "https://nba.udn.com"
     response = requests.get( host + "/nba/index?gr=www")
     html = response.text
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, features="html.parser")
     a_tags = soup.select("div#news_body dl > dt > a")
 
     content = {
@@ -55,3 +72,5 @@ def homepage(request):
         content["news"].append(news_dictionary)        
 
     return render(request, "index.html", content)
+
+

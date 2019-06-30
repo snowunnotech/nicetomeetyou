@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title%} 新聞詳細頁面 {% endblock %}
+
+{% block content %}
+
+	<ul>
+	  <li>{{ News.title }}</li>
+	  <li>{{ News.author }}</li>
+	  <li>{{ News.author_time }}</li>
+	  <li><img src="{{ News.image }}"></li>
+	  <li>{{ News.body_content }}</li>
+	  <li><a href="https://nba.udn.com{{ News.url_detail }}">原始資料來源</a></li>
+	</ul>
+
+
+
+{% endblock %}

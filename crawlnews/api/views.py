@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from main.models import News
-from .models import UserSerializer, NewsSerializer
+from .models import UserSerializer, NewsSerializer, ShortNewsSerializer
 
 
 # Create your views here.
@@ -15,3 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+
+class ShortNewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = ShortNewsSerializer

@@ -15,3 +15,8 @@ class NewsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = News
         fields = '__all__'
+
+class ShortNewsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = News
+        fields = ('url_id', 'time', 'title', 'statement')

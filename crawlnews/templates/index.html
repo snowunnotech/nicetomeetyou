@@ -1,11 +1,8 @@
-<html>
-  <header>
-    <title>TEST</title>
-  </header>
-  <body>
-    <h2>Hello World!</h2>
+{% extends 'base.html' %}
 
-    <hr>
+{% block title%} 首頁 {% endblock %}
+
+{% block content %}
 
     <ol>
       {% for new in news %}
@@ -18,5 +15,8 @@
       </li>
       {% endfor %}
     </ol>
-  </body>  
-</html>
+
+{% endblock %}
+
+
+{% block scripts %}{% endblock %}
