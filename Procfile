@@ -1,0 +1,1 @@
+web: gunicorn hot_news.wsgi --log-file -
