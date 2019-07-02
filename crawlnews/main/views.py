@@ -52,7 +52,7 @@ def homepage(request):
         url_id = url_detail.split("/")[-1]
         image = a_tag.select_one("span.img-boxs img").get("src")
         # crawl another detail page
-        Soup = BeautifulSoup( requests.get( host + url_detail ).text )
+        Soup = BeautifulSoup( requests.get( host + url_detail ).text, features="html.parser")
         author = Soup.select_one("div#story_body_content div.shareBar__info--author")
         author_dictionary = dict( zip(
             ["author_time", "author"], author.stripped_strings
