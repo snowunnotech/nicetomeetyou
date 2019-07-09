@@ -24,8 +24,9 @@
 	padding: 20px;
 	border: 1px solid white;	
 }
+<!-- http://code.jquery.com/jquery-1.11.0.min.js -->
 </style>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="static/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function() {
 	$('#newslinks a').click(function(){
@@ -40,16 +41,20 @@ $(document).ready(function() {
 <body>
 <div class="wrapper">
 <header>
-    NBA
+    NBA NEWS
 </header>
 	<div class="content">
 		<div class="main">
-			<h1>焦點新聞列表</h1>
+			<h2>焦點新聞列表</h2>
 			
 			<ul id="newslinks">
 			{% for n in news %}
 			<li style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
-			<a href='/article/{{n.id}}'>{{n.title}}</a>
+			<img src="{{n.image}}"width="240" height="160">
+			<h3><a href='/article/{{n.id}}'>
+			{{n.title}}</a></h3>
+			<h6>{{n.content|truncatechars:40}}</h6>
+			
 			</li>
 			{% endfor %}
 			</ul>

@@ -1,1 +1,3 @@
-web: gunicorn hot_news.wsgi --log-file -
+web: gunicorn nbanews.wsgi --log-file -
+clock: python clock.py
+

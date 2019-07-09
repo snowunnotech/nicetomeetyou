@@ -1,4 +1,4 @@
-"""hot_news URL Configuration
+"""nbanews URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -14,19 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from mainsite import views
 
-# API
 from rest_framework import routers
+from mainsite.views import MainSiteViewSet
 
 router = routers.DefaultRouter()
-router.register('news', views.news_recordViewSet)
+router.register('mainsite', MainSiteViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage),
     path('article/<str:id>/', views.news_index),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+
 
 ]

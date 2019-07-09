@@ -1,8 +1,10 @@
 from django.contrib import admin
-from mainsite.models import news_record
+from .models import NewsInfo
 # Register your models here.
 
-class news_recordAdmin(admin.ModelAdmin):
+
+class NewsInfoAdmin(admin.ModelAdmin):
     list_display = ['title']
 
-admin.site.register(news_record,news_recordAdmin)
+
+admin.site.register(NewsInfo, NewsInfoAdmin)
