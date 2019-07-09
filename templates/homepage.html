@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NBA HOT NEWS</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#newslinks li {
+	display: inline-block;
+	margin-right: 20px;
+}
+#newslinks li a {
+	padding: 5px 10px; 
+	background-color: white;
+	color: black !important;
+	text-decoration: none;	
+}
+#newslinks li a:hover {
+	background-color: rgb(110,138,195);
+	color: white !important;	
+}
+#headlines #newsItem {
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid white;	
+}
+<!-- http://code.jquery.com/jquery-1.11.0.min.js -->
+</style>
+<script src="static/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#newslinks a').click(function(){
+	var url=$(this).attr('href');
+	$('#headlines').load(url);
+	return false
+	});
+			
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+<header>
+    NBA NEWS
+</header>
+	<div class="content">
+		<div class="main">
+			<h2>焦點新聞列表</h2>
+			
+			<ul id="newslinks">
+			{% for n in news %}
+			<li style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
+			<img src="{{n.image}}"width="240" height="160">
+			<h3><a href='/article/{{n.id}}'>
+			{{n.title}}</a></h3>
+			<h6>{{n.content|truncatechars:40}}</h6>
+			
+			</li>
+			{% endfor %}
+			</ul>
+			
+			<div id="headlines"></div>
+		</div>
+	</div>
+<footer>
+    <p>{{time}} </p>
+</footer>
+</div>
+</body>
+</html>
