@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NBA Hot News</title>
+    <style>
+        dialog {
+            width: 60%;
+            min-width: 500px;
+        }
+    </style>
+</head>
+<body bgcolor="#ECEDEE">
+    <div id="header" style="background-color: #1a477b;">
+        <table style="height: 150px; margin-left: 20px">
+        <td align="center" valign="center"><font size="15" color="#fff"> 焦點新聞 </font></td>
+        </table>
+    </div>
+    <div align="center" style="margin-top: 20px">
+        <div id="content" style="position:fixed; top:5%; left:10%; width: 80%;"></div>
+        <div style="background-color: #fff; width: 90%; box-shadow:3px 3px 5px 6px #cccccc;" >
+            <table style="width: 100%; padding: 20px;" id="container">
+            </table>
+        </div>
+    </div>
+    <script src="../../static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+</body>
+</html>

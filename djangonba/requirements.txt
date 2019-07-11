@@ -1,0 +1,8 @@
+django >= 2.0
+selenium
+beautifulsoup4
+django-q
+requests
+djangorestframework
+markdown
+django-filter

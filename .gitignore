@@ -1,0 +1,6 @@
+
+nbaCrawler/__pycache__/
+
+djangonba/__pycache__/
+
+*.pyc
