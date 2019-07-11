@@ -21,7 +21,11 @@ def parse():
 
     for post in soup.select('#news_list_body dt a'):
         
-        pid   = int(post.get('href')[-7:])
+        try:
+            pid = int(post.get('href')[-7:])
+        except Exception as e:
+            print(f"Error Msg: {e}")
+            continue
 
         if pid in history_id_list:
             continue
@@ -46,11 +50,10 @@ def parse():
             'url': url, 'date': date, 'content': content
         })
         
-    if len(new_posts):
-        for post in new_posts:
-            new_post = Post(
-                pid = post['id'], post_title = post['title'],
-                post_image_url = post['image'], post_url = post['url'],
-                post_date = post['date'], post_content = post['content']
-            )
-            new_post.save()
+    for post in new_posts:
+        new_post = Post(
+            pid = post['id'], post_title = post['title'],
+            post_image_url = post['image'], post_url = post['url'],
+            post_date = post['date'], post_content = post['content']
+        )
+        new_post.save()
