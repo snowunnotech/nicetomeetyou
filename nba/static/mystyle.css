@@ -1,0 +1,256 @@
+/*登入頁面*/
+.login-form {
+    margin-top: 70px;
+}
+
+.login-error {
+    color: red;
+}
+
+.valid-img {
+    height: 35px;
+    width: 220px;
+}
+
+/*註冊頁面*/
+.reg-form {
+    margin-top: 70px;
+}
+
+#avatar-img {
+    width: 80px;
+    height: 80px;
+}
+
+
+/*主頁面*/
+.article h4 a{
+    color: #2d2d2d;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.article h4 a:hover{
+    color:gray;
+    text-decoration-line: none;
+    font-size: 1.2em;
+}
+
+
+
+.author-img {
+    width: 80px;
+    height: 80px;
+}
+
+.article-footer span {
+    margin-right: 15px;
+}
+
+.article-footer {
+    margin-top: 10px;
+}
+
+.write-article {
+    margin-left: 20%;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #2d2d2d;
+    border-color: black;
+    border-width: 1.5px;
+    color: #a8a8a8;
+}
+
+.write-article:hover {
+    /*background-color: #191919;*/
+    background-color: #2d2d2d;
+    border-color: black;
+    border-width: 1.5px;
+    color:#f9f9f9;
+}
+
+/*.write-article:click {*/
+   /*background-color: black;*/
+   /*border-color: black;*/
+   /*border-width: 1.5px;*/
+/*}*/
+
+.Card {
+
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+    border-radius: 6px;
+    /*box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);*/
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    box-sizing: border-box;
+
+}
+
+
+/*個人主頁*/
+.header {
+    height: 80px;
+    width: 100%;
+    color: white;
+    background-color: #5bc0de;
+}
+
+.header p {
+    font-size: 34px;
+    padding: 20px 10%;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+p.article-title a{
+    font-size: 1.5em;
+
+}
+
+
+/*點讚*/
+#div_digg {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    font-size: 12px;
+    width: 125px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.diggit {
+    float: left;
+    width: 46px;
+    height: 52px;
+    background: url("/static/img/upup.gif") no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.buryit {
+    float: right;
+    margin-left: 20px;
+    width: 46px;
+    height: 52px;
+    background: url("/static/img/downdown.gif") no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.clear {
+    clear: both;
+}
+
+
+
+/*評論暱稱框*/
+input.author{
+    background-image: url("/static/img/icon_form.gif");
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    padding: 4px 4px 4px 30px;
+    width: 300px;
+    font-size: 13px;
+}
+
+
+/*評論樓*/
+.list-group-item .con{
+    margin-top: 10px;
+}
+
+/*評論樹*/
+.comment_tree .comment_item{
+    margin-left: 20px;
+}
+
+ /*增加文章頁面*/
+ /*.add-article-content {*/
+            /*width: 80%;*/
+            /*margin: 20px auto;*/
+        /*}*/
+
+/*改bootstrap form-control*/
+.category-input{
+    display:inline;
+}
+
+select {
+  font-family: 'FontAwesome', 'Second Font name'
+}
+
+.xxxx{
+    border-width: 0;
+    color:gray;
+    background-color: white;
+    border-radius: 20%;
+    opacity: .4;
+    margin-left: 5%;
+
+}
+
+.xxxx:hover{
+    opacity: 1;
+
+}
+
+
+
+.unlogin{
+     color:gray;
+     opacity: .4;
+    margin-left: 5%;
+}
+
+.unlogin:hover{
+    opacity: 1;
+}
+
+.zzz{
+    /*position: fixed;*/
+    /*top: 0; !* Position the navbar at the top of the page *!*/
+    /*width: 100%;*/
+    border: 1px solid black;
+    border-radius: 5%;
+    background: white;
+    left: 50%;
+    position: absolute;
+    top: 28%;
+    transform: translate(-32%);
+    background-color: #fff;
+    padding: 15px;
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    opacity: .2;
+}
+
+.zzz:hover{
+    opacity: 1;
+}
+
+#ranking{
+    width: 100%;
+    /*border: 1px solid black;*/
+    border-radius: 5%;
+
+    right: 30%;
+    position: absolute;
+
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    opacity: .6;
+}
+
+#ranking:hover{
+    opacity: 1;
+}

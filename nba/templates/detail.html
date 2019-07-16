@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="story-body">
+        <div class="title"><span></span></div>
+        <div class="published"><span></span></div>
+        <figure>
+            <img>
+        </figure>
+        <div class="text"><span></span></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    $.ajax({
+        url: "{{ single }}{{ id }}",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var story = $("#story-body");
+            story.attr('id', data['id']);
+            story.find('.text span').text(data['content']);
+            story.find('figure  img').attr('src', data['image_url']);
+        }
+    })
+    $.ajax({
+        url: "{{ total }}{{ id }}",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var story = $("#"+"{{ id }}");
+            story.find('.title  span').text(data['title']);
+            story.find('.published  span').text(data['created_time']);
+        }
+    })
+{% endblock %}

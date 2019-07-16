@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+     <div id="news-list" class="col-sm-offset-2 col-sm-8" >
+    </div>
+    <div id="sample" style="margin-top: 2px;color: white; border-radius: 5px" >
+        <a href="">
+            <div class="title" style="font-size: 2em; ">&nbsp;<span></span></div>
+            <div id="published" style="font-size: 1.5em; "><span style="margin-left: 50px"></span>
+            <span id="created" style="margin-left: 50px"></span></div>
+        </a>
+
+    </div>
+{% endblock %}
+
+{% block script %}
+    var news_len = 0
+    function get_data(){
+        $.ajax({
+            url: "{{ total}}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                if(data.length > news_len){
+                    $("#news-list").html('');
+                    var count = data.length;
+                    $.each(data, function (index, value) {
+                        var news = $("#sample").clone();
+                        news.css("background-color","black");
+                        news.find('a').attr("href", "{{ single }}"+ value['id']);
+                        news.find('.title  span').text(count +  ": " + value['title']);
+                        news.find('#published span').text("發表時間: " + value['published_time']);
+                        news.find('#created ').text("爬取時間: " + value['crawled_time']);
+                        $('#news-list').append(news);
+                        count -= 1;
+                    });
+                    $("#news-list > div:nth-child(1)").css("border-color", "red").css("border-style", "solid").
+                    next().css("border-color", "red").css("border-style", "solid").
+                    next().css("border-color", "red").css("border-style", "solid");
+                    news_len = data.length;
+                };
+            },
+        });
+    };
+    get_data();
+    setInterval(get_data, 10000);
+
+{% endblock %}
+
+
