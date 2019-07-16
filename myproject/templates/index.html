@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="news-block" align="center">
+        <h4 align="center">NiceToMeetYou</h4>
+        <h5 align="center">如果新聞有更新，我們會馬上讓您看到 <span id="emoj">^_^</span></h5>
+        <table id='news-table' class="table-expand">
+            <thead>
+                <tr class="table-expand-row">
+                    <th>日期</th>
+                    <th>封面</th>
+                    <th>主題</th>
+                </tr>
+            </thead>
+            <tbody id='news-table-body'>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="news-detail-block grid-x grid-margin-x" align="center">
+        <div class="cell medium-2 large-2"></div>
+        <div class="cell medium-8 large-8">
+            <table id='news-detail' class="table-expand">
+                <tbody class='news-detail' id='news-detail-table-body'>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="cell medium-2 large-2"></div>
+    </div>
+
+
+    <script>
+        {% comment %} Control script here {% endcomment %}
+        const PROTOCOL = '{% if request.is_secure %}https{% else %}http{% endif %}'
+        const HOST = '{{ request.get_host }}'
+        var local_news = []
+
+        class Util {
+            static getEmoj = () => {
+                var emoj = ['^o^', '^_^', '^.^']
+                var idx = Math.floor(Math.random() * emoj.length);
+                return emoj[idx];
+            }
+
+            static transFormatDateString = (str) => {
+                var date = new Date(str)
+                return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+            }
+
+            static goBackToListPage = () => {
+                $('#news-detail-table-body').empty();
+                $('#news-block').show();
+            }
+
+            static getNewsLine = (element) => {
+                return  `
+                <tr>
+                    <td>${Util.transFormatDateString(element.create_datetime)}</td>
+                    <td><img src="${element.title_image_url}" alt="囧"></td>
+                    <td>
+                        <a id='${element.id}' href="#">
+                            <span>${element.title}</span>
+                        </a>
+                    </td>
+                </tr>
+                `;
+            }
+
+            static getNewDetail = (element) => {
+                return `
+                <tr><td><h3>${element.title}</h3></td></tr>
+                <tr><td><img src="${element.title_image_url}" alt="囧"></td></tr>
+                <tr>
+                    <td><div>${element.content}</div></td>
+                </tr>
+                <tr>
+                    <td><a class="button primary" id='gobackButton' href="#">回上一頁</a></td>
+                </tr>
+                `
+            }
+
+            static newsLineUpdate = () => {
+                // in realcase, it might use web-socket
+                fetch(`${PROTOCOL}://${HOST}/api/New`, {})
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((news) => {
+                        var slicePoint = news.findIndex((element) => (element.id == local_news[0].id))
+                        if (slicePoint > 0) {
+                            var updated_news = news.slice(0, slicePoint)
+                            updated_news.forEach((element) => {
+                                $('#news-table-body').prepend(Util.getNewsLine(element));
+                            })
+                            local_news = updated_news.concat(local_news)
+                        }
+                        // emoj updating XD
+                        $('#emoj').text(Util.getEmoj());
+                    })
+                    .catch((err) => {
+                        console.log('Error:', err);
+                    });
+            }
+        }
+
+        $(document).ready(() => {
+            fetch(`${PROTOCOL}://${HOST}/api/New`, {})
+                .then((response) => {
+                    return response.json(); 
+                })
+                .then((news) => {
+                    local_news = news;
+                    console.log(news);
+                    news.forEach((element) => {
+                        // News List
+                        $('#news-table-body').append(Util.getNewsLine(element));
+                        // Detail Page Content
+                        $(`#${element.id}`).bind('click', () => {
+                            $('#news-block').hide();
+                            $('#news-detail-table-body').append(Util.getNewDetail(element));
+                            $('#gobackButton').bind('click', Util.goBackToListPage)
+                        });
+                    });
+                    // Set updating scheule
+                    setInterval(Util.newsLineUpdate , 3000);
+                })
+                .catch((err) => {
+                    console.log('Error:', err);
+                });
+        })
+    </script>
+
+    <style>
+    .news-detail th, .news-detail td {
+        text-align: center;
+    }
+    </style>
+{% endblock content %}
