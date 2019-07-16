@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <title>NBA焦點新聞</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <style>
+         .img-boxs{
+            position: relative;
+            margin: 5px 10px 5px 0px;
+            width: 106px;
+            height: 106px;
+            overflow: hidden;
+         }
+         .news-boxs{
+            border-bottom : 1px solid #eee;
+            height: 120px;
+         }
+         span{
+            font-size: 13px;
+            color : #888;
+            padding: 2px 5px 3px 0px;
+         }
+         .lefter{
+            float: left;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <script>
+         var news_len = 0
+         get_data();
+         setInterval(get_data, 30000);
+
+         function get_data(){
+            $.get("http://illinois.cs.nccu.edu.tw:8000/api/news/", function(data, status){
+                  if(data.length > news_len){
+
+                     $("#info").html('')
+                     data.forEach(function(item, index){
+                        $("#info").prepend("<div class=news-boxs><a href="+ item.link +">"+ "<div class=lefter><img class=img-boxs src="+ item.pic_link +"&x=0&y=0&sw=0&sh=0&sl=W&fw=200&exp=3600></div>" + "<span>"+ item.created +"</span>" + "<p>"+ item.title +"</p>" +"</a></div>")
+                     })
+
+                     if(news_len != 0){
+                        $('#news-modal').modal();
+                     }
+
+                     news_len = data.length
+                  }
+            });
+         }
+      </script>
+
+      <div class="container-fluid" style="margin: 0px auto 5px auto; padding:10px; max-width: 572px; background-color: gray;">
+         <h4 style="">NBA NEWS</h4>
+      </div>
+      <div id="info" class="container-fluid" style="margin:0px auto; max-width: 600px;">
+      </div>
+
+      <div id='news-modal' class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+               <h4>提醒您，本網站更新了焦點新聞喔！</h4>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">朕知道了</button>
+            </div>
+          </div>
+        </div>
+      </div>
+   </body>
+</html>
