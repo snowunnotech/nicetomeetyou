@@ -10,7 +10,9 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 import django
+import sys 
 import os
+sys.path.append(os.path.dirname(__file__) + os.sep + '../')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'NBA_news.settings'
 django.setup()
 

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %} NBA NEWS {% endblock %}
+{% block content %}
+
+<div class='container'>
+{% for message in messages %}
+    <div class='alert alert-{{ message.tags }}'>{{ message }}</div>
+{% endfor %}
+<nav class='navbar navbar-inverse'>
+    <div class='col-md-12'>
+
+            <div class='panel-heading' align=center>
+                <a href='/'><h3><span class='glyphicon glyphicon-cloud-download'></span> NBA NEWS </h3></a>
+            </div>
+
+    </div>
+</nav>
+
+<div class='container-fluid' align=left>
+    <div class='row'>
+    {% if newsInfo %}
+    {% for news in newsInfo %}
+        <div class='col-sm-12 col-md-12 col-md-offset-0'>
+            <div class='panel {% cycle "panel-primary" "panel-info" "panel-warning" "panel-success" %}'>
+                <div class='panel-heading'>
+                    <table width='100%'>
+                        <tr>
+                            <td>
+                                <h4>【{{ news.title }}】</h4>
+                            </td>
+                            <td align=right>
+                                <i><small>{{ news.reporter }}</small></i><br/>
+                                <i><small>{{ news.time }}</small></i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='panel-body'>
+                    <a href={{ news.link }}><span class='glyphicon glyphicon glyphicon-check'></span> 原始報導連結</a>
+                    <hr>
+                    <div class="col-xs-12 col-sm-6">
+                    <img src={{ news.image }} title="News image" width=500><br/>
+                    </div>
+		    <div class="col-xs-12 col-sm-6">
+                    {{ news.content }}
+                    </div>
+                </div>
+             </div>
+         </div>
+       {% endfor %}
+    {% else %}
+    <a href='/' class='list-group-item' title='There are no news yet'> There are no news yet </a>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

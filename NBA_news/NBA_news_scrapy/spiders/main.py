@@ -7,4 +7,4 @@ Created on Wed Jul 17 19:09:34 2019
 """
 from scrapy.cmdline import execute
 
-execute('scrapy crawl NBA_Crawler'.split())
+execute('scrapy crawl crawler'.split())
