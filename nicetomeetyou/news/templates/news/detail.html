@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        var domain = "https://boiling-citadel-11734.herokuapp.com/";
+        // var domain = "http://127.0.0.1:8000/"
+        $(document).ready(function(){
+            var news_id = "{{news_id}}";
+            $.ajax({
+                type: "GET",
+                url: domain  + "news/api/news/" + news_id,
+                success: function (data){
+                    $("div.image img").attr("src", data.image);
+                    $("div.title a").text(data.title);
+                    $("div.published a").text(data.published_date);
+                    $("div.content span").text(data.contents);
+                },
+                error: function (e){
+                    console.log(e);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="title">
+        <a></a>
+    </div>
+    <div class="published">
+        <a></a>
+    </div>
+    <div class="image">
+        <img height='500' width='600' src=""><br>
+    </div>
+    <div class="content">
+        <span></span>
+    </div>
+</body>
+</html>
