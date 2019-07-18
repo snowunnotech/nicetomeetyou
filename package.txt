@@ -1,0 +1,13 @@
+celery==3.1.24
+Django==2.1.1
+djangorestframework==3.10.0
+lxml==4.3.4
+numpy==1.15.4
+pandas==0.24.1
+pypiwin32==223
+pywin32==224
+redis==2.10.6
+requests==2.19.1
+Scrapy==1.6.0
+scrapyrt==0.10
+Twisted==19.2.1
