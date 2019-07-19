@@ -12,3 +12,13 @@ v 實現爬蟲自動定時抓取。
 x 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 v 将本 demo 部署至服务器并可正确运行。
 x 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+
+## Usage
+
+$docker-compose build
+$docker-compose up -d
+$docker ps
+$docker exec -t -i [container ID] bash
+	-in bash-
+	$python manage.py makemigrations
+	$python manage.py migrate
