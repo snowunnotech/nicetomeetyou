@@ -22,12 +22,8 @@ from NBAsite import views
 router = DefaultRouter()
 router.register(r'nba', views.NbaViewSet)
 
-#urlpatterns = [
-#    url(r'^admin/', include(admin.site.urls)),
-#    url(r'^$', NBAview.as_view(), name='index')
-#]
-
 urlpatterns = [
-    url(r'^admin/', include(router.urls, namespace='api'), name='api'),
-    url(r'^api/', include(router.urls))
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/', include(router.urls)),
+    url(r'^$', views.NBAview.as_view())
 ]

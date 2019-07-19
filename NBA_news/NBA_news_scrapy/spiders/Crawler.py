@@ -32,9 +32,8 @@ class NBA_Crawler(CrawlSpider):
         
         
         
-        
-        
         nba_news_item = NbaNewsScrapyItem()
+        nba_news_item['news_id'] = response.url.split('/')[-1]
         nba_news_item["title"] = Title[0]
         nba_news_item["time"] = Report[0]
         nba_news_item["reporter"] = Report[1]

@@ -17,10 +17,11 @@
 </nav>
 
 <div class='container-fluid' align=left>
+    {%csrf_token%}
     <div class='row'>
     {% if newsInfo %}
     {% for news in newsInfo %}
-        <div class='col-sm-12 col-md-12 col-md-offset-0'>
+        <div class='col-sm-12 col-md-8 col-md-offset-2'>
             <div class='panel {% cycle "panel-primary" "panel-info" "panel-warning" "panel-success" %}'>
                 <div class='panel-heading'>
                     <table width='100%'>
@@ -42,12 +43,54 @@
                     <img src={{ news.image }} title="News image" width=500><br/>
                     </div>
 		    <div class="col-xs-12 col-sm-6">
-                    {{ news.content }}
+                    <tr>
+                    <button class='btn btn-default'><a href="javascript:Content_AJAX({{news.id}})"><span class='glyphicon glyphicon glyphicon-check'></span>點擊顯示內文</a></button>
+                    </tr>
                     </div>
                 </div>
              </div>
          </div>
        {% endfor %}
+	<div id="windows" title="報導內容" align="center" hidden="True">
+            <table>
+                <tbody id="NEWS"></tbody>
+            </table>
+
+        </div>
+	<script type="text/javascript">
+		var $j = jQuery.noConflict();
+		function Content_AJAX(id){
+		    $("#NEWS").ajaxStart(function(){ $(this).text("資料讀取中..."); });
+		    $("#NEWS").ajaxStop(function(){ $(this).text(); });
+		    $.ajax({
+		            url: '/api/nba/' + id + '/',
+		            type: 'GET',
+		            data: {},
+		            dataType: 'json',
+		            timeout: 10000,
+		            success: function(result) {
+		            Show_content(result)
+		            }
+		        });
+		    $j("#windows").dialog({
+		    height: 500,
+		    width: '50%',
+		    modal: false,
+		    buttons: {
+		        "Close": function() { $j(this).dialog("close"); }
+		    }
+		});
+		};
+		function Show_content(data){
+		  var viewData="";
+		  var title = data.title;
+		  var time = data.time;
+		  var content = data.content;
+		  viewData += "<h2 align='center'>" + title + "</h2>";
+		  viewData += "<p>"+ content +"</p>"
+		  $("#NEWS").html(viewData);
+		 };
+	</script>
     {% else %}
     <a href='/' class='list-group-item' title='There are no news yet'> There are no news yet </a>
     {% endif %}
