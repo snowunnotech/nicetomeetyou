@@ -9,12 +9,19 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
+import sys , os , django
+
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "..",'webdata'))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'webdata.settings'
+
+django.setup()
+
 BOT_NAME = 'FullSpider'
 
 SPIDER_MODULES = ['spiders']
 NEWSPIDER_MODULE = 'spiders'
 
-SQLITE_DB_NAME = 'scrapy.db'
+# SQLITE_DB_NAME = 'scrapy.db'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'FullSpider (+http://www.yourdomain.com)'

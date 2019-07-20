@@ -138,7 +138,7 @@
             var _pages_itme = 0;
            $.ajax({
                   type: 'POST',
-                  url: String.format('http://{0}:{1}/news/api/cr_nba/',window.location.hostname,window.location.port),
+                  url: 'http://'+window.location.hostname+':'+window.location.port+'/news/api/cr_nba/',
                   data: {},
                   dataType: 'json',
                   success: function (data) {

@@ -8,7 +8,7 @@ Author : Jerry Hsieh
 import scrapy
 import logging
 from scrapy.http import FormRequest
-from Spider.FullSpider.items import *
+from Spider.FullSpider.items import FullspiderItem
 from datetime import datetime
 
 class NBASpider(scrapy.Spider):
@@ -52,5 +52,5 @@ class NBASpider(scrapy.Spider):
 		item['author'] = basic_info[1]
 		item['content'] = ''.join(article_contant)
 		item['url'] = response.url
-
+			# return event
 		yield item

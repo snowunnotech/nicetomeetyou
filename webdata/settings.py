@@ -31,12 +31,14 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    # 'django.contrib.sessions',
+    # 'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'channels',
+    'tools',
 ]
 
 MIDDLEWARE = [
@@ -69,9 +71,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'webdata.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -80,6 +79,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'scrapy.db'),
     }
+}
+
+# channl
+ASGI_APPLICATION = 'webdata.routing.application'
+
+CHANNEL_LAYERS = {
+  'default': {
+    'BACKEND': 'channels_redis.core.RedisChannelLayer',
+    'CONFIG': {
+      'hosts': [('127.0.0.1', 6379)],
+    },
+  },
 }
 
 # Password validation

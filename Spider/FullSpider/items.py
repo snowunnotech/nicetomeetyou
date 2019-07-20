@@ -6,16 +6,9 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy_djangoitem import DjangoItem
 
+from tools.models import cr_nba
 
-class FullspiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()！
-    id = scrapy.Field()
-    title = scrapy.Field()
-    author = scrapy.Field()
-    date = scrapy.Field()
-    content = scrapy.Field()
-    datetime = scrapy.Field()
-    url = scrapy.Field()
-    pass
+class FullspiderItem(DjangoItem):
+    django_model = cr_nba
