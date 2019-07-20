@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from rest_framework.routers import DefaultRouter
 from NBAsite import views
-#from NBAsite.views import NBAview
 
 router = DefaultRouter()
 router.register(r'nba', views.NbaViewSet)
 
+# First url for administration
+# Second url for api
+# Third url for homepage
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),

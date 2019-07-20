@@ -1,8 +1,8 @@
 from django.db import models
 
-# Create your models here.
+# Add primary key to news_id to avoid same news
 class NewsInfo(models.Model):
-    news_id = models.PositiveIntegerField()
+    news_id = models.PositiveIntegerField(primary_key=True)
     title = models.CharField(max_length = 100)
     time = models.DateTimeField()
     reporter = models.CharField(max_length = 20)
@@ -10,7 +10,5 @@ class NewsInfo(models.Model):
     image = models.CharField(max_length = 100)
     content = models.TextField()
 
-    #def __str__(self):
-    #    return self.title
     class Meta:
         db_table = "nba"

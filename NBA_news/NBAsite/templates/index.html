@@ -44,7 +44,7 @@
                     </div>
 		    <div class="col-xs-12 col-sm-6">
                     <tr>
-                    <button class='btn btn-default'><a href="javascript:Content_AJAX({{news.id}})"><span class='glyphicon glyphicon glyphicon-check'></span>點擊顯示內文</a></button>
+                    <button class='btn btn-default'><a href="javascript:Content_AJAX({{news.news_id}})"><span class='glyphicon glyphicon glyphicon-check'></span>點擊顯示內文</a></button>
                     </tr>
                     </div>
                 </div>
@@ -59,11 +59,11 @@
         </div>
 	<script type="text/javascript">
 		var $j = jQuery.noConflict();
-		function Content_AJAX(id){
+		function Content_AJAX(news_id){
 		    $("#NEWS").ajaxStart(function(){ $(this).text("資料讀取中..."); });
 		    $("#NEWS").ajaxStop(function(){ $(this).text(); });
 		    $.ajax({
-		            url: '/api/nba/' + id + '/',
+		            url: '/api/nba/' + news_id + '/',
 		            type: 'GET',
 		            data: {},
 		            dataType: 'json',
