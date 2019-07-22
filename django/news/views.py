@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from rest_framework import viewsets
 
 from .models import NBA
+from .serializers import NewsSerializer
 import math
 
 # Create your views here.
@@ -22,3 +24,7 @@ def news(request):
         resp['data'] = list(NBA.objects.order_by('-id').values()[(page-1)*10:])
 
     return JsonResponse(resp)
+
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = NBA.objects.all().order_by('-id')
+    serializer_class = NewsSerializer

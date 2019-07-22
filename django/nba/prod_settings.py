@@ -15,3 +15,8 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 DEBUG = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'news.pagination.CustomPageNumber',
+    'PAGE_SIZE': 10
+}

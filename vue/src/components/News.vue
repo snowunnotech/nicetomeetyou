@@ -42,11 +42,10 @@ export default {
         }
     },
     created: function() {
-        axios.get('/news').then(response => {
-            let tmpData = response.data.data
-            let tmpMeta = response.data.meta
-            this.page = tmpMeta.page
-            this.total_count = tmpMeta.total_count
+        axios.get('/news/v2').then(response => {
+            let tmpData = response.data.results
+            this.page = response.data.current
+            this.total_count = response.data.count
             tmpData.forEach(element => {
                 this.news.push(element)
             });
@@ -54,12 +53,11 @@ export default {
     },
     methods: {
         clickCallback: function(page) {
-                let api = '/news?page=' + page
+                let api = '/news/v2?page=' + page
                 axios.get(api).then(response => {
-                let tmpData = response.data.data
-                let tmpMeta = response.data.meta
-                this.page = tmpMeta.page
-                this.total_count = tmpMeta.total_count
+                let tmpData = response.data.results
+                this.page = response.data.current
+                this.total_count = response.data.count
                 this.news = []
                 tmpData.forEach(element => {
                     this.news.push(element)

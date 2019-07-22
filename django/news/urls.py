@@ -1,9 +1,13 @@
-from django.conf.urls import url
-
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 
 app_name = 'news'
 
+router = routers.DefaultRouter()
+router.register(r'', views.NewsViewSet)
+
 urlpatterns = [
-    url(r'^$', views.news)
+    path('v1', views.news),
+    path('v2', include(router.urls))
 ]
