@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class NBA(models.Model):
     title = models.TextField()
-    date_time = models.CharField(max_length=16)
+    date_time = models.DateTimeField()
     author = models.TextField()
     content = models.TextField()
     image_source = models.URLField(null=True)

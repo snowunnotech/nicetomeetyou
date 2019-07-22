@@ -20,3 +20,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'news.pagination.CustomPageNumber',
     'PAGE_SIZE': 10
 }
+
+TIME_ZONE = 'Asia/Taipei'
+DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+USE_L10N = False
+USE_TZ = False

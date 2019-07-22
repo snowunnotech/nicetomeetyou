@@ -19,12 +19,12 @@ def news(request):
     resp['meta'] = pagination
 
     if page < total_page:
-        resp['data'] = list(NBA.objects.order_by('-id').values()[(page-1)*10:page*10])
+        resp['data'] = list(NBA.objects.order_by('-date_time').values()[(page-1)*10:page*10])
     else:
-        resp['data'] = list(NBA.objects.order_by('-id').values()[(page-1)*10:])
+        resp['data'] = list(NBA.objects.order_by('-date_time').values()[(page-1)*10:])
 
     return JsonResponse(resp)
 
 class NewsViewSet(viewsets.ModelViewSet):
-    queryset = NBA.objects.all().order_by('-id')
+    queryset = NBA.objects.all().order_by('-date_time')
     serializer_class = NewsSerializer
