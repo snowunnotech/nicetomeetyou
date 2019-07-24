@@ -36,9 +36,9 @@ class crawler():
         soup = self.get_soup(url=url)
         news_time = soup.find('div',class_='shareBar__info--author').find('span').string
         author = soup.find('div',class_='shareBar__info--author').text.split(' ')[3]
-        photo = soup.find('figure', class_='photo_center photo-story').find('img').get('data-src')
+        photo = soup.find('figure', class_='photo_center photo-story').find('img').get('data-src').split('.jpg')[0]
         tmp_contents = soup.find('div',id='story_body_content').find_all('p')[1:]
-        contents = photo
+        contents = photo + '.jpg'
         for item in tmp_contents:
             contents = contents + item.text
         detail={
