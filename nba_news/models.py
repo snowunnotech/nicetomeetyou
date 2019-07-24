@@ -8,6 +8,7 @@ class News(models.Model):
     url = models.URLField(blank=True)
     news_time = models.DateTimeField(default=timezone.now)
     created_time = models.DateTimeField(auto_now_add=True)
+    photo = models.URLField(blank=True)
     contents = models.TextField()
 
     class Meta:

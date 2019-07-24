@@ -29,6 +29,7 @@ class crawler():
                 'url':url,
                 'news_time':detail['news_time'],
                 'author':detail['author'],
+                'photo':detail['photo'],
                 'contents':detail['contents']} )
         return news_list
 
@@ -38,12 +39,13 @@ class crawler():
         author = soup.find('div',class_='shareBar__info--author').text.split(' ')[3]
         photo = soup.find('figure', class_='photo_center photo-story').find('img').get('data-src').split('.jpg')[0]
         tmp_contents = soup.find('div',id='story_body_content').find_all('p')[1:]
-        contents = photo + '.jpg'
+        contents = ''
         for item in tmp_contents:
             contents = contents + item.text
         detail={
             'news_time':news_time,
             'author':author,
+            'photo':photo + '.jpg',
             'contents':contents
         }
         return detail
@@ -58,6 +60,7 @@ class crawler():
                     author=item['author'],
                     news_time=datetime.datetime.strptime(item['news_time'],'%Y-%m-%d %H:%M'),
                     contents=item['contents'],
+                    photo=item['photo'],
                     url=item['url'])
                 finish.append(item['title'])
         return finish
