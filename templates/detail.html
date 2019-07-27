@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
+  <script>
+    $(document).ready(function() {
+      getNews();
+    })
+
+    // ajax 
+    function getNews() {
+      $.ajax({
+        url: '/api/news/{{n}}',
+        success: function(response) {
+          if (!response) {
+            return alert('Error');
+          }
+          news = response;
+          var item = '' + 
+            '<img src=' + news.photo_url + ' class="card-img-top" >' +
+            '<div class="card-body">' +
+              '<h5 class="card-title">' + news.title + '</h5>' +
+              '<p class="card-text">' +
+                news.content.replace(/\n/g, "</p><p class=\"card-text\">") +
+              '</p>' +
+            '</div>';
+          $('.news').append(item);
+        },
+        error: function(err) {
+          console.log(err);
+          alert('抓取失敗');
+        }
+      })
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>新聞詳情頁面</h2>
+    <div class="news">
+      
+    </div>
+  </div>
+</body>
+</html>

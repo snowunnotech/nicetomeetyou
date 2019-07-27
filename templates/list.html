@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
+  <script>
+    len = 0;
+    $(document).ready(function() {
+      getNews();
+    })
+
+    setInterval(function() { 
+      getNews(); 
+    }, 10000);
+
+    // ajax 
+    function getNews() {
+      $.ajax({
+        url: '/api/news',
+        success: function(response) {
+          if (!response) {
+            return alert('Error');
+          }
+          if(len >= response.length){
+            return;
+          }
+          len = response.length;
+          console.log(len);
+          response.reverse();
+          $('.news').empty();
+          for(var i = 0; i < response.length; i++) {
+
+            // 丟給 render function
+            addNews(response[i]);
+            if (i != 0 && i+1 % 3 == 0) {
+                $('.news').append('<div class="w-100"></div>');
+            }
+          }
+        },
+        error: function(err) {
+          console.log(err);
+          alert('抓取失敗');
+        }
+      })
+    }
+
+    function addNews(news) {
+
+      var item = '' + 
+        '<a href=' + '/detail/' + news.id + '>' +
+          '<li class="media my-4">' +
+            '<img src=' + news.photo_url + ' class="mr-3" width=180 height=100>' +
+            '<div class="media-body">' +
+              '<h5 class="mt-0 mb-1">' + news.title + '</h5>' +
+                news.top +
+            '</div>' +
+          '</li>' +
+        '</a>';
+      $('.news').append(item);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+
+    <h2>焦點新聞列表</h2>
+    <ul class="news list-unstyled">
+      
+    </ul>
+  </div>
+</body>
+</html>
