@@ -1,0 +1,20 @@
+{% extends 'focus/base.html' %}
+{% block title %}NBA焦點首頁{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="nba_content">
+                    <h1></h1>
+                    <p><strong></strong>
+                    </p>
+                    <br>
+                    <p></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                {% include 'focus/right_side_bar.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,3 @@
+nba資料夾是以django rest framework實作的內容
+nbanews裡面有爬蟲腳本crawler.py，可以在linux系統裡面執行crontab -e 編寫定時執行腳本功能
+將可以完成定時爬蟲功能
