@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="news-list" class="col-sm-offset-2 col-sm-8" >
+    </div>
+    <div id="body" style="margin-top: 2px;color: white; border-radius: 5px" >
+        <a href="">
+            <div class="title" style="font-size: 2em; ">&nbsp;<span></span></div>
+            <div id="published" style="font-size: 1.5em; "><span style="margin-left: 50px"></span>
+        </a>
+
+    </div>
+    
+    <script>
+        function get_data(){
+            $.ajax({
+                url: "/api/index",
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    $("#news-list").html('');
+                    var count = data.length;
+                    $.each(data, function (index, value) {
+                        var news = $("#body").clone();
+                        news.find('a').attr("href", "{{ context_parser }}"+ value['news_id']);
+                        news.find('.title  span').text(value['news_id'] +  ": " + value['title']);
+                        news.find('#published span').text("發表時間: " + value['published_time']);
+                        $('#news-list').append(news);
+                        count -= 1;
+                    });
+                    $("#news-list > div:nth-child(1)").css("border-color", "black").css("border-style", "solid").
+                    next().css("border-color", "black").css("border-style", "solid").
+                    next().css("border-color", "black").css("border-style", "solid");
+                },
+            });
+        };
+        get_data();
+    </script>
+</body>
+</html>
