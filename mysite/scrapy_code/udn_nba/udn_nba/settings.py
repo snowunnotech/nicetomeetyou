@@ -8,12 +8,22 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+import sys
+
+##### DJANGO INTEGRATION STARTS #####
+sys.path.append(os.path.dirname(os.path.abspath(".")))
+os.environ["DJANGO_SETTINGS_MODULE"] = "udn_nba.settings"
+SECRET_KEY = '7^^4zbxgf4n8c1vldmz0&ksxi2flw!te4mpm&$g(u5#a3yc3bo'
+
+import django
+django.setup()     # Since Django 1.7, setup() call is required to populate the apps registry.
+##### DJANGO INTEGRATION ENDS #####
 
 BOT_NAME = 'udn_nba'
 
 SPIDER_MODULES = ['udn_nba.spiders']
 NEWSPIDER_MODULE = 'udn_nba.spiders'
-
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'udn_nba (+http://www.yourdomain.com)'
@@ -64,9 +74,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'udn_nba.pipelines.UdnNbaPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'udn_nba.pipelines.UdnNbaPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

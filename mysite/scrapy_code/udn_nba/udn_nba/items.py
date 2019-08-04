@@ -9,7 +9,6 @@ from scrapy.item import Item, Field
 
 
 class UdnNbaItem(Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+    id = Field()
     title = Field()
     url = Field()

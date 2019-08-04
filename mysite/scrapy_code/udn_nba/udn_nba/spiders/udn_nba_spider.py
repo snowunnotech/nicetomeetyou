@@ -1,10 +1,16 @@
+import uuid
 from scrapy import Spider
 from scrapy.selector import Selector
 from udn_nba.items import UdnNbaItem
 
 class UdnNbaSpider(Spider):
+    """
+    todo: add another parser for scraping the article contents
+    """
+
     name = "udn_nba"
     allowed_domain = ["udn.com"]
+    url_prefix = "https://nba.udn.com"
     start_urls = ["https://nba.udn.com/nba/index?gr=www"]
 
     def parse(self, response):
@@ -14,10 +20,10 @@ class UdnNbaSpider(Spider):
             item = UdnNbaItem()
             item["title"] = news.xpath("a/h3/text()").extract()[0]
             print(item["title"])
-            item["url"] = news.xpath("a[contains(@href, '/nba/story')]/@href")\
+            item["url"] = self.url_prefix + news.xpath("a[contains(@href, '/nba/story')]/@href")\
                 .extract()[0]
+            item["id"] = uuid.uuid3(uuid.NAMESPACE_URL, item["url"])
             yield item
-
         #filename = response.url.split("/")[-2] + '.html'
         #with open(filename, 'wb') as f:
         #    f.write(response.body)
