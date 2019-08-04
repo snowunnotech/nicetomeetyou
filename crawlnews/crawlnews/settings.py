@@ -58,6 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
+        #'DIRS': [os.path.join(BASE_DIR, "frontend/dist")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,3 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_URL = '/frontend/dist/'
+#STATIC_ROOT = '/frontend/dist/'
+#STATIC_URL = os.path.join(BASE_DIR, "frontend/dist/")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

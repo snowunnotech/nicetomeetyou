@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+from django.views.generic import TemplateView
 #from main import views as main_views
 #from api import views as api_views
 
@@ -22,7 +23,8 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include('main.urls')),
+    #path('', include('main.urls')),
+    path('', TemplateView.as_view(template_name="index.html")),
     
     path('API/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),

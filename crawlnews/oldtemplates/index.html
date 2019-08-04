@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%} 首頁 {% endblock %}
+
+{% block content %}
+
+<p>
+  如果你需要自動定時爬蟲，以 Ubuntu 為例，請依序執行以下動作
+  <ol>
+    <li>$>crontab -e</li>
+    <li>輸入並儲存<pre>
+	0 9-12 * * * [指向你的virtualenv資料夾中的python執行檔] [指向你的專案路徑]/nicetomeetyou/crawlnews/cronjob/NBAUDN.py
+    </pre></li>
+    <li>使用範例：<pre>
+	0 9-12 * * * /home/myusername/mytempenv/bin/python /home/myusername/temp/nicetomeetyou/crawlnews/cronjob/NBAUDN.py
+    </pre></li>
+    <li>如果你沒有使用virtualenv，則改成<pre>
+	0 9-12 * * * python3 /home/myusername/temp/nicetomeetyou/crawlnews/cronjob/NBAUDN.py
+    </pre></li>
+  </ol>
+</p>
+
+{% endblock %}
+
+
+{% block scripts %}{% endblock %}
