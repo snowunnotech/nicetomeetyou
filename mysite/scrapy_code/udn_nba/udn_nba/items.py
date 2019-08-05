@@ -12,3 +12,6 @@ class UdnNbaItem(Item):
     id = Field()
     title = Field()
     url = Field()
+    author = Field()
+    contents = Field()
+    published_datetime = Field()

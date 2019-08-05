@@ -37,7 +37,9 @@ class UdnNbaPipeline(object):
 
     def store_to_db(self, item):
         query = f"""
-                INSERT INTO news_hotnews VALUES ( {item["id"]}, {item["title"]}", "{item["url"]}", "test text" )
+                INSERT INTO news_hotnews VALUES ( 
+                    "{item["id"]}", "{item["title"]}", "{item["url"]}", "{item["author"]}", "{item["published_datetime"]}", "{item["contents"]}"
+                )
                 """
         print(query)
         try:

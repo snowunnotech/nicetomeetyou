@@ -1,8 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register("nbanews", views.HotNewsView)
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path(r"^api/hotnews/list", views.hotnews, name="hotnewsls"), #列表
-    #path(r"")
+    path("", include(router.urls))
 ]

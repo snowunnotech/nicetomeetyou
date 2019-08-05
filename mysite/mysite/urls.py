@@ -22,6 +22,6 @@ that point and sends the remaining string to the included URLconf for
 further processing.
 """
 urlpatterns = [
-    path("nbanews/", include("news.urls")),
     path("admin/", admin.site.urls),
+    path("", include("news.urls")),
 ]
