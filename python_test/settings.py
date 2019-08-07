@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news',
     'rest_framework',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'python_test.wsgi.application'
 
+
+# Cron Job Setting
+CRONJOBS=[
+    ('* * * * *', 'news.cron.news_spider'),
+]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
