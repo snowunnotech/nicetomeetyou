@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>抓取新聞內容</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button class="btn btn-primary">按我取得新聞</button>
+        <script>
+            $('container').ready(() => {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/api/news',
+                    dataType: 'json',
+                    timeout: 1000,
+                    success: (result) => {
+                        console.log('result', result);
+                    }
+                })
+            })
+
+<!--            function getData = {-->
+<!--                -->
+<!--            }-->
+        </script>
+
+        <div class="wrapper">
+            <div class="container">
+
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">圖</th>
+                            <th scope="col">標題</th>
+                            <th scope="col">多久之前</th>
+                            <th scope="col">內容</th>
+                            <th scope="col">更新時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for new in news %}
+                        <tr>
+                            <th scope="col">{{new.id}}</th>
+                            <th><img src="{{new.imgUrl}}" width="250"></th>
+                            <th>{{new.title}}</th>
+                            <th>{{new.time}}</th>
+                            <th>{{new.payload}}</th>
+                            <th>{{new.timestamp}}</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
