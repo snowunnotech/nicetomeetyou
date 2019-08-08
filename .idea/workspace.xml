@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4297c572-7959-43cd-bc33-549304d481e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/python_test/routing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/templates/story.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_test/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_test/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_test/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -29,7 +34,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../websocketsite" />
     <property name="settings.editor.selected.configurable" value="xml.defaultSchemas" />
   </component>
   <component name="RecentsManager">

@@ -31,16 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'news',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'news',
     'rest_framework',
     'django_crontab',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -52,16 +52,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CHANNELS_LAYERS = {
-    'default': {
-        'BACKEND': 'asgiref.inmemory.ChannelLayer',
-        'ROUTING': 'news.routing.channel_routing',
-        'CONFIG': {
-            'hosts': [os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379/2')]
-        }
-    },
-}
 
 ROOT_URLCONF = 'python_test.urls'
 
@@ -81,7 +71,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'python_test.wsgi.application'
+ASGI_APPLICATION = 'python_test.routing.application'
+
+# WEBSOCKET_FACTORY_CLASS = 'dwebsocket.backends.uwsgi.factory.uWsgiWebSocketFactory'
 
 # Cron Job Setting
 CRONJOBS=[
