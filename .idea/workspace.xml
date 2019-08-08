@@ -2,31 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4297c572-7959-43cd-bc33-549304d481e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/jtr.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/python_test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/cron.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/migrations/0002_auto_20190806_0941.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/news/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_test/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_test/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/chromedriver" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/migrations/0003_newsstory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/migrations/0004_auto_20190808_0353.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/migrations/0005_auto_20190808_0355.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/migrations/0006_newsstory_imgurl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news/templates/story.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/cron.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/cron.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/templates/hello.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/hello.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_test/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_test/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_test/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,8 +36,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1P2dnNbRE9NyZMAZZXfpypYqlDK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -88,10 +81,15 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
