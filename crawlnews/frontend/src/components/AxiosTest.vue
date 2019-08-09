@@ -1,17 +1,36 @@
 <template>
-  <div class="test">
+  <div class="axiostest">
     <h1>{{ msg }}</h1>
-    <h3>Installed CLI Plugins</h3>
+    <p v-for="New in news">
+       {{ New.time }}
+       {{ New.title }}
+       {{ New.statement }}
+    </p>
     <h3>Essential Links</h3>
     <h3>Ecosystem</h3>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'test',
+  name: 'axiostest',
   props: {
     msg: String
+  },
+  data () {
+    return {
+      news: null
+    }
+  },
+  mounted () {
+    axios
+      .get('/API/news/?format=json')
+      .then(response => (this.news = response.data))
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
   }
 }
 </script>
