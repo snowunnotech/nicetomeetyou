@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>抓取新聞內容</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="message" class="btn btn-primary">websocket test</button>
+        <script>
+
+<!--            $('#message').click(() => {-->
+<!--                console.log('hi')-->
+<!--                let socket = new WebSocket("ws://127.0.0.1:8000/echo_once");-->
+<!--                socket.onopen = () => {-->
+<!--                    console.log('WebSocket Connect');-->
+<!--                    socket.send('test');-->
+<!--                };-->
+
+<!--                socket.onmessage = (message) => {-->
+<!--                    console.log('message', message);-->
+<!--                }-->
+
+<!--                socket.close = (error) => {-->
+<!--                    console.log(error);-->
+<!--                    socket.close();-->
+<!--                }-->
+<!--            })-->
+
+            $('container').ready(() => {
+                getNewsData()
+            })
+
+            function getNewsData() {
+<!--                $('#newsBody').remove();-->
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/api/news/',
+                    dataType: 'json',
+                    timeout: 1000,
+                    async: false,
+                    success: (results) => {
+                        results.reverse();
+                        console.log(results)
+                        let str = '';
+                        $('#newsBody').html('');
+                        results.forEach(result => {
+                            str = `
+                                <tr>
+                                    <th><img src="${result.imgUrl}" width="250"></th>
+                                    <th>${result.title}</th>
+                                    <th>${result.payload}</th>
+                                    <th class="timestamp">${result.timestamp}</th>
+                                </tr>`
+                            $('#newsBody').append(str)
+                        })
+                        setTimeout(getNewsData, 30000)
+                    }
+                })
+            }
+
+        </script>
+
+        <div class="wrapper">
+            <div class="container">
+
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">圖</th>
+                            <th scope="col">標題</th>
+                            <th scope="col">內容</th>
+                            <th scope="col">更新時間</th>
+                        </tr>
+                    </thead>
+                    <tbody id="newsBody">
+                    {% for new in news %}
+                        <tr id="news{{new.id}}">
+                            <th><img src="{{new.imgUrl}}" width="250"></th>
+                            <th>{{new.title}}</th>
+                            <th>{{new.payload}}</th>
+                            <th>{{new.timestamp}}</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <p>
+                    <button class="detail btn btn-success">詳細頁面</button>
+                    <button class="cancel btn btn-secondary" style="display: none">取消</button>
+                </p>
+
+                <table class="cancel table table-hover" style="display: none">
+                    <h2 class="cancel" style="text-align: center; display: none">詳細內容</h2>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">作者</th>
+                            <th scope="col">圖</th>
+                            <th scope="col">內容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for news_story in news_storys %}
+                        <tr id="news_story{{news_story.parent_id}}">
+                            <th scope="col">{{news_story.author}}</th>
+                            <th><img src="{{news_story.imgUrl}}" width="250"></th>
+                            <th>{{news_story.payload}}</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            $('.detail').click(() => {
+                $('.detail').hide();
+                $('.cancel').show();
+            })
+            $('.cancel').click(() => {
+                $('.detail').show();
+                $('.cancel').hide();
+            })
+            function showStory(id) {
+                console.log('id', id)
+            }
+
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
