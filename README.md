@@ -12,3 +12,12 @@
 3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 4. 将本 demo 部署至服务器并可正确运行。
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+
+## 完成項目
+除了進階的3、5以外的都完成了，第三點因為繳交時間要到的關係，沒時間研究django的websocket，之後會繼續研究並實現它。
+
+最新的專案會放在
+GitLab: https://gitlab.com/mgchen.gitlab/scrapy_demo
+
+上線地址: http://scrapydemo.mgibox.com/
+
