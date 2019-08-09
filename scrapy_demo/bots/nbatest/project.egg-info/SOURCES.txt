@@ -1,0 +1,14 @@
+setup.py
+nbatest/__init__.py
+nbatest/items.py
+nbatest/middlewares.py
+nbatest/pipelines.py
+nbatest/settings.py
+nbatest/utils.py
+nbatest/spiders/__init__.py
+nbatest/spiders/crawler.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

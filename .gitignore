@@ -1,0 +1,15 @@
+.DS_Store
+db.sqlite3
+__pycache__/
+media/
+
+
+#scrapy
+bots/scrapyd/dbs/
+bots/scrapyd/eggs/
+bots/scrapyd/logs/
+twistd.pid
+
+#spider keeper
+SpiderKeeper.db
+output.egg
