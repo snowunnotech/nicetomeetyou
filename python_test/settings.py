@@ -72,8 +72,16 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = 'python_test.routing.application'
-
 # WEBSOCKET_FACTORY_CLASS = 'dwebsocket.backends.uwsgi.factory.uWsgiWebSocketFactory'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('redis-server-name', 6379)],
+        },
+    }
+}
 
 # Cron Job Setting
 CRONJOBS=[

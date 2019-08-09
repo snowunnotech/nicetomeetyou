@@ -21,12 +21,13 @@ from news import views
 
 router = routers.DefaultRouter()
 router.register(r'news', views.NewsViewSet)
+router.register(r'newsStory', views.NewsStoryViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('news/', views.news_view),
     path('api/', include(router.urls)),
-    path('echo_once/', views.echo_once),
+    # path('echo_once/', views.echo_once),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'),
 ]
