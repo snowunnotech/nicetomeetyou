@@ -1,0 +1,146 @@
+2019-08-09 02:05:06 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: nbatest)
+2019-08-09 02:05:06 [scrapy.utils.log] INFO: Versions: lxml 4.4.0.0, libxml2 2.9.9, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 19.7.0, Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) - [Clang 6.0 (clang-600.0.57)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Darwin-18.5.0-x86_64-i386-64bit
+2019-08-09 02:05:06 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'nbatest', 'LOG_FILE': 'logs/nba_scrapy_schedule/nba/17bd15daba4a11e989eeacbc32965731.log', 'NEWSPIDER_MODULE': 'nbatest.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['nbatest.spiders']}
+2019-08-09 02:05:06 [scrapy.extensions.telnet] INFO: Telnet Password: d4abd0c92b043630
+2019-08-09 02:05:06 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2019-08-09 02:05:06 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-08-09 02:05:06 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-08-09 02:05:06 [scrapy.middleware] INFO: Enabled item pipelines:
+['nbatest.pipelines.NbatestPipeline']
+2019-08-09 02:05:06 [scrapy.core.engine] INFO: Spider opened
+2019-08-09 02:05:06 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-08-09 02:05:06 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-08-09 02:05:06 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-08-09 02:05:06 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index?gr=www> (referer: None)
+2019-08-09 02:05:06 [py.warnings] WARNING: /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nba_scrapy_schedule-1565291530-nnnu4zqr.egg/nbatest/spiders/crawler.py:12: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 12 of the file /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nba_scrapy_schedule-1565291530-nnnu4zqr.egg/nbatest/spiders/crawler.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+
+2019-08-09 02:05:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3979132> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-09 02:05:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3979112> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-09 02:05:07 [py.warnings] WARNING: /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nba_scrapy_schedule-1565291530-nnnu4zqr.egg/nbatest/spiders/crawler.py:20: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 20 of the file /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nba_scrapy_schedule-1565291530-nnnu4zqr.egg/nbatest/spiders/crawler.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+
+2019-08-09 02:05:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3979118> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-09 02:05:07 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-09 09:40:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-09 02:05:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3979132>
+{'content': '<p>中國《騰訊體育》報導指出，退役馬刺傳奇球星<a href="/search/tag/帕克" '
+            'rel="87888"><strong>帕克</strong></a>（Tony Parker）與<a '
+            'href="/search/tag/吉諾布里" rel="87887"><strong>吉諾布里</strong></a>（<a '
+            'href="/search/tag/Manu Ginobili" rel="87392"><strong>Manu '
+            'Ginobili</strong></a>）將於9月21號現身於上海舉辦的超級企鵝聯盟紅藍大戰賽場。</p><p></p><p>超級企鵝聯盟紅藍大戰歷屆都會邀請NBA退役球員共襄盛舉，過去就有像是麥葛雷迪（Tracy '
+            'McGrady）、畢拉普斯（Chauncey Billups）、艾倫（Ray Allen）、<a '
+            'href="/search/tag/皮爾斯" rel="87903"><strong>皮爾斯</strong></a>（<a '
+            'href="/search/tag/Paul Pierce" rel="116743"><strong>Paul '
+            'Pierce</strong></a>）與波許（Chris '
+            'Bosh）參與。</p><p></p><p>吉諾布里與帕克分別是在去年與今年相繼宣佈高掛球鞋退休，而本次紅藍大戰名人陣容中也包含來自台灣的藝人蕭敬騰、炎亞綸與顏行書。</p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1046176?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/09/99/6669516.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-09 09:40',
+ 'title': '中國表現賽公佈陣容 吉諾布里、帕克赫然在列',
+ 'uid': '6780/3979132'}
+2019-08-09 02:05:07 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-09 09:22:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-09 02:05:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3979112>
+{'content': '<p>洛杉磯<a href="/search/tag/湖人" '
+            'rel="87867"><strong>湖人</strong></a>今年夏天為了促成<a '
+            'href="/search/tag/詹姆斯" '
+            'rel="87904"><strong>詹姆斯</strong></a>（LeBron James）與<a '
+            'href="/search/tag/戴維斯" '
+            'rel="87885"><strong>戴維斯</strong></a>（Anthony '
+            'Davis）的雙巨頭連線，不惜交易出鮑爾（Lonzo Ball）、英格倫（Brandon Ingram）和哈特（Josh '
+            'Hart）等年輕球員，讓與他們有好交情的湖人前鋒庫茲瑪（Kyle '
+            'Kuzma）坦言一度難以接受，不過也祝福他們在紐奧良能成為超級球星。</p><p></p><p>湖人今年在戴維斯交易案中，一口氣送走過去四年來三個首輪選進的球員，其中包括2016年榜眼英格倫、2017年榜眼鮑爾以及今年選秀第四順位的杭特（DeAndre '
+            'Hunter）簽約權，展現招攬戴維斯的決心。</p><p></p><p>不過對於過去幾年一同奮戰的好友在同一個晚上被送走，庫茲瑪坦言第一時間還不太能接受，「那時好像是凌晨三點鐘，我已經睡著了，但他（經紀人）跑進我的房間內跟我說這個消息，對於那些傢伙來說，尤其是鮑爾和英格倫，當他們能持有球權時就是最好的球員，但這在我們球隊中並不是一件容易的事情，所以這阻礙了他們的發展」。</p><p></p><p>對於他們兩人接下來將與今年選秀狀元威廉森（Zion '
+            'Williamson）一同代表鵜鶘出賽，庫茲瑪也認為他們將會有很棒的發展，「雖然他們沒有說出來，但在洛杉磯你肯定會背負更多壓力，現在他們可以做自己了，並在紐奧良成為他們本應該成為的超級巨星」。</p><p></p><p>庫茲瑪強調，儘管接下來將與好兄弟們在球場上對抗，但四人在過去幾年建立的革命情感將不會改變，「很顯然湖人並不是很願意交易我們，因為我們是四名極具發展性的球員，當你的球隊中有四名能作為核心的球員時，你肯定會猶豫。過去兩年我們一同成長，儘管因為受傷讓大家忽視了他們，但當我們能一起上場時就會有好事發生」。</p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1014349?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/09/1/6669482.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-09 09:22',
+ 'title': '鮑爾等好友遭交易 庫茲瑪：他們將成巨星',
+ 'uid': '6780/3979112'}
+2019-08-09 02:05:07 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-09 09:17:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-09 02:05:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3979118>
+{'content': '<p>Puma去年正式宣佈重新返回籃球裝備市場，如今旗下代言人<a href="/search/tag/格林" '
+            'rel="116794"><strong>格林</strong></a>（Danny Green）與洛齊爾（Terry '
+            'Rozier）預計在8月26號展開拜訪台灣行程。</p><p></p><p>格林過去在2013年時也曾造訪寶島，上季他隨暴龍勇奪NBA總冠軍，並於暑假轉隊至湖人，成為<a '
+            'href="/search/tag/詹姆斯" '
+            'rel="87904"><strong>詹姆斯</strong></a>（LeBron '
+            'James）隊友。</p><p></p><p>洛齊爾今年休賽季一樣也換了東家，從<a '
+            'href="/search/tag/塞爾蒂克" rel="87855"><strong>塞爾蒂克</strong></a>轉投<a '
+            'href="/search/tag/黃蜂" '
+            'rel="88066"><strong>黃蜂</strong></a>，與後者先前頭牌球星華克（Kemba '
+            'Walker）互換。</p><p></p><p>Puma目前旗下的NBA代言人除這次將來台的格林 '
+            '與洛齊爾外，尚有：艾頓（Deandre Ayton）、諾克斯（Kevin Knox）、<a '
+            'href="/search/tag/蓋伊" rel="116787"><strong>蓋伊</strong></a>（Rudy '
+            'Gay）與卡珍斯（DeMarcus Cousins）等人。</p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1086567?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/09/99/6669479.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-09 09:17',
+ 'title': '為代言品牌活動來訪 格林、洛齊爾預計26日抵台',
+ 'uid': '6780/3979118'}
+2019-08-09 02:05:07 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-08-09 02:05:07 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1283,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 88165,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 0.981022,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 8, 9, 2, 5, 7, 646387),
+ 'item_scraped_count': 3,
+ 'log_count/DEBUG': 8,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 5,
+ 'memusage/max': 74227712,
+ 'memusage/startup': 74227712,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 8, 9, 2, 5, 6, 665365)}
+2019-08-09 02:05:07 [scrapy.core.engine] INFO: Spider closed (finished)

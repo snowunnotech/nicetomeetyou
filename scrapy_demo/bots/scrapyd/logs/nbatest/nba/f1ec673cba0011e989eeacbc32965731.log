@@ -1,0 +1,132 @@
+2019-08-08 17:21:25 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: nbatest)
+2019-08-08 17:21:25 [scrapy.utils.log] INFO: Versions: lxml 4.4.0.0, libxml2 2.9.9, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 19.7.0, Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) - [Clang 6.0 (clang-600.0.57)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Darwin-18.5.0-x86_64-i386-64bit
+2019-08-08 17:21:25 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'nbatest', 'LOG_FILE': 'logs/nbatest/nba/f1ec673cba0011e989eeacbc32965731.log', 'NEWSPIDER_MODULE': 'nbatest.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['nbatest.spiders']}
+2019-08-08 17:21:25 [scrapy.extensions.telnet] INFO: Telnet Password: 3362219dd3be8479
+2019-08-08 17:21:25 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2019-08-08 17:21:26 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-08-08 17:21:26 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-08-08 17:21:26 [scrapy.middleware] INFO: Enabled item pipelines:
+['nbatest.pipelines.NbatestPipeline']
+2019-08-08 17:21:26 [scrapy.core.engine] INFO: Spider opened
+2019-08-08 17:21:26 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-08-08 17:21:26 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-08-08 17:21:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-08-08 17:21:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index?gr=www> (referer: None)
+2019-08-08 17:21:26 [py.warnings] WARNING: /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nbatest-1565284748-q3xffh38.egg/nbatest/spiders/crawler.py:12: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 12 of the file /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nbatest-1565284748-q3xffh38.egg/nbatest/spiders/crawler.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+
+2019-08-08 17:21:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3977925> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-08 17:21:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3977824> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-08 17:21:26 [py.warnings] WARNING: /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nbatest-1565284748-q3xffh38.egg/nbatest/spiders/crawler.py:20: UserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 20 of the file /private/var/folders/qt/nmbjkvbj0cs8rvvy_2cfjb800000gn/T/nbatest-1565284748-q3xffh38.egg/nbatest/spiders/crawler.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+
+2019-08-08 17:21:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/3977361> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-08-08 17:21:27 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-08 16:51:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-08 17:21:27 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3977925>
+{'content': '<p>今年夏天選擇離開效力3年的<a href="/search/tag/勇士" '
+            'rel="87865"><strong>勇士</strong></a>隊，<a href="/search/tag/杜蘭特" '
+            'rel="87898"><strong>杜蘭特</strong></a>（Kevin Durant）選擇加盟<a '
+            'href="/search/tag/籃網" '
+            'rel="87856"><strong>籃網</strong></a>，而目前正在為阿基里斯腱積極復健的他，在今天（8號）受訪時也被問到復原情況，他表示自己處於恢復的初期階段，對復原狀況沒想太多，「我現在只專注於我所能控制的東西，一步一步來」。</p><p></p><p>杜蘭特在今年總冠軍賽第五戰歸隊，不過上場僅12分鐘又因傷提前退場，最終檢查結果為阿基里斯腱斷裂，下一季恐面臨整季報銷的可能。而當球季結束後，恢復自由身的杜蘭特選擇離開勇士，轉與籃網隊簽約。「我是6月30日那天早晨（決定加入籃網）」，杜蘭特說，「我從來沒想過因專注於未來而不尊重這項運動。這永遠都只關乎於那一天，以及那一天什麼是最重要的」。</p><p></p><p>對於自己可能缺席2019-20年整個球季，杜蘭特表示現在並不想太多，只想專注於自己所能控制的事情，「我不知道，就像我不知道我會受傷一樣。我們等著瞧吧，我現在正處於恢復的初期階段，我每天都在努力復健，想太多對我來說並沒有好處，現在我只專注於我能控制的東西，一步一步來」。</p><p></p><p>「但你一但開始瞭解到更多自己的身體狀況，你就會意識到什麼是傷病」，杜蘭特繼續說，「我需要做很多的努力才能完全的恢復力量，我曾處在一個身體與精神交會的時間點，我的身體和思想在那個正確時間點結合了，我達到前所未有的層面，現在我的思想還在那，但身體還需要趕上，一但身體恢復，那我也將回歸」。</p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1089040?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/08/1/6667214.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-08 16:51',
+ 'title': '談傷病復原情況 杜蘭特：只專注於所能控制的',
+ 'uid': '6780/3977925'}
+2019-08-08 17:21:27 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-08 16:23:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-08 17:21:27 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3977824>
+{'content': '<p>談到NBA球員陸續退出美國隊，不願參加2019年世界盃男籃賽的原因，波特蘭<a href="/search/tag/拓荒者" '
+            'rel="87873"><strong>拓荒者</strong></a>後衛麥凱倫（C.J. '
+            'McCollum）表示，因為可能會有丟臉或受傷風險。麥凱倫告訴《ESPN》記者沃納洛斯基（Adrian '
+            'Wojnarowski）：「我認為其他人想法是『為什麼我要去代表一個可能嚐到輸球滋味的陣容呢？』」</p><p></p><p>麥凱倫說：「又或者是工作負擔的部分，假如我們全都去打，工作負擔就會比較輕，每個人每場比賽打20到25分鐘，可以全力以赴，然後還能繼續往後的比賽，很多人不打，上場時間就會增加，每個人的使用率就會提高，然後影響夏天的調整，接著在3月到來時累垮。」</p><p></p><p>麥凱倫表示，包括明星賽、季後賽等，球員有許多額外的負擔，「我每年都是全聯盟打最多時間的球員之一，我在規劃工作的時候，實在不想飛到澳洲或中國，然後再飛回來備戰新球季」。</p><p>27歲的麥凱倫已在NBA打了6年，最近和拓荒者簽下3年1億美元（約新台幣31.33億元）延長合約。</p><p></p><p>美國隊總教練波波維奇（<a '
+            'href="/search/tag/Gregg Popovich" rel="87433"><strong>Gregg '
+            'Popovich</strong></a>）本週在球隊於拉斯維加斯的訓練營中告訴記者，他所關注的，不是誰沒參加美國隊，而是誰參加了美國隊，「我已經說過了，我們會很好，我真正的意思是，我們很幸運，因為美國籃球的深度」。</p><p></p><p>國際籃球總會（FIBA）世界盃將在8月31日到9月15日於中國的上海進行，最終12人參賽名單將在8月17日公布，美國隊在世界盃的首戰，將於將是9月1日對上捷克的比賽。</p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1067495?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/08/98/6667065.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-08 16:23',
+ 'title': '球員紛退美國隊 麥凱倫稱輸球風險是考量之一',
+ 'uid': '6780/3977824'}
+2019-08-08 17:21:27 [py.warnings] WARNING: /Users/oliver/Documents/self/python/virtualenv/scrapy_demo/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NbaNews.post_datetime received a naive datetime (2019-08-08 14:15:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-08-08 17:21:27 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/3977361>
+{'content': '<p>洛杉磯<a href="/search/tag/湖人" '
+            'rel="87867"><strong>湖人</strong></a>今天（8號）宣布，由來自台灣的謝妮娜（Nina '
+            'Hsieh，音譯），升任球隊首席運動傷害防護員。湖人總經理佩林卡（Rob '
+            'Pelinka）說：「10年來，謝妮娜一直是湖人和南灣湖人（湖人發展聯盟球隊）訓練員中的寶貴成員，她豐富的經驗，與球員建立信任關係的能力以及她為這個職務帶來的知識和熱情，讓她能完全適任這個角色，我對此再高興不過了。」</p><p></p><p>湖人官網表示，在司徒敏儀（Judy '
+            'Seto）帶領下，謝妮娜將監督訓練員，與教練團、管理階層合作，確保（球員）在場上能有最高水準的表現，謝妮娜將負責球員傷病的照護、預防及治療，和場上緊急狀況的處理。</p><p></p><p>謝妮娜過去3個球季幾乎都是球隊的助理運動傷害防護員，協助訓練員日常的運作，她初入球團時，任南灣湖人的首席訓練員，在那裡待了7年時間，管理所有健康和保健、力量和訓練的計畫、設施，和湖人G聯盟（NBA發展聯盟）的旅程安排。</p><p></p><p>湖人官網提到，生於台灣的謝妮娜畢業於加州州立大學富勒頓分校（Cal '
+            'State-Fullerton），加入湖人球團前，2004年到2008年間在加州大學聖巴巴拉分校（UC Santa '
+            'Barbara）女子籃球隊擔任訓練員，2010年到2011年也在該校男子足球隊服務。</p><p></p><p><script '
+            'async="" charset="utf-8" '
+            'src="https://platform.twitter.com/widgets.js"></script></p><p></p><div '
+            'class="video-container"><iframe allowfullscreen="" '
+            'class="lazyload" frameborder="0" height="315" '
+            'src="https://video.udn.com/embed/news/1107809?autoplay=1&amp;muted=1" '
+            'width="100%"></iframe></div>',
+ 'image_url': 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2019/08/08/98/6666447.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600',
+ 'post_datetime': '2019-08-08 14:15',
+ 'title': '湖人宣佈最新人事消息 新首席防護員來自台灣',
+ 'uid': '6780/3977361'}
+2019-08-08 17:21:27 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-08-08 17:21:27 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1283,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 88933,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 1.295709,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 8, 8, 17, 21, 27, 352628),
+ 'item_scraped_count': 3,
+ 'log_count/DEBUG': 8,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 5,
+ 'memusage/max': 70926336,
+ 'memusage/startup': 70926336,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 8, 8, 17, 21, 26, 56919)}
+2019-08-08 17:21:27 [scrapy.core.engine] INFO: Spider closed (finished)

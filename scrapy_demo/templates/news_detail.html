@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1 id="news_title"></h1>
+        <p id="news_datetime"></p>
+        <div>
+            <img id="news_image" src="" width="50%">
+        </div>
+        <div id="news_content">
+
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script>
+    var pathArray = window.location.pathname.split('/');
+    var pk = pathArray[pathArray.length-1];
+    var api_url = "{% url 'api:nba_news-detail' 0 %}".replace('0', pk);
+    $.ajax({
+        url: api_url,
+        type: 'GET',
+        data: {},
+        cache: false,
+        success: function(data){
+            if(!data)
+                return;
+
+            $('#news_title').html(data.title);
+            $('#news_datetime').html(data.post_datetime);
+            $('#news_image').attr('src', data.image_url);
+            $('#news_content').html(data.content);
+        },
+        error: function(xhr){
+            console.log(xhr);
+        }
+    });
+</script>
+{% endblock %}

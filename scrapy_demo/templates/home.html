@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul id="news_list">
+        {% comment %} {% for news in news_list %}
+            <li><a href="{% url 'nba_news-detail' news.pk %}">{{ news.title }}</a></li>
+        {% endfor %} {% endcomment %}
+    </ul>
+{% endblock %}
+{% block js %}
+<script>
+    $.ajax({
+        url: "{% url 'api:nba_news-list'  %}",
+        type: 'GET',
+        data: {},
+        cache: false,
+        success: function(data){
+            var total_html = "";
+            for(index in data){
+                var news = data[index];
+                html =
+                '<li>\
+                    <a href="{0}">{1}</a>\
+                </li>';
+                var news_url = "{% url 'news_detail' 0 %}".replace('0', news.id);
+                html = html.format(news_url, news.title)
+                total_html = total_html + html;
+            }
+            $("#news_list").html(total_html);
+        },
+        error: function(xhr){
+            console.log(xhr);
+        }
+    });
+</script>
+{% endblock %}
