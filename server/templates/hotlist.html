@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1> 焦點新聞 </h1>
+    <input id="notify-news-submit" type="button" value="Send"/><br/>
+    {% for news in hotNewsList %}
+    <a href={{news.href}}> {{ news.title }} </a><br/>
+    {% endfor %}
+  </body>
+</html>
+
+<script>
+    var webSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/hotlist/');
+
+    // when clients got the new news, the block create the links that named the title and carry the href.
+    webSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var title = data['title'];
+        var href = data['href']
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(title);
+        a.appendChild(linkText);
+        a.href = href;
+        document.body.appendChild(a);
+        var br = document.createElement("br");
+        document.body.appendChild(br);
+    };
+
+    webSocket.onclose = function(e) {
+        console.error('web socket closed unexpectedly');
+    };
+
+    // simulate a situation that server got the new news and send to clients who have connected.
+    var count = 1;
+    document.querySelector('#notify-news-submit').onclick = function(e) {
+      webSocket.send(JSON.stringify({
+            'title': 'news' + count,
+            'href': 'https://www.google.com/search?q=' + count
+        }));
+        count++;
+    };
+</script>

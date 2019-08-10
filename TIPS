@@ -1,0 +1,30 @@
+前情提要：
+    "使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。"，沒有實作出來，
+    目前找不到推播物件的實例。但是在 hotlist.html 中以 send 按鈕模擬更新的推播。
+
+    爬蟲到資料後 post 給 server 功能不完整，因為沒有過濾重複的新聞，對 REST 還不太熟。
+
+
+Requirements
+
+Python model
+    channels
+    djangorestframework
+    asgiref
+    asgi-redis
+    scrapy
+
+Run
+    cd unnotech/server/
+    python manage.py runserver
+
+
+Scrapy
+
+Run
+    $ cd unnotech/crawler/crawler/spiders/
+    $ scrapy crawl news
+Auto Run
+    $ crontab -e
+    #每天從午夜開始每一小時執行一次爬蟲
+    0 0-23/1 * * * < $ which scrapy > crawl unnotech/crawler/crawler/spiders/news
