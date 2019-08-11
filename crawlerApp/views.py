@@ -18,7 +18,7 @@ from django_apscheduler.jobstores import DjangoJobStore, register_events, regist
 
 # Create your views here.
 
-# crawler every 2 hour, there are duplicate problem.
+# crawler every 2 hour
 try:
 	scheduler = BackgroundScheduler()
 	scheduler.add_jobstore(DjangoJobStore(), "default")
@@ -40,7 +40,7 @@ try:
 			contents = '\n'.join(content_phrase)
 			
 			#store into db
-			newObject = News.objects.create(title=title, href=href, outline=outline, content=contents )
+			newObject = News.objects.get_or_create(title=title, href=href, outline=outline, content=contents )
 
 			print("Update the DB~")
 		pass
