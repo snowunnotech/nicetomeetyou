@@ -3,3 +3,7 @@ PyMySQL==0.8.0
 Scrapy==1.4.0
 djangorestframework==3.8.1
 scrapy-djangoitem==1.1.1
+APScheduler==3.6.1
+lxml==3.8.0
+beautifulsoup4==4.6.0
+requests==2.20.0
