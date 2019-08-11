@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>NBA</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- Nav Bar -->
+	<nav class="nnavbar navbar-dark bg-dark"">
+	     <div class="container">
+	       <div class="navbar-header">
+	         <p class="navbar-brand">NBA 即時新聞</p>
+	       </div>
+	       <div id="navbar" class="navbar-collapse collapse">
+	         <ul class="nav navbar-nav">
+	         </ul>
+	       </div><!--/.nav-collapse -->
+	     </div>
+	</nav>
+
+	<div class="Article_content">
+		<div class="container">
+			<div class="card">
+			  <div class="card-header " id="headingOne">
+			    <h5 class="mb-0" id="title"></h5>
+			  </div>
+
+			  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+			    <div class="card-body">
+			    </div>
+			    <div class="card-footer bg-transparent"></div>
+			  </div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--
+	<div>
+		{% for a in article_list %}
+		<p>{{a}}</p>
+		{%endfor%}
+	</div>
+	-->
+	<script type="text/javascript">
+		console.log({{newId}})
+		$.get("/new/{{newId}}",
+		    function(data) {
+		    //返回值 data 在這裡是一個列表
+		    console.log(data)
+		    $('#title').append(data.title);
+		    $('.card-body').append(data.content);
+		    
+		});
+	</script>
+
+</body>
+</html>
