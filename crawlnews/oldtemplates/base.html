@@ -1,0 +1,21 @@
+<html>
+  <header>
+    <title>NBA UDN NEWS</title>
+  </header>
+  <body>
+
+    <h2> {% block title %}{% endblock %} </h2>
+    <a href="/">首頁</a>
+    <a href="/newslist/">新聞列表</a>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    {% block tools %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {% endblock %}
+    {% block scripts %}{% endblock %}
+
+  </body>  
+</html>

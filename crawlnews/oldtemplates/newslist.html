@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title%} 新聞列表 {% endblock %}
+
+{% block content %}
+
+<ol>
+  {% for new in news %}
+  <li>
+    <ul>
+      <li>{{ new.time }}</li>
+      <li>{{ new.title }}</li>
+      <li>{{ new.statement }}</li>
+    </ul>
+  </li>
+  {% endfor %}
+</ol>
+<div id="newslist"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+$( document ).ready(function() {
+
+$.ajax({
+  url: "/API/shortnews",
+  success: function( result ) {
+
+var html = ""
+for (i = 0; i < Object.keys(result).length; i++) {
+    var a_tag = "<a href='/newsdetail/"
+    a_tag += result[i]["url_id"] + "'>"
+    a_tag += "<p>" + result[i]["time"] + "</p>"
+    a_tag += "<p>" + result[i]["title"] + "</p>"
+    a_tag += "<p>" + result[i]["statement"] + "</p>"
+    a_tag += "</a>"
+    html += a_tag + "<hr>"
+}					
+
+    $( "#newslist" ).html( "<strong>" + html + "</strong>" );
+  }
+});
+
+});
+</script>
+{% endblock %}
