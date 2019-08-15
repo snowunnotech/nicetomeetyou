@@ -13,7 +13,7 @@ Notice: crawler.env or .env file should add to .gitignore in real use for securi
 # Infrastructure
 - Deploy on AWS EC2 free-tier
 - Use docker-compose to wrap up all the following tools.
-- Use Django + Nginx + uwsgi to build services.
+- Use Django + Nginx + uwsgi to build services, use jquery. ajax to async news list.
 - Use Celery + RabbitMQ to do scheduled work, crawling down NBA news per 3 minutes.
 - Use Scrapy to crawl.
 - Use mysql as db.
