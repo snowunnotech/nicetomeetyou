@@ -8,6 +8,8 @@ http://ec2-3-16-219-207.us-east-2.compute.amazonaws.com:8080/
 username:user
 password:123
 
+Notice: crawler.env or .env file should add to .gitignore in real use for security purpose, they're uploaded only for demo.
+
 # Infrastructure
 - Deploy on AWS EC2 free-tier
 - Use docker-compose to wrap up all the following tools.
@@ -25,7 +27,7 @@ password:123
  - docker ps | grep api , find the container's id
  - docker exec -it <container_id> bash
  - cd app & python manage.py migrate
- - kill docker-compose process and restart, done
+ - kill docker-compose process and restart, done.
 
 
 # nice to meet you
