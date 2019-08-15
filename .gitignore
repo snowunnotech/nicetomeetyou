@@ -1,0 +1,8 @@
+# logs and socket
+*.log
+*.sock
+database
+/app/log/*.*
+celerybeat-schedule
+*.pyc
+*.pyo
