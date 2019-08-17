@@ -1,0 +1,33 @@
+{% extends 'nbanews/base.html' %}
+{% load static %}
+{% block title %}index{% endblock %}
+
+{% block content %}
+<!--<img class="ui tiny image" src="{% static 'nbanews/Test.JPG' %}">-->
+<div class="ui container">
+    <div class="ui segment" id="hotnews_detail">
+
+    </div>
+    好陽春喔
+</div>
+{% endblock %}
+
+{% block css %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'nbanews/css/index.css' %}">-->
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    $.ajax({
+        url : "/api/hotNews/{{news_id}}",
+        type: "GET",
+        dataType: "json",
+        success : function (data) {
+            $("#hotnews_detail").append("<img class=\"ui image\" src=\""+ data['image_url'] +"\">");
+            $("#hotnews_detail").append("<h2>" + data['title'] + "</a></h2>" +
+                "<p>" + data['content'] + "</p>");
+
+        }
+    });
+</script>
+{% endblock %}
