@@ -16,7 +16,7 @@ BOT_NAME = 'SeeMeiSpider'
 SPIDER_MODULES = ['SeeMeiSpider.spiders']
 NEWSPIDER_MODULE = 'SeeMeiSpider.spiders'
 
-sys.path.append("D://Python_project/Django/try_nba")
+sys.path.append(os.path.dirname(os.path.abspath('...')))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'SeeMeiZi.settings'
 
 import django

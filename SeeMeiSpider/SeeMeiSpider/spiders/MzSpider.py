@@ -58,14 +58,16 @@ class MzSpider(CrawlSpider):
 
     def parse_detail(self, response):
         
-        news_detail = response.xpath('//div[@id="story_body_content"]')
-        content = news_detail[0].xpath('string(.)').extract()[0]
-        print('\n')
-        print (content)
-        print('\n')
-
+        news_detail_list = response.xpath('//div[@id="story_body_content"]//p')
+        content = ""
+        for news_detail in news_detail_list:
+            content += news_detail.xpath('string(.)').extract()[0]
+        
+        #print('\n')    
+        #print (content)
+        #print('\n')
         item = response.meta['item']
-        item['detail'] = content
+        item['detail'] = content.strip(' Getty Imagesfacebooktwitterpinterest')
         yield item
 
 
