@@ -1,0 +1,53 @@
+{% extends 'nbanews/base.html' %}
+{% load static %}
+{% block title %}index{% endblock %}
+
+{% block content %}
+<!--<img class="ui tiny image" src="{% static 'nbanews/Test.JPG' %}">-->
+<div class="ui container">
+    <div class="ui segment">
+        <div class="ui grid" id="hotnews_list">
+            <!--<div class="three wide column">-->
+                <!--<img class="ui image" src="{% static 'nbanews/Test.JPG' %}">-->
+            <!--</div>-->
+            <!--<div class="thirteen wide column">-->
+                <!--<h2><a href="/detail/">title</a></h2>-->
+                <!--<p>121313</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+    下一頁功能可做在這裡
+</div>
+{% endblock %}
+
+{% block css %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'nbanews/css/index.css' %}">-->
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    $.ajax({
+        url : "/api/hotNews",
+        type: "GET",
+        dataType: "json",
+        success : function (data) {
+            console.log(data['results']);
+            $.each(data['results'], function( index, value ) {
+                $("#hotnews_list").append("<div class=\"three wide column\">" +
+                    "<img class=\"ui image\" src=\""+ value['image_url'] +"\">" +
+                    "</div>");
+
+                var content = value['content'];
+                if(content.length > 50){
+                    content = content.substring(0, 50) + "...";
+                }
+
+                $("#hotnews_list").append("<div class=\"thirteen wide column\">" +
+                    "<h2><a href='/detail/" + value['id'] + "'>" + value['title'] + "</a></h2>" +
+                    "<p>" + content + "</p>" +
+                    "</div>");
+            });
+        }
+    });
+</script>
+{% endblock %}
