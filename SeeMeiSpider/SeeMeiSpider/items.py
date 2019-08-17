@@ -6,7 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 from scrapy_djangoitem import DjangoItem
-from index.models import Feeds, News, NewsDetail
+from index.models import Feeds, News
 
 
 class SeemeispiderItem(DjangoItem):
@@ -15,5 +15,4 @@ class SeemeispiderItem(DjangoItem):
 class NewsItem(DjangoItem):
     django_model = News
 
-class NewsDetailItem(DjangoItem):
-    django_model = NewsDetail
+

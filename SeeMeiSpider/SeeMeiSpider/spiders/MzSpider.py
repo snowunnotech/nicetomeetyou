@@ -1,6 +1,6 @@
 import scrapy
 from scrapy.spiders import CrawlSpider
-from SeeMeiSpider.items import SeemeispiderItem, NewsItem, NewsDetailItem
+from SeeMeiSpider.items import SeemeispiderItem, NewsItem
 
 
 ## current progress
@@ -30,7 +30,7 @@ class MzSpider(CrawlSpider):
         print(domain + link)
         print('\n')
 
-        yield scrapy.Request(domain + link, self.parse_list)
+        yield scrapy.Request(domain + link, callback = self.parse_list)
 
     def parse_list(self, response):
         domain = "https://nba.udn.com"
@@ -47,14 +47,26 @@ class MzSpider(CrawlSpider):
             item['image_url'] = news_image_url
             item['short_description'] = news_description
 
-            yield item
+            #yield item
 
             #print(detail_link)
             #print(news_image_url)
 
-            #yield scrapy.Request(domain + detail_link, self.parse_detail)
+            yield scrapy.Request(domain + detail_link, callback = self.parse_detail, meta = {'item': item})
 
             # there should be 10 news in a page
+
+    def parse_detail(self, response):
+        
+        news_detail = response.xpath('//div[@id="story_body_content"]')
+        content = news_detail[0].xpath('string(.)').extract()[0]
+        print('\n')
+        print (content)
+        print('\n')
+
+        item = response.meta['item']
+        item['detail'] = content
+        yield item
 
 
 
