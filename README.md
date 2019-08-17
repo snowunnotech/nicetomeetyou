@@ -14,7 +14,7 @@
 https://nicetomeetyou-sleep.herokuapp.com/
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。 (TODO)
 
-爬蟲的的部分方便demo沒有全部爬完\
+爬蟲的的部分方便demo沒有爬完全部資料\
 自動更新只會更新最新的資料\
 爬蟲自動定時抓取功能在heroku上尚未完成...\
 第3第5點正在進行中...
