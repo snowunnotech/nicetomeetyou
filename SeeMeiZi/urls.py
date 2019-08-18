@@ -14,10 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
-from index.views import FeedsView
+from index.views import FeedsView, Homepage, Get_News_List
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', FeedsView.as_view(), name='index')
+    url(r'^news/$', Homepage),
+    url(r'^newsapi$', Get_News_List.as_view()),
 ]
+urlpatterns += [
+    path('', RedirectView.as_view(url='/news/', permanent=True)),
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

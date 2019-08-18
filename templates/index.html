@@ -1,176 +1,179 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-{% load staticfiles %}
 
-<head>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <title>:: SeeMeiZI :: </title>
+    <title>NBA &mdash; News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FREEHTML5.CO" />
 
-    <!-- Normalize -->
+  <!-- 
+    //////////////////////////////////////////////////////
 
-    <link rel="stylesheet" href="{% static 'css/assets/normalize.css' %}" type="text/css">
+    FREE HTML5 TEMPLATE 
+    DESIGNED & DEVELOPED by FREEHTML5.CO
+        
+    Website:        http://freehtml5.co/
+    Email:          info@freehtml5.co
+    Twitter:        http://twitter.com/fh5co
+    Facebook:       https://www.facebook.com/fh5co
 
-    <!-- Bootstrap -->
+    //////////////////////////////////////////////////////
+     -->
 
-    <link href="{% static 'css/assets/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
 
-    <!-- Font-awesome.min -->
+    {% load static %}
 
-    <link href=" {% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
-    <!-- Effet -->
 
-    <link rel="stylesheet" href="{% static 'css/gallery/foundation.min.css' %}" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/gallery/set1.css' %}"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Animate -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Icomoon -->
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
-    <!-- Main Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
 
-    <!-- Responsive Style -->
-
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-
+    <!-- Modernizr JS -->
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
+    <script src="js/respond.min.js"></script>
     <![endif]-->
+    <!-- ajax  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="{% static 'js/assets/modernizr-2.8.3.min.js' %}" type="text/javascript"></script>
-</head>
+    </head>
+    <body>
 
-<body>
+    <!-- END #fh5co-offcanvas -->
+    <header id="fh5co-header">
+        
+        <div class="container-fluid">
 
-<!-- header -->
-
-<header id="header" class="header">
-    <div class="container-fluid">
-        <hgroup>
-
-            <!-- logo -->
-
-            <h1><a href="index3.html" title="Picxa"><img src="{% static 'images/logo.png' %}" alt="Picxa"
-                                                         title="Picxa"/></a></h1>
-
-            <!-- logo -->
-
-            <!-- nav -->
-
-            <nav>
-                <div class="menu-expanded">
-                    <div class="nav-icon">
-                        <div id="menu" class="menu"></div>
-                        <p>menu</p>
-                    </div>
-                    <div class="cross"><span class="linee linea1"></span> <span class="linee linea2"></span> <span
-                            class="linee linea3"></span></div>
-                    <div class="main-menu">
-                        <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="blog.html">blog</a></li>
-                            <li><a href="contact.html">contact</a></li>
-                        </ul>
-                    </div>
+            <div class="row">
+                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                <ul class="fh5co-social">
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-instagram"></i></a></li>
+                </ul>
+                <div class="col-lg-12 col-md-12 text-center">
+                    <h1 id="fh5co-logo"><a href="index.html">NBA <sup>News</sup></a></h1>
                 </div>
-            </nav>
 
-            <!-- nav -->
+            </div>
+        
+        </div>
 
-        </hgroup>
-    </div>
-</header>
 
-<!-- header -->
 
-<main class="main-wrapper" id="container">
+    </header>
+    <!-- END #fh5co-header -->
+    <div class="container-fluid">
+        <div class="row fh5co-post-entry">
+        {% block content %}
+            {% with ''|center:12 as range %}
+            {% for _ in range %}
+            <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 ">
+                <figure>
+                    <a href="single.html"><img id = "img_{{forloop.counter}}" src="{% static 'images/loading.png' %}" alt="Image" class="img-responsive allimg"></a>
+                </figure>
 
-    <!-- image Gallery -->
+                <h2 id = "title_{{forloop.counter}}" class="alltitle fh5co-article-title" ><a href="single.html">Loading</a></h2>
+                <span id = "intro_{{forloop.counter}}" class="allintro fh5co-meta fh5co-date" ><a href = "#">Please wait</a></span>
+            </article>
+                {% if forloop.counter == 2 or forloop.counter == 6 or forloop.counter == 10 %}
+            <div class="clearfix visible-xs-block"></div>
+                {% endif %}
+                {% if forloop.counter == 4 or forloop.counter == 8 or forloop.counter == 12 %}
+            <div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
+                {% endif %}
 
-    <div class="wrapper">
-        <div class="">
-            <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5 masonry">
-                {% for feed in all_feeds %}
-                    <li class="masonry-item grid">
-                        <figure class="effect-sarah"><img src="{{ feed.image_url }}" alt=""/>
-                            <figcaption>
-                                <p>{{ feed.title }}</p>
-                                <a href="details.html">View more</a></figcaption>
-                        </figure>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% endfor %}
+            {% endwith %}
+        {% endblock %}
+            
+
+            <div class="clearfix visible-xs-block"></div>
         </div>
     </div>
-</main>
 
-<!-- Image Gallery -->
-
-<!-- footer -->
-
-<footer class="footer">
-    <h3>Stay connected with us</h3>
-    <div class="container footer-bot">
-        <div class="row">
-
-            <!-- logo -->
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><img src="images/footer-logo.png" alt="Picxa"
-                                                                   title="Picxa"/>
-                <p class="copy-right">&copy; Reserved Picxa inc 2016.</p>
-            </div>
-
-            <!-- logo -->
-
-            <!-- address -->
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
-                <address>
-                    <p>200 Broadway Av</p>
-                    <p>West Beach SA 5024 Australia</p>
-                </address>
-            </div>
-
-            <!-- address -->
-
-            <!-- email -->
-
-            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
-                <p><a href="mailto:contact@Picxa.com">contact@Picxa.com</a></p>
-                <p>01 (2) 34 56 78</p>
-            </div>
-
-            <!-- email -->
+    <footer id="fh5co-footer">
+        <p><small>&copy; 2016. Magazine Free HTML5. All Rights Reserverd. <br> Designed by <a href="http://freehtml5.co" target="_blank">FREEHTML5.co</a>  Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+    </footer>
 
 
-        </div>
-    </div>
-</footer>
+    
 
-<!-- footer -->
 
-<!-- jQuery -->
+    <!-- jQuery Easing -->
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Waypoints -->
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
 
-<script src="{% static  'js/jquery.min.js' %}"></script>
-<script>window.jQuery || document.write('<script src="js/assets/jquery.min.js"><\/script>')</script>
-<script src="{% static 'js/assets/plugins.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/assets/bootstrap.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/custom.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.contact.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/main.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/gallery/masonry.pkgd.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/gallery/imagesloaded.pkgd.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/gallery/jquery.infinitescroll.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/gallery/main.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/jquery.nicescroll.min.js' %}" type="text/javascript"></script>
-</body>
+    <script type="text/javascript">
+    $(document).ready( function() {
+
+        $.ajax({
+            url : "http://localhost:8000/newsapi",
+            dataType: "json",
+            contentType: 'application/json',
+            success : function (data) {
+                      // index go from 0 ~ 11  id_forloopcounter  = 1 ~ 12
+                      $(".alltitle").each(function(index){
+                          $("#title_"+(index+1)+"").text(data[index].title);
+                      }); 
+
+                      $(".allimg").each(function(index){
+                          $("#img_"+(index+1)+"").attr('src',data[index].image_url);
+                      });
+                      $(".allintro").each(function(index){
+                          $("#intro_"+(index+1)+"").text(data[index].short_description);
+                      });
+                     // last index needs to be added by hand //
+
+
+
+                    },
+            error: function(XMLHttpRequest, textStatus, errorThrown, data) {
+                   alert(XMLHttpRequest.status);
+                   alert(XMLHttpRequest.readyState);
+                   alert(textStatus);
+                   alert(data);
+                   },                   
+        });
+
+
+    });
+    </script> 
+
+    </body>
 </html>
+
