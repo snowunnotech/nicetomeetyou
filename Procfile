@@ -1,0 +1,1 @@
+web: gunicorn SeeMeiZi.wsgi --log-file -
