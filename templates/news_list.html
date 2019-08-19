@@ -81,7 +81,7 @@
                     <li><a href="#"><i class="icon-instagram"></i></a></li>
                 </ul>
                 <div class="col-lg-12 col-md-12 text-center">
-                    <h1 id="fh5co-logo"><a href="index.html">NBA <sup>News</sup></a></h1>
+                    <h1 id="fh5co-logo"><a href=".">NBA <sup>News</sup></a></h1>
                 </div>
 
             </div>
@@ -99,11 +99,13 @@
             {% for _ in range %}
             <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 ">
                 <figure>
-                    <a href="single.html"><img id = "img_{{forloop.counter}}" src="{% static 'images/loading.png' %}" alt="Image" class="img-responsive allimg"></a>
+                    <a href="#" id = "detail_link_{{forloop.counter}}" class = "alldetaillink">
+                    <img id = "img_{{forloop.counter}}" src="{% static 'images/loading.png' %}" alt="Image" class="img-responsive allimg"></a>
                 </figure>
 
                 <h2 id = "title_{{forloop.counter}}" class="alltitle fh5co-article-title" ><a href="single.html">Loading</a></h2>
-                <span id = "intro_{{forloop.counter}}" class="allintro fh5co-meta fh5co-date" ><a href = "#">Please wait</a></span>
+                <a href = "#" id = "detail_link2_{{forloop.counter}}" class = "alldetaillink">
+                <span id = "intro_{{forloop.counter}}" class="allintro fh5co-meta fh5co-date" >Please wait</span></a>
             </article>
                 {% if forloop.counter == 2 or forloop.counter == 6 or forloop.counter == 10 %}
             <div class="clearfix visible-xs-block"></div>
@@ -142,24 +144,26 @@
     $(document).ready( function() {
 
         $.ajax({
-            url : "http://localhost:8000/newsapi",
+            url : "http://localhost:8000/api/news",
             dataType: "json",
             contentType: 'application/json',
             success : function (data) {
+                      var dlen = data.length-1
                       // index go from 0 ~ 11  id_forloopcounter  = 1 ~ 12
                       $(".alltitle").each(function(index){
-                          $("#title_"+(index+1)+"").text(data[index].title);
+                          $("#title_"+(index+1)+"").text(data[dlen-index].title);
                       }); 
 
                       $(".allimg").each(function(index){
-                          $("#img_"+(index+1)+"").attr('src',data[index].image_url);
+                          $("#img_"+(index+1)+"").attr('src',data[dlen-index].image_url);
                       });
                       $(".allintro").each(function(index){
-                          $("#intro_"+(index+1)+"").text(data[index].short_description);
+                          $("#intro_"+(index+1)+"").text(data[dlen-index].short_description);
                       });
-                     // last index needs to be added by hand //
-
-
+                      $(".alldetaillink").each(function(index){
+                          $("#detail_link_"+(index+1)+"").attr('href',data[dlen-index].id);
+                          $("#detail_link2_"+(index+1)+"").attr('href',data[dlen-index].id);
+                      });
 
                     },
             error: function(XMLHttpRequest, textStatus, errorThrown, data) {
