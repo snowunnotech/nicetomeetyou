@@ -21,7 +21,7 @@ from scrapy.cmdline import execute
 scheduler = BackgroundScheduler()
 scheduler.add_jobstore(DjangoJobStore(), "default")
 
-@register_job(scheduler, "interval", seconds = 3600)
+@register_job(scheduler, "interval", seconds = 600)
 def test_job():
     #time.sleep(4)
     os.chdir(settings.SCRAPY_ROOT)
