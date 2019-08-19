@@ -10,6 +10,10 @@ password:123
 
 Notice: crawler.env or .env file should add to .gitignore in real use for security purpose, they're uploaded only for demo.
 
+# Improvement may do
+1. Use redis to cache datas, make list return fast.
+2. Make sure that queryset in django is a generator_like object or just a list_like object? How's the performance of looping over a queryset? Any better way to do so?
+
 # Infrastructure
 - Deploy on AWS EC2 free-tier
 - Use docker-compose to wrap up all the following tools.
