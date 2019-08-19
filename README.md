@@ -12,7 +12,8 @@ Notice: crawler.env or .env file should add to .gitignore in real use for securi
 
 # Improvement may do
 1. Use redis to cache datas, make list return fast.
-2. Make sure that queryset in django is a generator_like object or just a list_like object? How's the performance of looping over a queryset? Any better way to do so?
+2. Make sure that queryset in django is a generator_like object or just a list_like object? How's the performance of looping over a queryset? Any better way to do so? 
+---> Yes, queryset is list_like, but they provie a method Queryset.iterator(). For a QuerySet which returns a large number of objects that you only need to access once, this can result in better performance and a significant reduction in memory.
 
 # Infrastructure
 - Deploy on AWS EC2 free-tier
