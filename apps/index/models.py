@@ -15,9 +15,9 @@ class Feeds(models.Model):
         return self.title
 
 class News(models.Model):
-    title = models.CharField(max_length=100, verbose_name='標題',unique = True) # 新聞標題
-    image_url = models.CharField(max_length=100, verbose_name='圖片連結') #新聞圖片連結
-    short_description = models.CharField(max_length=100, verbose_name='短文字敘述') #簡短文字敘述
+    title = models.TextField(max_length=100, verbose_name='標題',unique = True) # 新聞標題
+    image_url = models.TextField(max_length=100, verbose_name='圖片連結') #新聞圖片連結
+    short_description = models.TextField(max_length=100, verbose_name='短文字敘述') #簡短文字敘述
     detail = models.TextField(max_length = 1000,verbose_name = '內文',blank = True) 
 
     def __str__(self):
