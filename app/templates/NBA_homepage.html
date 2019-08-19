@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <h1>News list</h1>
+</head>
+<body> 
+    <div><button type="button" id="nba_news_in_focus">Crawl new NBA_News</button></div>
+    <div id="news_list"></div>
+    <br>
+    <br>
+    <!-- It's non aync method down below -->
+    <!-- {% for news in news_in_focus %}
+    <div>
+        <td>
+        <h2>Title
+        <td> {{ news.title }}</td> </h2>
+        <h3>Intro</h3>
+        <td> {{ news.intro }}</td>
+        <a href='/webpage/nba_news_detail/{{news.id}}/'>Read more...</a></td>
+        <br>
+        <br>
+        <div>-------------------------------------------------------------------------------------------------------------</div>
+    </div>
+    {% endfor %} -->
+</body>
+<script src="{% static 'webpage/NBA.js'%}"></script>
+</html>

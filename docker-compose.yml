@@ -1,0 +1,73 @@
+#docker-compose.yml
+version: '3'
+
+services:
+  api:
+    # working_dir: /app
+    build: 
+      context: .
+      dockerfile: app.dockerfile
+    volumes:
+      - ./app:/app
+      - ./conf.d/uwsgi.ini:/uwsgi/uwsgi.ini
+    env_file:
+      - ./crawler.env
+    links:
+      - rabbitmq
+  nginx:
+    image: nginx
+    volumes:
+      - ./conf.d/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./app:/app
+    ports:
+      - "${PORT}:8000"
+    links:
+      - api
+  rabbitmq:
+    image:  rabbitmq:3.7.3-management
+    # env_file: 
+    #   - ./.env
+    environment:
+      RABBITMQ_DEFAULT_USER: celery 
+      RABBITMQ_DEFAULT_PASS: password123  
+      RABBITMQ_DEFAULT_VHOST: my_vhost
+    ports:
+      - "${RABBIT_MQ_PORT1}:5672"
+      - "${RABBIT_MQ_PORT2}:15672"
+  celery:
+    build: 
+      context: .
+      dockerfile: app.dockerfile
+    environment:
+      - C_FORCE_ROOT=true
+    env_file:
+      - ./crawler.env
+    command: bash -c "cd app && celery -A mysite worker -B -l debug"
+    volumes:
+      - ./app:/app
+      - ./conf.d/uwsgi.ini:/uwsgi/uwsgi.ini
+    links:
+      - rabbitmq
+  db:
+    image: mariadb
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    restart: always
+    ports:
+     - "33062:3306"
+    volumes:
+     - ./database:/var/lib/mysql
+    environment:
+     - MYSQL_DATABASE=test_NBA
+     - MYSQL_USER=user
+     - MYSQL_PASSWORD=123
+     - MYSQL_ROOT_PASSWORD=123
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
