@@ -143,8 +143,8 @@
     <script type="text/javascript">
     $(document).ready( function() {
 
-        $.ajax({
-            url : "http://nbanews20190819.herokuapp.com/api/news",
+        $.ajax({//http://nbanews20190819.herokuapp.com
+            url : "/api/news",
             dataType: "json",
             contentType: 'application/json',
             success : function (data) {
