@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ 
+</head>
+<body>
+  	<div class="container-fluid">
+    	<div class="row">
+	      	<div class="col-sm-8">
+	      
+		  		<h1>Focus News</h1>
+		  
+		  		<ul id="focusList"></ul>
+	         
+	      	</div>
+	      	<div class="col-sm-4"></div>
+    	</div>
+  	</div>
+<script>
+	function getJson() {
+	  	var xhttp = new XMLHttpRequest();
+	 	xhttp.onreadystatechange = function() {
+	    	if (this.readyState == 4 && this.status == 200) {
+	    		var json = JSON.parse(this.responseText);
+	    		var focusList = ''
+	    		for (i = 0; i < json.length; i++) {
+		  			focusList += '<li><a href=' + json[i].url + '>' + json[i].title;
+		  			focusList += '<br>'+ json[i].time;
+				}
+	      		document.getElementById('focusList').innerHTML = focusList
+	    	}
+	  	};
+	  	xhttp.onerror= function(e) {
+        	console.log("Error");
+    	};
+	  	xhttp.open('GET', 'http://127.0.0.1:8000/api/news/', true);
+	  	xhttp.send();
+
+
+	}
+	getJson()
+</script>
+</body>
+</html>
