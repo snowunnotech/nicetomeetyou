@@ -12,4 +12,4 @@
 3. 前端頁面使用AJAX 提取 API 資料。
 4. 使用crontab定期運行爬蟲程式爬取資料並儲存至資料庫。
 5. 部署至Heroku(url : https://www.slimofy.tk/nba/)
-    *使用 Advanced Scheduler   Add-on定時爬蟲
+    * 使用 Advanced Scheduler   Add-on定時爬蟲
