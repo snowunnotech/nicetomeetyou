@@ -1,0 +1,154 @@
+2019-09-02 01:25:41 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: NBANewsSpider)
+2019-09-02 01:25:41 [scrapy.utils.log] INFO: Versions: lxml 4.4.0.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.6.8 (default, Jan 14 2019, 11:02:34) - [GCC 8.0.1 20180414 (experimental) [trunk revision 259383]], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Linux-4.15.0-58-generic-x86_64-with-Ubuntu-18.04-bionic
+2019-09-02 01:25:41 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'NBANewsSpider', 'NEWSPIDER_MODULE': 'NBANewsSpider.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['NBANewsSpider.spiders']}
+2019-09-02 01:25:41 [scrapy.extensions.telnet] INFO: Telnet Password: c4749d916566c6dc
+2019-09-02 01:25:41 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2019-09-02 01:25:41 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-09-02 01:25:41 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-09-02 01:25:41 [scrapy.middleware] INFO: Enabled item pipelines:
+['NBANewsSpider.pipelines.NbanewsPipeline']
+2019-09-02 01:25:41 [scrapy.core.engine] INFO: Spider opened
+2019-09-02 01:25:41 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-09-02 01:25:41 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-09-02 01:25:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-09-02 01:25:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index?gr=www> (referer: None)
+--2019-09-02 01:25:42--  https://uc.udn.com.tw/photo/2019/08/31/99/6758707.jpg
+Resolving uc.udn.com.tw (uc.udn.com.tw)... 163.28.225.57
+Connecting to uc.udn.com.tw (uc.udn.com.tw)|163.28.225.57|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 224912 (220K) [image/jpeg]
+Saving to: ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6758707.jpg’
+
+     0K .......... .......... .......... .......... .......... 22% 15.0M 0s
+    50K .......... .......... .......... .......... .......... 45% 11.6M 0s
+   100K .......... .......... .......... .......... .......... 68% 9.86M 0s
+   150K .......... .......... .......... .......... .......... 91% 11.6M 0s
+   200K .......... .........                                  100% 16.0M=0.02s
+
+2019-09-02 01:25:42 (12.0 MB/s) - ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6758707.jpg’ saved [224912/224912]
+
+--2019-09-02 01:25:42--  https://uc.udn.com.tw/photo/2019/09/01/1/6764218.jpg
+Resolving uc.udn.com.tw (uc.udn.com.tw)... 163.28.225.57
+Connecting to uc.udn.com.tw (uc.udn.com.tw)|163.28.225.57|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 170878 (167K) [image/jpeg]
+Saving to: ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6764218.jpg’
+
+     0K .......... .......... .......... .......... .......... 29% 11.9M 0s
+    50K .......... .......... .......... .......... .......... 59% 14.7M 0s
+   100K .......... .......... .......... .......... .......... 89% 9.87M 0s
+   150K .......... ......                                     100% 24.2M=0.01s
+
+2019-09-02 01:25:42 (12.5 MB/s) - ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6764218.jpg’ saved [170878/170878]
+
+--2019-09-02 01:25:42--  https://uc.udn.com.tw/photo/2019/09/01/1/6763666.jpg
+Resolving uc.udn.com.tw (uc.udn.com.tw)... 163.28.225.57
+Connecting to uc.udn.com.tw (uc.udn.com.tw)|163.28.225.57|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 271804 (265K) [image/jpeg]
+Saving to: ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6763666.jpg.1’
+
+     0K .......... .......... .......... .......... .......... 18% 14.9M 0s
+    50K .......... .......... .......... .......... .......... 37% 10.7M 0s
+   100K .......... .......... .......... .......... .......... 56% 10.1M 0s
+   150K .......... .......... .......... .......... .......... 75% 11.3M 0s
+   200K .......... .......... .......... .......... .......... 94% 11.9M 0s
+   250K .......... .....                                      100% 14.1M=0.02s
+
+2019-09-02 01:25:42 (11.7 MB/s) - ‘/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/6763666.jpg.1’ saved [271804/271804]
+
+2019-09-02 01:25:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4020714> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-02 01:25:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4023138> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-02 01:25:42 [py.warnings] WARNING: /home/psyman/.local/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NBAHotNews.NewsUpdateDateTime received a naive datetime (2019-09-01 23:09:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-02 01:25:42 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4020714>
+{'Author': 'NBA台灣 / 綜合報導',
+ 'ImgFileName': '6758707.jpg',
+ 'NewsDetailContent': '2019年男籃世界盃將是新賽制首度上路，共有32個國家角逐金盃，將於8月31日開打，決賽在9月15日，預賽分別在北京、武漢、廣州、佛山、上海、南京、深圳、東莞共8個城市舉辦。賽制方面，預賽每組4隊取前2名晉級16強複賽；複賽同為4隊小組循環賽，預賽的交手成績將會算進複賽之中；複賽4個分組的前2名將晉級8強賽，進行交叉單淘汰賽，而決定最後4強與決賽組合。2019年籃球世界盃分組：A組：象牙海岸、波蘭、委內瑞拉、中國（北京）B組：俄羅斯、阿根廷、韓國、奈及利亞（武漢）C組：西班牙、伊朗、波多黎各、突尼西亞（廣州）D組：安哥拉、菲律賓、義大利、塞爾維亞（佛山）E組：土耳其、捷克、美國、日本（上海）F組：希臘、紐西蘭、巴西、蒙特內哥羅（南京）G組：多明尼加、法國、德國、約旦（深圳）H組：加拿大、塞內加爾、立陶宛、澳洲（東莞）世界盃預賽對戰賽程：8月31日：A組，16:00，波蘭80：69委內瑞拉8月31日：A組，20:00，中國70：55象牙海岸8月31日：B組，16:30，俄羅斯82：77奈及利亞8月31日：B組，20:30，阿根廷95：69韓國8月31日：C組，16:30，波多黎各83：81伊朗8月31日：C組，20:30，西班牙101：62突尼西亞8月31日：D組，15:30，塞爾維亞105：59安哥拉8月31日：D組，19:30，義大利108：62菲律賓9月1日：E組，16:30，土耳其86：67日本9月1日：E組，20:30，美國88：67捷克9月1日：F組，16:00，巴西102：94紐西蘭9月1日：F組，20:00，希臘85：60蒙特內哥羅9月1日：G組，16:30，多明尼加80：76約旦9月1日：G組，20:30，法國78：74德國9月1日：H組，15:30，澳洲108：92加拿大9月1日：H組，19:30，立陶宛101：47塞內加爾9月2日：A組，16:00，委內瑞拉：象牙海岸9月2日：A組，20:00，中國：波蘭9月2日：B組，16:30，奈及利亞：阿根廷9月2日：B組，20:30，韓國：俄羅斯9月2日：C組，16:30，突尼西亞：伊朗9月2日：C組，20:30，波多黎各：西班牙9月2日：D組，15:30，義大利：安哥拉9月2日：D組，19:30，塞爾維亞：菲律賓9月3日：E組，16:30，日本：捷克9月3日：E組，20:30，美國：土耳其9月3日：F組，16:00，蒙特內哥羅：紐西蘭9月3日：F組，20:00，巴西：希臘9月3日：G組，16:30，德國：多明尼加9月3日：G組，20:30，約旦：法國9月3日：H組，15:30，澳洲：塞內加爾9月3日：H組，19:30，立陶宛：加拿大9月4日：A組，16:00，象牙海岸：波蘭9月4日：A組，20:00，委內瑞拉：中國9月4日：B組，16:30，韓國：奈及利亞9月4日：B組，20:30，俄羅斯：阿根廷9月4日：C組，16:30，波多黎各：突尼西亞9月4日：C組，20:30，西班牙：伊朗9月4日：D組，15:30，安哥拉：菲律賓9月4日：D組，19:30，義大利：塞爾維亞9月5日：E組，16:30，土耳其：捷克9月5日：E組，20:30，美國：日本9月5日：F組，16:00，巴西：蒙特內哥羅9月5日：F組，20:00，希臘：紐西蘭9月5日：G組，16:30，德國：約旦9月5日：G組，20:30，多明尼加：法國9月5日：H組，15:30，加拿大：塞內加爾9月5日：H組，19:30，立陶宛：澳洲',
+ 'NewsId': '4020714',
+ 'NewsTitle': '2019世界盃戰火點燃 預賽賽程比分一覽',
+ 'NewsUpdateDateTime': datetime.datetime(2019, 9, 1, 23, 9)}
+2019-09-02 01:25:42 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4022801> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-02 01:25:42 [py.warnings] WARNING: /home/psyman/.local/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NBAHotNews.NewsUpdateDateTime received a naive datetime (2019-09-01 22:52:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-02 01:25:42 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4023138>
+{'Author': '聯合報 / 記者毛琬婷╱即時報導',
+ 'ImgFileName': '6764218.jpg',
+ 'NewsDetailContent': '尋求三連霸的美國隊，今天在2019年世界盃男籃賽首戰靠著團隊多點開花，其中4人得分突破雙位數的情況下，以88：67輕取捷克隊，替衛冕路開出紅盤，下一戰將在3日晚間8點30分遇上今天擊敗日本隊的土耳其隊。美國隊本屆先是面臨徵召不順的情況，在星度不如以往的情況下，也讓國際籃球總會 '
+                      '（FIBA） '
+                      '先前公布各隊最終戰力榜，結果由熱身賽10連勝的塞爾維亞隊擠下尋求世界盃三連霸的美國成為第一。今天首戰面對捷克，美國開賽先是打出一波7：2攻勢，不過捷克立刻回敬9：0反超，暫停過後美國立刻回穩，再以10：0攻勢要回領先，不過首節也僅領先對手3分。次節美國在射手外線手感逐漸加溫下，逐漸將比分擴大，半場打完美國以43：29領先；易籃後，衛冕軍也始終維持著雙位數領先，最終就以21分大勝對手。美國11人都有得分紀錄，米契爾（Donovan '
+                      'Mitchell）攻下全隊最高的16分，巴恩斯（Harrison Barnes）14分，華克（Kemba '
+                      'Walker）也有13分、4助攻的進帳。捷克則以薩托蘭斯基（Tomas '
+                      'Satoransky）拿下全場最高的17分最佳。',
+ 'NewsId': '4023138',
+ 'NewsTitle': '美國21分差擊退捷克 世界盃首戰開紅盤',
+ 'NewsUpdateDateTime': datetime.datetime(2019, 9, 1, 22, 52)}
+2019-09-02 01:25:42 [py.warnings] WARNING: /home/psyman/.local/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1421: RuntimeWarning: DateTimeField NBAHotNews.NewsUpdateDateTime received a naive datetime (2019-09-01 19:08:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-02 01:25:42 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4022801>
+{'Author': '聯合報 / 記者毛琬婷╱即時報導',
+ 'ImgFileName': '6763666.jpg',
+ 'NewsDetailContent': '2019年世界盃男籃賽，日本隊儘管陣中擁有今年在NBA選秀會第9順位被巫師隊選中的混血球員八村壘，首戰面對土耳其隊卻整路挨打，而土耳其在伊利亞索瓦（Ersan '
+                      'Ilyasova）19分帶領下，以86：67輕取日本，拿下E組預賽首勝。土耳其開賽就來勢洶洶，靠著伊利亞索瓦、馬穆托古魯（Melih '
+                      'Mahmutoglu）、歐斯曼（Cedi '
+                      'Osman）3人強大的進攻火力，開賽就打出一波23：8的攻勢，首節打完就取得16分的領先。儘管日本努力在後追趕，土耳其始終維持著雙位數的領先，土耳其也展現強勁的防守，嚴守八村壘及渡邊雄太兩大主力，在籃板球上兩隊也出現44：26的懸殊距離，日本在籃板上就少了對手18個，加上日本的團隊命中率不到四成，最終以19分差慘敗。土耳其以公鹿隊伊利亞索瓦貢獻全場最高的19分、10籃板，馬穆托古魯也有17分進帳，76人射手柯爾克瑪茲（Furkan '
+                      'Korkmaz）10分；日本則以歸化洋將費澤卡斯（Nick '
+                      'Fazekas）及八村壘各拿15分最佳。日本在預賽首戰敗給土耳其後，接下來將在3日面對捷克隊，5日對上尋求三連霸的勁敵美國隊，要搶下分組前二晉級16強難度大增。',
+ 'NewsId': '4022801',
+ 'NewsTitle': '八村壘遭重兵嚴防 日本首戰慘敗土耳其',
+ 'NewsUpdateDateTime': datetime.datetime(2019, 9, 1, 19, 8)}
+2019-09-02 01:25:42 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-09-02 01:25:42 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1283,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 89125,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 0.774998,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 9, 1, 17, 25, 42, 728507),
+ 'item_scraped_count': 3,
+ 'log_count/DEBUG': 8,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 3,
+ 'memusage/max': 72663040,
+ 'memusage/startup': 72663040,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 9, 1, 17, 25, 41, 953509)}
+2019-09-02 01:25:42 [scrapy.core.engine] INFO: Spider closed (finished)
+Post save event triggered
+Post save event triggered
+Post save event triggered
