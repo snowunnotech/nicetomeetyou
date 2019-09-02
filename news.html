@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>焦點新聞列表</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		// 列表 list
+		$.ajaxSetup({
+			data:{{response_data|safe}},
+			success:function(result){
+				;
+			}
+		});
+
+		var list = {{response_data|safe}};
+		
+		$(document).ready(function() {
+		
+			for(var i in list){
+				$('#list_result').append('<a href="'+list[i].link+'">'+list[i].title+'</a></br>');
+			}
+			
+	</script>
+</head>
+<body>
+    <h2 id='list'>焦點新聞列表</h2>
+	
+	</br>
+	
+	<div id="list_result">
+	
+	</div>
+    
+</body>
+</html>
