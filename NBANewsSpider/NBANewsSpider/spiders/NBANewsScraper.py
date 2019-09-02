@@ -10,6 +10,11 @@ class NBANewsSpider(scrapy.Spider):
 	name = 'NBANewsSpider'
 	start_urls = ['https://nba.udn.com/nba/index?gr=www']
 	
+	def start_requests(self):
+		 yield scrapy.Request('https://nba.udn.com/nba/index?gr=www', headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
+        })
+
 	def parse(self, response):
 		ImgSaveDir = '/home/psyman/WorkSpace/UDNProject/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/'
 		BaseUrl = 'https://nba.udn.com'
