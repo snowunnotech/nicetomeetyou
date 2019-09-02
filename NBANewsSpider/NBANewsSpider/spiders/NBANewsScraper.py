@@ -11,7 +11,7 @@ class NBANewsSpider(scrapy.Spider):
 	start_urls = ['https://nba.udn.com/nba/index?gr=www']
 	
 	def parse(self, response):
-		ImgSaveDir = '/home/psyman/WorkSpace/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/'
+		ImgSaveDir = '/home/psyman/WorkSpace/UDNProject/nicetomeetyou/NBAHotNewsSite/NBAHotNewsApp/static/'
 		BaseUrl = 'https://nba.udn.com'
 		NewsXPath = '//div[@id="news_body"]/dl/dt/a'
 		HotNewsList = response.xpath(NewsXPath).getall()
