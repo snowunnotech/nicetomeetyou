@@ -1,0 +1,6 @@
+django
+beautifulsoup4
+djangorestframework
+gunicorn
+django-heroku
+requests
