@@ -23,10 +23,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import path
 from django.contrib import admin
-from news.views import hello_view
+from news.views import news_view
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/', hello_view),
+    url(r'^news/', news_view),
 ]

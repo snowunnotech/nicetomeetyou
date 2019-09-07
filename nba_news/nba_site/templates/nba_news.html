@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NBA NEWS</title>
 </head>
 <body>
-    {{data}}
+    <h2>NBA 焦點新聞</h2>
+    <table border="1" cellpadding="0" cellspacing="0">
+        <th>標題</th>
+        <th>網址</th>
+        <th>日期</th>
+        <th>來源</th>
+
+    {% for news in news %}
+        <tr>
+            <td>{{news.title}}  </td>
+            <td>{{news.url}}  </td>
+            <td>{{news.date}}  </td>
+            <td>{{news.source}}  </td>
+        </tr>
+    {% endfor %}
 </body>
 </html>
