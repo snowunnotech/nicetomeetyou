@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import sqlite3
+import psycopg2
 
-conn = sqlite3.connect('db.sqlite3')
+# conn = sqlite3.connect('db.sqlite3')
+conn = psycopg2.connect(database="d8jgfcpejnfh3q", user="fsqwfsuloagkhe", password="fbfe9ff659a90bc257818681eeecde2d30005c5d98425b26045dfff69cdeb39a", host="ec2-50-19-222-129.compute-1.amazonaws.com", port="5432")
 c = conn.cursor()
 
 url = 'https://nba.udn.com/nba/index?gr=www'
@@ -25,9 +27,11 @@ for news in soup.find(id = 'news_body').find_all('a'):
     information = [title, story_url, date, source, content]
 
     #檢查是否已經爬過
-    c.execute('select url from nba_news where url = ?', (story_url,))
+    # c.execute('select url from nba_news where url = ?', (story_url,))
+    c.execute('select url from nba_news where url = %s', (story_url,))
     row = c.fetchall()
     if len(row) == 0:
-        c.execute('insert into nba_news(title, url, date, source, content) values(?, ?, ?, ?, ?)', information)
+        # c.execute('insert into nba_news(title, url, date, source, content) values(?, ?, ?, ?, ?)', information)
+        c.execute('insert into nba_news(title, url, date, source, content) values(%s, %s, %s, %s, %s)', information)
         conn.commit()
 
