@@ -7,6 +7,7 @@
 <body>
     <h2>NBA 焦點新聞</h2>
     <table border="1" cellpadding="0" cellspacing="0">
+        <th>選取</th>
         <th>標題</th>
         <th>網址</th>
         <th>日期</th>
@@ -14,6 +15,7 @@
 
     {% for news in news %}
         <tr>
+            <td> <a href="/nba_news/?id={{news.id}}"> 內文 </a></td>
             <td>{{news.title}}  </td>
             <td>{{news.url}}  </td>
             <td>{{news.date}}  </td>

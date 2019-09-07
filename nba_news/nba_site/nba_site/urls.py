@@ -23,10 +23,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import path
 from django.contrib import admin
-from news.views import news_view
+from news.views import news_view, content_view
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^news/', news_view),
+    url(r'^nba_news/', content_view)
 ]
