@@ -1,0 +1,7 @@
+django
+djangorestframework
+scrapy
+psycopg2
+sqlalchemy
+pylint
+autopep8
