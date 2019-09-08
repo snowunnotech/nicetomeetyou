@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import NewsDetail, NewsIndex
+from .models import News
 
-admin.site.register(NewsDetail)
-admin.site.register(NewsIndex)
+admin.site.register(News)

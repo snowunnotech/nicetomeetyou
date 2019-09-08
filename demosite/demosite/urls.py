@@ -13,15 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from nbanewsreader.views import index
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from nbanewsreader.views import hello_world
+from rest_framework import routers
+from nbanewsreader import views
+
+router = routers.DefaultRouter()
+router.register('index', views.NewsIndexListViewSet, base_name='news-index')
+router.register('news', views.NewsDetailViewSet, base_name='news-content')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello_world),
+    path('', index),
+    path('api/', include(router.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
