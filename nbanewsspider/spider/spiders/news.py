@@ -30,7 +30,11 @@ class NewsSpider(scrapy.Spider):
             'div.pagelink gonext a[data-id="last"]::attr(href)').extract_first()
         last_page = int(last_href[last_href.rfind('/') + 1:])
 
-        for i in range(1, last_page+1):
+        # 只抓今天之前的 10 頁降低負擔
+        # 要抓以前全部的新聞可以讓另外一個 Spider 在背景執行
+        last_page = min(10, last_page)
+
+        for i in range(1, last_page + 1):
             url = 'https://nba.udn.com/nba/cate/6754/-1/newest/' + str(i)
             yield scrapy.Request(url, callback=self.parse_page)
 
@@ -42,6 +46,7 @@ class NewsSpider(scrapy.Spider):
                 uid = href[href.rfind('/') + 1:]
 
                 if uid in self.news_uid:
+                    # 抓過了就不更新
                     continue
 
                 url = 'https://nba.udn.com' + href
