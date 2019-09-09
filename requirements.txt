@@ -1,0 +1,13 @@
+django
+djangorestframework
+gunicorn
+scrapy
+scrapy_djangoitem
+scrapyd
+scrapyd-client
+supervisor
+psycopg2
+sqlalchemy
+pylint
+python-scrapyd-api
+autopep8

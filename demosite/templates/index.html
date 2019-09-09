@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="page-content" class="row">
+    <div class="side col-xl-4">
+        <div class="data-container"></div>
+        <div id="pagination-container"></div>
+    </div>
+    <div class="main col-xl-6">
+        <div id="new-zcontent">
+            <h2 class="title">
+            </h2>
+            <p class="published_at">
+            </p>
+            <p class="author">
+            </p>
+            <p class="content">
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+<script type="text/javascript">
+    var globalVariables = {
+        newsListUrl: "{% url 'news-index-list' %}",
+        newsDetailUrl: "{% url 'news-content-list' %}",
+    };
+
+    $(function () {
+        var index = new Index();
+        index.init();
+    });
+
+    function LoadContent(uid){
+        $.ajax({
+            type: 'GET',
+            url: globalVariables.newsDetailUrl + uid,
+            dataType: 'json',
+        }).done(function (resp) {
+            $('h2.title').html(resp['title']);
+            $('p.published_at').html(resp['published_at']);
+            $('p.author').html(resp['author']);
+            $('p.content').html(resp['content']);
+        });
+    }
+</script>
+{% endblock %}
