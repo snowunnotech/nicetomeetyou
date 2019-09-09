@@ -14,7 +14,7 @@ class UdnnbanewsparserConfig(AppConfig):
 			return
 		self.auto_crawl()
 		scheduler = BackgroundScheduler()
-		scheduler.add_job(self.auto_crawl, 'interval', minutes=1)
+		scheduler.add_job(self.auto_crawl, 'interval', minutes=10)
 		scheduler.start()
 
 	def auto_crawl(self):
