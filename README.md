@@ -9,8 +9,9 @@
 ## 進階要求
 - [X] 使用 Scrapy。
 - [X] 實現爬蟲自動定時抓取。
-	* 5分鐘更新一次
 	* 目前設計只抓前 10 頁降低負擔
+	* 5分鐘更新一次
+	* ![](img/1.PNG)
 - [ ] 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 - [X] 将本 demo 部署至服务器并可正确运行。
 	* 部署至 GCP，demosite: [demosite](https://interviewtestproject.appspot.com/#)
