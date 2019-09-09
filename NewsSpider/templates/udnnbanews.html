@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NBA News from UdnNews</title>
+		<script src="{% static 'jquery/3.3.1/jquery.min.js' %}" ></script>
+	</head>
+	<body>
+		<div id="news_list" style="width: 400px; height: 100vh; float: left;">
+			<h3>新聞列表</h3>
+			<dl>
+			</dl>
+		</div>
+		<div id="news_body" style="width: 800px; height: 100vh; float: left;">
+			<h1 id="news_title"></h1>
+			<h3 id="news_author"></h3>
+			<h3 id="news_date"></h3>
+			<span id="news_content">
+				
+			</span>
+		<div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	var domain = window.location.href.split("/")[0] + "//" + window.location.host;
+	// console.log(domain);
+	$.ajax({
+		url : domain + "/news_list_api",
+		dataType: "json",
+		success : function (data) {
+			data.forEach(function(n){
+				$('#news_list dl').append( '<dt><a href="#" nid="'+ n['news_id'] +'" onClick="getNews(\'' + n['news_id'] + '\')">' + n['title'] + '</a></dt>' )
+			});
+		}
+	});
+
+	function getNews(nid){
+			$.ajax({
+			url : domain + "/news_api/?nid="+nid,
+			dataType: "json",
+			success : function (data) {
+				console.log(data)
+				$('#news_title').html(data['title'])
+				$('#news_author').html(data['author'])
+				$('#news_date').html(data['date'])
+				$('#news_content').html('')
+				var paragraph = data['content'].split("\n")
+				paragraph.forEach(function(pg){
+					$('#news_content').append( '<p>'+ pg +'</p>' )
+					$('#news_content').append( '<p></p>' )
+				});
+			}
+		});
+	}
+</script>

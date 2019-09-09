@@ -1,0 +1,13 @@
+setup.py
+nbaBot/__init__.py
+nbaBot/items.py
+nbaBot/middlewares.py
+nbaBot/pipelines.py
+nbaBot/settings.py
+nbaBot/spiders/__init__.py
+nbaBot/spiders/udn_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

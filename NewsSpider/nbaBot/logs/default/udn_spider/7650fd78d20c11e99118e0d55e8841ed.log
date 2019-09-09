@@ -1,0 +1,244 @@
+2019-09-09 22:49:27 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: nbaBot)
+2019-09-09 22:49:27 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) - [Clang 6.0 (clang-600.0.57)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Darwin-18.7.0-x86_64-i386-64bit
+2019-09-09 22:49:27 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'nbaBot', 'CONCURRENT_REQUESTS_PER_IP': 1, 'LOG_FILE': 'logs/default/udn_spider/7650fd78d20c11e99118e0d55e8841ed.log', 'NEWSPIDER_MODULE': 'nbaBot.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['nbaBot.spiders']}
+2019-09-09 22:49:27 [scrapy.extensions.telnet] INFO: Telnet Password: 4da0f37802f3d218
+2019-09-09 22:49:27 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2019-09-09 22:49:27 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-09-09 22:49:27 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-09-09 22:49:27 [scrapy.middleware] INFO: Enabled item pipelines:
+['nbaBot.pipelines.NbabotPipeline']
+2019-09-09 22:49:27 [scrapy.core.engine] INFO: Spider opened
+2019-09-09 22:49:27 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-09-09 22:49:27 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-09-09 22:49:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-09-09 22:49:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index?gr=www> (referer: None)
+2019-09-09 22:49:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4037535> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-09 22:49:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4038032> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-09 22:49:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4038356> (referer: https://nba.udn.com/nba/index?gr=www)
+2019-09-09 22:49:28 [py.warnings] WARNING: /Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1423: RuntimeWarning: DateTimeField NBANews.date received a naive datetime (2019-09-09 15:34:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-09 22:49:28 [scrapy.core.scraper] ERROR: Error processing {'author': '聯合報 / 記者毛琬婷╱即時報導',
+ 'content': '2019年世界盃籃球賽16強複賽如火如荼進行中，尋求三連霸的美國隊至今仍維持不敗之姿，上一戰對戰希臘隊，衛冕軍雖僅得到69分，但仍靠優異防守壓低對手得分，主帥波波維奇（Gregg '
+            'Popovic）不改幽默本色，開玩笑說如果美國隊球員們不好好防守，就要取消他們的NBA合約。\n'
+            '儘管本屆美國隊星光黯淡，但自從本屆世界盃開打以來他們就努力在防守端做足功課，目前複賽取得4勝的美國隊將對手的團隊命中率限制在3成6，且過去兩場比賽對戰日本及希臘隊美國都取得勝利，兩場比賽總失分為98分，也創下自1998年漢城奧運以來，美國在大型國際賽二連勝最低總失分紀錄。\n'
+            '談到美國隊如何在防守端向對手施壓時，波波維奇不改幽默本色，開玩笑說：「我告訴他們，如果他們沒有像這樣好好防守的話，那麼他們的NBA合約就會作廢了。」而經過多日廝殺廝殺，今天世界盃進行16強最後一日賽程，目前8強席次已經確定6隊，分別是法國、澳洲、阿根廷、波蘭、西班牙、塞爾維亞，最後兩席將在K組出線；美國隊16強最終戰將迎戰巴西隊，另一場K組比賽則是捷克交手希臘隊。\n',
+ 'date': datetime.datetime(2019, 9, 9, 15, 34),
+ 'news_id': '6780_4037535',
+ 'title': '美國防守表現優異主因 波總笑稱拿合約威脅'}
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/twisted/internet/defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/Users/apple/Documents/unno-master/nbaBot/nbaBot/pipelines.py", line 11, in process_item
+    item.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/scrapy_djangoitem/__init__.py", line 35, in save
+    self.instance.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1335, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+2019-09-09 22:49:28 [py.warnings] WARNING: /Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1423: RuntimeWarning: DateTimeField NBANews.date received a naive datetime (2019-09-09 19:27:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-09 22:49:28 [scrapy.core.scraper] ERROR: Error processing {'author': '聯合報 / 記者毛琬婷╱即時報導',
+ 'content': '2019世界盃籃球賽最後兩張8強門票將從K組產生，希臘隊在拉塞斯（Nick '
+            'Calathes）攻下全場最高的27分帶領下，以84：77擊敗捷克隊，不過賽前2勝2負的希臘隊16強最終戰必須贏捷克隊12分以上才有晉級機會，最終仍與8強擦身。\n'
+            '8強席次已經確定6隊，分別是法國、澳洲、阿根廷、波蘭、西班牙、塞爾維亞，最後兩席將在K組出線。而K組戰況詭譎，賽前已握有4勝的美國隊也尚未確定晉級。\n'
+            '賽前以2勝2負在分組墊底的希臘隊，分組賽最後一場比賽必須要贏對手12分才有機會能搶下8強門票，開賽希臘隊來勢洶洶，打出一波10：2攻勢，首節取得18：12領先，不過捷克隊逐漸找回節奏，半場打完反倒以33：32反超。\n'
+            '易籃後希臘隊靠著「字母哥」安戴托昆波（Giannis Antetokounmpo）的哥哥大安戴托昆波（Thanasis '
+            'Antetokounmpo）個人單節獨拿11分帶領下，三節打完取得8分領先。\n'
+            '決勝節前段希臘隊曾幾度取得12分領先，不過捷克隊展現韌性緊咬比分，不讓希臘隊繼續擴大領先分差，而在終場前5分32秒、希臘隊在搶分階段，安戴托昆波卻五犯離場，也讓捷克隊有了再把比分縮小的機會，最終希臘隊雖然收下勝利，但在只贏對手7分的情況下仍無緣晉級。\n'
+            '接下來晚間8點30分的美國與巴西隊之戰，若美國隊贏球，將以5勝0敗分組第一晉級8強，而巴西、希臘、捷克3隊都是3勝2負，在三隊戰績互咬情況下比較淨勝分，巴西隊處於劣勢，也會讓捷克隊收下晉級門票。\n'
+            '倘若巴西隊擊敗美國隊，則兩隊都取得4勝1負戰績，美國與巴西隊攜手晉級8強，因此在此役過後，美國隊接下來無論輸贏都確定晉級8強，朝三連霸更邁進一步。\n',
+ 'date': datetime.datetime(2019, 9, 9, 19, 27),
+ 'news_id': '6780_4038032',
+ 'title': '希臘勝捷克仍無緣晉級 美國提前收下8強門票'}
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/twisted/internet/defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/Users/apple/Documents/unno-master/nbaBot/nbaBot/pipelines.py", line 11, in process_item
+    item.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/scrapy_djangoitem/__init__.py", line 35, in save
+    self.instance.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1335, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+2019-09-09 22:49:28 [py.warnings] WARNING: /Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1423: RuntimeWarning: DateTimeField NBANews.date received a naive datetime (2019-09-09 22:35:00) while time zone support is active.
+  RuntimeWarning)
+
+2019-09-09 22:49:28 [scrapy.core.scraper] ERROR: Error processing {'author': '聯合報 / 記者毛琬婷╱即時報導',
+ 'content': '攸關2019世界盃籃球賽K組最後一張門票的美國與巴西隊之役，儘管泰托姆（Jayson '
+            'Tatum）仍因傷未能歸隊，美國隊仍在華克（Kemba Walker）和透納（Myles '
+            'Turner）各拿16分帶領下，最終以89：73輕取巴西隊，以複賽5戰全勝之姿晉級8強，與捷克隊攜手挺進下一輪。\n'
+            '今天之前8席晉級門票已經確定6隊，分別是法國、澳洲、阿根廷、波蘭、西班牙、塞爾維亞，最後兩席將在K組出線。\n'
+            '率先登場的希臘與捷克之役，希臘雖然最終贏得勝利，但仍因淨勝分不足的情況下率先退出8強門票爭奪戰，也讓尚未開打的美國、巴西的比賽，無論輸贏美國都可以取得晉級門票；反觀巴西想要晉級只能靠自己擊敗美國。\n'
+            '儘管賽前已提前確定晉級，面對下達「必勝令」的巴西，美國雖都握有領先優勢但卻始終無法將比分拉開，直到下半場，美國在華克、透納帶領下將分差擴大至雙位數，決勝節巴西無力反攻，最終就以16分差落敗，只能眼看美國與捷克攜手晉級8強。\n'
+            '美國此役4人得分達雙位數，除了華克、透納外，布朗（Jaylen Brown）11分、巴恩斯（Harrison '
+            'Barnes）10分；巴西則以班尼特（Vitor '
+            'Benite）攻下全場最高的21分最佳；而在巴西遭到淘汰後，美洲2張東京奧運門票也確定由美國與阿根廷拿下。\n',
+ 'date': datetime.datetime(2019, 9, 9, 22, 35),
+ 'news_id': '6780_4038356',
+ 'title': '下半場甩開巴西糾纏 美國全勝進8強'}
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/twisted/internet/defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/Users/apple/Documents/unno-master/nbaBot/nbaBot/pipelines.py", line 11, in process_item
+    item.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/scrapy_djangoitem/__init__.py", line 35, in save
+    self.instance.save()
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1335, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/apple/Documents/unno-master/unnoEnv/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: nba_news.news_id
+2019-09-09 22:49:28 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-09-09 22:49:28 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1283,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 88440,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 0.4884,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 9, 9, 14, 49, 28, 308163),
+ 'log_count/DEBUG': 5,
+ 'log_count/ERROR': 3,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 3,
+ 'memusage/max': 74153984,
+ 'memusage/startup': 74149888,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 9, 9, 14, 49, 27, 819763)}
+2019-09-09 22:49:28 [scrapy.core.engine] INFO: Spider closed (finished)
