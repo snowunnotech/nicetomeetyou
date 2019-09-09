@@ -7,17 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/font-awesome/font-awesome.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/pagination/pagination.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/pagination/pagination.css' %}" />
     <script src="{% static 'js/juery/jquery-3.4.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/pagination/pagination.min.js' %}"></script>
+    <style>
+        #page-content {
+            flex: 1 0 auto;
+        }
+    </style>
 </head>
 
 {% include 'header.html' %}
 
-<body>
+<body class="d-flex flex-column">
 
     {% block content %}{% endblock %}
     {% block scripts %}{% endblock %}
