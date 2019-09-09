@@ -8,13 +8,24 @@ var Index = function () {
         var pagecontainer = $('#pagination-container');
         var dataContainer = $('.data-container');
         pagecontainer.pagination({
-            dataSource: globalVariables.newsListUrl,
-            locator: '',
+            dataSource: function (done) {
+                $.ajax({
+                    type: 'GET',
+                    url: globalVariables.newsListUrl,
+                    success: function(response) {
+                        done(response);
+                    }
+                });
+            },
+            locator: 'title',
             pageSize: 20,
-            showNavigator: true,
+            totalNumberLocator: function (response) {
+                // you can return totalNumber by analyzing response content
+                return response.length;
+            },
             className: 'paginationjs-theme-blue paginationjs-big',
             ajax: {
-                beforeSend: function() {
+                beforeSend: function () {
                     dataContainer.html('Loading...');
                 }
             },
@@ -23,7 +34,7 @@ var Index = function () {
                 var html = simpleTemplating(data);
                 dataContainer.html(html);
             },
-            afterPaging  : function () {
+            afterPaging: function () {
                 $('div.data-container ul li a')[0].click();
             }
         })
