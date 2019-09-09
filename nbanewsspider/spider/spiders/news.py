@@ -17,7 +17,8 @@ class NewsSpider(scrapy.Spider):
         self.postgres_provider.connect(
             DATABASES['default']['USER'],
             DATABASES['default']['PASSWORD'],
-            DATABASES['default']['NAME'])
+            DATABASES['default']['NAME'],
+            DATABASES['default']['HOST'])
         self.get_news_list()
 
     def get_news_list(self):
@@ -29,8 +30,7 @@ class NewsSpider(scrapy.Spider):
             'div.pagelink gonext a[data-id="last"]::attr(href)').extract_first()
         last_page = int(last_href[last_href.rfind('/') + 1:])
 
-        #for i in range(1, last_page+1):
-        for i in range(1, 20):
+        for i in range(1, last_page+1):
             url = 'https://nba.udn.com/nba/cate/6754/-1/newest/' + str(i)
             yield scrapy.Request(url, callback=self.parse_page)
 

@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
+
 import os
-import sys
-
-sys.path.append(os.path.dirname(os.path.abspath('.')))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'demosite.settings'
-
-import django
-django.setup()
-
-from demosite.settings import DATABASES
 
 # Scrapy settings for spider project
 #
