@@ -7,8 +7,8 @@
 4. 以 Pull-Request 的方式將代碼提交。
 	
 ## 進階要求
-1. 使用 Scrapy。
-2. 實現爬蟲自動定時抓取。
-3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
-4. 将本 demo 部署至服务器并可正确运行。
+1. 使用 Scrapy。 已使用
+2. 實現爬蟲自動定時抓取。 定時十分鐘抓取一次
+3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。 
+4. 将本 demo 部署至服务器并可正确运行。 https://udnnbaparser.appspot.com/main_page/#
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
