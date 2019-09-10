@@ -12,10 +12,10 @@ class UdnnbanewsparserConfig(AppConfig):
 	def ready(self):
 		if 'IS_SCRAPY' in os.environ:
 			return
-		self.auto_crawl()
-		scheduler = BackgroundScheduler()
-		scheduler.add_job(self.auto_crawl, 'interval', minutes=10)
-		scheduler.start()
+		# self.auto_crawl()
+		# scheduler = BackgroundScheduler()
+		# scheduler.add_job(self.auto_crawl, 'interval', minutes=10)
+		# scheduler.start()
 
 	def auto_crawl(self):
 		cwd = NewsSpider.settings.BASE_DIR + '/nbaBot/nbaBot/spiders'

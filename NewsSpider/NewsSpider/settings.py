@@ -71,15 +71,38 @@ TEMPLATES = [
 WSGI_APPLICATION = 'NewsSpider.wsgi.application'
 
 
+import pymysql  # noqa: 402
+pymysql.install_as_MySQLdb()
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.getenv('GAE_APPLICATION', None):
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.mysql',
+			'HOST': '/cloudsql/udnnbaparser:asia-east2:nba-news',
+			'USER': 'root',
+			'PASSWORD': 'unnotech',
+			'NAME': 'news_db',
+		}
 	}
-}
+else:
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.mysql',  
+			'NAME': 'news_db',  
+			'USER': 'root',                      
+			'PASSWORD': 'unnotech',                  
+			'HOST': '127.0.0.1', # Set to IP address 
+			'PORT': '3308',  # Set to empty string for default. 
+		}
+	}
+	# DATABASES = {
+	# 	'default': {
+	# 		'ENGINE': 'django.db.backends.sqlite3',
+	# 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	# 	}
+	# }
 
 
 # Password validation
