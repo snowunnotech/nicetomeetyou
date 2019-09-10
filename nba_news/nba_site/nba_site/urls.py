@@ -20,13 +20,22 @@ Including another URLconf
 #     path('admin/', admin.site.urls),
 # ]
 
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
 from django.urls import path
 from django.contrib import admin
+from news import views
 from news.views import news_view, content_view
+
+router = DefaultRouter()
+router.register(r'news_list', views.NewsListViewSet, base_name= 'news_list')
+router.register(r'news_detail', views.NewsDetailViewSet, base_name= 'news_detail')
 
 
 urlpatterns = [
+    url(r'^api/news_list_api', views.news_list_api),
+    url(r'^api/news_detail_api', views.news_detail_api),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^news/', news_view),
     url(r'^nba_news/', content_view)
