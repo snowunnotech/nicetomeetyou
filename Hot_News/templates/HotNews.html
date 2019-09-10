@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/css/bootstrap.css"></script>
+</head>
+<body>
+
+        <div style="display: inline-block ;width: 40%;">
+            <table class="table table-hover" id="NewsTitleTable">
+                <thead>
+                    <tr>
+                        <td><h2>HOT新聞清單</h2></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for new in HotNews.values %}
+                        <tr>
+                            <td>
+                                <a class="NewsTitleWord" href="#">{{ new.title }}</a>
+                                <span style="display:none">{{ new.url }}</span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div style="display: inline-block;width: 55%">
+            <iframe  id="NewsBoxIframe" src="https://nba.udn.com/nba/index?gr=www" width="800px" height="600px" frameborder="1" scrolling="yes">
+            </iframe>
+        </div>
+
+</body>
+
+
+
+
+<script src="/static/plugins/jquery.min.js"></script>
+<script src="/static/plugins/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
+<script>
+
+    $(function () {
+        GetNewsContent();                                         //啟動   新聞iframe框
+    });
+    
+    function GetNewsContent() {
+        $("#NewsTitleTable .NewsTitleWord").click(function () {
+            var NewTitle = $(this).text();                          //取得標題名稱
+            $.ajax({
+                url:"/HotNew/get_news_title/",
+                type:"POST",
+                headers: {"X-CSRFToken": $.cookie('csrftoken')},
+                data:JSON.stringify({NewTitle:NewTitle}),
+                contentType:"application/json",
+                dataType:"json",
+                success:function (data) {
+                     if (data.status){                               //有找到該筆URL的正常情況
+                        $("#NewsBoxIframe").attr("src",data.data)   //修改Iframe 的 URL
+                    }
+                }
+            })
+        })
+    }
+
+
+</script>
+
+</html>
