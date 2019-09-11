@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NEWS LIST API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>NEWS LIST API</h1>
+   <button class="apireq">CLICK</button>
+    <JSON_table></JSON_table>
+</div>
+<script>
+$('.apireq').click(function() {
+    $.ajax({
+             url : "https://nbanewsjohn.herokuapp.com/api/news_list/",
+             dataType: "json",
+             success: function (data) {
+                    var i = 0;
+                    $.each(data, function() {
+                    $("JSON_table").append("<tr>" +
+                            "<td>" + data[i].id   + "</td>" +
+                            "<td>" + data[i].title    + "</td>" +
+                            "</tr>");
+                            i++;
+                        });
+                    }
+                 });
+             });
+
+</script>
+</body>
+</html>

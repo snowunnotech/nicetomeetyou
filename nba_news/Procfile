@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath nba_site nba_site.wsgi
