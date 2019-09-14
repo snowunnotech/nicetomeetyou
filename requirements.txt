@@ -1,0 +1,9 @@
+Django
+django-redis
+django-redis-cache
+pymysql
+django-cors-headers
+djangorestframework
+uwsgi
+scrapy
+scrapy-djangoitem
