@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NBA NEWS</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      </head>
+	<body>
+        <div id="news_list">
+            <h2>NBA News List</h2>
+            <ul>
+            </ul>
+        </div>
+		<div id="article">
+			<h2 id="article_title"></h2>
+			<h3 id="article_source"></h3>
+			<h3 id="article_datetime"></h3>
+			<span id="article_content">
+			</span>
+		</div>
+        <script type="text/javascript">
+        	$.ajax({
+        		url : "/api/news_list/?format=json",
+        		dataType: "json",
+        		success : function (data) {
+        			data.forEach(function(article){
+                        $('#news_list ul').append('<li><a href="javascript: void(0);" news_id='+article['id']+' onClick="fetchData(\'' + article['id'] + '\')">' + article['a_title'] + '</a></li>')
+        			});
+        		}
+        	});
+
+        	function fetchData(news_id){
+        			$.ajax({
+        			url : "/api/news_list/"+news_id+'/',
+        			dataType: "json",
+        			success : function (data) {
+        				$('#article_title').html(data['a_title'])
+        				$('#article_source').html(data['a_source'])
+        				$('#article_datetime').html(data['a_datetime'])
+        				$('#article_content').html(data['a_content'])
+        			}
+        		});
+        	}
+        </script>
+	</body>
+</html>
