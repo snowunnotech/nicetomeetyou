@@ -12,3 +12,9 @@
 3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 4. 将本 demo 部署至服务器并可正确运行。
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+
+
+
+## Run project
+1. python3 manage.py crontab add # 定時更新
+2. python3 manage.py runserver 
