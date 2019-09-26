@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'news_crawler.pipelines.NewsCrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'news_crawler.pipelines.NewsCrawlerPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +88,14 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+FEED_EXPORT_ENCODING = 'utf-8'
+
+import os
+import sys
+import django
+
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".."))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'nicetomeetyou.settings'
+
+django.setup()

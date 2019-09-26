@@ -1,1 +1,8 @@
 Hello Django
+
+{% for a in articles %}
+{{a.id}}
+{{a.title}}
+{{a.pub_time}}
+{{a.content}}
+{% endfor %}

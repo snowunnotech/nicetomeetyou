@@ -6,9 +6,10 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.item import Field
 
 
-class NewsCrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class NewsItem(scrapy.Item):
+    title = Field()
+    pub_time = Field()
+    content = Field()
