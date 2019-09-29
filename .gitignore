@@ -1,0 +1,7 @@
+.vscode/
+*.json
+__pycache__/
+*.pyc
+*.sqlite3
+*.conf
+uwsgi_params
