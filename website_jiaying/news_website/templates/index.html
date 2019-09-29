@@ -1,0 +1,153 @@
+<html lang="zh-Hant-TW">
+<head>
+    <title>NBA News</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#more").click(function(){
+                $("#more").hide();
+                $("#less").show();
+            });
+
+            $("#less").click(function(){
+                $("#more").show();
+                $("#less").hide();
+            });
+        });
+
+        var get_list_url = 'http://127.0.0.1:8000/crawler/news_list/'
+        $.ajax({
+            method: 'GET',
+            url: get_list_url,
+            success: function(data){
+                console.log(data)
+                console.log("success")
+                news = ["","","",""]
+                for (var i = 0; i < data.news_list.length; i++) {
+                    console.log(data.news_list[i].title)
+                    news[i] = '<div class="col-sm-4">' +
+                                    '<img src="' + data.news_list[i].photo + '" width="300" height="150">' +
+                                '</div>' +
+                                '<div class="col-sm-8">' +
+                                    '<h4><a href="' + data.news_list[i].link + '">' + data.news_list[i].title + '</a></h4>' +
+                                    '<p>' + data.news_list[i].author + '</p>'+
+                                    '<p id="intro">' + data.news_list[i].intro + '</p>' +
+                                    '<p id="content">' + data.news_list[i].content + '</p>' +
+                                '</div>';
+                }
+                document.getElementById("news1").innerHTML = news[0];
+                document.getElementById("news2").innerHTML = news[1];
+                document.getElementById("news3").innerHTML = news[2];
+                document.getElementById("news4").innerHTML = news[3];
+            },
+            error: function(error_data){
+                console.log("error")
+            }
+        })
+
+
+
+
+    </script>
+
+    <style type="text/css">
+        .hw-overlay{display:none; position: fixed; top:0;left:0;width:100%;height:100%; background-color: rgba(0,0,0,0.3);z-index:10;}
+.hw-layer-wrap{box-sizing:border-box; width:570px; position:absolute;left:50%;top:50%; margin-left:-285px; border-radius:3px; background-color:#fff; box-shadow:1px 2px 4px 0 rgba(0,0,0,0.12); padding:45px 50px;}
+.hwLayer-close{position:absolute; right:20px; top:20px; width:20px; height:20px; cursor:pointer; font-size:20px; color:#ccc;}
+.hw-layer-wrap .hw-icon{color:#b4d8f3;font-size:86px;text-align:center;}
+.hw-layer-wrap h4{margin:5px 0 30px; font-size:24px; color:#383c3e;}
+.hw-layer-wrap p{margin:30px 0; line-height:22px; color:#595d60; text-align:left;}
+
+@media (max-width:768px){
+	.hw-layer-wrap{width:350px; margin-left:-175px; margin-top:-200px; padding:45px 50px; text-align:center;}
+}
+@media (max-width:400px){
+	.hw-layer-wrap{width:250px; margin-left:-125px;padding:25px 30px;}
+}
+
+
+    </style>
+
+    <script type="text/javascript" language="javascript">
+    $(function(){
+        function showLayer(id){
+            var layer = $('#'+id),
+                layerwrap = layer.find('.hw-layer-wrap');
+            layer.fadeIn();
+            layerwrap.css({
+                'margin-top': -layerwrap.outerHeight()/2
+            });
+	}
+
+	function hideLayer(){
+		$('.hw-overlay').fadeOut();
+	}
+
+	$('.hwLayer-ok,.hwLayer-cancel,.hwLayer-close').on('click', function() {
+		hideLayer();
+	});
+
+	//click and show
+	$('.show-layer').on('click',  function() {
+		var layerid = $(this).data('show-layer');
+		showLayer(layerid);
+	});
+
+	//click and hide
+	$('.hw-overlay').on('click',  function(event) {
+		if (event.target == this){
+			hideLayer();
+		}
+	});
+
+	//ESC and fide
+	$(document).keyup(function(event) {
+		if (event.keyCode == 27) {
+			hideLayer();
+		}
+	});
+});
+
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>焦點新聞表列</h1>
+            <div id="news1" class="row"></div>
+            <a id="btn1" class="btn btn-info btn-lg show-layer" data-show-layer="hw-layer" role="button">Read More</a>
+            <div id="news2" class="row"></div>
+            <a id="btn2" class="btn btn-info btn-lg show-layer" data-show-layer="hw-layer" role="button">Read More</a>
+            <div id="news3" class="row"></div>
+            <a id="btn3" class="btn btn-info btn-lg show-layer" data-show-layer="hw-layer" role="button">Read More</a>
+            <div id="news4" class="row"></div>
+            <a id="btn4" class="btn btn-info btn-lg show-layer" data-show-layer="hw-layer" role="button">Read More</a>
+            <!--
+            <div class="hw-overlay" id="hw-layer">
+                <div class="hw-layer-wrap">
+                    <span class="glyphicon glyphicon-remove hwLayer-close"></span>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12 hw-icon">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <p id="article"></p>
+                            <button class="btn btn-success hwLayer-ok">關閉</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
