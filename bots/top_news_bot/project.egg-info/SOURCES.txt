@@ -1,0 +1,14 @@
+setup.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
+top_news_bot/__init__.py
+top_news_bot/init.py
+top_news_bot/items.py
+top_news_bot/middlewares.py
+top_news_bot/pipelines.py
+top_news_bot/settings.py
+top_news_bot/spiders/__init__.py
+top_news_bot/spiders/top_news.py
