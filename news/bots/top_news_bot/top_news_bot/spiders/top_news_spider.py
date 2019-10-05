@@ -2,6 +2,7 @@ from top_news_bot.items import TopNewsBotItem
 import scrapy
 from scrapy.utils.markup import remove_tags
 from scrapy.spiders import CrawlSpider
+from uuid import uuid4
 
 
 class topNewsSpider(CrawlSpider):
@@ -23,16 +24,16 @@ class topNewsSpider(CrawlSpider):
 
         title = response.css('div#story_body_content')[
             0].css("h1::text")[0].extract()
-        print('########title', title)
-
+        unique_id = str(uuid4())
         date = response.xpath(
             '//*[@id="shareBar"]/div[2]/div/span/text()')[0].extract()
 
         data = response.xpath(
             '//*[@id="story_body_content"]/span/p').getall()[1:]
         data = remove_tags(''.join(data))
-
+        print('###unique_id', unique_id)
         item = TopNewsBotItem()
+        item['unique_id'] = unique_id
         item['title'] = title
         item['date'] = date
         item['data'] = data

@@ -12,11 +12,11 @@ class TopNewsBotPipeline(object):
     def process_item(self, item, spider):
         try:
             TopNews.objects.get(title=item['title'])
-        except TopNews.DoesNotExist:
-            pass
-        topNews = TopNews()
-        topNews.title = item['title']
-        topNews.date = item['date']
-        topNews.data = item['data']
-        topNews.save()
+        except TopNews.DoesNotExist:    
+            topNews = TopNews()
+            topNews.unique_id = item['unique_id']
+            topNews.title = item['title']
+            topNews.date = item['date']
+            topNews.data = item['data']
+            topNews.save()
         return item

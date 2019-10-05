@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <div id='sitehead'>
+
+        <a href="https://nba.udn.com/nba/cate/6754">
+            <font size="6"><b>UDN NBA Top News</b></font>
+        </a>
+    </div>
+
+</head>
+
+<body>
+    <div id="sitebody" style="display:flex;flex direction:row">
+        <div id="left" style="min-width:400px">
+            {% if news_list %}
+            {{ t.title}}
+
+            <ul>
+                {% for t in news_list %}
+                <li><a class="text-primary" value={{t.unique_id}} href="#">
+                        <font size='4'><b>{{ t.title }} </b></font>
+                        <font size='3'>{{t.date}}
+                        </font>
+                    </a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No awards are available.</p>
+            {% endif %}
+        </div>
+        <div id="right">
+            <div id="content"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        $('.text-primary').click(function () {
+            var id = $(this).attr('value');
+            var url = "{% url 'udn_news:getContent' id=0 %}".replace("0", id.toString())
+            $.ajax({
+                url: url,
+                //dataType: "html",
+                // dataType: "json",
+                success: function (data) {
+                    // data.pub_time = data.pub_time.replace(/T/, ' ')
+                    // data.pub_time = data.pub_time.replace(/Z/, ' ')
+                    // $('#title').text(data.title);
+                    // $('#pub_time').text(data.pub_time);
+                    $('#content').html(data);
+
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

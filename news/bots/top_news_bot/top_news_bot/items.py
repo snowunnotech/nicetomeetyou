@@ -5,6 +5,7 @@ from django.utils import timezone
 
 
 class TopNewsBotItem(scrapy.Item):
+    unique_id = scrapy.item.Field()
     title = scrapy.item.Field()
     date = scrapy.item.Field()
     data = scrapy.item.Field()
@@ -16,3 +17,5 @@ class TopNewsBotItem(scrapy.Item):
     # class Meta:
     #     app_label = 'news'
     #     db_table = 'top_news_spider'
+    def __str__(self):
+        return self.unique_id

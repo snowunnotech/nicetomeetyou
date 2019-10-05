@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class TopNews(models.Model):
+    unique_id = models.CharField(max_length=100, null=True)
     title = models.TextField()
     date = models.DateTimeField(default=timezone.now)
     data = models.TextField()
