@@ -1,0 +1,91 @@
+2019-10-05 12:41:54 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: top_news_bot)
+2019-10-05 12:41:54 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Windows-10-10.0.18362-SP0
+2019-10-05 12:41:54 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'top_news_bot', 'LOG_FILE': 'logs\\top_news_bot\\top_news_spider\\73220c8ae72a11e9abc1704d7bc33ecb.log', 'NEWSPIDER_MODULE': 'top_news_bot.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['top_news_bot.spiders']}
+2019-10-05 12:41:54 [scrapy.extensions.telnet] INFO: Telnet Password: 47033bf5c454f6c9
+2019-10-05 12:41:54 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-10-05 12:41:54 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-10-05 12:41:54 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-10-05 12:41:54 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2019-10-05 12:41:54 [scrapy.core.engine] INFO: Spider opened
+2019-10-05 12:41:54 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-10-05 12:41:54 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-10-05 12:41:54 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-10-05 12:41:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index> (referer: None)
+2019-10-05 12:41:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4087150> (referer: https://nba.udn.com/nba/index)
+2019-10-05 12:41:55 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4087150>
+{'data': '布魯克林籃網今天在季前熱身賽遭遇巴西勁旅弗蘭卡（Franca）籃球俱樂部，雖然兩大球星杜蘭特（Kevin '
+         'Durant）與厄文（Kyrie Irving）都未出賽，但仍靠著今夏交易來的普林斯（Taurean '
+         'Prince）拿下全隊最高的22分，以137：89大勝對手。籃網今年季後大手筆補強，不僅交易來杜蘭特與普林斯，還簽下了厄文、喬丹（DeAndre '
+         'Jordan）與錢德勒（Wilson '
+         'Chandler）等球員，加上阿里巴巴集團副主席蔡崇信正式取得百分之百經營權，新賽季將呈現全新氣象。在今天的首場熱身賽中，雖然賽季提前報銷的杜蘭特與面部受傷的厄文都未登場，但籃網仍靠著多點開花的攻勢，在上半場就取得21分領先優勢，最終籃網全隊8人得分上雙，以48分大勝對手。',
+ 'date': '2019-10-05 11:26',
+ 'title': '籃網雙星皆缺陣 普林斯轟22分退巴西勁旅'}
+2019-10-05 12:41:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4086066> (referer: https://nba.udn.com/nba/index)
+2019-10-05 12:41:55 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4087055> (referer: https://nba.udn.com/nba/index)
+2019-10-05 12:41:55 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4086066>
+{'data': '《富比士》公布2019年全美各大運動球團老闆的財富排行榜，快艇老闆鮑默（Steve '
+         'Ballmer）以517億美元身家，蟬聯第一，幾乎接近NBA所有球隊市值。在這份排行榜上，其他名列前幾名的老闆分別有，美式足球NFL卡羅萊納黑豹老闆泰柏（David '
+         'Tepper），身家雖約有120億美元，但跟鮑默足足差了快400億美元，第3名則是美國職業足球聯盟洛杉磯銀河的老闆安舒茲（Philip '
+         'Anschutz），身家約115億美元，第4、5是金塊老闆柯倫克（Josh Kroenke）跟NFL達拉斯牛仔老闆瓊斯（Jerry '
+         'Jones），身家分別約97億及86億美元。身為前微軟執行長的鮑默，因快艇前老闆史特林（Donald '
+         'Sterling）種族歧視發言，被聯盟施壓出售球隊，趁勢以20億美元接手。期間大破大立，不只挖來普遍認為操盤一流的衛斯特（Jerry '
+         'West），今夏也成功囊括雷納德（Kawhi Leonard）、喬治（Paul '
+         'George）兩大球星。根據估算，目前NBA所有球隊市值560.5億美元，擁有517億美元龐大財力的鮑默是有能力靠一己之力包下整個聯盟。然而這麼大的財力，居然想要在洛杉磯蓋一座快艇專屬球場，卻是遇到難題，由於新場館興建地點所在地方政府被尼克老闆控告，使得快艇自己的主場能否如期在2024年完工仍是未知數。而今天快艇在夏威夷與火箭進行熱身賽，鮑默表示，「就算他們想打斷我們的鼻子，也要繼續這個計劃。我們會保持耐心，有得是時間跟他們耗，一定會以某種方式讓這個球場興建出來。」',
+ 'date': '2019-10-05 10:34',
+ 'title': '全美職業球團老闆財富排行榜 快艇鮑默蟬聯第一'}
+2019-10-05 12:41:55 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4087055>
+{'data': '在精神領袖伊古達拉（Andre Iguodala）、明星前鋒杜蘭特（Kevin '
+         'Durant）相繼離隊後，金州勇士新賽季除了要以新陣容應戰外，球隊前鋒格林（Draymond '
+         'Green）在歷經首周訓練營後也直言，球隊目前缺乏熟悉的感覺，將成為最大的挑戰。上賽季挑戰三連霸失利後，勇士季後面臨杜蘭特轉戰籃網，兩大精神領袖伊古達拉與李文斯頓（Shaun '
+         'Livingston）也離開的狀況，取而代之的包括了後衛羅素（DAngelo '
+         'Russell）和一票仍待證明自己的年輕球員，讓勇士將面臨近年來最嚴苛的考驗。在經過這段時間的訓練營磨合後，格林坦言球隊確實已經發生變化，「我們還缺乏熟悉彼此的感覺，當你已經習慣某件事情很久後卻發生了變化，你總會試著去了解是什麼狀況，這是每個人的第二天性，你會想要確認大家在同一陣線上。」在明星射手湯普森（Klay '
+         'Thompson）將至少缺席到明年二月的情況下，格林與柯瑞（Stephen '
+         'Curry）將扛下更重的責任，而格林也相信新團隊將會隨著時間有更好的化學效應，「我們必須讓他們互相了解，這是籃球最重要的組成因素之一。」',
+ 'date': '2019-10-05 10:45',
+ 'title': '隊友缺乏熟悉感 格林：勇士目前最大挑戰'}
+2019-10-05 12:41:55 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-10-05 12:41:55 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1255,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 88605,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 1.245634,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 10, 5, 4, 41, 55, 900427),
+ 'item_scraped_count': 3,
+ 'log_count/DEBUG': 8,
+ 'log_count/INFO': 10,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 10, 5, 4, 41, 54, 654793)}
+2019-10-05 12:41:55 [scrapy.core.engine] INFO: Spider closed (finished)

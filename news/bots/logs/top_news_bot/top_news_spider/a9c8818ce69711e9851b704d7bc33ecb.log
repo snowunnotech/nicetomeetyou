@@ -1,0 +1,91 @@
+2019-10-04 19:11:10 [scrapy.utils.log] INFO: Scrapy 1.7.3 started (bot: top_news_bot)
+2019-10-04 19:11:10 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1c  28 May 2019), cryptography 2.7, Platform Windows-10-10.0.18362-SP0
+2019-10-04 19:11:10 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'top_news_bot', 'LOG_FILE': 'logs\\top_news_bot\\top_news_spider\\a9c8818ce69711e9851b704d7bc33ecb.log', 'NEWSPIDER_MODULE': 'top_news_bot.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['top_news_bot.spiders']}
+2019-10-04 19:11:10 [scrapy.extensions.telnet] INFO: Telnet Password: d2af387e2f02f886
+2019-10-04 19:11:10 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-10-04 19:11:10 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-10-04 19:11:10 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-10-04 19:11:10 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2019-10-04 19:11:10 [scrapy.core.engine] INFO: Spider opened
+2019-10-04 19:11:10 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-10-04 19:11:10 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-10-04 19:11:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/robots.txt> (referer: None)
+2019-10-04 19:11:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/index> (referer: None)
+2019-10-04 19:11:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4085342> (referer: https://nba.udn.com/nba/index)
+2019-10-04 19:11:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4085869> (referer: https://nba.udn.com/nba/index)
+2019-10-04 19:11:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4085342>
+{'data': "金州勇士隊9月30日在大通中心（Chase Center）舉行搬到舊金山後首次媒體日。勇士隊從布魯克林籃網隊新換來羅素（D'Angelo "
+         'Russell），與柯瑞（Stephen Curry）形成雙鐵衛。在湯普森（Klay '
+         'Thompson）NBA明星賽前不會復出期間，兩人肯定是主攻手，對於雙方如何合作，柯瑞與羅素惺惺相惜，異口同聲說非常興奮彼此要合作。勇士隊上個球季兵敗總冠軍賽，休賽期間經歷重大人員調整。他們利用先簽後換的交易送走杜蘭特（Kevin '
+         'Durant）迎來羅素，由於薪資上限不得不放走奪冠老臣伊古達拉（Andre Iguodala）。老將李文斯頓（Shaun '
+         'Livingston）前不久退休，湯普森韌帶裂傷還在恢復。勇士隊人手面臨短缺，輪換陣容頗為吃力，可能要依靠新秀吃掉大部分時間。羅素一提到柯瑞就滿面笑容表示，自己非常興奮兩人的合體。他試著假裝自己曾在勇士隊待過，是個十年老兵。他說，與柯瑞、湯普森、格林當隊友很酷，圍繞在柯爾（Steve '
+         'Kerr）教練團身邊感覺不錯。羅素說：「來勇士隊打球是種奢侈。太酷了兄弟。上周我首次與他們一起練球，隨後給父親、哥哥打電話。這種感覺很開心，能與他們一年一起打球，像個海綿一樣從他們身上學到東西，我超級興奮。」柯瑞表示，他與羅素暑假已經好幾次一起練球，兩人溝通頗多。接下來三周的訓練營至關重要，需要營造好的球隊氛圍，持續產生化學反應。他說：「我對我們一起討論以及合作解決問題感到興奮。」柯瑞談到與羅素如何磨合時說，教練團會有很多機會混合搭配不同陣容，找到兩人如何磨合。將會有很多調整與測試。他說：「但最終，兩個有天賦的傢伙知道如何把球放進籃框，知道如何為彼此與隊友創造機會，證明我們在聯盟的能力。如果你有足夠自信，你會找到問題的解決方法。」對於今年休賽期間其他球隊的調整，勇士隊期待是否與以往不同？柯瑞調侃說，他希望自己新球季打滿82場，每場48分鐘。他說：「每次球季開始，球隊都想要更好。勇士隊以前奪冠時，其他球隊都試圖擊敗我們，或重組來爭冠。看看每個籃球時代，一支球隊能維持高水平，打出漂祝亮比賽並不常發生。我們重組後球隊陣容與以前大不相同，但優秀的球隊與球員會找出方法前進。」',
+ 'date': '2019-10-04 14:46',
+ 'title': '聯手柯瑞超興奮 羅素：來勇士打球是種奢侈'}
+2019-10-04 19:11:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4085869>
+{'data': 'NBA季前賽在夏威夷舉行，火箭迎戰快艇，不過此戰不僅衛斯特布魯克（Russell Westbrook）缺陣，快艇雙槍俠雷納德（Kawhi '
+         'Leonard）和喬治（Paul George）也都沒有上場。最終，火箭在哈登（James '
+         'Harden）獨拿37分的帶領之下，半場就取得17分領先，以109比96取得季前賽2連勝。前一場面對上海大鯊魚完成大三元的哈登，這場比賽狀態依舊火熱，上場28分鐘，攻下37分7籃板7助攻2抄截，雖然22投僅8中，包括三分球14投4中，但哈登足足獲得20次罰球機會，並且命中其中17球。事實上火箭整體命中率並不理想，只有37.5%，三分球更是48投11中，但面對缺兵少將的快艇，火箭的火力已經足以輕易掌控住比賽。卡佩拉拿下14分11籃板，出任先發的麥克藍莫（Ben '
+         'McLemore）得到9分。快艇以哈瑞爾（Montrezl Harrell）的17分6籃板表現較佳，威廉斯（Lou '
+         'Williams）得到13分，祖巴茲（Ivica '
+         'Zubac）進帳10分5籃板2阻攻。火箭結束兩場季前賽，接下來將飛往日本東京，準備和暴龍進行兩場比賽。總教練丹東尼（Mike '
+         "D'Antoni）表示：「因為我們接下來要在日本進行比賽，所以先在夏威夷比賽是非常好的。這一趟首先能有機會來夏威夷看看，其次是有機會能夠和快艇隊交手，最後還能為日本賽做準備，真的是一舉三得。」",
+ 'date': '2019-10-04 15:57',
+ 'title': '斬獲20次罰球 哈登飆37分擊退殘陣快艇'}
+2019-10-04 19:11:11 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://nba.udn.com/nba/story/6780/4085798> (referer: https://nba.udn.com/nba/index)
+2019-10-04 19:11:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://nba.udn.com/nba/story/6780/4085798>
+{'data': '上季打出好成績的丹佛金塊，新賽季基本上將以原班人馬的陣容深度繼征戰，其中除了約柯奇（Nikola Jokic）、米爾賽普（Paul '
+         'Millsap）、穆雷（Jamal Murray）、哈里斯（Gary '
+         'Harris）是固定先發外，先發小前鋒的人選目前仍是未知數，球團還在測試人選當中。在先前的訓練營中，克雷格（Torrey '
+         'Craig）一度在先發名單中，但之後又換成厄南戈梅茲（Juancho Hernangomez）；除此之外，競爭人選還有巴頓（Will '
+         'Barton）和波特（Michael Porter '
+         'Jr.），不過兩人都有一些傷勢問題。「沒有人能在這個位置處於領先優勢。」金塊總教練馬龍（Michael '
+         'Malone）說。馬龍也評論了兩位前鋒的表現。「克雷格首日擔任先發的表現很棒；今天厄南戈梅茲則得到先發的機會，他同樣表現出色。當你身邊擁有約柯奇、米爾賽普這樣的球員，打球自然會輕鬆很多，克雷格和厄南戈梅茲都有各自亮點。」克雷格上季共有37場比賽擔任先發，特別是季後賽在巴頓狀態不好的情況下，克雷格在防守端的拼勁為他贏得更多表現的空間，連續11場比賽都是先發上陣。至於厄南戈梅茲上季出賽70場，其中有25場是先發。',
+ 'date': '2019-10-04 15:25',
+ 'title': '金塊小前鋒競爭激烈 總教練：沒人可確保先發'}
+2019-10-04 19:11:11 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-10-04 19:11:11 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1255,
+ 'downloader/request_count': 5,
+ 'downloader/request_method_count/GET': 5,
+ 'downloader/response_bytes': 89901,
+ 'downloader/response_count': 5,
+ 'downloader/response_status_count/200': 5,
+ 'elapsed_time_seconds': 0.858839,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 10, 4, 11, 11, 11, 840737),
+ 'item_scraped_count': 3,
+ 'log_count/DEBUG': 8,
+ 'log_count/INFO': 10,
+ 'request_depth_max': 1,
+ 'response_received_count': 5,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 10, 4, 11, 11, 10, 981898)}
+2019-10-04 19:11:11 [scrapy.core.engine] INFO: Spider closed (finished)
