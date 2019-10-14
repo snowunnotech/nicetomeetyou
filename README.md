@@ -1,6 +1,6 @@
 # nice to meet you
 1. (Done)抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
-2. (Dpne)使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
+2. (Done)使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
 3. (Done)使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
 	 * 焦點新聞列表
 	 * 新聞詳情頁面
