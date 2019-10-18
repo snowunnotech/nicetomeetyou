@@ -1,0 +1,1 @@
+web: gunicorn nba-focus-news.wsgi
