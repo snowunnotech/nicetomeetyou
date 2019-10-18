@@ -1,1 +1,1 @@
-web: gunicorn nba-focus-news.wsgi
+web: gunicorn nicetomeetyou.wsgi
