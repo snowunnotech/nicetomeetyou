@@ -1,1 +1,1 @@
-web: gunicorn nicetomeetyou.wsgi
+web: gunicorn nba.wsgi
