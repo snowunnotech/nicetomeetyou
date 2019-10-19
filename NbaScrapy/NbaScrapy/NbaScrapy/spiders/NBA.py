@@ -66,16 +66,16 @@ class NbaSpider(scrapy.Spider):
                 content_list.append(s)
         item['content'] = ','.join(content_list)
 
-        # sql = str.format("select title from NBAframework_nbaframework where  title='{0}' ",item['title'])
-        # if not select_db(db_name,sql):
-        #     sql = " insert into NBAframework_nbaframework (title,publish_date,author,image_url,image_caption,video_url,content,read,slug,created) "
-        #     sql += str.format(' values ("{0}","{1}","{2}","{3}","{4}","{5}","{6}",{7},"{8}","{9}") ',
-        #                       item['title'],item['publish_date'],item['author'],item['image_url'],item['image_caption'],item['video_url'],item['content'],1,item['title'],datetime.datetime.today())
-        #     super(execute_db(db_name,sql))
+        sql = str.format("select title from NBAframework_nbaframework where  title='{0}' ",item['title'])
+        if not select_db(db_name,sql):
+            sql = " insert into NBAframework_nbaframework (title,publish_date,author,image_url,image_caption,video_url,content,read,slug,created) "
+            sql += str.format(' values ("{0}","{1}","{2}","{3}","{4}","{5}","{6}",{7},"{8}","{9}") ',
+                              item['title'],item['publish_date'],item['author'],item['image_url'],item['image_caption'],item['video_url'],item['content'],1,item['title'],datetime.datetime.today())
+            super(execute_db(db_name,sql))
 
-        sql = str.format("select title from NBAframework_nbaframework where  title='{0}' ", item['title'])
-        if not select_db(db_name, sql):
-            line = NbascrapyPipeline()
-            line.process_item(item)
+        # sql = str.format("select title from NBAframework_nbaframework where  title='{0}' ", item['title'])
+        # if not select_db(db_name, sql):
+        #     line = NbascrapyPipeline()
+        #     line.process_item(item)
 
         yield item
