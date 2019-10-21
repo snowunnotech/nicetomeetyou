@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NBA News</title>
+    </head>
+    <body>
+        <div id='header'>
+            <h1>焦點新聞</h1>
+            <em>{{ current_time }}</em>                   
+        </div>
+        <div id='container'>
+            <div id='news_list'>
+                <table>
+                    
+                    <thead>
+                        {% for nba_news in data %}
+                        <th>{{nba_news.title}}</th>
+                        {% endfor %}    
+                    </thead>                  
+                    <tbody>
+                        <tr>
+                        {% for nba_news in data %}
+                            <td><img width="320" height="290" src={{ nba_news.img_url }}></td>
+                        {% endfor %}
+                        </tr>
+                        <tr>
+                        {% for nba_news in data %}
+                            <td>{{nba_news.time}}</td>
+                        {% endfor %}   
+                        </tr>
+                        <tr>
+                        {% for nba_news in data %}
+                            <td><a href={{ nba_news.url }} target="_blank">Link</a></td>
+                        {% endfor %}   
+                        </tr>
+                        <tr>
+                        {% for nba_news in data %}
+                            <td><input type="button" id={{ nba_news.id }} onclick="ShowDetail(this.id)" value="詳細資訊"></td>
+                        {% endfor %}   
+                        </tr>                        
+                    </tbody>          
+                </table>              
+            </div>
+            <div id='news_detail'></div>
+        </div>
+        <div id='footer'></div>
+        <script type="text/javascript" src="{% static 'nba_news/JS/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript">
+        function ShowDetail(id) {
+            // console.log(id);
+            $.ajax({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/nba_news/'+id+'/',
+                success: function(data) {
+                    $("#news_detail").empty().append("<h2>"+data['title']+"</h2><br><img src='"+data['img_url']+"'></img><br><p>"+data['news_text']+"</p><br><span>"+data['time']+"</span>");
+                },
+                error: function(error) {
+                    console.log("Error!!")
+                }
+            })            
+
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{data}}
+    <script type="text/javascript" src="{% static 'nba_news/JS/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript">
+    // var data = {{ data|safe }};
+    $(document).ready(function(){
+        console.log("Welcome NBA News Page !!");
+    });
+    </script>
+</body>
+</html>
