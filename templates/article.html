@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Nba Hot News</title>
+</head>
+<body>
+<div class="container">
+    <h4 class="h4sty">焦點新聞內容&#160發佈時間:{{p.datetime}}</h4>
+    <hr>
+    <div style="display: flex; width: 100vw; height: 100vh">
+        <div class="content1">
+            <img class="contentimg" src="{{p.image}}">
+        </div>
+        <div class="content2">
+            <p class="contentsty-p">{{p.content}}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

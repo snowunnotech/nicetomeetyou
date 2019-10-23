@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'montserrat';
+    src: url("/static/font/montserrat.regular.ttf"),local('montserrat');
+}
+
+body{
+	font-family: montserrat;
+	background: #333333;
+}
+.container{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.h4sty{
+	font-size: 30px;
+	text-align: center;
+	color: #f1f1f1;
+}
+hr{
+	font-size: 5px;
+	margin-bottom: 5%;
+}
+.content1{
+	width: 45%;
+}
+.content2{
+	width: 45%;
+}
+.contentimg{
+	width: 90%;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+.contentsty-p{
+	font-size: 20px;
+	color: #f1f1f1;
+	margin-block-start: 0;
+}
+.NBA_title{
+	text-align: center;
+	font-size: 40px;
+	color: #f1f1f1;
+}
+.hotnews{
+	text-align: center;
+	font-size: 25px;
+	color: #f1f1f1;
+}
+.newssty{
+	margin-top: 10%;
+	width: 100vw;
+	height: 50vh;
+	display: inline-flex;
+	justify-content: space-around;
+}
+.titlesty{
+	position: absolute;
+	color: #f1f1f1;
+	font-size: 21px;
+	text-decoration: none;
+	top: 50%;
+	padding-left: 2%;
+	text-shadow: 0.1rem 0.1rem black;
+}
+.imgclass{
+	position: relative;
+	width: 90%;
+	display: block;
+	margin: auto;
+	box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
+}
+.imgclass:hover{
+	width: 100%;
+}

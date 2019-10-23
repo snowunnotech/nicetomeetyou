@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>Nba Hot News</title>
+</head>
+<body>
+<div class="wrapper">
+<header>
+    <h1 class="NBA_title">NBA NEWS</h1>
+</header>
+<h2 class="hotnews">焦點新聞列表</h2>
+<div class="newssty">
+    {% for n in news %}
+    <a href='/article/{{n.id}}'>
+        <img class="imgclass" src="{{n.image}}">
+        <h3 class="titlesty">{{n.title}}</h3>
+    </a>
+    {% endfor %}
+</div>
+</div>
+</body>
+</html>
