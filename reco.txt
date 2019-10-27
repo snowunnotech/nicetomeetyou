@@ -1,0 +1,3 @@
+191027-
+first build up django project with REST framework
+
