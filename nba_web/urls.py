@@ -26,5 +26,5 @@ router.register(r'news', views.NewsViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^/$', views.index, name = 'index'),
+    url(r'^home$', views.index, name = 'index'),
 ]

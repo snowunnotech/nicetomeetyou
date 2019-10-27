@@ -1,0 +1,12 @@
+{%for i in output%}
+{%for k,v in i.items%}
+{{k|title}}
+<br>
+{{v|safe}}
+<br>
+<br>
+{%endfor%}
+
+<br>
+<br>
+{%endfor%}

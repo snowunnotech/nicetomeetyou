@@ -1,3 +1,5 @@
 191027-
 first build up django project with REST framework
 
+submit-
+alter column content type from charfiled to textfield
