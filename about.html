@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+<head>
+	<title>News</title>
+	<meta charset="UTF-8">
+	<!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+	<!-- Domain search section -->
+	<section class="domain-search-section sc-about-page">
+		<div class="container">
+			<div class="section-title">
+				<p>Item Results</p>
+				<h2>目前共有&nbsp;&nbsp;{{stocks|length}}&nbsp;&nbsp;筆資料</h2>
+			</div>
+			<div class="domain-form-warp">
+				<form class="domain-search-form  df-white-bg">
+                    <table id="datatables" style="table-layout:fixed" class="table table-condensed table-bordered table-hover table-striped">
+                        <thead class="thead-light">
+                        <div class="text-right">
+                            <button onclick="location.href='crawler/'" type="button" class="btn btn-outline-warning">
+                                Crawler
+                            </button>
+                        </div>
+                            <tr>
+                              <th class="text-center" scope="col" >標題</th>
+                              <th class="text-center" scope="col" width="35%">連結</th>
+                              <th class="text-center" scope="col">內文細節</th>
+                              <th class="text-center" scope="col" width="10%">爬文時間</th>
+                            </tr>
+                        </thead>
+                    </table>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- Domain search section end -->
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#datatables').DataTable({
+          "AutoWidth":true,
+          "processing": true,
+          "serverSide": true,
+          "ajax": {
+              "url":"/newsapi/?format=datatables",
+              "type": "GET"
+          },
+          "columns": [
+              {"data": "name"},
+              {"data": "link"},
+              {"data": "context"},
+              {"data": "created_time"},
+          ]
+      });
+    });
+    </script>
+    <script>
+      // Read book buttons
+      $(".read-book").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+    </script>
+ </body>
+</html>
