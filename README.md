@@ -5,6 +5,12 @@
 python -m venv venv
 pip install -r requirements.txt
 ```
+the activation may depend on the os.  
+For example in my windows 10 it is done by typing
+```
+.\venv\Scripts\activate
+```
+in the powershell.
 
 * first initiate scrapyd by going into dscrapy/scrapy_app and type
 
