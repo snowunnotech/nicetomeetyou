@@ -1,0 +1,6 @@
+venv/*
+*pycache*
+*db.sqlite3
+*migrations*
+dscrapy/scrapy_app/logs/*
+dscrapy/scrapy_app/dbs/default.db
