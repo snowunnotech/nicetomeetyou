@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NBA 焦點新聞</title>
+</head>
+<body>
+	<div class='header' align="center"><h1>最新焦點</h1></div>
+
+	<div class='row' style="display:flex">
+		<div id='main' style="flex-basis:75%">
+			<div id='news_detail'></div>
+		</div>
+		<div id='side'>
+			{% for news in news_list %}
+				<div style="display: flex;flex-direction: column;padding: 8px" >
+					<a class='newsblock' value='{{ news.id }}' href='#'>
+					{{ news.title }} </br> {{ news.date }}</a>
+				</div>
+				
+			{% endfor %}
+		</div>
+	</div>
+</body>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="	crossorigin="anonymous"></script>
+	<script>
+		$('.newsblock').click(function(){
+			var newsid = $(this).attr('value');
+			$.ajax({
+				url: 'news/'+newsid,
+				success: function( content ) {
+					$( "#news_detail" ).html( content );
+				}
+			});
+		});
+	</script>
+</html>
