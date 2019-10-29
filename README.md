@@ -1,6 +1,6 @@
 # How to use
 
-* start a virtual enviornment satisfying the requirement.txt
+* start a virtual enviornment satisfying the requirements.txt
 * first initiate scrapyd by going into dscrapy/scrapy_app and type
 
 ```bash
