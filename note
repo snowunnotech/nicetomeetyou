@@ -1,0 +1,30 @@
+on windows 10, using venv, somehow when I use the command
+	curl http://localhost:6800/schedule.json -d project=default -d spider=news
+or when I press the button,
+
+the scrapyd would return the following error:
+
+2019-10-28T15:38:31+0800 [twisted.internet.defer#critical] Unhandled error in Deferred:
+2019-10-28T15:38:31+0800 [twisted.internet.defer#critical]
+        Traceback (most recent call last):
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\scrapyd\poller.py", line 25, in poll
+            returnValue(self.dq.put(self._message(msg, p)))
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\defer.py", line 1872, in put
+            self.waiting.pop(0).callback(obj)
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\defer.py", line 460, in callback
+            self._startRunCallbacks(result)
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\defer.py", line 568, in _startRunCallbacks
+            self._runCallbacks()
+        --- <exception caught here> ---
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+            current.result = callback(current.result, *args, **kw)
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\scrapyd\launcher.py", line 47, in _spawn_process
+            reactor.spawnProcess(pp, sys.executable, args=args, env=env)
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\posixbase.py", line 352, in spawnProcess
+            from twisted.internet._dumbwin32proc import Process
+          File "d:\codes\python_codes\nicetomeetyou\venv\lib\site-packages\twisted\internet\_dumbwin32proc.py", line 15, in <module>
+            import win32api
+        builtins.ImportError: DLL load failed: 找不到指定的程序。
+
+I have tried many solutions but none of them seemed to work.  
+But I can get around by not using venv for the scrapyd. 

@@ -1,14 +1,38 @@
-# nice to meet you
-1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
-2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
-3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
-	 * 焦點新聞列表
-	 * 新聞詳情頁面
-4. 以 Pull-Request 的方式將代碼提交。
-	
-## 進階要求
-1. 使用 Scrapy。
-2. 實現爬蟲自動定時抓取。
-3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
-4. 将本 demo 部署至服务器并可正确运行。
-5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+# How to use
+
+* start a virtual enviornment satisfying the requirement.txt
+* first initiate scrapyd by going into dscrapy/scrapy_app and type
+
+```bash
+scrapyd
+```
+
+(however in the venv I ran into trouble I couldn't solve... see note)
+
+* second, go to dscrapy and run the server by
+```bash
+python manage.py runserver
+```
+
+* there are currently four buttons at home:
+	* Start Crawl: will send a POST signal to scrapyd api and start the crawling process.  Notify the frontend when finished.
+	* Get REST API: will get the json from REST API and render them to HTML.
+	* CleanUp DataBase: delete all records in the DataBase table.
+	* Manual Refresh: as the name suggests, reload home.
+
+
+# Acknowledgement: 
+
+This project is from ChuangShun before interview.
+
+Most of the framework are inspired by this [article] (https://medium.com/@ali_oguzhan/how-to-use-scrapy-with-django-application-c16fabd0e62e)
+
+As well as the [Scrapyd-Django-Template] (https://github.com/adriancast/Scrapyd-Django-Template)
+
+Most of the JS implementation are from this [repository] (https://github.com/copyNdpaste/scrapy-with-django)
+
+
+### Improvements that I can think of:
+
+  * an elegant way to automatically scrape and ajax the data to web
+  * deployment? pressure test(s)?
