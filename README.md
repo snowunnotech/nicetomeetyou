@@ -1,6 +1,11 @@
 # How to use
 
-* start a virtual enviornment satisfying the requirements.txt
+* before all else, start a virtual enviornment by 
+```bash
+python -m venv venv
+pip install -r requirements.txt
+```
+
 * first initiate scrapyd by going into dscrapy/scrapy_app and type
 
 ```bash
