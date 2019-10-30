@@ -16,6 +16,7 @@ def get_content(request, pk):
 	targetnews = SpotNews.objects.all().filter(id=pk).values_list()[0]
 	resdata = HttpResponse('<h2><span>'+targetnews[1]+'</span></h2><span>'+\
 							str(targetnews[2])[:-6]+'&nbsp&nbsp&nbsp&nbsp'+targetnews[3]+\
-							'</span><p><span>'+targetnews[4]+'</span></p>')
+							'</span></br><span><img src="static/'+targetnews[5]+'" style="width: 500px" ></span>\
+							<p><span>'+targetnews[4]+'</span></p>')
 
 	return resdata

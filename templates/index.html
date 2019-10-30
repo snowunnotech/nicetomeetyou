@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 			{% for news in news_list %}
 				<div style="display: flex;flex-direction: column;padding: 8px" >
 					<a class='newsblock' value='{{ news.id }}' href='#'>
+						<img src="{% static news.newsimg %}" style="width: 160px" ></br>
 					{{ news.title }} </br> {{ news.date }}</a>
 				</div>
 				

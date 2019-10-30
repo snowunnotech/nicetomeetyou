@@ -5,6 +5,7 @@ class SpotNews(models.Model):
 	date = models.DateTimeField()
 	author = models.CharField(max_length=30)
 	content = models.TextField()
+	newsimg = models.TextField(blank=True)
 
 	class Meta:
 		db_table = 'SpotNews'

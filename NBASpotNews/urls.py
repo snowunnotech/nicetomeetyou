@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from api import views
+from django.contrib.staticfiles import views as staviews
 
 app_name='NBASpotNews'
 urlpatterns = [
@@ -23,5 +24,6 @@ urlpatterns = [
     path('nbaspotnews/', views.NewsViewset.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', views.index),
-    re_path(r'^news/(?P<pk>\d+)/$', views.get_content, name = 'get_content')
+    re_path(r'^news/(?P<pk>\d+)/$', views.get_content, name = 'get_content'),
+    re_path(r'^static/(?P<path>.*)$', staviews.serve)
 ]

@@ -1,6 +1,5 @@
 import os
 import scrapy
-import sqlite3
 from crawler.items import NewsItem
 
 
@@ -23,15 +22,7 @@ class NewsSpider(scrapy.Spider):
 		item['author'] = response.css('div.shareBar__info--author::text').get()
 		item['content'] = response.xpath('//div[@id="story_body_content"]//p/text()').getall()
 		item['content'] = ''.join(item['content'])
-
-		BASE_DIR = os.path.dirname(os.path.abspath('.'))
-		conn = sqlite3.connect(BASE_DIR+'\\db.sqlite3')
-		c = conn.cursor()
-		if not c.execute("select title from SpotNews where title = '" + item['title'] + "'").fetchall():
-			sql = "insert into SpotNews (title, date, author, content)"
-			sql += str.format(' values ("{0}","{1}","{2}","{3}")', item['title'], item['date'], item['author'], item['content'])
-			c.execute(sql)
-		conn.commit()
-		conn.close()
+		rawimgurl = response.xpath('//div[@id="story_body_content"]/span//a/img/@data-src').get()
+		item['image_urls'] = [rawimgurl.split('u=')[1].split('&')[0], ]
 
 		yield item

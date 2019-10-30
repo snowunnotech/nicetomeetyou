@@ -4,4 +4,4 @@ from .models import SpotNews
 class NewsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = SpotNews
-		fields = ('id', 'title', 'date', 'author', 'content')
+		fields = '__all__'
