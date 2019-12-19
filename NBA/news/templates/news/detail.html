@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} NBA News Detail {% endblock %}
+
+{% block domready %}
+    $.ajax({
+        url: "{{ url }}{{ id }}",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var story = $("#story-body");
+
+            // modify the content
+            story.find('figure  img').attr('src', data['img_url']);
+            story.find('.title  span').text(data['title']);
+            story.find('.published  span').text(data['published']);
+            story.find('.text span').text(data['text']);
+        }
+    })
+{% endblock %} 
+
+{% block content %}
+    <div id="story-body">
+        {% include 'news/detail_ajax.html' %}
+    </div>
+{% endblock %}
