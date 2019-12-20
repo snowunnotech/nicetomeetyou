@@ -1,0 +1,41 @@
+{% extends "default/base.html" %}
+
+{% block content %}
+  
+  <h2>更新狀態</h2>
+  <section class"py-5 bg-light">
+  <div class="container">
+      
+    </div>
+</section>
+
+<div class="container-fluid">
+    <div class="card rounded-0 mt-4">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="form-inline">
+            <div class="form-group"><label for="month" class="sr-only">月份</label><select name="sec" id="month" class="form-control form-control-sm"><option value="12">12月</option><option value="1">1月</option><option value="2">2月</option></select></div>
+          </div>
+          <div class="ml-auto">
+            
+            
+          </div>
+        </div>
+      </div>
+      <table class="table table-responsive-md">
+        
+        <thead>
+          <tr>
+          <th>發文狀態　{{msg}}</th>
+          
+          
+        </tr>
+        </thead>
+        
+       
+      </table>
+    </div>
+  </div>
+ 
+{% endblock %}

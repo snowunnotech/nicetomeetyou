@@ -1,0 +1,128 @@
+@charset "UTF-8";
+* {
+  font-family: 微軟正黑體;
+  
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: bold;
+  
+}
+a{
+	color: #ffffff;
+}
+.block {
+  display: inline-block;
+}
+
+button input {
+  left: 0%;
+  height: 30px;
+  margin: 10px;
+  margin-left: 0px;
+  width: 150px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+button .btn1 {
+  left: initial;
+  width: 60px;
+  padding: 5px;
+  height: 30px;
+  cursor: pointer;
+}
+
+li {
+  text-align: center;
+}
+
+.para {
+  text-align: center;
+}
+
+header.jumbotron {
+  text-align: center;
+  background-image: url(https://images.unsplash.com/photo-1560791515-36971f0d491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1356&q=80);
+  background-position: center center;
+  padding: 150px;
+  color: white;
+}
+
+section {
+  text-align: center;
+  padding: 50px;
+}
+section .head {
+  font-size: 36px;
+  margin-top: 0px;
+}
+section .subhead {
+  font-size: 16px;
+}
+
+.setting {
+  padding: 30px;
+}
+.setting img {
+  cursor: pointer;
+  width: 80%;
+  border-radius: 50%;
+}
+
+section.story {
+  margin-top: 100px;
+  background-color: #eee;
+}
+section.story .col-6 {
+  padding: 20px;
+}
+section.story .icon {
+  
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+section.picture {
+  padding: 0px;
+  color: white;
+}
+section.picture .col-6 {
+  cursor: pointer;
+  padding: 50px;
+}
+section.picture .col-6:hover p, section.picture .col-6:hover h1 {
+  opacity: 0.8;
+}
+section.picture .col-6:hover:before {
+  filter: brightness(0.5);
+  background-size: 130% auto;
+}
+section.picture .col-6:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition-duration: 0.5s;
+  background-position: center center;
+}
+section.picture .pic1:before {
+  background-image: url("https://www.mirrormedia.com.tw/assets/images/20180919155506-5ce140cd86b0b9b5ad40e4b7010d251d-mobile.jpg");
+  background-size: 120% auto;
+}
+section.picture .pic2:before {
+  background-image: url("https://cw1.tw/CW/crossing/images/article/201802/article-5a73d6bed26d2.jpg");
+  background-size: 120% auto;
+}
+section.picture p, section.picture h1 {
+  opacity: 0.4;
+  transition-duration: 0.5s;
+}
+
+section.end {
+  background-color: #01233c;
+  color: #fff;
+}
