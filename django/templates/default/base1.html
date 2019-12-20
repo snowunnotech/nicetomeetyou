@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EatingWhere</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=loadGoogleMap"></script>
+	<script language="javascript">
+		google.maps.event.addDomListener(window, 'load', loadGoogleMap);  //啟動GoogleMap
+
+		var map;  //地圖
+		function loadGoogleMap() {  //顯示GoogleMap
+			var center = new google.maps.LatLng(25.033184, 121.560873);  //設定中心點
+			map = new google.maps.Map(document.getElementById('map_div'), {  //設定地圖
+				zoom: 16,
+				center: center,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+			});
+		}
+		{% for item in all %}
+		function addmark() {  //加入地標
+			var latLng = new google.maps.LatLng({{item.lat}}, {{item.lng}});  //地標位置
+			var marker = new google.maps.Marker({  //建立地標
+				position: latLng,
+				title: "{{item.name}}",  //地標標題
+				animation: google.maps.Animation.DROP,  //動畫方式
+				map: map,
+				
+			});
+			markers.push(marker);  //將地標加入串列
+				//建立地標訊息視窗
+			var message = "<div class='markdiv'><div class='marktitle'>" + "{{item.name}}" + "</div>" + "" + "<br><div class='contactinfo'>電話："+ "" +"<br>住址："+"" + "</div><a href='#' onClick='show_streeview()'><img src='http://cbk0.google.com/cbk?output=thumbnail&w=250&h=50&ll="+ {{item.lat}} +","+ {{item.lng}} +"'></a></div>"
+			attachMessage(i, message, latLng);
+			i++;
+		{% endfor %}	
+		var info_window = [];  //訊息視窗陣列
+			function attachMessage(index, msg, latLng) {  //加入地標訊息視窗
+				google.maps.event.addListener(markers[index], 'click', function(event) {
+					close_other_makers(index);  //關閉其他地標訊息視窗
+					info_window[index] = new google.maps.InfoWindow({  //建立地標訊息視窗
+						content: msg,
+						maxWidth: 280
+					});
+					info_window[index].open(markers[index].getMap(), markers[index]);  //顯示地標訊息視窗
+					markers[index].getMap().panTo(latLng);  //將目前地標設為中心
+					panorama = markers[index].getMap().getStreetView();  //設定街景
+					panorama.setPosition(latLng);  //街景位置
+					panorama.setPov({  //建立街景
+						heading: 0,
+						zoom: 1,
+						pitch: 0
+					});
+				});
+			}
+			
+			function close_other_makers(index){  //關閉其他地標訊息視窗
+				var makers_count = markers.length;  //地標數量
+				for (var i=0;i<makers_count;i++){
+					if (i == index ) continue;  //如果是目前地標就跳過
+					if (info_window[i]) info_window[i].close();  //關閉地標訊息視窗
+					info_window[i] = null;  //清除地標訊息視窗
+				}
+			}
+		}
+		
+		function show_streeview() {  //顯示街景
+			panorama.setVisible(true);
+		}
+			
+	</script>
+	
+	
+    <style>
+    .breadcrumb{
+      background-color: transparent;
+    }
+    .text{
+      color: #00cc99 !important;
+    }
+  </style>
+</head>
+<body>
+    {% include 'default/nav.html' %}
+    {% block content %} {% endblock %}
+    {% include 'default/footer.html' %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
+

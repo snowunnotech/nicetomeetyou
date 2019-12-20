@@ -1,0 +1,73 @@
+{% extends "default/base.html" %}
+
+{% block content %}
+  
+  <h2>新聞 </h2>
+  <div class="alert alert-warning" role="alert" >
+    <h2>{{msg}}</h2>
+  </div>
+  <section class"py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img style="width: 75%;"  src='https://images.unsplash.com/photo-1515523110800-9415d13b84a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'>
+      </div>
+      <div class="col-md-6">
+        <form action=""  method="GET" class="needs-validation" novalidate>
+        {% csrf_token %}
+          <div class="form-group"><label for="name">加入時間</label><input id="name" type="text" name="name" class="form-control" placeholder="2019/xx/xx xx:xx:xx.." value="{{unit.time}}" required>
+          <div class="invalid-feedback">Please choose a name.</div>
+          </div>
+          <div class="form-group"><label for="tel">新聞標題</label><input id="tel" type="tel" name="tel" class="form-control" placeholder=".." value="{{unit.title}}" required></div>
+          <div class="form-group"><label for="addr">新聞網址</label><input id="addr" type="text" name="addr" class="form-control" placeholder="https://.." value="{{unit.link_path}}" required></div>
+          <div class="form-group"><a href="{{unit.link_path}}">新聞連結</a></div>
+          <div class="card">
+        <div class="card-header">
+          新聞內容
+        </div>
+        <div class="card-body col-12">
+            <div class="media mb-4">
+            <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+            <div class="media-body">
+              <h5 class="mt-0 ml-2"></h5>
+              <div class="form-group">
+                
+                <textarea name="description" type="text" class="form-control" rows="3" placeholder="寫點什麼.."  >{{unit.content}}</textarea>
+                
+              </div>
+            </div>
+            </div>
+             
+        </div>
+      </div>
+     
+        {% comment %} <div class="text-right mt-1"><button type="reset" class="btn btn-secondary">reset</button><button type="submit" class="btn btn-primary">submit</button></div> {% endcomment %}
+     
+
+        </form>
+        <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "default/base.html" %}
+
+{% block content %}
+  
+  <h2>新聞首頁</h2>
+  <section class"py-5 bg-light">
+  <div class="container">
+      
+    </div>
+</section>
+
+<div class="container-fluid">
+    <div class="card rounded-0 mt-4">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="form-inline">
+            <div class="form-group"><label for="month" class="sr-only">月份</label><select name="sec" id="month" class="form-control form-control-sm"><option value="12">12月</option><option value="1">1月</option><option value="2">2月</option></select></div>
+          </div>
+          <div class="ml-auto">
+            
+            
+          </div>
+        </div>
+      </div>
+      <table class="table table-responsive-md">
+        
+        <thead>
+          <tr>
+          <th>加入時間</th>
+          <th>新聞標題</th>
+          <th></th>
+          
+          
+        </tr>
+        </thead>
+       
+        <tbody id="result" >
+          
+           
+        </tbody>
+         
+       
+      </table>
+      {{msg}}
+    </div>
+  </div>
+  <script type="text/javascript">
+        		var xhr = new XMLHttpRequest();
+        		var onloadHandle = function(){
+        			var data = JSON.parse(JSON.parse(xhr.responseText).data)
+        			
+        			var result = document.getElementById('result');
+        			var strHTML = '';
+        			console.log(data);
+        			data.forEach(function(value){
+            			
+        				
+        				strHTML +=  '<tr>'+'<td>'+value.fields.time+'</td>'+'<td>'+value.fields.title+'</td>'+'<td class=""><a href="/detail/'+value.pk+'/" target="_blank" class="btn btn-outline-primary btn-sm">More..</a></td>'+'</tr>'
+                        
+        			});
+              console.log(strHTML)
+        			result.innerHTML = strHTML;
+        		};
+        		xhr.open('GET','https://interview2prc.herokuapp.com/get_news_api/', true);
+        		xhr.send();
+        		
+        		xhr.onload = onloadHandle;
+  </script>
+ 
+{% endblock %}
