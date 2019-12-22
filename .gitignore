@@ -1,0 +1,6 @@
+nbaDRF_venv
+*.pyc
+__pychache__
+staticfiles
+db.sqlite3
+'.env'
