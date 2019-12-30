@@ -1,3 +1,8 @@
+佈署到heroku, 使用postgre資料庫:
+https://obscure-journey-32874.herokuapp.com/articles/
+
+嘗試使用celery定時爬蟲但失敗。只有從/articles送出request,頁面才會更新NBA news的焦點新聞
+
 # nice to meet you
 - [x] 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
 - [x] 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
