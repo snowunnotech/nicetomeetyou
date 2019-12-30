@@ -5,8 +5,10 @@
 	 * 焦點新聞列表
 	 * 新聞詳情頁面
 4. 以 Pull-Request 的方式將代碼提交。
+把其檔案作品部署於' Heroku 上。
+連結: https://jamie-web-heroku.herokuapp.com/nba_news
 	
-## 進階要求
+## 進階要求 (尚未完成)
 1. 使用 Scrapy。
 2. 實現爬蟲自動定時抓取。
 3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
