@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>News List</h1>
+<ul>
+</ul>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    addNews();
+})
+
+
+function addNews() {
+    const request = new XMLHttpRequest();
+    request.open("GET", "/articles/get-articles");
+    request.onload = function() {
+        const data = JSON.parse(request.responseText)
+        //get handle of ul element
+        const ul = document.querySelector('ul');
+        //prepare li for each news title
+        data.forEach(news => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            const title = document.createTextNode(news.title)
+            a.appendChild(title);
+            a.href = "/articles/detail/" + news.slug;
+            li.append(a)
+            ul.append(li);
+        })
+    }
+    request.send();
+}
+
+</script>
+
+{% endblock %}
