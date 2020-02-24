@@ -1,3 +1,10 @@
+# django 相關設定 
+superuser: admin/admin123
+
+1. python manage.py runserver
+2. 爬蟲結果：http://127.0.0.1:8000/hotnews/
+3. 資料庫：http://127.0.0.1:8000/admin/
+
 # nice to meet you
 1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
 2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
