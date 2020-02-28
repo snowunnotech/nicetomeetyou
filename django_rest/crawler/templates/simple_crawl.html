@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>nba爬蟲測試</title>
+</head>
+<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+<div>
+<div ><h3>焦點新聞</div>
+<body>
+   <table  style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+        <tr>
+            <th>時間</th>
+            <th>標題</th>
+            <th>連結</th>
+            <th>內文</th>
+        </tr>
+    {% for nba_news in all_nba_news %}
+        <tr>
+            <td> {{ nba_news.nba_time }} </td>
+            <td> {{ nba_news.nba_title }} </td>
+            <td> <p><a href="{{ nba_news.nba_url }}"target="_blank">{{ nba_news.nba_url }}</a></p> </td>
+            <td><button>
+                    
+                    <p><a href="/detail/{{ nba_news.slug }}"target="_blank">內文</a></p>
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    
+</body>
+</html>
+<div>
