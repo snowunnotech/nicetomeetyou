@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NBA Newsboard</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div>
+			{% csrf_token %}
+			<button class="apireq">get news</button>
+		</div>
+		<div id="jsonresp" style="margin-top: 100px">
+
+		</div>
+		<script type="text/javascript">
+			var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+			$.ajaxSetup({
+			    beforeSend: function(xhr, settings) {
+			    	// !csrfSafeMethod(settings.type) &&
+			        if (!this.crossDomain) {
+			            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			        }
+			    }
+			});
+			var articles = [];
+			$('.apireq').click( function() {
+						$.ajax({
+				url : "http://127.0.0.1:8000/api/newsboard",
+				dataType: "json",
+				success : function (data) {
+						var i;
+						
+						for (i = 0; i < data.length; i++) { 
+						 	var title = document.createElement('div');
+						 	title.innerHTML = `<div class="article article-${i} onclick='Show(${i})">` + data[i].title + `</div> <div class="article-${i}"></div>`;
+							$('body').append(title);  
+							articles.push(data[i].content) 
+
+					}
+				// $('#Content').html( data[0].content);
+				}
+				});
+				});
+
+		
+			function Show(id) {
+				alert(id);
+			}
+			
+				
+		</script>
+	</body>
+</html>
