@@ -7,7 +7,7 @@
 4. (done)以 Pull-Request 的方式將代碼提交。
 	
 ## 進階要求
-1. 使用 Scrapy。
+1. (done)使用 Scrapy。
 2. 實現爬蟲自動定時抓取。
 3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 4. 将本 demo 部署至服务器并可正确运行。
