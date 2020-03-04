@@ -39,6 +39,12 @@ scrapy-djangoitem==1.1.1
 Twisted==19.10.0
 ```
 
+※ 若是以本地環境想要執行此專案，可以將 SQL 檔 Import 至 MySQL資料庫
+
+SQL 檔路徑: ```scrapy-news\ScrapyNewsProjectDump.sql```
+
+預設的 Django port 為 8000，直接執行 python manage.py runserver 即可
+
 ## 基礎要求
 
 #### 1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
