@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Jasper">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <!-- recaptcha V2 CDN -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=zh-TW'></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-4">
+            <div id="news-title" class="padding-item align-items-center justify-content-center div-wrapper d-flex">
+                
+            </div>
+        </div>
+        <div class="row my-4">
+            <div id="news-subtitle" class="padding-item align-items-center justify-content-center div-wrapper d-flex">
+                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="news-context-img" class="align-items-center justify-content-center div-wrapper d-flex">
+        </div>
+    </div>
+    <div class="container my-4 padding-item" id="news-body">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+$.ajax({
+    url: "/api/news/{{ news_id }}",
+    data: {},
+    success: function(data) {
+        var post_date = (data["post_date"]).substring(0,10) +" "+ (data["post_date"]).substring(11,19);
+        $("#news-title").append(`<h1 class="padding-item">` + data["title"] + "</h1>");
+        $("#news-subtitle").append(`<div class="padding-item"><h4>` + post_date + "</h4></div");
+        $("#news-subtitle").append(`<div class="padding-item"><h4>　` + data["subtitle"] + "</h4></div");
+        $("#news-context-img").append(`<img class="padding-item" style="width:70%" src="`+ data["img_url"]+ `">`);
+        $("#news-body").append(data["context"]);
+    }
+});
+</script>
+
+<script>
+    //可在Javascript中使用如同C#中的string.format
+//使用方式 : var fullName = String.format('Hello. My name is {0} {1}.', 'FirstName', 'LastName');
+String.format = function ()
+{
+    var s = arguments[0];
+    if (s == null) return "";
+    for (var i = 0; i < arguments.length - 1; i++)
+    {
+        var reg = getStringFormatPlaceHolderRegEx(i);
+        s = s.replace(reg, (arguments[i + 1] == null ? "" : arguments[i + 1]));
+    }
+    return cleanStringFormatResult(s);
+}
+//可在Javascript中使用如同C#中的string.format (對jQuery String的擴充方法)
+//使用方式 : var fullName = 'Hello. My name is {0} {1}.'.format('FirstName', 'LastName');
+String.prototype.format = function ()
+{
+    var txt = this.toString();
+    for (var i = 0; i < arguments.length; i++)
+    {
+        var exp = getStringFormatPlaceHolderRegEx(i);
+        txt = txt.replace(exp, (arguments[i] == null ? "" : arguments[i]));
+    }
+    return cleanStringFormatResult(txt);
+}
+//讓輸入的字串可以包含{}
+function getStringFormatPlaceHolderRegEx(placeHolderIndex)
+{
+    return new RegExp('({)?\\{' + placeHolderIndex + '\\}(?!})', 'gm')
+}
+//當format格式有多餘的position時，就不會將多餘的position輸出
+//ex:
+// var fullName = 'Hello. My name is {0} {1} {2}.'.format('firstName', 'lastName');
+// 輸出的 fullName 為 'firstName lastName', 而不會是 'firstName lastName {2}'
+function cleanStringFormatResult(txt)
+{
+    if (txt == null) return "";
+    return txt.replace(getStringFormatPlaceHolderRegEx("\\d+"), "");
+}
+</script>

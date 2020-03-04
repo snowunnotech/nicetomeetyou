@@ -1,0 +1,35 @@
+body,input,button,select,textarea{
+    font-family: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", "微软雅黑", "メイリオ", "맑은 고딕", sans-serif;
+    font-size:108%;
+}
+
+body{
+    background: #ecedee;
+}
+
+.container{
+    background: #ffffff;
+}
+
+.padding-item{
+    padding: 10px;
+}
+
+.news-card{
+    background: #ffffff;
+    width: 1500px;
+}
+
+.news-cover-img{
+    width: 100%;
+}
+
+.news-context-img{
+    width: 700px;
+    display: block;
+}
+
+.news-body{
+    background: #ffffff;
+    width: 1140px;
+}
