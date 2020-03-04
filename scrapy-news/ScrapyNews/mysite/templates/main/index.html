@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Jasper">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <!-- recaptcha V2 CDN -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=zh-TW'></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-4 ">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4 align-items-center justify-content-center div-wrapper d-flex">
+                <h1>
+                    焦點新聞
+                </h1>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+    <div class="container" id="news-body">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    
+$.ajax({
+    url: "/api/news/",
+    data: {},
+    success: function(data) {
+        $news_list = null;
+        $results = data["results"];
+        $($results).each(function(){
+            var sub_context = ($(this)[0]["context"]).substring(0,100) + "……";
+            var post_date = ($(this)[0]["post_date"]).substring(0,10) +" "+ ($(this)[0]["post_date"]).substring(11,19);
+            var temp_news_element = String.format(
+                `<div class="row my-4 div-wrapper d-flex align-items-center justify-content-center">
+            <div class="news-card align-items-center justify-content-center div-wrapper d-flex">
+                <div class="col-md-4 my-4 align-items-center justify-content-center div-wrapper d-flex">
+                    <img class="news-cover-img" src="{0}">
+                </div>
+                <div class="col-md-8">
+                    <div class="row my-1">
+                            <h2>{1}</h2>
+                    </div>
+                    <div class="row my-1">
+                            <p>{2}　</p>
+                            <p>{3}</p>
+                    </div>
+                    <div class="row my-3">
+                            <p>{4}</p>
+                    </div>
+                    <div class="row my-3 align-items-end div-wrapper d-flex">
+                            <a href="{{ base_url }}news/{5}">繼續閱讀</a>
+                    </div>
+                </div>
+            </div>
+            </div>`, $(this)[0]["img_url"] ,$(this)[0]["title"], post_date,$(this)[0]["subtitle"],sub_context, $(this)[0]["news_id"]);
+            $("#news-body").prepend(temp_news_element);
+        })
+    }
+});
+</script>
+
+<script>
+    {% if os_name == 'nt' %}
+        
+        var news_socket = new WebSocket(
+            'ws://127.0.0.1:8000'+
+            '/ws/news_streaming/');
+
+    {% else %}
+
+        var news_socket = new WebSocket(
+            'wss://jaspersui.club'+
+            '/wss/news_streaming/');
+
+    {% endif %}
+
+    news_socket.onopen = function(e){
+        console.log("已連接到 WebSocket！")
+    };
+
+    news_socket.onmessage = function(e) {
+        var model = null
+        var data = JSON.parse(e.data);
+        model_json = jQuery.parseJSON(data['model'].text_data);
+
+        var sub_context = (model_json["context"]).substring(0,100) + "……";
+            var post_date = (model_json["post_date"]).substring(0,10) +" "+ (model_json["post_date"]).substring(11,19);
+            var temp_news_element = String.format(
+                `<div class="row my-4 div-wrapper d-flex align-items-center justify-content-center">
+            <div class="news-card align-items-center justify-content-center div-wrapper d-flex">
+                <div class="col-md-4 align-items-center justify-content-center div-wrapper d-flex">
+                    <img class="news-cover-img" src="{0}">
+                </div>
+                <div class="col-md-8">
+                    <div class="row my-1">
+                            <p>{1}</p>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-md-6">
+                            <p>{2}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{3}</p>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                            <p>{4}</p>
+                    </div>
+                    <div class="row my-3 align-items-end div-wrapper d-flex">
+                            <a href="{{ base_url }}news/{5}">繼續閱讀</a>
+                    </div>
+                </div>
+            </div>
+            </div>`, model_json["img_url"] ,model_json["title"], post_date,model_json["subtitle"],sub_context, model_json["news_id"]);
+            $("#news-body").append(temp_news_element);
+        alert("有新的新聞推播！")
+    };
+
+    news_socket.onclose = function(e) {
+        console.error('News socket closed unexpectedly');
+    };
+
+</script>
+
+<script>
+    //可在Javascript中使用如同C#中的string.format
+//使用方式 : var fullName = String.format('Hello. My name is {0} {1}.', 'FirstName', 'LastName');
+String.format = function ()
+{
+    var s = arguments[0];
+    if (s == null) return "";
+    for (var i = 0; i < arguments.length - 1; i++)
+    {
+        var reg = getStringFormatPlaceHolderRegEx(i);
+        s = s.replace(reg, (arguments[i + 1] == null ? "" : arguments[i + 1]));
+    }
+    return cleanStringFormatResult(s);
+}
+//可在Javascript中使用如同C#中的string.format (對jQuery String的擴充方法)
+//使用方式 : var fullName = 'Hello. My name is {0} {1}.'.format('FirstName', 'LastName');
+String.prototype.format = function ()
+{
+    var txt = this.toString();
+    for (var i = 0; i < arguments.length; i++)
+    {
+        var exp = getStringFormatPlaceHolderRegEx(i);
+        txt = txt.replace(exp, (arguments[i] == null ? "" : arguments[i]));
+    }
+    return cleanStringFormatResult(txt);
+}
+//讓輸入的字串可以包含{}
+function getStringFormatPlaceHolderRegEx(placeHolderIndex)
+{
+    return new RegExp('({)?\\{' + placeHolderIndex + '\\}(?!})', 'gm')
+}
+//當format格式有多餘的position時，就不會將多餘的position輸出
+//ex:
+// var fullName = 'Hello. My name is {0} {1} {2}.'.format('firstName', 'lastName');
+// 輸出的 fullName 為 'firstName lastName', 而不會是 'firstName lastName {2}'
+function cleanStringFormatResult(txt)
+{
+    if (txt == null) return "";
+    return txt.replace(getStringFormatPlaceHolderRegEx("\\d+"), "");
+}
+</script>
