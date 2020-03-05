@@ -14,7 +14,6 @@ class NewsSpider(scrapy.Spider):
 
         for news_url in news_url_list:
             news_url = 'https://nba.udn.com' + news_url
-            print('>>>>> news_url', news_url)
             if not News.objects.filter(news_url=news_url).exists():
                 yield scrapy.Request(news_url, callback=self.parse_news_detail_content)
 
