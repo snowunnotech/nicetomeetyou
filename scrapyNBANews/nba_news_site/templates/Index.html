@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>NBA 焦點新聞</title>
+</head>
+<body>
+    <h1>焦點新聞</h1>
+    <div id="news-index"></div>
+</body>
+</html>
+
+<script>
+    $.ajax({
+        url: "/api/news/",
+        data: {},
+        success: function(data) {
+            $results = data["results"];
+            $($results).each(function(){
+            console.log(data)
+            var sub_context = ($(this)[0]["context"]).substr(0,30) + "……";
+            var post_date = ($(this)[0]["post_date"]).substr(0,10) +" "+ ($(this)[0]["post_date"]).substr(11, 19);
+            var news_elements = String.format(
+            `<div>
+                <img src="{0}">
+            </div>
+            <div>
+                <div>
+                    <p>{1}</p>
+                </div>
+                <div>
+                    <h2>{2}</h2>
+                </div>
+                <div>
+                    <p>{3}</p>
+                </div>
+                <div>
+                    <p>{4}</p>
+                </div>
+                <div>
+                    <a href="{{ base_url }}{5}">繼續閱讀</a>
+                </div>
+            </div>
+            <hr>`, $(this)[0]["img_url"], post_date ,$(this)[0]["title"],$(this)[0]["author"],sub_context, $(this)[0]["news_id"]);
+            $("#news-index").prepend(news_elements);
+        })
+        }
+    });
+
+    String.format = function() {
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i += 1) {
+                var reg = new RegExp('\\{' + i + '\\}', 'gm');
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
+        };
+</script>
