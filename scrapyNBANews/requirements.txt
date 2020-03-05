@@ -1,0 +1,10 @@
+asyncio==3.4.3
+channels==2.1.5
+channels-redis==2.3.2
+daphne==2.2.0
+Django==2.1.7
+djangorestframework==3.11.0
+uWSGI==2.0.18
+Scrapy==2.0.0
+scrapy-djangoitem==1.1.1
+Twisted==19.10.0
