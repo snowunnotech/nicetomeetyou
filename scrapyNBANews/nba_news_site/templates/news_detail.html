@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>NBA 焦點新聞</title>
+</head>
+<body>
+    <div id="news-title"></div>
+    <div id="news-post-date"></div>
+    <div id="news-author"></div>
+    <div id="news-img"></div>
+    <div id="news-context"></div>
+</body>
+</html>
+
+<script>
+    $.ajax({
+        url: "/api/news/{{ news_detail.news_id }}",
+        data: {},
+        success: function(data) {
+            var post_date = (data["post_date"]).substr(0,10) +" "+ (data["post_date"]).substr(11,19);
+            $("#news-title").append(`<h1>` + data["title"] + "</h1>");
+            $("#news-post-date").append(`<div><h4>` + data["post_date"] + "</h4></div");
+            $("#news-author").append(`<div><h4>` + data["author"] + "</h4></div");
+            $("#news-img").append(`<img src="`+ data["img_url"]+ `">`);
+            $("#news-context").append(data["context"]);
+        }
+    });
+    </script>
