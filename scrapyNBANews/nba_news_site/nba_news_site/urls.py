@@ -23,7 +23,7 @@ router = routers.DefaultRouter()
 router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
-    path('', views.newsIndex, name='newsIndex'),
+    path('news/', views.newsIndex, name='newsIndex'),
     path('news/<int:news_id>', views.newsDetail, name='newsDetail'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
