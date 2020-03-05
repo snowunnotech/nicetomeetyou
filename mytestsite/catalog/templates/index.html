@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>NBA 焦點新聞</title>
+</head>
+
+<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div>
+<div style="display: flex; justify-content: center;"><h1>焦點新聞</div>
+<body style="display: flex; justify-content: center;">
+   <table  style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+        <tr>
+            <th>圖片</th>
+            <th>標題</th>
+            <th>新聞發布時間</th>
+            <th>來源</th>
+            <th>內容</th>
+        </tr>
+    {% for news in news_list %}
+        <tr>
+            <td> <img src="{{ news.photo_url }}" width="200" height="150"> </td>
+            <td> <p><a href="{{ news.report_url }}"target="_blank">{{ news.news_title }}</a></p> </td>
+            <td> {{ news.report_time }} </td>
+            <td> <p>{{ news.report_source }}</p></td>
+            <td>
+                <p><a href="/detail/{{ news.slug }}"target="_blank">內容</a></p>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+</body>
+
+</html>
+<div>
