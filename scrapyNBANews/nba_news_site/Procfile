@@ -1,1 +1,1 @@
-web: gunicorn nba_news_site.wsgi:application --log-file -
+web: gunicorn nba_news_site.wsgi
