@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath nba_news_site nba_news_site.wsgi
+web: gunicorn nba_news_site.wsgi:application --log-file -
