@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+</head>
+<body>
+	<h1>NBA焦點新聞</h1>
+	<hr>
+	<table>
+	    <tr>
+            <th>新聞標題</th>
+            <th>新聞詳情連結</th>
+        </tr>
+        {% for feed in all_feeds %}
+        <tr>
+            <td>{{ feed.title }}</td>
+            <td><a href= {{ feed.link_url }}>{{ feed.link_url }}</a></td>
+        <tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
