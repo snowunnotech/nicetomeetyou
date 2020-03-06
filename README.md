@@ -1,4 +1,5 @@
 網站目前部署在 heroku 上，網址為：https://nbaspotnews.herokuapp.com/catalog/
+(目前發現有 bug，會導致產生大量的新聞資訊，此行為會導致內容頁無法進入，正嘗試修復中)
 
 非常感謝貴公司邀請我進行這次的測驗，也希望有進一步面試的機會。
 雖然之前有接觸過 Python，但對於 Django 及 rest framework 都是第一次接觸，由於時間不夠，可能做得還不夠完善或是錯誤，請見諒
