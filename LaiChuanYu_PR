@@ -1,0 +1,62 @@
+from selenium import webdriver
+import unittest
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+import requests
+from django.db import models
+import pymysql
+
+
+def get_db_connection(db_name=None):
+
+    if db_name is None:
+        db_name = "db_name"
+
+    db = pymysql.connect(host="127.0.0.1:8080",
+                         user="user name",
+                         password="password",
+                         database=db_name,
+                         charset='utf8')  # 打開 MySQL DB
+    return db
+
+
+class GetNews(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://nba.udn.com/nba/index?gr=www")
+        self.driver.maximize_window()
+
+        r = requests.get("https://nba.udn.com/nba/index?gr=www")
+
+    def tearDown(self):
+        self.driver.quit()
+
+    def test_case1(self):
+        driver = self.driver
+        driver.implicitly_wait(15)
+        wait = WebDriverWait(driver, 15, 0.5)
+        con = get_db_connection()
+        cursor = con.cursor()
+
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".big h3")))
+        focus_news = driver.find_element_by_css_selector(".big h3")
+        driver.execute_script("arguments[0].scrollIntoView();", focus_news)
+        focus_news.click()
+        url = driver.current_url
+        print(type(url), url)
+
+        sql = """
+                insert into dbname.tables values "{0}"
+        """.format(url)
+        cursor.execute(sql)
+        con.commit()
+
+        cursor.close()
+        con.close()
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+
