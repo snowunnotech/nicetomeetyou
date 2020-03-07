@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import datetime
-from .models import NBASpotNews
+from .models import NBASpotNews, LatestNewsTitle
 from threading import Timer
 from slugify import slugify
 
@@ -14,6 +14,7 @@ END_PARSE = 1
 PROFILE_NOT_EXIST = 0
 PROFILE_EXIST = 1
 
+LATEST_NEWS_PROFILE_PATH = 'latest_news_profile.txt'
 
 main_page = 'https://nba.udn.com/nba/cate/6754/-1/newest/'
 news_content_page = 'https://nba.udn.com'
@@ -65,15 +66,21 @@ def get_news(page_number, profile_exist):
 			last_updated_news_title = read_latest_news_file()
 
 		if (profile_exist == PROFILE_EXIST):
-			if (last_updated_news_title == latest_news_title):
+			if (last_updated_news_title.latest_news_title == latest_news_title):
+				from django import db
+				db.connections.close_all()
 				return END_PARSE
 		
 		for idx, title_name in enumerate(title):
 			report_content, report_time, report_source = get_news_detail(report_url[idx].get('href'))
 			photo_url = photo_url_body[idx].get('data-src')
 			if (profile_exist == PROFILE_EXIST):
-				if (title_name.text is last_updated_news_title):
+				print (title_name.text)
+				print (last_updated_news_title.latest_news_title)
+				if (title_name.text == last_updated_news_title.latest_news_title):
 					write_latest_news_file(latest_news_title)
+					from django import db
+					db.connections.close_all()
 					return END_PARSE
 			
 			slug = slugify(title_name.text)
@@ -100,22 +107,18 @@ def execute_timer():
 	t.start()
 
 def read_latest_news_file():
-	latest_news_title = ""
-	with open(LATEST_NEWS_PROFILE_PATH, 'r') as read_file:
-		latest_news_title = read_file.read()
+	latest_news_title = LatestNewsTitle.objects.get()
 	return latest_news_title
 
 def write_latest_news_file(latest_news_title):
-	write_file = open(LATEST_NEWS_PROFILE_PATH, 'w')
-	write_file.write(latest_news_title)
-	write_file.close()
+	LatestNewsTitle.objects.all().delete()
+	latest_news_title = LatestNewsTitle(latest_news_title = latest_news_title)
+	latest_news_title.save()
 
 def check_profile_exist():
-	try:
-		f = open(LATEST_NEWS_PROFILE_PATH, 'r')
-	except IOError:
+	f = LatestNewsTitle.objects.all()
+	if (len(f) == 0):
 		return PROFILE_NOT_EXIST
-	f.close()
 	return END_PARSE
 
 if __name__ == "__main__":

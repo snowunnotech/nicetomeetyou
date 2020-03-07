@@ -16,3 +16,9 @@ class NBASpotNews(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('news_detail', args=[self.slug])
+
+class LatestNewsTitle(models.Model):
+	latest_news_title = models.TextField(default='')
+
+	def __str__(self):
+		return self.latest_news_title

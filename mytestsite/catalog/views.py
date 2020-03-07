@@ -12,7 +12,7 @@ def index(request):
 	return render(request, 'index.html', {'news_list':news_list})
 
 def show_detail_news(request, slug):
-    news_detail = NBASpotNews.objects.get(slug = slug)
+    news_detail = NBASpotNews.objects.filter(slug = slug)[0]
     return render(request, 'news_detail.html', {'news_detail':news_detail})
 
 class NewsViewSet(viewsets.ModelViewSet):
