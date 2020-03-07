@@ -14,7 +14,6 @@ END_PARSE = 1
 PROFILE_NOT_EXIST = 0
 PROFILE_EXIST = 1
 
-LATEST_NEWS_PROFILE_PATH = 'latest_news_profile.txt'
 
 main_page = 'https://nba.udn.com/nba/cate/6754/-1/newest/'
 news_content_page = 'https://nba.udn.com'
