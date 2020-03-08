@@ -20,7 +20,11 @@
 4. 啟動server  
 `python manage.py runserver 0.0.0.0:8000 `
 
-5. 網址：http://192.168.99.100:8000/base/ (使用docker ip)
+5. 網址 (使用docker ip)  
+* 主頁面：http://192.168.99.100:8000/base/
+
+* REST API： http://192.168.99.100:8000/api/news/   
+p.s. Django admin 帳號密碼，請參考admin.txt
 
 ### Scrapy啟動步驟
 1. 進入執行中的container  
