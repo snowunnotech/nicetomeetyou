@@ -1,0 +1,6 @@
+scrapy
+scrapy-djangoitem
+beautifulsoup4
+django
+djangorestframework
+netifaces

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 適應響應式設計 -->
+    <!-- 將標題區塊化 -->
+    <title>{% block title %}{% endblock %}</title>
+	
+	<!-- Latest compiled and miniﬁed CSS --> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- google font CDN -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+	<!--<link rel="stylesheet" href ="/static/css/blog.css">-->         
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}"> 	
+    
+	{% block header_extends %}{% endblock %}  <!-- 用於擴展額外 css -->
+</head>
+<body>
+    <div class="page-header">
+        <!-- 連接回主頁 -->
+        <a href=""><h1>NBA - 新聞列表</h1></a>
+    </div>
+	
+	<div id="container">
+		<div id="list-container" class="list-group">
+		</div>
+	</div>
+	
+	<!-- 導入js和jquery -->
+	<script
+	src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{% static 'main.js' %}"></script>
+</body>
+</html>
