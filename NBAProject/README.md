@@ -2,9 +2,9 @@
 
 ### NBA 新聞網頁爬蟲並實作網頁呈現  
 ### 使用環境與工具 Windows10, python3.7.3, Scrapy, Django, Django REST Framework, AJAX
+### DEMO網頁：https://nba-website.herokuapp.com/base/  
 #### 未完成：
 * 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面
-* 将本 demo 部署至服务器并可正确运行
 * 所實現新聞列表 API 可承受 100 QPS 的壓力測試
 
 ### 安裝步驟
