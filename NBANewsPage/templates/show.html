@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = 'utf-8'>
+        <title>NBA NEWS PAGE</title>
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+        <script type = "text/javascript">
+            function getData(id) {
+                $.ajax({
+                    url : "http://127.0.0.1:8000/api/NBA",
+                    type : "GET",
+                    dataType : "json",
+                    success : function(response) {
+                        data = response
+                        var html = ""
+                        for(var i = 0; i < data.length; i++) {
+                            if(data[i].id == id) {
+                                html += data[i].content
+                            }
+                        }
+                        $("#" + id).html(html);
+                    },
+                    error : function(response) {
+                        alert("Error")
+                    }
+                });
+            };
+        </script>
+    <head>
+    <body>
+        <h1>NBA 焦點新聞</h1>
+        {% for x in data %}
+        <h3><span onclick = "getData({{x.id}});">{{x.title}}</span></h3>
+        <div id = {{x.id}}></div>
+        {% empty %}
+        <h1>沒有資料</h1>
+        {% endfor %}
+    </body>
+</html>
