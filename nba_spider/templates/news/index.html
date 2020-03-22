@@ -1,0 +1,33 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+<h1>NBA NEWS</h1>
+<div>
+    <ul id="news_list">
+    </ul>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    getNewsList();
+});
+
+function getNewsList() {
+    fetch('/get_news_list', {
+        method: 'Get',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            const newsListDom = document.getElementById('news_list');
+            data.forEach(news => {
+                let li = document.createElement("li");
+                li.textContent = news.title;
+                newsListDom.appendChild(li);
+            });
+        })
+}
+</script>
+{% endblock %}
