@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from .models import NBANewsPage
+from NewsPage.models import NBANewsPage
 
 import requests
 
@@ -44,9 +44,14 @@ class crawler(object):
                     break
                 else:
                     print("saveData")
-                    new_data.title = x
-                    new_data.href = self.base_url + y
-                    new_data.content = str(z)
-                    new_data.save()
+                    # new_data.title = x
+                    # new_data.href = self.base_url + y
+                    # new_data.content = str(z)
+                    new_data = NBANewsPage.objects.create(title = x, href = self.base_url + y, content = str(z))
+                    # new_data.save()
         except Exception as e:
             print(e)
+
+crawler = crawler()
+crawler.getData()
+crawler.saveData()
