@@ -27,7 +27,7 @@ def crawler():
         article = get_news_detail(news)
         news_list.append(article)
         # Debugging
-        # insert_news(article)
+        insert_news(article)
 
     return news_list
 
@@ -102,6 +102,6 @@ def insert_news(news):
         author=news['author'],
         title=news['title'],
         content=news['content'],
-        url=news['url']
+        news_url=news['url']
     )
     m.save()

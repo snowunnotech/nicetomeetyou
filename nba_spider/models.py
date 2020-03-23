@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import transaction
 
 
 class NbaSpider(models.Model):
@@ -13,11 +12,3 @@ class NbaSpider(models.Model):
     def __str__(self):
         return self.title
 
-    # def save(self, *args, **kwargs):
-    #     super(NbaSpider, self).save(*args, **kwargs)
-        # sid = transaction.savepoint()
-        # try:
-        #     super(NbaSpider, self).save(*args, **kwargs)
-            # transaction.savepoint_commit(sid)
-        # except:
-            # transaction.savepoint_rollback(sid)
