@@ -21,7 +21,7 @@ def scrapy():
 register_events(scheduler)
 scheduler.start()
 
-def Show(requests):
+def Show(requests, pageindex = None):
     data = NBANewsPage.objects.all().order_by('-id')
     return render(requests, "show.html", locals())
 
