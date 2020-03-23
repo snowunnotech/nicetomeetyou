@@ -24,6 +24,6 @@ router.register(r'NBA', NBAViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', Show),
+    path('show/', Show),
     path('api/', include(router.urls))
 ]
