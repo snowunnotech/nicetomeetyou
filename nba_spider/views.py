@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
-import re
+from .models import NbaSpider
 from django.http import JsonResponse
 
 
@@ -14,13 +14,20 @@ def get_news_list(request):
     return JsonResponse(crawler(), safe=False)
 
 
+def news_detail(request):
+    return None
+
+
 def crawler():
     url = 'https://nba.udn.com/nba/index?gr=www'
     s = construct_soup(url)
     news_urls = get_news_urls(s, get_base_domain(url))
     news_list = []
     for news in news_urls:
-        news_list.append(get_news_detail(news))
+        article = get_news_detail(news)
+        news_list.append(article)
+        # Debugging
+        # insert_news(article)
 
     return news_list
 
@@ -79,8 +86,22 @@ def get_news_title(soup: BeautifulSoup):
 
 def get_news_content(soup: BeautifulSoup):
     content = soup.find(id="story_body_content").find("p").getText()
-    print(f"get_news_content.content= {content}")
     return content
+
 
 def get_base_domain(url: str):
     return url[:url.rfind('.com')+4]
+
+
+def insert_news(news):
+    created_at = datetime.utcnow().strftime('%Y-%m-%d %H:%M')
+
+    m = NbaSpider(
+        created_at=str(created_at),
+        publish_at=news['date_time'],
+        author=news['author'],
+        title=news['title'],
+        content=news['content'],
+        url=news['url']
+    )
+    m.save()

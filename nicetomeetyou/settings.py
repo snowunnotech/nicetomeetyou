@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import environ
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,21 +74,15 @@ WSGI_APPLICATION = 'nicetomeetyou.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env()
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('dbName'),
-        'USER': env('dbUser'),
-        'PASSWORD': env('dbPw'),
-        'HOST': env('dbHost'),
-        'PORT': env('dbPort'),
+        'NAME': 'postgres',
+        'HOST': 'localhost',
+        'USER': 'chenpohsun',
+        'PASSWORD': 'add14391Ab!',
+        'PORT': 5432
     }
 }
 
