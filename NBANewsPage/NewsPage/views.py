@@ -6,7 +6,7 @@ from django_apscheduler.jobstores import DjangoJobStore, register_events, regist
 
 from .models import NBANewsPage
 from .serializers import NBASerializer
-# from .autoScrapy import crawler
+from .autoScrapy import crawler
 
 # # Create your views here.
 # scheduler = BackgroundScheduler()
@@ -21,10 +21,13 @@ from .serializers import NBASerializer
 # register_events(scheduler)
 # scheduler.start()
 
+# crawler.getData()
+# crawler.saveData()
+
 def Show(requests, pageindex = None):
     data = NBANewsPage.objects.all().order_by('-id')
     return render(requests, "show.html", locals())
 
 class NBAViewSet(viewsets.ModelViewSet):
-    queryset = NBANewsPage.objects.all().order_by('-add_date')
-    serializer_class = NBASerializer
+    queryset = NBANewsPage.objects.all().order_by('-id')
+    serializer_class = NBASerializer()

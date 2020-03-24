@@ -1,2 +1,1 @@
 web: gunicorn --pythonpath NBANewsPage NBANewsPage.wsgi
-clock: python autoScrapy.py
