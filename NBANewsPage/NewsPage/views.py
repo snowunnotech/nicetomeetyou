@@ -30,4 +30,4 @@ def Show(requests, pageindex = None):
 
 class NBAViewSet(viewsets.ModelViewSet):
     queryset = NBANewsPage.objects.all().order_by('-id')
-    serializer_class = NBASerializer()
+    serializer_class = NBASerializer

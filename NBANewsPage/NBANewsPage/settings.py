@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_apscheduler',
     'rest_framework',
     'NewsPage',
+    'whitenoise.runserver_nostatic',
 ]
 
 APSCHEDULER_DATETIME_FORMAT =  "N j, Y, f:s a"
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'NBANewsPage.urls'
@@ -83,7 +85,7 @@ WSGI_APPLICATION = 'NBANewsPage.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NBANews',
+        'NAME': 'dosv5mc2djipr',
         'USER': 'snhdnddzwhcuff',
         'PASSWORD': '304e4989fbe58ea945ea3f021edcbb87c08c459707d9a485bae144c85568e032',
         'HOST': 'ec2-18-206-84-251.compute-1.amazonaws.com',
@@ -136,5 +138,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())

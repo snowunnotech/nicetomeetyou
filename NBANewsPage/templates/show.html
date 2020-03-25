@@ -3,25 +3,26 @@
     <head>
         <meta charset = 'utf-8'>
         <title>NBA NEWS PAGE</title>
-        <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
-        <script type = "text/javascript">
+        {% load static %}
+        <script type='text/javascript' src='{% static "jquery-1.9.1.min.js" %}'></script>
+        <script type='text/javascript'>
             function getData(id) {
-                $.ajax({
-                    url : "https://udnnbanews.herokuapp.com/api/NBA/",
+                var urlnews = "https://udnnbanews.herokuapp.com/api/NBA/"
+                $.ajax(urlnews, {
                     type : "GET",
-                    dataType : "json",
+                    dataType : "application/json",
                     success : function(response) {
                         data = response
-                        var html = ""
+                        var text = data
                         for(var i = 0; i < data.length; i++) {
                             if(data[i].id == id) {
-                                html += data[i].content
+                                text += data[i].content
                             }
                         }
-                        $("#" + id).html(html);
+                        $("#" + id).html(text);
                     },
                     error : function(response) {
-                        alert("Error")
+                        console.log("request no. 1 have failed");
                     }
                 });
             };
@@ -30,10 +31,11 @@
     <body>
         <h1>NBA 焦點新聞</h1>
         {% for x in data %}
-        <h3><span onclick = "getData({{x.id}});">{{x.title}}</span></h3>
+        <button onclick = "getData({{x.id}});">{{x.title}}</button>
         <div id = {{x.id}}></div>
         {% empty %}
         <h1>沒有資料</h1>
         {% endfor %}
+        <a href = "https://udnnbanews.herokuapp.com/api/NBA/">API</a>
     </body>
 </html>
