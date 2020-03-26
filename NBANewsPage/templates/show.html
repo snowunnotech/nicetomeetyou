@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = 'utf-8'>
+        <title>NBA NEWS PAGE</title>
+        {% load static %}
+        <script type='text/javascript' src='{% static "jquery-1.9.1.min.js" %}'></script>
+        <script type='text/javascript'>
+            function getData(id) {
+                var urlnews = "https://udnnbanews.herokuapp.com/api/NBA/"
+                $.ajax(urlnews, {
+                    type : "GET",
+                    dataType : "json",
+                    success : function(response) {
+                        data = response
+                        var text = ""
+                        for(var i = 0; i < data.length; i++) {
+                            if(data[i].id == id) {
+                                text += data[i].content
+                            }
+                        }
+                        $("#" + id).html(text);
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                    }
+            });}
+        </script>
+    <head>
+    <body>
+        <h1>NBA 焦點新聞</h1>
+        {% for x in data %}
+        <a><span onclick = "getData({{x.id}});">{{x.title}}</span></a>
+        <div id = {{x.id}}></div>
+        {% empty %}
+        <h1>沒有資料</h1>
+        {% endfor %}
+        <a href = "https://udnnbanews.herokuapp.com/api/NBA/">API</a>
+    </body>
+</html>
