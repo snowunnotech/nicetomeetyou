@@ -1,0 +1,6 @@
+scrapy
+scrapy-djangoitem
+django
+djangorestframework
+channels
+channels-redis
