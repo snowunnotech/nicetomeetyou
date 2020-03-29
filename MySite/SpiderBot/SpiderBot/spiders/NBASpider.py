@@ -6,8 +6,6 @@ from SpiderBot.items import NBANewsItem
 class NBASpider(CrawlSpider):
     name = 'NBANews'
     start_urls = ['https://nba.udn.com/nba/index?gr=www']
-    print(NBANewsItem.django_model)
-    print('===================================================')
     def parse(self, response):
         for item in response.css('#mainbar #news #news_body'):
             for dt in item.css('dt:not(.ads)'):
@@ -21,8 +19,9 @@ class NBASpider(CrawlSpider):
             NewsPhoto = news.css('.photo_center a img::attr(data-src)')[0].extract()
             NewsContent = ''
             for Span in news.css('span p'):
-                if len(Span.css('p ::text').extract()) == 1:
-                    NewsContent += Span.css('::text')[0].extract()
+                if 'facebook' not in Span.css('::text').extract() and len(Span.css('::text').extract()) > 0:
+                    for conetent in Span.css('::text').extract():
+                        NewsContent += conetent
             item = NBANewsItem()
             item['Title'] = Title
             item['CreateAt'] = datetime.datetime.strptime(NewsPostDatetime, '%Y-%m-%d %H:%M') - datetime.timedelta(hours=8)

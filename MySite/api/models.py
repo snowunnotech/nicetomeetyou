@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class News(models.Model):
-    ID = models.AutoField(primary_key=True)
+    ID = models.AutoField(primary_key=True) #PK
     CrawlerAt = models.DateTimeField(auto_now=True) #新聞爬取時間
     Title = models.CharField(max_length = 100) #新聞標題
     CreateAt = models.DateTimeField() #新聞發布時間

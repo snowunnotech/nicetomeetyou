@@ -41,7 +41,7 @@
         var CreateAt = document.getElementById('CreateAt')
         var NewsContent = document.getElementById('NewsContent')
         Title.innerText = title
-        CreateAt.innerText = createAt
+        CreateAt.innerText = new Date(createAt).toLocaleString('zh', { hour12: false})
         NewsContent.innerText = Content
         document.title = title;
     }
