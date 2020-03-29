@@ -3,11 +3,11 @@
 Demo: [連結](https://my-nba-news.herokuapp.com/)(部署在heroku)
 
 ## 基本要求
-1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
+1.抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
 
 以Scrapy實作，實作檔案```MySite/SpiderBot/SpiderBotspiders/NBASpider.py```
 
-2. 使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
+2.使用 [Django](https://www.djangoproject.com/) 設計恰當的 Model，并將所抓取新聞存儲至 DB。
 
 使用SQLite搭配Django，使用的model為```MySite/api/model.py```
 僅會儲存尚未儲存過的新聞
@@ -24,7 +24,7 @@ class News(models.Model):
 ```
 ![image](Image/SQLite.PNG)
 
-3. 使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
+3.使用 [Django REST Framework](http://www.django-rest-framework.org/) 配合 AJAX 實現以下頁面：
 
 (1)焦點新聞列表
 
@@ -73,16 +73,16 @@ xhr.onreadystatechange = function() {
 }
 ```
 
-4. 以 Pull-Request 的方式將代碼提交。
+4.以 Pull-Request 的方式將代碼提交。
 
 已提交
 
 ## 進階要求
-1. 使用 Scrapy。
+1.使用 Scrapy。
 
 如基本要求第一點
 
-2. 實現爬蟲自動定時抓取。
+2.實現爬蟲自動定時抓取。
 
 實作檔案```MySite/SpiderBot/main.py```
 使用方式```python main.py --freq 間隔秒數```
@@ -100,7 +100,7 @@ def Job(frequence):
         time.sleep(int(frequence))
 ```
 
-3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
+3.使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。
 
 使用channels搭配channels-redis
 
@@ -140,11 +140,11 @@ BroadcastSocket.onmessage = function(e){
 	}
 }
 ```
-4. 将本 demo 部署至服务器并可正确运行。
+4.将本 demo 部署至服务器并可正确运行。
 
 以docker部署至heroku，如Demo連結
 
-5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+5.所實現新聞列表 API 可承受 100 QPS 的壓力測試。
 
 使用JMeter測試 1秒內100個請求，loop 5 次共500次請求
 
