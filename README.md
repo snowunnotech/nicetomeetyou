@@ -1,6 +1,6 @@
 # 創順科技 面試測驗
 
-Demo: [連結](https://my-nba-news.herokuapp.com/)(部署在heroku)
+Demo: [連結](https://reurl.cc/3D50ml)(部署在heroku)
 
 ## 基本要求
 1.抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
