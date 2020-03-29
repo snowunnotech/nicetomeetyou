@@ -56,7 +56,7 @@ function GetNewsList(){
 
 如Demo連結，實作檔案```MySite/api/templates/news.html```
 
-![image](Image/newsdeatil.PNG)
+![image](Image/newsdetail.PNG)
 ```javascript
 //news.html
 //line 27
