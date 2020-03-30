@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    hostname: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD= "aaaa"
+    volumes:
+      - ./mysql_db/mysql_data:/var/lib/mysql
+      - ./mysql_db/mysql_init:/docker-entrypoint-initdb.d/
+  redis:
+    image: redis
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"

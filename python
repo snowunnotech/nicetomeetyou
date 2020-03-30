@@ -1,0 +1,54 @@
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 14:58:23
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 15:07:14
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 15:07:44
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 15:08:15
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 15:08:55
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, myapp, sessions.
+Run 'python manage.py migrate' to apply them.
+March 28, 2020 - 15:10:09
+Django version 2.0.6, using settings 'project.settings'
+Starting ASGI/Channels version 2.1.7 development server at http://127.0.0.1:7000/
+Quit the server with CTRL-BREAK.
