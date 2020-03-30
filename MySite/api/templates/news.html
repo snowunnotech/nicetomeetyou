@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>	
+    <title></title>
+</head>
+<body style="font-family: 微軟正黑體;">
+    <div id='content' style='margin-left: 20px;margin-top: 20px;'>
+        <h1 id='Title' style='color: cornflowerblue;'>
+        </h1>
+        <div id='CreateAt' style='font-size: 10px;color: gray;'>
+        </div>
+        <div class="col-sm-4">
+            <div id='NewsContent' style='margin-top: 15px;'>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    var LocationUrl = window.location.href.split('/')
+    var NewsID = LocationUrl[LocationUrl.length - 1]
+    const xhr = new XMLHttpRequest();
+	xhr.open('GET', '/api/news/' + NewsID, true);
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200) {
+            let jsonData = JSON.parse(this.responseText);
+            ChangeNews(jsonData['Title'], jsonData['CreateAt'], jsonData['Content'])
+		}
+    }
+    
+    function ChangeNews(title, createAt, Content){
+        var Title = document.getElementById('Title')
+        var CreateAt = document.getElementById('CreateAt')
+        var NewsContent = document.getElementById('NewsContent')
+        Title.innerText = title
+        CreateAt.innerText = new Date(createAt).toLocaleString('zh', { hour12: false})
+        NewsContent.innerText = Content
+        document.title = title;
+    }
+</script>
