@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+# [GET] /get_news/
+def get_news(request):
+    if request.method == "GET":
+        pass
