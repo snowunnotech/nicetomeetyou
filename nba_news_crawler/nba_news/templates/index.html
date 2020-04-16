@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>NBA Hot News</title>
+  <link href="{% static "css/kendo.common.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/kendo.default.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/kendo.rtl.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/custom.css" %}" rel="stylesheet">
+</head>
+
+<body>
+  {% csrf_token %}
+  <script type="text/kendo-x-tmpl" id="template">
+    <div class="news">
+        <img src="#:image#"/>
+        <a href="#:url#">
+          <h3>#:title#</h3>
+          <h5>CreatedTime: #:timestamp#<h5/>
+        </a>
+    </div>
+  </script>
+  <div class="k-content wide">
+    <div id="listView"></div>
+    <div id="pager" class="k-pager-wrap"></div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/jszip.min.js" %}"></script>
+  <script src="{% static "js/kendo.all.min.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+</body>
+
+</html>
