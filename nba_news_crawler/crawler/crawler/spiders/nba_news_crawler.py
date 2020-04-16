@@ -1,6 +1,6 @@
 import scrapy
 from urllib.parse import urljoin
-from crawler.items import NbaNewsItem
+from crawler.crawler.items import NbaNewsItem
 
 
 class Crawler(scrapy.Spider):
