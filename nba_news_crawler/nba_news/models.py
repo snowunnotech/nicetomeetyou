@@ -7,4 +7,7 @@ class NbaNews(models.Model):
     title = models.CharField(max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
 
-# TODO 防止重複寫入
+    def save(self):
+        query_result = NbaNews.objects.filter(url=self.url)
+        if not query_result:
+            super().save()
