@@ -13,7 +13,7 @@ class NewsConsumer(WebsocketConsumer):
 
         while True:
             now_time = datetime.datetime.now(timezone('UTC'))
-            query_time = now_time - datetime.timedelta(minutes=59)
+            query_time = now_time - datetime.timedelta(minutes=61)
             query_result = NbaNews.objects.filter(timestamp__gte=query_time)
             items = Item.map(query_result)
 
