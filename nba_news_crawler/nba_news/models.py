@@ -5,4 +5,6 @@ class NbaNews(models.Model):
     url = models.URLField(blank=True)
     image = models.URLField(blank=True)
     title = models.CharField(max_length=50)
-    timestamp = models.DateField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+# TODO 防止重複寫入
