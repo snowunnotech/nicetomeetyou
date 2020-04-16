@@ -19,5 +19,7 @@ import nba_news.views as nba_news
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('get_news/', nba_news.get_news)
+    path('get_news/', nba_news.get_news),
+    path('', nba_news.index),
+    path('index/', nba_news.index)
 ]
