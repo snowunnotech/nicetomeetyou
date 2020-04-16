@@ -5,6 +5,7 @@ from django.http import JsonResponse
 class StatusType(Enum):
     SUCCESS = 200
     WRONG_REQUEST = 500
+    WRONG_METHOD = 405
 
 
 class Response(JsonResponse):

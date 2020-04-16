@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_crontab',
-    'nba_news'
+    'nba_news',
+    'channels'
 ]
 
 CRONJOBS = [
-    ('*/1 * * * *', 'run_crawler.start_crawler')
+    ('0 * * * *', 'run_crawler.start_crawler')
 ]
+
+ASGI_APPLICATION = 'nba_news_crawler.routing.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
