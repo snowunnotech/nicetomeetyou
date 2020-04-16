@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'nba_news'
 ]
 
+CRONJOBS = [
+    ('*/1 * * * *', 'run_crawler.start_crawler')
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,7 +60,7 @@ ROOT_URLCONF = 'nba_news_crawler.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, '/nba_news/templates').replace('\\', '/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
