@@ -17,6 +17,7 @@
 # 答題
 1. 使用 Scrapy 抓取焦點新聞，由於觀察新聞更新速度大約一小時一次，因此爬的頻率也是設成一小時
 	- settings.py: `CRONJOBS = [('0 * * * *', 'run_crawler.start_crawler')]`
+	- 由於需要給 crontab 執行，因此把執行爬蟲改成需要跑 run_crawler.py
 2. 透過 scrapy-djangoitem 在每次 Scrapy 爬完新聞時，儲存至 Django 內建的 sqllite3
 3. 由於 Restful API 有固定的風格，且前端只會使用 GET 獲取新聞，因此這裡沒有使用 Django REST Framework
 
