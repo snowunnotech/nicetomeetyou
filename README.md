@@ -12,3 +12,15 @@
 3. 使用 Websocket 服務，抓取到新的新聞時立即通知前端頁面。  完成(但有bug，重新整理頁面後會失效)
 4. 将本 demo 部署至服务器并可正确运行。
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
+
+
+開發環境(windows)：
+python==3.5.1
+Django==1.11.6
+djangorestframework==3.5.1
+dwebsocket==0.5.12
+Scrapy==1.6.0
+APScheduler==2.1.2
+requests==2.23.0
+beautifulsoup4==4.9.0
+Twisted==18.9.0
