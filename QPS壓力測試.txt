@@ -1,0 +1,50 @@
+C:\Users\user\Desktop\http\Apache24\bin>ab -n 500 -c 50 http://nba-highlight-256202.appspot.com/api/NBAframework
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking nba-highlight-256202.appspot.com (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        Google
+Server Hostname:        nba-highlight-256202.appspot.com
+Server Port:            80
+
+Document Path:          /api/NBAframework
+Document Length:        0 bytes
+
+Concurrency Level:      50
+Time taken for tests:   110.097 seconds
+Complete requests:      500
+Failed requests:        0
+Non-2xx responses:      500
+Total transferred:      121048 bytes
+HTML transferred:       0 bytes
+Requests per second:    4.54 [#/sec] (mean)
+Time per request:       11009.661 [ms] (mean)
+Time per request:       220.193 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.07 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       18  219 809.9     22    9038
+Processing:    83 10676 7243.1  10292   28385
+Waiting:       83 5857 5078.2   3862   19301
+Total:        104 10895 7323.8  10324   28408
+
+Percentage of the requests served within a certain time (ms)
+  50%  10324
+  66%  13346
+  75%  16422
+  80%  16467
+  90%  22346
+  95%  22547
+  98%  28375
+  99%  28386
+ 100%  28408 (longest request)

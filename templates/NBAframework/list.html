@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block head_content %}
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '{% url "NBAframework_list_api" %}' ,
+            type: 'get',
+            dataType: 'json'
+        })
+        .done(function (data) {
+            console.log('success');
+            $.each(data.slice(0,4), function(i, data){
+                $('#news_url_' + i).attr('href','/detail/' + data.id + '/');
+                $('#news_image_' + i).attr('src',data.image_url);
+                $('#news_image_' + i).attr('alt',data.title);
+                $('#news_title_' + i).text(data.title);
+            });
+
+        })
+        .fail(function () {
+            console.log("error");
+        });
+
+        $('.carousel').carousel({
+            interval: 2000
+        });
+    });
+</script>
+<style>
+    .card-img{
+        opacity: 0.9 !important;
+    }
+
+    .card a:hover{
+        opacity: 0.75 !important;
+    }
+</style>
+{% endblock head_content %}
+
+{% block title %}NBA 台灣 | 焦點新聞{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            {% for i in 'xxxx' %}
+                <div class="card bg-dark text-white mx-auto" style="max-width: 60rem;">
+                    <a id="news_url_{{ forloop.counter0 }}" href="#">
+                        <img id="news_image_{{ forloop.counter0 }}" class="card-img" src="" alt="">
+                        <div class="card-img-overlay d-flex">
+                            <h3 id="news_title_{{ forloop.counter0 }}" class="card-title align-self-center mx-auto text-white" ></h3>
+                            <!--<p class="card-text"></p>-->
+                            <!--<p class="card-text"></p>-->
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

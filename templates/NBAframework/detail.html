@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block head_content %}
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '{% url "NBAframework_detail_api" detail_id %}',
+            type: 'get',
+            dataType: 'json'
+        })
+        .done(function (data) {
+            console.log('success');
+
+            document.title = data.title;
+            $('#news_title').text(data.title);
+            news_date = new Date(data.publish_date);
+
+            $('#news_date').text(news_date.toLocaleString('chinese',{ timeZone: 'Asia/Taipei' }));
+            $('#news_author').text(data.author);
+            $('#news_image').attr('src',data.image_url);
+            $('.figure-caption').text(data.image_caption);
+            console.log(data.content.split('。'));
+
+            $.each(data.content.split(','), function(i, data){
+                $('#main_content').append('<p class="text-light mb-4 text-justify">'+ data +'</p>')
+            });
+
+            if( data.video_url) {
+                $('.embed-responsive-item').attr('src', data.video_url);
+            }
+            else {
+                $('#news_video').hide();
+            }
+        })
+        .fail(function () {
+            console.log("error");
+        });
+    });
+</script>
+<style>
+    hr{
+        border: 1px solid rgba(255,255,255,0.8) !important;
+    }
+</style>
+{% endblock head_content %}
+
+{% block title %}NBA 台灣 | 焦點新聞{% endblock title %}
+
+{% block content %}
+<article class="container">
+    <header class="row justify-content-center">
+        <div class="col col-md-10 col-lg-8 my-4">
+            <h3 id="news_title" class="text-center text-light"></h3>
+        </div>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 my-2 ">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 my-2 ">
+            <p class="text-light"><span id="news_date" class="mr-4"></span> <span id="news_author"></span></p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col col-md-10 col-lg-8">
+            <figure class="figure">
+                <img id="news_image" src="" class="figure-img img-fluid rounded" alt="">
+                <figcaption class="figure-caption text-light mb-4"></figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <main class="row justify-content-center">
+        <div id="main_content" class="col col-md-10 col-lg-8"></div>
+    </main>
+
+    <div id="news_video" class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 mb-5">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock content %}
