@@ -14,13 +14,13 @@
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
 
 
-開發環境(windows)：
-python==3.5.1
-Django==1.11.6
-djangorestframework==3.5.1
-dwebsocket==0.5.12
-Scrapy==1.6.0
-APScheduler==2.1.2
-requests==2.23.0
-beautifulsoup4==4.9.0
-Twisted==18.9.0
+# 開發環境(windows)：
+python==3.5.1  
+Django==1.11.6  
+djangorestframework==3.5.1  
+dwebsocket==0.5.12  
+Scrapy==1.6.0  
+APScheduler==2.1.2  
+requests==2.23.0  
+beautifulsoup4==4.9.0  
+Twisted==18.9.0  
