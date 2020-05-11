@@ -45,7 +45,7 @@ def websocket_msg(request):
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
 
 ## 開發環境(windows)：
-python==3.5.1  
+python==3.5.4  
 Django==1.11.6  
 djangorestframework==3.5.1  
 dwebsocket==0.5.12  
