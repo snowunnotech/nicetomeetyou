@@ -43,7 +43,6 @@ def websocket_msg(request):
 
 
 ## 未完成要求：
->>>>>>> e51b9d289f715d3f18dd9ecdf6cd42bb4f2474b4
 5. 所實現新聞列表 API 可承受 100 QPS 的壓力測試。
 
 ## 開發環境(windows)：
