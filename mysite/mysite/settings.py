@@ -111,6 +111,7 @@ USE_TZ = True
 # 定義使用時網址前綴 /static/
 STATIC_URL = '/static/'
 # 定義實際上去找文件的目錄名稱(static)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 設定網站正式上線時靜態檔案目錄位置
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
