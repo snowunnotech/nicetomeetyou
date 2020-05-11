@@ -31,7 +31,6 @@ def websocket_msg(request):
         # 如果是普通的http方法
         return render(request, 'index.html')
     else:
-        # 透過bs4實現定時爬蟲，且有更新時提醒前端
         nba_crawler.main(request)
         for message in request.websocket:
             request.websocket.send(message)  # 發送信息到前端
@@ -55,5 +54,10 @@ APScheduler==2.1.2
 requests==2.23.0  
 beautifulsoup4==4.9.0  
 Twisted==18.9.0  
+dj-database-url==0.5.0  
+gunicorn==20.0.4  
+dj-static==0.0.6  
+static3==0.7.0  
+
 
 
