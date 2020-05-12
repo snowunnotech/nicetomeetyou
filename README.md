@@ -1,6 +1,6 @@
 # nice to meet you project
 ## 測試網址：
-https://djangobyjamie.herokuapp.com/  
+https://django-jamie.herokuapp.com/  
 ## 完成要求：
 #### 基本：
 1. 抓取 https://nba.udn.com/nba/index?gr=www 中的焦點新聞。
