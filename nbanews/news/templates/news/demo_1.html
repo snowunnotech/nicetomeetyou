@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'news/head.html' %}
+    </head>
+    <body ontouchstart="">
+        <div class="main">
+            {% include 'news/header.html' %}
+            <div class="heading">
+                <div class="wrapper">
+                    <div class="pageName">{{pageName}}</div> 
+                    <span class="add pull-right" onclick="javascript:location.href='/'">回首頁</span>
+                </div>
+            </div>
+            <section class="wrapper">
+                <div class="page-wrap">
+                    <div class="left2">
+                        {% block view %}
+                        {% endblock %}
+                    </div>
+                    <div class="right2" id="news">
+                        <div class="inner">
+                            <table id="tabpage" class="table">
+                                {% block newsTable %}
+	                                <thead>
+	                                    <tr>
+	                                        <th>圖片</th>
+	                                        <th>標題</th>
+	                                        <th>內容</th>
+	                                        <th>時間</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                    
+		                                    {% for news in newsContent %}
+		                                    <tr>
+		                                        <td><img src="{{ news.imgsrc }}" width='292'/></td>
+		                                        <td>{{ news.title }}</td>
+		                                        <td>{{ news.content }}</td>
+		                                        <td>{{ news.time | default:"無" }}</td>
+		                                    </tr>
+		                                    {% endfor %}
+	                                </tbody>
+	                                {% load static %}
+	                                <script type="text/javascript" src="{% static 'news/js/demo_1.js' %}"></script>
+                                {% endblock %}
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+        </div>
+    </body>
+</html>
